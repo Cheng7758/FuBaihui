@@ -1,0 +1,131 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion '27.0.3'
+    defaultConfig {
+
+        applicationId "com.example.zhanghao.woaisiji"
+
+        minSdkVersion 14
+        targetSdkVersion 22
+        versionCode 39
+        versionName "1.4.5"
+        multiDexEnabled true
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath = true
+            }
+        }
+    }
+
+    signingConfigs {
+        signConfig {
+            storeFile file('ilovedriver.jks')//签名文件路径，
+            //keystore的路径通常使用项目根目录的相对路径，但也可以是使用绝对路径，尽管这不推荐
+            storePassword 'woaisiji123' //密码
+            keyAlias 'ilovedriver'
+            keyPassword 'woaisiji123'  //密码
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            shrinkResources false
+//            minifyEnabled false
+//            debuggable true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.signConfig // 配置release包的签名
+        }
+        debug {
+            signingConfig signingConfigs.signConfig // 配置debug包的签名
+        }
+
+    }
+
+    android {
+        useLibrary 'org.apache.http.legacy'
+    }
+
+    android {
+        lintOptions {
+            checkReleaseBuilds false
+            abortOnError false
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDir 'libs'
+            //说明so的路径为该libs路径，关联所有地图SDK的so文件
+        }
+    }
+
+    allprojects {
+        repositories {
+            maven { url "https://jitpack.io" }
+        }
+    }
+}
+
+
+
+dependencies {
+    //implementation 'com.android.support:support-v4:24.2.1'
+    compile 'com.android.support:support-v4:24.1.1'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile project(path: ':wheelview')
+    compile files('libs/httpmime-4.2.5.jar')
+    compile files('libs/android-async-http-1.4.6.jar')
+    compile('com.github.bumptech.glide:okhttp3-integration:1.4.0') {
+        exclude group: 'glide-parent'
+    }
+    compile project(path: ':EaseUI')
+    compile files('libs/parse-android-1.13.0.jar')
+    compile project(path: ':UpMarqueeView')
+    compile files('libs/alipaySdk-20161009.jar')
+    compile project(path: ':UpdateLibrary')
+    compile files('libs/zxing.jar')
+    compile files('libs/libammsdk.jar')
+    compile files('libs/ex-camera2.jar')
+    compile files('libs/jdom.jar')
+    compile files('libs/httpclient-4.3.6.jar')
+    compile 'com.bartoszlipinski.recyclerviewheader:library:1.2.1'
+    compile 'org.apache.httpcomponents:httpcore:4.4.3'
+    compile 'org.xutils:xutils:3.3.36'
+    compile 'com.google.android.gms:play-services-appindexing:8.4.0'
+    compile 'com.inkapplications.viewpageindicator:library:2.4.3'
+    compile 'com.malinskiy:superrecyclerview:1.1.3'
+    compile 'com.mikhaellopez:circularprogressbar:1.1.1'
+    compile 'com.github.chrisbanes.photoview:library:1.2.4'
+//    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+//    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.zhy:okhttputils:2.0.0'
+    compile 'com.google.code.gson:gson:2.8.2'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
+    implementation files('libs/BaiduLBS_Android.jar')
+
+    compile 'com.github.dongjunkun:DropDownMenu:1.0.3'
+    compile 'com.jakewharton:butterknife:5.1.1'
+
+    compile 'com.squareup.picasso:picasso:2.5.2'//加载图片s
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.40'
+
+    compile 'com.android.support:design:24.1.1'
+    //PickerView
+    compile 'com.contrarywind:Android-PickerView:4.1.8'
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    compile 'com.squareup.retrofit2:converter-scalars:2.3.0'
+    //rxjava2
+    compile 'io.reactivex.rxjava2:rxjava:2.0.1'
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    compile 'com.contrarywind:Android-PickerView:4.1.8'
+}

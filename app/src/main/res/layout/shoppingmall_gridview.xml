@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.zhanghao.woaisiji.refresh.PullToRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/refresh_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/refresh_head" />
+    <!-- 支持所有实现Pullable接口的View -->
+    <com.example.zhanghao.woaisiji.refresh.PullableScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_centerInParent="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/tuijian" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_alignBottom="@+id/iv_title"
+                    android:background="#EEEEEE"
+                    android:text="为您推荐"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <com.example.zhanghao.woaisiji.view.MyGridView
+                android:id="@+id/gv_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:horizontalSpacing="4dp"
+                android:verticalSpacing="4dp"
+                android:numColumns="2" />
+        </LinearLayout>
+    </com.example.zhanghao.woaisiji.refresh.PullableScrollView>
+
+    <include layout="@layout/load_more" />
+
+</com.example.zhanghao.woaisiji.refresh.PullToRefreshLayout>

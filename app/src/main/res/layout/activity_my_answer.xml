@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/question_answer_title"/>
+
+    <com.example.zhanghao.woaisiji.refresh.PullToRefreshLayout
+        android:id="@+id/refresh_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/refresh_head" />
+
+        <com.example.zhanghao.woaisiji.view.SiJiWenDaListView
+            android:id="@+id/lv_my_answer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF"
+            android:divider="#D5D5D5"
+            android:dividerHeight="1dp" />
+
+        <include layout="@layout/load_more" />
+    </com.example.zhanghao.woaisiji.refresh.PullToRefreshLayout>
+</LinearLayout>

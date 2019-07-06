@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fl_sijiwenda"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.QuestionAnswerActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#F0F0F0"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="#FF5000"
+            android:orientation="vertical">
+
+            <include layout="@layout/title_layout" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RadioGroup
+                    android:id="@+id/rg_question_answer_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_questions"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:button="@null"
+                        android:drawablePadding="8dp"
+                        android:drawableTop="@drawable/wenda_tiwen"
+                        android:gravity="center_horizontal"
+                        android:padding="10dp"
+                        android:text="提问"
+                        android:textColor="#FCFDF5"
+                        android:textSize="18sp" />
+
+                    <RadioButton
+                        android:id="@+id/rb_my_answer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:button="@null"
+                        android:drawablePadding="8dp"
+                        android:drawableTop="@drawable/wenda_wodehuida"
+                        android:gravity="center_horizontal"
+                        android:padding="10dp"
+                        android:text="我的回答"
+                        android:textColor="#FCFDF5"
+                        android:textSize="18sp" />
+
+                    <RadioButton
+                        android:id="@+id/rb_my_questions"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:button="@null"
+                        android:drawablePadding="8dp"
+                        android:drawableTop="@drawable/wenda_wodetiwen"
+                        android:gravity="center_horizontal"
+                        android:padding="10dp"
+                        android:text="我的提问"
+                        android:textColor="#FCFDF5"
+                        android:textSize="18sp" />
+                </RadioGroup>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- <View
+             android:layout_width="match_parent"
+             android:layout_height="1dp"
+             android:background="#FFFFFF" />-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="10dp">
+
+            <RadioGroup
+                android:id="@+id/rg_question_answer_indicator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rb_newest_indicator"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:checked="true"
+                    android:text="最新"
+                    android:textColor="@color/txt_tab_green_selector"
+                    android:textSize="16sp" />
+
+                <RadioButton
+                    android:id="@+id/rb_recommend_indicator"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="推荐"
+                    android:textColor="@color/txt_tab_green_selector"
+                    android:textSize="16sp" />
+
+                <RadioButton
+                    android:id="@+id/rb_high_price_indicator"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="高悬赏"
+                    android:textColor="@color/txt_tab_green_selector"
+                    android:textSize="16sp" />
+            </RadioGroup>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="2dp">
+                <!-- android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"-->
+
+                <ImageView
+                    android:id="@+id/iv_green_rectangle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_rectangle_green" />
+            </RelativeLayout>
+        </LinearLayout>
+
+
+        <com.example.zhanghao.woaisiji.refresh.PullToRefreshLayout
+            android:id="@+id/refresh_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include layout="@layout/refresh_head" />
+
+            <com.example.zhanghao.woaisiji.view.SiJiWenDaListView
+                android:id="@+id/lv_wenda"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF"
+                android:divider="#D5D5D5"
+                android:dividerHeight="1dp">
+
+            </com.example.zhanghao.woaisiji.view.SiJiWenDaListView>
+
+            <include layout="@layout/load_more" />
+        </com.example.zhanghao.woaisiji.refresh.PullToRefreshLayout>
+    </LinearLayout>
+</LinearLayout>
+

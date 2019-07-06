@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_social_member_item"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:padding="10dp"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/iv_social_member_head"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="8dp"
+        android:layout_gravity="center_vertical"
+        android:scaleType="fitXY"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_social_member_nick_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="#000"/>
+        <TextView
+            android:id="@+id/tv_social_member_basic_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="#000"/>
+        <TextView
+            android:id="@+id/tv_social_member_push"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:drawableLeft="@drawable/push_friends"
+            android:text="真诚靠谱有决心"
+            android:textSize="12sp"/>
+        <TextView
+            android:id="@+id/tv_social_member_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/distants"
+            android:visibility="gone"
+            android:textSize="10sp"
+            android:text="28km"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_social_member_item_fate"
+        android:layout_width="60dp"
+        android:layout_height="26dp"
+        android:layout_marginRight="20dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="点击详情"
+        android:textSize="13dp"
+        android:textColor="@color/black"
+        />
+
+        <!--android:background="@drawable/fate_female"-->
+
+</LinearLayout>

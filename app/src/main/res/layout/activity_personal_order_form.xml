@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorRegisterBg">
+
+        <ImageView
+            android:id="@+id/iv_register_back"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/white_left" />
+
+
+        <LinearLayout
+            android:id="@+id/ll_personal_order_form"
+            android:layout_width="260dp"
+            android:layout_height="30dp"
+            android:layout_centerInParent="true"
+            android:background="#FF5000"
+            android:orientation="horizontal">
+
+            <Button
+                android:background="#FF5000"
+                android:id="@+id/btn_siji"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="司机商城"
+                android:textColor="#2C5F76"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btn_yinbi"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:background="#FF5000"
+                android:text="分红商城"
+                android:textColor="#2C5F76"
+                android:textSize="16sp" />
+            <Button
+                android:background="#FF5000"
+                android:id="@+id/btn_jinbi"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="积分商城"
+                android:textColor="#2C5F76"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <RadioGroup
+        android:id="@+id/rg_order_form_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_order_form_indicator_item01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="全部"
+            android:textColor="@color/txt_tab_selector"
+            android:textSize="16sp" />
+        <RadioButton
+            android:id="@+id/rb_order_form_indicator_item02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="待发货"
+            android:textColor="@color/txt_tab_selector"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/rb_order_form_indicator_item03"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="待收货"
+            android:textColor="@color/txt_tab_selector"
+            android:textSize="16sp" />
+        <RadioButton
+            android:id="@+id/rb_order_form_indicator_item04"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="待付款"
+            android:textColor="@color/txt_tab_selector"
+            android:textSize="16sp" />
+    </RadioGroup>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp">
+
+        <ImageView
+            android:id="@+id/iv_red_rectangle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_rectangle_red" />
+    </RelativeLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_order_form"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></android.support.v4.view.ViewPager>
+
+</LinearLayout>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/main_color_green">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/bg_rectangle_border"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_view_page_shopping_car_zhengping_mall"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="正品商城"
+                android:textColor="#646464"
+                android:textSize="14sp"
+                android:background="#ffffff"/>
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#fff"/>
+            <Button
+                android:id="@+id/btn_view_page_shopping_car_sliver_mall"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:background="@null"
+                android:text="银积分商城"
+                android:textColor="#ffffff"
+                android:textSize="14sp" />
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#fff"/>
+            <Button
+                android:background="@null"
+                android:id="@+id/btn_view_page_shopping_car_gold_mall"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="金积分商城"
+                android:textColor="#ffffff"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_view_page_shopping_car_editor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="编辑"
+            android:textColor="#fff"
+            android:textSize="14dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <ExpandableListView
+            android:id="@+id/expandList_view_page_shopping_car_list_data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:background="#ffffff"
+            android:dividerHeight="0dp"
+            android:scrollbars="none"
+            android:childIndicator="@null"
+            android:groupIndicator="@null"/>
+        <include
+            android:id="@+id/layout_shopping_cart_empty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            layout="@layout/shopping_cart_empty"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rlBottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_alignParentBottom="true"
+        android:background="#FFFFFF">
+        <!--全选-->
+        <CheckBox
+            android:id="@+id/ck_view_page_shopping_car_all_choose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp"
+            android:layout_centerVertical="true"
+            android:paddingLeft="10dp"
+            android:button="@drawable/bg_check_box_shopping_car_commodity"
+            android:layout_marginLeft="10dp"
+            android:text="全选"
+            android:textSize="18dp"/>
+        <!--结算-->
+        <LinearLayout
+            android:id="@+id/ll_view_page_shopping_car_settle_root"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingRight="15dp"
+                android:text="合计:"
+                android:textColor="#000"
+                android:textSize="14sp" />
+            <TextView
+                android:id="@+id/tv_view_page_shopping_car_count_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingRight="15dp"
+                android:text="￥0.0"
+                android:textColor="#f70700"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_view_page_shopping_car_settle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_round_orange_color"
+                android:gravity="center_vertical"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:paddingLeft="18dp"
+                android:paddingRight="18dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:text="结算"
+                android:textColor="#FFF"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+
+        <!--删除-->
+        <TextView
+            android:visibility="gone"
+            android:layout_alignParentRight="true"
+            android:id="@+id/tv_view_page_shopping_car_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_rectangle_red_color"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:paddingLeft="18dp"
+            android:paddingRight="18dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:text="删除"
+            android:textColor="#FFF"
+            android:textSize="14sp"/>
+
+    </RelativeLayout>
+</LinearLayout>

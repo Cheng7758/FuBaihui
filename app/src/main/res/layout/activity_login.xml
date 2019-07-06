@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none"
+    android:background="#fff">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff"
+        android:clipToPadding="true"
+        android:fitsSystemWindows="true">
+        <ImageView
+            android:id="@+id/iv_login_top_icon"
+            android:layout_marginTop="50dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_fubaihui"/>
+        <LinearLayout
+            android:layout_marginTop="40dp"
+            android:layout_below="@+id/iv_login_top_icon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:orientation="vertical">
+            <!--用户名-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="10dp"
+                android:background="@drawable/bg_round_login_input">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/user_accout"/>
+                <EditText
+                    android:id="@+id/username"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:textColor="#000"
+                    android:textSize="16dp"
+                    android:text=""
+                    android:inputType="text"
+                    android:maxLength="11"/>
+
+            </LinearLayout>
+            <!--密码-->
+            <LinearLayout
+                android:layout_marginTop="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="10dp"
+                android:background="@drawable/bg_round_login_input">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/user_password"/>
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:maxLength="10"
+                    android:inputType="textPassword" />
+
+            </LinearLayout>
+            <!--登录按钮-->
+            <Button
+                android:id="@+id/login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:background="@drawable/bg_round_login_button"
+                android:text="@string/login"
+                android:textColor="#ffffff"
+                android:textSize="16sp"/>
+            <!--立即注册 && 忘记密码-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+                <!--立即注册-->
+                <Button
+                    android:id="@+id/register"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:text="@string/register"
+                    android:textColor="#CBCBCB"
+                    android:textSize="13sp" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"/>
+                <!--忘记密码-->
+                <Button
+                    android:id="@+id/forgot_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:text="@string/forgot_password"
+                    android:textColor="#CBCBCB"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <CheckBox
+                android:layout_marginTop="30dp"
+                android:id="@+id/ck_login_agree_protocol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:checked="false"
+                android:drawableLeft="@drawable/bg_login_checkbox_selector"
+                android:drawablePadding="10dp"
+                android:textSize="13dp"
+                android:lines="1"
+                android:text="阅读并同意福百惠用户协议及隐私保护声明"
+                android:textColor="#656565" />
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>

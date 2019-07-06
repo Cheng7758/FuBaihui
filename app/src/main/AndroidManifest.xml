@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.zhanghao.woaisiji">
+
+    <uses-sdk android:minSdkVersion="8" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> -->
+    <!-- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAG" /> -->
+    <uses-permission
+        android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission
+        android:name="android.permission.READ_LOGS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission
+        android:name="android.permission.SET_DEBUG_APP"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+
+    <!-- ================================================================ -->
+    <application
+        android:name=".WoAiSiJiApp"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_fubaihui"
+        android:label="@string/app_name"
+        android:resizeableActivity="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".activity.main.MainActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity android:name=".activity.main.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.SliverIntegralShangCheng" />
+        <activity android:name=".activity.DriveDynamicActivity" />
+        <activity
+            android:name=".activity.FBHStoreActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".activity.YangHuLianSuo" />
+        <activity android:name=".activity.AiSiJi" />
+        <activity android:name=".activity.QuestionAnswerActivity" />
+        <activity android:name=".activity.WebViewActivity" />
+        <activity
+            android:name=".activity.ShoppingCart"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".activity.AppraiseOrderActivity" />
+        <activity android:name=".activity.SearchProductActivity" />
+        <activity android:name=".activity.PaySuccessActivity" />
+        <activity android:name=".activity.PersonalOpinionFeedbackActivity" />
+        <activity android:name=".activity.WebViewLotteryActivity" />
+
+        <!-- ==========================zyw=================================== -->
+
+
+        <!-- 支付宝 -->
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind" />
+        <activity
+            android:name="com.alipay.sdk.auth.AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind" />
+        <!--  -->
+
+
+        <!-- ============================== -->
+        <!-- 开屏页 -->
+
+
+        <!-- 登陆 -->
+        <activity
+            android:name=".friends.ui.EmLoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="adjustResize|stateVisible" />
+
+        <!-- 注册 -->
+        <activity
+            android:name=".friends.ui.RegisterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="adjustResize|stateVisible" />
+        <!-- 聊天页面 -->
+        <activity
+            android:name=".friends.ui.ChatActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="adjustResize" />
+        <!-- 添加好友 -->
+        <activity
+            android:name=".friends.ui.AddContactActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="stateVisible" />
+        <!-- 群组详情 -->
+        <activity
+            android:name=".friends.ui.GroupDetailsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide" />
+        <!-- 群组列表 -->
+        <activity
+            android:name=".friends.ui.GroupsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- 聊天室详情 -->
+        <activity
+            android:name=".friends.ui.ChatRoomDetailsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide" />
+
+        <!-- 新建群组 -->
+        <activity
+            android:name=".friends.ui.NewGroupActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="adjustPan" />
+        <!-- 退出群组提示框 -->
+        <activity
+            android:name=".friends.ui.ExitGroupDialog"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyDialogStyleBottom" />
+        <!-- 群组选人 -->
+        <activity
+            android:name=".friends.ui.GroupPickContactsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".friends.ui.PickAtUserActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide" />
+        <!-- 地图 -->
+        <activity
+            android:name="com.hyphenate.easeui.ui.EaseBaiduMapActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide" />
+
+        <!-- 新的朋友邀请消息页面 -->
+        <activity
+            android:name=".friends.ui.NewFriendsMsgActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide" />
+        <!-- 转发消息用户列表页面 -->
+        <activity
+            android:name=".friends.ui.ForwardMessageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="adjustPan" />
+        <!-- 自定义的contextmenu -->
+        <activity
+            android:name=".friends.ui.ContextMenuActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyDialogStyle" />
+        <!-- 显示下载大图页面 -->
+        <activity
+            android:name="com.hyphenate.easeui.ui.EaseShowBigImageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide" />
+        <!-- 下载文件 -->
+        <activity
+            android:name="com.hyphenate.easeui.ui.EaseShowNormalFileActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide" />
+        <!-- 黑名单 -->
+        <activity
+            android:name=".friends.ui.BlacklistActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide" />
+
+        <!-- 公开的群聊列表 -->
+        <activity
+            android:name=".friends.ui.PublicGroupsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".friends.ui.PublicChatRoomsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- 语音通话 -->
+        <activity
+            android:name=".friends.ui.VoiceCallActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/nornal_style" />
+        <!-- 视频通话 -->
+        <activity
+            android:name=".friends.ui.VideoCallActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide" />
+        <!-- 群聊简单信息 -->
+        <activity
+            android:name=".friends.ui.GroupSimpleDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide" />
+        <!-- 群组黑名单用户列表 -->
+        <activity
+            android:name=".friends.ui.GroupBlacklistActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide" />
+        <activity
+            android:name=".friends.ui.GroupSearchMessageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="stateVisible" />
+        <activity
+            android:name=".friends.ui.PublicGroupsSeachActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide" />
+        <activity
+            android:name=".friends.ui.EditActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="stateVisible" />
+        <activity
+            android:name="com.hyphenate.easeui.ui.EaseShowVideoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <!-- choose video -->
+        <activity
+            android:name=".friends.ui.ImageGridActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".friends.ui.RecorderVideoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <!-- upload error log -->
+        <activity
+            android:name=".friends.ui.DiagnoseActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
+        <!-- iOS offline push nick -->
+        <activity
+            android:name=".friends.ui.OfflinePushNickActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <!-- robots list -->
+        <activity
+            android:name=".friends.ui.RobotsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <!-- user profile -->
+        <activity
+            android:name=".friends.ui.UserProfileActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide" />
+        <activity
+            android:name=".friends.ui.SetServersActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide" />
+
+        <!-- 红包相关Activity end -->
+        <!-- 开机自启动服务 -->
+        <receiver android:name=".friends.receiver.StartServiceReceiver">
+            <intent-filter android:priority="1000">
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </receiver>
+
+        <!-- gcm start -->
+        <receiver
+            android:name="com.hyphenate.chat.EMGCMBroadcastReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
+                <category android:name="com.hyphenate.chatuidemo" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.hyphenate.chat.EMGCMListenerService"
+            android:exported="false" />
+
+        <receiver
+            android:name=".friends.receiver.GCMPushBroadCast"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.hyphenate.sdk.push" />
+
+                <category android:name="com.hyphenate.chatuidemo" />
+            </intent-filter>
+        </receiver>
+
+        <!-- ============================== -->
+
+        <activity
+            android:name=".activity.ILoveShopActivity"
+            android:theme="@style/Theme.MyPageIndicator" />
+        <activity android:name=".activity.PersonalOrderFormDetailActivity" />
+        <activity android:name=".activity.QuestionEditAnswerActivity" />
+        <activity android:name=".activity.login.ForgetSetPasswordActivity" />
+        <activity android:name=".activity.QuestionDetailActivity" />
+        <activity android:name=".activity.QuestionsActivity" />
+        <activity android:name=".activity.QuestionsMyAnswerActivity" />
+        <activity android:name=".activity.QuestionsMyQuestionActivity" />
+        <activity android:name=".base.social.SearchResultActivity" />
+        <activity android:name=".activity.WebViewConsultActivity" />
+        <activity android:name=".dynamic.ReleaseDynamicActivity" />
+        <activity
+            android:name=".dynamic.AlbumActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".dynamic.GalleryActivity" />
+        <activity android:name=".dynamic.ImageFileActivity" />
+        <activity android:name=".dynamic.ShowAllPhotoActivity" />
+        <activity android:name=".activity.PersonalFriendsMessageActivity" />
+        <activity android:name=".activity.PersonalInfoDetailActivity" />
+        <activity android:name=".activity.LoveDriverFriendsActivity" />
+        <activity android:name=".friends.ui.PersonalFriendsActivity" />
+        <activity
+            android:name=".activity.LoveDriverSociallyActivity"
+            android:theme="@style/Theme.MyPageIndicator" />
+        <activity
+            android:name=".activity.login.LoginActivity"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+        <activity
+            android:name=".activity.ImagePagerActivity"
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.Black.NoTitleBar" />
+        <activity android:name=".activity.PersonalDynamicActivity" />
+        <activity android:name=".activity.PersonalCollectionActivity" />
+        <activity
+            android:name=".activity.PersonalOrderFormActivity"
+            android:theme="@style/Theme.MyPageIndicator" />
+        <activity android:name=".activity.PersonalWalletSilverActivity" />
+        <activity android:name=".activity.PersonalWalletGoldActivity" />
+        <activity android:name=".activity.LoveDriverAppMallActivity" />
+        <activity android:name=".activity.LoveDriverSelfDriveActivity" />
+        <activity android:name=".activity.LoveDriverInformationActivity" />
+        <activity android:name=".activity.SelfDriveReleaseActivity" />
+        <activity android:name=".activity.SelfDriveAlreadyReleaseActivity" />
+        <activity android:name=".activity.DailySignActivity" />
+        <activity android:name=".activity.LoveDriverHealthActivity" />
+        <activity android:name=".activity.login.NewRegisterActivity" />
+        <activity android:name=".activity.login.RegisterOneActivity" />
+        <activity android:name=".activity.login.RegisterTwoActivity" />
+        <activity android:name=".activity.login.RegisterThreeActivity" />
+        <activity android:name=".activity.PersonalActivity" />
+        <activity android:name=".activity.uploadhead.PersonalDataActivity" />
+        <activity android:name=".activity.PersonalModifyNickActivity" />
+        <activity android:name=".activity.PersonalSettingActivity" />
+        <activity android:name=".activity.PersonalAccountSecurityActivity" />
+        <activity android:name=".activity.PersonalReplacePhoneActivity" />
+        <activity android:name=".activity.PersonalModifyPwdActivity" />
+        <activity android:name=".activity.PersonalWalletActivity" />
+        <activity android:name=".activity.PersonalDetailBillActivity" />
+        <activity android:name=".activity.PersonalInformationActivity" />
+        <activity android:name=".activity.PersonalBirthDayActivity" />
+        <activity android:name=".activity.PersonalMarryActivity" />
+        <activity android:name=".activity.PersonalAddressActivity" />
+        <activity android:name=".activity.PersonalHarvestAddressActivity" />
+        <activity android:name=".activity.PersonalAddNewAddressActivity" />
+        <activity android:name=".activity.PersonalSelectRegionActivity" />
+        <activity android:name=".activity.PersonalSelectStreetActivity" />
+        <activity android:name=".activity.login.ForgetPasswordActivity" />
+        <activity android:name=".activity.send.JoinCarLocationActivity" />
+        <activity android:name=".VersionActivity" />
+        <!-- ============================================================= -->
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="5stvreKArm4kelIUCLhm73lZ5mIw0FKl" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.example.zhanghao.woaisiji.MyGlideModule"
+            android:value="GlideModule" />
+
+        <activity android:name=".activity.main.GuideActivity" />
+        <activity android:name=".activity.ProductDetailActivity2" />
+        <activity android:name=".activity.CommentActivity" />
+        <activity android:name=".activity.CuringCommentActivity" />
+
+        <!-- 设置环信应用的AppKey -->
+        <meta-data
+            android:name="EASEMOB_APPKEY"
+            android:value="2720759518#woaisiji66" />
+
+        <!-- 声明SDK所需的service SDK核心功能 -->
+        <service
+            android:name="com.hyphenate.chat.EMChatService"
+            android:exported="true" />
+        <!-- 声明SDK所需的receiver -->
+        <receiver android:name="com.hyphenate.chat.EMMonitorReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                <data android:scheme="com.example.zhanghao.woaisiji" />
+            </intent-filter>
+            <!-- 可选filter -->
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.loveplusplus.update.DownloadService"
+            android:exported="true" />
+
+        <activity android:name=".activity.OrderPreviewActivity" />
+        <activity android:name=".activity.AdvertisementWebViewActivity" />
+        <activity android:name=".activity.OrdersubmissionActivity" />
+        <activity
+            android:name=".activity.PaymentMethodActivity"
+            android:exported="true"
+            android:launchMode="singleTop">
+
+            <!-- 这个intent-filter不要忘了 -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="wxc1184669ab904cdd" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="wxc1184669ab904cdd" />
+            </intent-filter>
+        </activity>
+
+        <receiver android:name=".wxapi.AppRegister">
+            <intent-filter>
+                <action android:name="com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP" />
+            </intent-filter>
+        </receiver>
+
+        <!-- <activity android:name=".activity.SendMoney"></activity> -->
+        <activity
+            android:name=".activity.main.HomeActivity"
+            android:windowSoftInputMode="stateHidden" />
+
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="2.1" />
+
+        <activity android:name=".activity.send.SendGoldActivity" />
+        <activity android:name=".activity.send.SendSilverActivity" />
+        <activity android:name=".activity.send.BuyGlodActivity" />
+        <activity android:name=".activity.send.JoinCarActivity" />
+        <activity android:name=".activity.JoinCarDetailActivity" />
+        <activity android:name=".activity.send.JoinAutoActivity" />
+        <activity android:name=".activity.send.JoinAutoDetailsActivity" />
+        <activity android:name=".activity.send.JoinDetailsActivity" />
+        <activity android:name=".activity.PersonalModifyPhoneActivity" />
+        <activity android:name=".activity.PersonalAboutUsActivity" />
+        <activity android:name=".activity.PersonalCouponActivity" />
+        <activity android:name=".activity.PersonalMyRecommendationActivity" />
+        <activity android:name=".activity.PersonalDepositActivity" />
+        <activity android:name=".activity.PersonalMerchantRecommendationCodeActivity" />
+        <activity android:name=".activity.PersonalRecommendCodeActivity" />
+        <activity android:name=".activity.RecruitmentActivity" />
+        <activity android:name=".activity.my.MyCollectionActivity" />
+        <activity android:name=".activity.my.MyOrderActivity" />
+        <activity android:name=".activity.my.MyOrderDetailActivity"></activity>
+    </application>
+
+</manifest>

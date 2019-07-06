@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#f4f4f4"
+    tools:context=".activity.send.JoinAutoActivity">
+    <include layout="@layout/title_bar_view_layout" />
+
+    <com.example.zhanghao.woaisiji.view.SiJiWenDaListView
+        android:layout_marginTop="10dp"
+        android:id="@+id/lv_join_auto_us_show_data"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:background="#f4f4f4"
+        android:divider="#00000000"
+        android:dividerHeight="10dp">
+    </com.example.zhanghao.woaisiji.view.SiJiWenDaListView>
+
+
+</LinearLayout>

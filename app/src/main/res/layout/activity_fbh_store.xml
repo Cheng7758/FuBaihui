@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EEEEEE"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_bar_view_layout" />
+
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/relativeLayout"
+        android:background="#FAFAFA"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/padding_search_bar"
+            android:paddingRight="27dp"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:background="#ededed"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+            <EditText
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:paddingLeft="15dp"
+                android:id="@+id/edit_key_query"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/em_seabar_input"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:hint="@string/search"
+                android:textSize="16sp"
+                android:layout_marginLeft="4dp"
+                android:lines="1" />
+
+            <ImageButton
+                android:id="@+id/ib_search_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="3dp"
+                android:background="@android:color/transparent"
+                android:padding="6dp"
+                android:src="@drawable/em_search_bar_icon_normal"
+                android:visibility="visible" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <ListView
+            android:layout_alignParentLeft="true"
+            android:id="@+id/lv_fbh_store_category"
+            android:layout_width="70sp"
+            android:layout_height="match_parent"
+            android:background="#FAFAFA"
+            android:divider="#dcdcdc"
+            android:dividerHeight="1dp"
+            android:scrollbars="none"></ListView>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/tv_fbh_store_no_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_centerInParent="true"
+                android:textColor="#999999"
+                android:textSize="14dp"
+                android:text="暂无数据"/>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/gv_fbh_store_category_data"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal"
+                android:scrollbars="none"
+                android:padding="5dp">
+            </android.support.v7.widget.RecyclerView>
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

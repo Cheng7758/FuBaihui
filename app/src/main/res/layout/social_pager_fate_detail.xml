@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_fate_detail"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="gone">
+
+    <ImageView
+        android:id="@+id/iv_social_detail_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"/>
+
+    <Button
+        android:id="@+id/btn_social_fate"
+        android:layout_width="260dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_vertical"
+        android:background="@drawable/fate"/>
+    <LinearLayout
+        android:id="@+id/ll_social_fate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/btn_social_fate"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingLeft="20dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_social_info01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="小宝 24岁"
+                android:textSize="18sp"/>
+            <TextView
+                android:id="@+id/tv_social_info02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="身高：163 大专"
+                android:textSize="18sp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+           <!-- <Button
+                android:id="@+id/btn_social_pre_member"
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:background="@null"
+                android:text="上一位"
+                android:textSize="18sp"/>-->
+            <Button
+                android:id="@+id/btn_social_next_member"
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:background="@null"
+                android:text="下一位"
+                android:textSize="18sp"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

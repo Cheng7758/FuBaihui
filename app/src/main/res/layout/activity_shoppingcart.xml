@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/main_color_green">
+
+        <ImageView
+            android:id="@+id/iv_register_back"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:src="@mipmap/white_left"/>
+
+        <LinearLayout
+            android:id="@+id/ll_personal_order_form"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/bg_rectangle_border"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_zhengping"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="正品商城"
+                android:textColor="#646464"
+                android:textSize="16sp"
+                android:background="#ffffff"/>
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#fff"/>
+            <Button
+                android:id="@+id/btn_duihuan"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:background="@null"
+                android:text="银积分商城"
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#fff"/>
+            <Button
+                android:background="@null"
+                android:id="@+id/btn_jinbi"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="金积分商城"
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_mall_type_name"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tv_mall_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/iv_enter"
+            android:drawablePadding="8dp"
+            android:paddingLeft="10dp"
+            android:gravity="center_vertical"
+            android:text="正品商城"
+            android:textColor="#2B2B2B"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/tv_bianji"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginRight="10dp"
+            android:gravity="end"
+            android:text="编辑"
+            android:textColor="#2B2B2B"
+            android:textSize="16dp" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listView_zhengpin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+    <RelativeLayout
+        android:id="@+id/rlBottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_alignParentBottom="true"
+        android:background="#FFFFFF">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingRight="15dp"
+                android:text="合计:"
+                android:textColor="#000"
+                android:textSize="14sp" />
+            <TextView
+                android:id="@+id/tv_count_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingRight="15dp"
+                android:text="￥0.0"
+                android:textColor="#f70700"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/btnSettle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_round_orange_color"
+                android:gravity="center_vertical"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:paddingLeft="18dp"
+                android:paddingRight="18dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:text="结算"
+                android:textColor="#FFF"
+                android:textSize="14sp"/>
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

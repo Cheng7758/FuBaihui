@@ -1,0 +1,31 @@
+-- Merging decision tree log ---
+manifest
+ADDED from E:\AndroidWorkSpace\WoAiSiJi\EaseUI\AndroidManifest.xml:2:1-11:12
+INJECTED from E:\AndroidWorkSpace\WoAiSiJi\EaseUI\AndroidManifest.xml:2:1-11:12
+INJECTED from E:\AndroidWorkSpace\WoAiSiJi\EaseUI\AndroidManifest.xml:2:1-11:12
+INJECTED from E:\AndroidWorkSpace\WoAiSiJi\EaseUI\AndroidManifest.xml:2:1-11:12
+INJECTED from E:\AndroidWorkSpace\WoAiSiJi\EaseUI\AndroidManifest.xml:2:1-11:12
+INJECTED from E:\AndroidWorkSpace\WoAiSiJi\EaseUI\AndroidManifest.xml:2:1-11:12
+INJECTED from E:\AndroidWorkSpace\WoAiSiJi\EaseUI\AndroidManifest.xml:2:1-11:12
+	package
+		ADDED from E:\AndroidWorkSpace\WoAiSiJi\EaseUI\AndroidManifest.xml:3:5-35
+		INJECTED from E:\AndroidWorkSpace\WoAiSiJi\EaseUI\AndroidManifest.xml
+		INJECTED from E:\AndroidWorkSpace\WoAiSiJi\EaseUI\AndroidManifest.xml
+	android:versionName
+		ADDED from E:\AndroidWorkSpace\WoAiSiJi\EaseUI\AndroidManifest.xml:5:5-30
+		INJECTED from E:\AndroidWorkSpace\WoAiSiJi\EaseUI\AndroidManifest.xml
+		INJECTED from E:\AndroidWorkSpace\WoAiSiJi\EaseUI\AndroidManifest.xml
+	xmlns:android
+		ADDED from E:\AndroidWorkSpace\WoAiSiJi\EaseUI\AndroidManifest.xml:2:11-69
+	android:versionCode
+		ADDED from E:\AndroidWorkSpace\WoAiSiJi\EaseUI\AndroidManifest.xml:4:5-28
+		INJECTED from E:\AndroidWorkSpace\WoAiSiJi\EaseUI\AndroidManifest.xml
+		INJECTED from E:\AndroidWorkSpace\WoAiSiJi\EaseUI\AndroidManifest.xml
+uses-sdk
+ADDED from E:\AndroidWorkSpace\WoAiSiJi\EaseUI\AndroidManifest.xml:7:5-9:12
+INJECTED from E:\AndroidWorkSpace\WoAiSiJi\EaseUI\AndroidManifest.xml:7:5-9:12
+INJECTED from E:\AndroidWorkSpace\WoAiSiJi\EaseUI\AndroidManifest.xml:7:5-9:12
+	android:minSdkVersion
+		ADDED from E:\AndroidWorkSpace\WoAiSiJi\EaseUI\AndroidManifest.xml:8:9-34
+		INJECTED from E:\AndroidWorkSpace\WoAiSiJi\EaseUI\AndroidManifest.xml
+		INJECTED from E:\AndroidWorkSpace\WoAiSiJi\EaseUI\AndroidManifest.xml

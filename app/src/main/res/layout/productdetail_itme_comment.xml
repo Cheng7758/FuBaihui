@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="#EEEEEE"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+
+    >
+    <LinearLayout
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <com.example.zhanghao.woaisiji.view.RoundImageView
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="15dp"
+            android:scaleType="fitXY"
+            android:id="@+id/iv_pingjiaportrait"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_launcher"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/tv_pinglun" />
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我爱老司机"
+            android:id="@+id/te_nickname"
+            android:layout_above="@+id/tv_pinglun"
+            android:layout_toEndOf="@+id/tv_riqi" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="7dp"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:text="我爱死机"
+        android:textSize="16dp"
+        android:id="@+id/tv_pinglun"
+        android:layout_below="@+id/iv_pingjiaportrait"
+        android:layout_centerHorizontal="true" />
+    <TextView
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2016-9-3"
+        android:layout_below="@+id/tv_pinglun"
+        android:layout_alignStart="@+id/tv_pinglun"
+        android:id="@+id/tv_riqi" />
+</LinearLayout>

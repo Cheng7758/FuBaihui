@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="4dp">
+        <ImageView
+            android:id="@+id/iv_collection"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_centerInParent="true"
+            />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginLeft="10dp">
+        <TextView
+            android:id="@+id/tv_collection_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="该商品已被删除"
+            android:padding="4dp"
+            android:maxLines="2"
+            android:textColor="#000000"
+            android:textSize="14sp"/>
+        <TextView
+            android:id="@+id/tv_collection_silver"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_below="@id/tv_collection_title"
+            android:text="送0银a币"
+            android:textColor="#ff0000"
+            />
+        <TextView
+            android:id="@+id/tv_collection_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="￥ 0 "
+            android:textColor="#ff0000"
+            />
+        <Button
+            android:id="@+id/btn_collection_add_cart"
+            android:layout_width="56dp"
+            android:layout_height="24dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/btn_shape_bg"
+            android:text="查看详情"
+            android:textColor="#ff0000"
+            android:textSize="10sp"/>
+    </RelativeLayout>
+
+</LinearLayout>

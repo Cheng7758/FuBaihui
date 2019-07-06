@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.zhanghao.woaisiji.view.CustScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/product_scrollview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EEEEEE"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!--上部11111111111111111111111111111111111111111111111111111-->
+        <FrameLayout
+            android:id="@+id/mall_product_deatil"
+            android:layout_width="match_parent"
+            android:layout_height="300dp" >
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewPager_mall_product_detail"
+                android:layout_width="match_parent"
+                android:layout_height="280dp" >
+            </android.support.v4.view.ViewPager>
+
+            <LinearLayout
+                android:id="@+id/linearLayout_mall_product_detail_dots"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:orientation="horizontal" >
+            </LinearLayout>
+        </FrameLayout>
+
+        <!--中部11111111111111111111111111111111111111111111111111111111-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="115dp"
+            android:padding="10dp"
+            android:background="#FFFFFF"
+            android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_shangpinjieshao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:lines="2"
+                    android:text="哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_toStartOf="@+id/tv_diya" />
+
+                <TextView
+                    android:id="@+id/tv_diya"
+                    android:layout_width="wrap_content"
+                    android:layout_height="33dp"
+                    android:background="#FC5600"
+                    android:gravity="center"
+                    android:text="银A币可抵100元"
+                    android:textColor="#FFFFFF"
+                    android:textSize="10dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true" />
+
+            <TextView
+                android:id="@+id/tv_yunfei"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:text="免运费"
+                android:textColor="#D2D2D2"
+                android:layout_alignParentBottom="true"
+                android:layout_toEndOf="@+id/textView4" />
+
+            <TextView
+                android:id="@+id/tv_jiage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="799"
+                android:textColor="#FC5600"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_below="@+id/tv_shangpinjieshao"
+                />
+            <TextView
+                android:id="@+id/tv_jiujiage"
+                android:textColor="#D2D2D2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="价格:123"
+                android:layout_below="@+id/tv_jiage"
+                android:layout_alignStart="@+id/tv_jiage" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="快递费"
+                android:textColor="#D2D2D2"
+                android:id="@+id/textView3"
+                android:layout_alignParentBottom="true"
+                />
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:id="@+id/tv_jinAbi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#FC5600"
+                android:text="送金A币140"
+                android:textColor="#FFFFFF"
+                android:textSize="10dp"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/tv_jiage" />
+
+            <TextView
+                android:id="@+id/tv_yinBbi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:background="#DFE2F3"
+                android:text="送银A币140"
+                android:textColor="#FFFFFF"
+                android:textSize="10dp"
+                android:layout_alignTop="@+id/tv_jinAbi"
+                android:layout_toEndOf="@+id/tv_jinAbi" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:text=":"
+                android:textColor="#D2D2D2"
+                android:layout_alignParentBottom="true"
+                android:layout_toEndOf="@+id/textView3"
+                android:id="@+id/textView4" />
+        </RelativeLayout>
+
+        <!--数量部分1111111111111111111111111111111111111111111111111-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="15dp"
+            android:background="#FFFFFF">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:text="数量" />
+
+            <com.example.zhanghao.woaisiji.view.AmountView
+                android:layout_gravity="center_vertical"
+                android:id="@+id/amount_view"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_centerInParent="true"
+                 android:layout_marginLeft="10dp"
+                android:layout_marginRight="15dp"
+                app:btnTextSize="14sp"
+                app:btnWidth="36dp"
+                app:tvWidth="50dp"/>
+
+            <TextView
+                android:id="@+id/stock"
+                android:layout_marginLeft="60dp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="库存剩余量0"/>
+        </LinearLayout>
+
+        <!--宝贝评价1111111111111111111111111111111111111111111111111-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="15dp"
+            android:background="#FFFFFF">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="宝贝评价" />
+
+            <TextView
+                android:id="@+id/tv_pingjiaTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/textView2"
+                android:text="(14826)" />
+
+            <com.example.zhanghao.woaisiji.view.RoundImageView
+                android:scaleType="fitXY"
+                android:layout_marginTop="20dp"
+                android:id="@+id/iv_pingjiaportrait"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_below="@+id/textView2"
+                android:layout_alignStart="@+id/textView2"
+                android:src="@drawable/ic_launcher"/>
+
+            <TextView
+                android:layout_marginLeft="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我爱老司机"
+                android:id="@+id/te_nickname"
+                android:layout_alignTop="@+id/iv_pingjiaportrait"
+                android:layout_toEndOf="@+id/iv_pingjiaportrait" />
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:lines="2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+               android:layout_marginRight="20dp"
+                android:text="哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈"
+                android:textSize="16dp"
+                android:id="@+id/tv_pinglun"
+                android:layout_below="@+id/iv_pingjiaportrait"
+                android:layout_alignStart="@+id/iv_pingjiaportrait" />
+
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2016-9-3"
+                android:layout_below="@+id/tv_pinglun"
+                android:layout_alignStart="@+id/tv_pinglun"
+                android:id="@+id/tv_riqi" />
+
+            <ImageView
+                android:background="#FFFFFF"
+                android:layout_marginTop="40dp"
+                android:id="@+id/iv_quanbupinglun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/quanbupinglun"
+                android:layout_below="@+id/tv_riqi"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+
+        <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#EEEEEE"
+            android:gravity="center"
+            android:padding="18dp"
+            android:text="一一继续拖动，查看图文详情一一"
+            android:textSize="13dp" />
+    </LinearLayout>
+</com.example.zhanghao.woaisiji.view.CustScrollView>
+

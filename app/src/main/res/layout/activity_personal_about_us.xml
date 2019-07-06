@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F0EFF4">
+    <include
+        layout="@layout/title_bar_view_layout"/>
+    <!--版本信息-->
+    <!--版本号-->
+    <TextView
+        android:id="@+id/tv_personal_about_us_current_version"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#fff"
+        android:layout_marginTop="36dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="30dp"/>
+
+    <!--有新版本和没有新版本-->
+    <TextView
+        android:id="@+id/tv_personal_about_us_latest_version"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#fff"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="30dp"/>
+</LinearLayout>

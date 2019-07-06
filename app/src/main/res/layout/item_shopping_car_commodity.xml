@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+    android:paddingTop="13dp"
+    android:paddingBottom="13dp"
+    android:orientation="vertical"
+    android:background="@drawable/bg_round_white_color">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <CheckBox
+            android:id="@+id/cb_shopping_car_store_choose_store"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@drawable/bg_check_box_shopping_car_commodity"
+            android:checked="false"/>
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:id="@+id/tv_shopping_car_store_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_fbh_store"
+            android:drawableRight="@drawable/ic_arrow_right"
+            android:text="商城"
+            android:textSize="16dp"
+            android:drawablePadding="10dp"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_reply_question"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:background="#FFFFFF"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_question_answer_title"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:padding="14dp"
+        android:text="我是名字"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:textSize="16sp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:paddingLeft="16dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tv_question_answer_boins"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:drawableLeft="@drawable/qian"
+            android:drawablePadding="3dp"
+            android:text="100/银A币"
+            android:textColor="#F67800" />
+        <TextView
+            android:id="@+id/tv_question_answer_times"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="20秒前"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:paddingLeft="16dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <com.example.zhanghao.woaisiji.view.RoundImageView
+            android:id="@+id/riv_question_answer_headpic"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/bill_driver_present"
+            />
+        <TextView
+            android:id="@+id/tv_question_answer_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="5dp"
+            android:layout_marginLeft="5dp"
+            android:text="18888888888"
+            android:textSize="14sp"/>
+        <TextView
+            android:id="@+id/tv_question_answer_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0人回答"
+            android:textSize="15dp" />
+        <LinearLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/question_answer_icon"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_gravity="center_vertical"
+                android:text="回答"
+                android:textColor="#08DF5D"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

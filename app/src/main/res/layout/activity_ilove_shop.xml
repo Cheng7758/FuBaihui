@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_register"/>
+
+    <RadioGroup
+        android:id="@+id/rg_order_form_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_order_form_indicator_item01"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="10:00"
+            android:textColor="@color/txt_tab_selector"
+            android:textSize="16sp" />
+        <RadioButton
+            android:id="@+id/rb_order_form_indicator_item02"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="11:00"
+            android:textColor="@color/txt_tab_selector"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/rb_order_form_indicator_item03"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="12:00"
+            android:textColor="@color/txt_tab_selector"
+            android:textSize="16sp" />
+    </RadioGroup>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp">
+        <!-- android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"-->
+
+        <ImageView
+            android:id="@+id/iv_red_rectangle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_rectangle_red" />
+    </RelativeLayout>
+
+    <!--<com.viewpagerindicator.TabPageIndicator
+        android:id="@+id/indicator_socially_title"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_gravity="center_horizontal"/>-->
+    <com.example.zhanghao.woaisiji.view.NoSlideViewPager
+        android:id="@+id/vp_socially_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>
