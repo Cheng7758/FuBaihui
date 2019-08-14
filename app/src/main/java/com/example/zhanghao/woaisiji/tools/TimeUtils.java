@@ -316,7 +316,7 @@ public class TimeUtils {
      */
     public static String getCurrentTime() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日  HH时mm分");
-        return sdf.format(new java.util.Date());
+        return sdf.format(new Date());
     }
 
     /**

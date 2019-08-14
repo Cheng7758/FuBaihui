@@ -5,11 +5,14 @@ package com.example.zhanghao.woaisiji.global;
  * Created by admin on 2016/9/1.
  */
 public class ServerAddress {
-    //    public final static String SERVER_ROOT = "http://www.woaisiji.com";
+//        public final static String SERVER_ROOT = "http://newwasj.zhangtongdongli.com";
     public final static String SERVER_ROOT = "http://wasj.zhangtongdongli.com";//新的
 
     //    public final static String URL_SERVER = "http://www.woaisiji.com/APP/User/";
     public final static String URL_SERVER = "http://wasj.zhangtongdongli.com/";//新的
+
+    //加盟商家列表
+    public final static String URL_JOIN_PARTNER_REQUEST_ADDRESS_LIST = SERVER_ROOT + "/APP/Xone/screening";
 
     //获取Token
     public final static String URL_GET_TOKEN = SERVER_ROOT + "/APP/Public/get_token";
@@ -33,42 +36,53 @@ public class ServerAddress {
     public final static String URL_HOME_PAGE_JINGXUAN_GONGGAO = SERVER_ROOT + "/APP/Xone/goodslist";
     //加盟伙伴-搜索
     public final static String URL_JOIN_PARTNER_SEARCH_DATA = SERVER_ROOT + "/APP/Xone/tsearch";
-    //加盟伙伴-请求列表
-    public final static String URL_JOIN_PARTNER_REQUEST_JOIN_LIST = SERVER_ROOT + "/APP/Xtojoin/tojoin_list";
+    //加盟商家列表
+//    public final static String URL_JOIN_PARTNER_REQUEST_JOIN_LIST = SERVER_ROOT + "/APP/Xtojoin/tojoin_list";
+    public final static String URL_JOIN_PARTNER_REQUEST_JOIN_LIST = SERVER_ROOT + "/APP/Xtojoin/garage_list";
     //首页轮播图
     public final static String URL_GLOBAL_SLIDE_SHOW = SERVER_ROOT + "/APP/Public/bander/name/n_sybn";
     //FBH商城轮播
     public final static String URL_GLOBAL_FBH_SLIDE_SHOW = SERVER_ROOT + "/APP/Public/bander/name/shop_top";
     //商品分类
     public final static String URL_COMMODITY_CATEGORY = SERVER_ROOT + "/APP/public/category_list";
-    //FBH商品列表
-    public final static String URL_FBH_COMMODITY_DATA_LIST = SERVER_ROOT + "/APP/Shop/index/cid/61";
+    //商品列表
+    public final static String URL_FBH_COMMODITY_DATA_LIST = SERVER_ROOT + "/APP/Shop/index/cid/";
     //商家详情界面
     public final static String URL_COMMODITY_DETAIL = SERVER_ROOT + "/APP/Xtojoin/mer_details";
     //FBH商品详情
-    public final static String URL_FBH_COMMODITY_DETAIL = SERVER_ROOT + "/APP/Shop/goods_detail/id/1561";
+    public final static String URL_FBH_COMMODITY_DETAIL = SERVER_ROOT + "/APP/Shop/goods_detail/id/";
     //收藏产品
     public final static String URL_COLLECTION_PRODUCTION = SERVER_ROOT + "/APP/Member/goods_collect";
     //我的 信息
     public final static String URL_MY_PERSONAL_INFO = SERVER_ROOT + "/APP/Member/user_info";
     //修改昵称
-    public final static String URL_MY_PERSONAL_INFO_MODIFY_NICK = SERVER_ROOT + "/APP/Member/user_info";
+    public final static String URL_MY_PERSONAL_INFO_MODIFY_NICK = SERVER_ROOT + "/APP/Member/upd_nickname";
     //修改头像
     public final static String URL_MY_PERSONAL_INFO_MODIFY_HEAD_PORTRAIT = SERVER_ROOT + "/APP/Member/upload_headpic";
     //修改手机号
-    public final static String URL_MY_PERSONAL_INFO_MODIFY_PHONE = SERVER_ROOT + "/APP/Member/upd_nickname";
+    public final static String URL_MY_PERSONAL_INFO_MODIFY_PHONE = SERVER_ROOT + "/APP/User/editphone";
     //优惠券 - 商家
     public final static String URL_MY_PERSONAL_INFO_COUPON = SERVER_ROOT + "/APP/Public/coupon_list";
     //优惠券 - 我的
-    public final static String URL_MY_PERSONAL_INFO_MY_COUPON_LIST = SERVER_ROOT + "/APP/Public/coupon_list";
+    public final static String URL_MY_PERSONAL_INFO_MY_COUPON_LIST = SERVER_ROOT + "/APP/Xtojoin/preferential";
+    //兑换优惠券
+    public final static String URL_MY_PERSONAL_INFO_EXCHANGE_COUPON =SERVER_ROOT + "/APP/Public/exchange_coupon";
+
+
     //我的推荐
     public final static String URL_MY_PERSONAL_INFO_MY_RECOMMENDATION = SERVER_ROOT + "/APP/Xtojoin/mybill";
+    //我的推荐会员
+    public final static String URL_MY_PERSONAL_INFO_MY_RECOMMENDATION_VIP = SERVER_ROOT + "/APP/member/one_member_list";
     //我的钱包
     public final static String URL_MY_PERSONAL_INFO_MY_WALLET = SERVER_ROOT + "/APP/Xtojoin/wallet";
     //金积分提现到余额
     public final static String URL_MY_PERSONAL_INFO_MY_WALLET_DEPOSIT = SERVER_ROOT + "/APP/Xuser/refund";
     //提现到微信  支付宝
     public final static String URL_MY_PERSONAL_INFO_MY_WALLET_DEPOSIT_WX_ZFB = SERVER_ROOT + "/APP/Xuser/withdrawal";
+    // 检测是否绑定微信或者支付宝
+    public final static String URL_MY_PERSONAL_INFO_MY_WALLET_BINDING_WX_ZFB = SERVER_ROOT + "/APP/Xuser/isbangding";
+    // 绑定微信或者支付宝openid
+    public final static String URL_MY_PERSONAL_INFO_BINDING_WX_ZFB_OPENID = SERVER_ROOT + "/APP/Xuser/wxopenid";
     //提现是否成功
     public final static String URL_MY_PERSONAL_INFO_MY_WALLET_DEPOSIT_SUCCEED = SERVER_ROOT + "/APP/Xuser/txjudge";
     //商城点评 - 品论列表
@@ -81,6 +95,38 @@ public class ServerAddress {
     public final static String URL_MERCHANT_PAYMENT_CODE = SERVER_ROOT + "/APP/Xtojoin/shopcode";
     //推荐码 - 商家推荐码
     public final static String URL_MERCHANT_RECOMMEND_CODE = SERVER_ROOT + "/APP/Xinv/tojoin";
+    //  购物车  订单列表
+    public final static String URL_ORDER_PREVIEW_ACQUIRE_ODER_LIST_DATA = SERVER_ROOT + "/APP/Order/add_order";
+    //  购物车  提交订单
+    public final static String URL_ORDER_PREVIEW_SUBMIT_ODER_LIST_DATA = SERVER_ROOT + "/APP/Order/add_order_do";
+    //订单支付页面
+    public final static String URL_PAY_ORDER_PAGE = SERVER_ROOT + "/APP/Order/pay_order";
+    //订单支付- 使用积分支付
+    public final static String URL_PAY_ORDER_USE_INTEGRAL = SERVER_ROOT + "/APP/Order/pay";
+    //订单支付- 获取支付宝支付参数
+    public final static String URL_PAY_ORDER_GET_ALI_PAY_PARAMS = SERVER_ROOT + "/APP/Xalpay/tcalpay";
+    //订单支付- 获取微信支付参数
+    public final static String URL_PAY_ORDER_GET_WEIXIN_PAY_PARAMS = SERVER_ROOT + "/APP/Xalpay/wxpayandroid";
+    //  收货地址  请求收货地址列表
+    public final static String URL_PERSONAL_RECEIVE_ADDRESS_LIST_DATA = SERVER_ROOT + "/APP/Member/placeList";
+    //  收货地址  添加收货地址
+    public final static String URL_PERSONAL_RECEIVE_ADDRESS_ADD_ADDRESS = SERVER_ROOT + "/APP/Member/placeAdd";
+    //  收货地址  设置默认地址
+    public final static String URL_PERSONAL_RECEIVE_ADDRESS_SET_DEFAULT_ADDRESS = SERVER_ROOT + "/APP/Member/default_place";
+    //  收货地址  删除地址
+    public final static String URL_PERSONAL_RECEIVE_ADDRESS_DELETE_ADDRESS = SERVER_ROOT + "/APP/Member/placeDel";
+    // 上传图片地址
+    public final static String URL_UPLOAD_PICTURES = SERVER_ROOT + "/APP/Xinv/Xupload";
+    // 商城点评 发布
+    public final static String URL_CIRCLE_RELEASE_DYNAMIC = SERVER_ROOT + "/APP/Circle/add";
+    // 充值金积分
+    public final static String URL_RECHARGE_GOLD_INTEGRAL = SERVER_ROOT + "/APP/Xuser/index";
+    // 充值换算
+    public final static String URL_RECHARGE_GOLD_INTEGRAL_CONVERSION = SERVER_ROOT + "/APP/Xuser/conversios";
+    // 微信app支付回调
+    public final static String URL_WX_PAY_CALLBACK = SERVER_ROOT + "/APP/Xalpay/Wechatapp";
+    // 支付宝回调方法
+    public final static String URL_ALI_PAY_CALLBACK = SERVER_ROOT + "/APP/Xalpay/alipayapp";
 
 
     // 发送验证码
@@ -100,9 +146,11 @@ public class ServerAddress {
     public final static String URL_GLOD_BACK = "http://123.56.236.200/APP/Gold/gold_status";
 
     // 金币转让
-    public final static String URL_GLOD_SEND = "http://123.56.236.200/APP/golds/index";
+//    public final static String URL_GLOD_SEND = "http://123.56.236.200/APP/golds/index";
     // 银币转让
-    public final static String URL_GLOD_SLIVER = "http://123.56.236.200/APP/Silver/index";
+//    public final static String URL_GLOD_SLIVER = "http://123.56.236.200/APP/Silver/index";
+    //金币银币转让
+    public final static String URL_GLOD_SEND = SERVER_ROOT + "/APP/Member/give_integral";
     // 加盟汽修
     public final static String URL_GPS = "http://www.woaisiji.com/APP/Garage/index";
     // 加盟汽修列表
@@ -116,9 +164,11 @@ public class ServerAddress {
 //    public final static String URL_FORGET_PASSWORD = "http://123.56.236.200/APP/User/forget";
     public final static String URL_FORGET_PASSWORD = "http://wasj.com/APP/User/forget";
     // 获取好友列表
-    public final static String URL_FRIEND_LIST = "http://www.woaisiji.com/APP/Member/friendList";
+//    public final static String URL_FRIEND_LIST = "http://www.woaisiji.com/APP/Member/friendList";
+    public final static String URL_FRIEND_LIST = SERVER_ROOT + "/APP/Friend/index";
     // 添加好友地址
-    public final static String URL_ADD_FRIEND = "http://www.woaisiji.com/APP/Member/addha";
+//    public final static String URL_ADD_FRIEND = "http://www.woaisiji.com/APP/Member/addha";
+    public final static String URL_ADD_FRIEND = SERVER_ROOT + "/APP/Friend/add";
     // 获取图片地址
     public final static String URL_IMAGE = "http://www.woaisiji.com/APP/Public/get_img_path";
     // 上传图片地址
@@ -136,17 +186,20 @@ public class ServerAddress {
     // 收藏关注列表
     public final static String URL_COLLECTION = "http://123.56.236.200/APP/Member/gzList";
     // 金银币明细账单
-    public final static String URL_DETAIL_BILL = "http://123.56.236.200/APP/Member/billList";
+//    public final static String URL_DETAIL_BILL = "http://123.56.236.200/APP/Member/billList";
+    public final static String URL_DETAIL_BILL = SERVER_ROOT + "/APP/Xtojoin/myzhangdan";
     // 修改手机号码
     public final static String URL_REPLACE_PHONE = "http://123.56.236.200/APP/User/editphone";
     // 修改登录密码
     public final static String URL_REPLACE_PASSWORD = "http://123.56.236.200/APP/User/profile";
-    // 司机爱情
-    public final static String URL_DRIVER_SOCIAL = "http://123.56.236.200/APP/Love/index";
+    // 查找会员的查找结果
+    public final static String URL_DRIVER_SOCIAL = SERVER_ROOT + "/APP/Friend/search";
     // 查找好友
-    public final static String URL_DRIVER_FRIEND = "http://www.woaisiji.com/APP/Member/addha";
+//    public final static String URL_DRIVER_FRIEND = "http://www.woaisiji.com/APP/Member/addha";
+    public final static String URL_DRIVER_FRIEND = SERVER_ROOT + "/APP/Friend/search";
     // 删除好友
-    public final static String URL_DRIVER_DELETE_FRIEND = "http://www.woaisiji.com/App/Friend/del";
+//    public final static String URL_DRIVER_DELETE_FRIEND = "http://www.woaisiji.com/App/Friend/del";
+    public final static String URL_DRIVER_DELETE_FRIEND = SERVER_ROOT + "/APP/Friend/del";
 
     // 司机爱情会员地址信息
     public final static String URL_DRIVER_MEMBER_ADDRESS = "http://123.56.236.200/APP/Public/get_city_address";
@@ -209,14 +262,16 @@ public class ServerAddress {
 
     // 司机圈 说说列表
     public final static String URL_CIRCLE_INDEX = "http://123.56.236.200/APP/Circle/index";
-    // 司机圈 点赞功能
-    public final static String URL_CIRCLE_FAVORT = "http://123.56.236.200/APP/Circle/laud";
-    // 司机圈 添加评论
-    public final static String URL_CIRCLE_ADD_COMMENT = "http://123.56.236.200/APP/Circle/commentAdd";
+    // 商城点评 点赞功能
+//    public final static String URL_CIRCLE_FAVORT = "http://123.56.236.200/APP/Circle/laud";
+    public final static String URL_CIRCLE_FAVORT = SERVER_ROOT + "/APP/Circle/laud";
+    // 商城点评 添加评论
+//    public final static String URL_CIRCLE_ADD_COMMENT = "http://123.56.236.200/APP/Circle/commentAdd";
+    public final static String URL_CIRCLE_ADD_COMMENT = SERVER_ROOT + "/APP/Circle/commentAdd";
     // 司机圈 添加收藏
     public final static String URL_CIRCLE_ADD_COLLECTION = "http://123.56.236.200/APP/Circle/collectAdd";
     // 司机圈 发说说
-    public final static String URL_CIRCLE_RELEASE_DYNAMIC = "http://123.56.236.200/APP/Circle/add";
+//    public final static String URL_CIRCLE_RELEASE_DYNAMIC = "http://123.56.236.200/APP/Circle/add";
     // 司机圈 用户编辑个人资料
     public final static String URL_USER_EDIT_INFO = "http://123.56.236.200/APP/User/xuser";
 
@@ -313,7 +368,5 @@ public class ServerAddress {
     public final static String URL_CASH_PAY_END = "http://www.woaisiji.com/Member/Pay/xjpay";
     // 微信支付，回调服务器接口
     public final static String URL_WX_PAY_END = "http://www.woaisiji.com/member/wpay/wx";
-    // 商品详情页
-    public final static String COMMODITY_DETAILS = SERVER_ROOT + "/APP/Shop/goods_detail/id/1561";
 
 }

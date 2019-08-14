@@ -21,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.example.zhanghao.woaisiji.R;
 import com.example.zhanghao.woaisiji.WoAiSiJiApp;
 import com.example.zhanghao.woaisiji.bean.PhoneCodesBean;
@@ -166,7 +167,8 @@ public class RegisterTwoActivity extends Activity implements View.OnClickListene
                     intent.putExtra("phone",phone);
                     startActivity(intent);
                 }else {
-                    Toast.makeText(RegisterTwoActivity.this,"验证码输入错误！",Toast.LENGTH_SHORT).show();
+                    ToastUtils.showShort("验证码输入错误！");
+//                    Toast.makeText(RegisterTwoActivity.this,"验证码输入错误！",Toast.LENGTH_SHORT).show();
                 }
 
                 break;

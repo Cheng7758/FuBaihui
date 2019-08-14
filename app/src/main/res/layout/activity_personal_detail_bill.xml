@@ -6,7 +6,7 @@
     <include layout="@layout/title_bar_view_layout"/>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="@dimen/dp_40"
         android:visibility="gone"
         android:gravity="center_vertical"
         android:orientation="horizontal">
@@ -14,26 +14,26 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:paddingLeft="8dp"
+            android:paddingLeft="@dimen/dp_8"
             android:text="本月"
-            android:textSize="14sp"/>
+            android:textSize="@dimen/sp_14"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
+            android:layout_marginRight="@dimen/dp_8"
             android:text="月账单"
-            android:textSize="14sp"/>
+            android:textSize="@dimen/sp_14"/>
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="@dimen/dp_10"
             android:background="@null"
             android:src="@drawable/iv_enter"/>
 
     </LinearLayout>
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="@dimen/dp_1"
         android:background="#CBCBCB"/>
 
     <ListView

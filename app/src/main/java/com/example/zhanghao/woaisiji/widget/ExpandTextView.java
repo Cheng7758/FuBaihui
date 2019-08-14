@@ -42,7 +42,7 @@ public class ExpandTextView extends LinearLayout {
         contentText = (TextView) findViewById(R.id.contentText);
 
         textPlus = (TextView) findViewById(R.id.textPlus);
-        textPlus.setOnClickListener(new View.OnClickListener() {
+        textPlus.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 String textStr = textPlus.getText().toString().trim();

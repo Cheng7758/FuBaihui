@@ -57,6 +57,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_fubaihui"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:resizeableActivity="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -72,13 +73,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.SliverIntegralShangCheng" />
+        <activity android:name=".activity.SliverIntegralStoreDetail" />
         <activity android:name=".activity.DriveDynamicActivity" />
         <activity
             android:name=".activity.FBHStoreActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity android:name=".activity.YangHuLianSuo" />
         <activity android:name=".activity.AiSiJi" />
+        <activity android:name=".activity.my.MyRecommendedActivity" />
         <activity android:name=".activity.QuestionAnswerActivity" />
         <activity android:name=".activity.WebViewActivity" />
         <activity
@@ -104,8 +106,6 @@
             android:configChanges="orientation|keyboardHidden|navigation"
             android:exported="false"
             android:screenOrientation="behind" />
-        <!--  -->
-
 
         <!-- ============================== -->
         <!-- 开屏页 -->
@@ -438,8 +438,7 @@
         <!-- 设置环信应用的AppKey -->
         <meta-data
             android:name="EASEMOB_APPKEY"
-            android:value="2720759518#woaisiji66" />
-
+            android:value="66666616#fubaihui" />
         <!-- 声明SDK所需的service SDK核心功能 -->
         <service
             android:name="com.hyphenate.chat.EMChatService"
@@ -525,7 +524,24 @@
         <activity android:name=".activity.RecruitmentActivity" />
         <activity android:name=".activity.my.MyCollectionActivity" />
         <activity android:name=".activity.my.MyOrderActivity" />
-        <activity android:name=".activity.my.MyOrderDetailActivity"></activity>
+        <activity android:name=".activity.PaymentMainActivity" />
+        <activity android:name=".activity.my.MyOrderDetailActivity" />
+        <activity android:name=".activity.zxingview.QrCodeActivity" />
+        <activity android:name=".activity.zixun.ZixunDetailsActivity" />
+        <activity android:name=".activity.home.ZxingDetailsActivity" />
+        <activity android:name=".activity.SliverIntegralStoreActivity" />
+        <activity android:name=".activity.search.SearchResultsActivity" />
+        <activity android:name=".activity.my.CheckBogisticsActivity" />
+        <activity android:name=".activity.RechargeGoldIntegralActivity" />
+        <activity android:name=".activity.my.BillingDetailsActivity" />
+        <activity android:name=".activity.merchant.MerchantPayActivity" />
+        <activity android:name=".activity.money.WithdrawActivity" />
+        <activity android:name=".activity.comment.ReleaseDynamicActivity2" />
+        <activity android:name=".activity.FBHStoreActivity2" />
+        <activity android:name=".activity.announcement.AnnouncementDetailsActivity" />
+        <activity android:name=".activity.my.MerchantLoginActivitys" />
+        <activity android:name=".activity.my.MyEvaluateActivity" />
+        <activity android:name=".activity.home.BabyEvaluationActivity"></activity>
     </application>
 
 </manifest>

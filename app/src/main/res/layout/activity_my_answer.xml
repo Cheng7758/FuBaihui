@@ -19,7 +19,7 @@
             android:layout_height="match_parent"
             android:background="#FFFFFF"
             android:divider="#D5D5D5"
-            android:dividerHeight="1dp" />
+            android:dividerHeight="@dimen/dp_1" />
 
         <include layout="@layout/load_more" />
     </com.example.zhanghao.woaisiji.refresh.PullToRefreshLayout>

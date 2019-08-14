@@ -112,10 +112,8 @@ public class PersonalActivity extends Activity implements View.OnClickListener {
         // 头像加载
         ImageLoader.getInstance().displayImage(imgUrl,ivHead);
         Picasso.with(this).load(imgUrl).transform(new CircleCornerTransform(this))
-                .error(R.drawable.icon_loading).into(ivHead);
-
+                .error(R.drawable.ic_fubaihui).into(ivHead);
     }
-
 
     public void obtainDataFromServer() {
         // 从服务器获取图片路径

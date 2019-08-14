@@ -40,9 +40,6 @@ public class AiSiJi extends BaseActivity implements View.OnClickListener{
 
     }
 
-
-
-
     private void initView() {
 //        btnBack = (Button) findViewById(R.id.btn_back);
         ivBack = (ImageView) findViewById(R.id.iv_back);

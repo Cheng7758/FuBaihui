@@ -205,6 +205,6 @@
     <color name="bg_color_my_recommendation">#F5F5F5</color>
     <color name="text_color_my_recommendation">#4d4d4d</color>
     <color name="text_color_recommend_code">#56cec2</color>
-
+    <color name="bg_payment_gray">#f4f4f4</color>
 
 </resources>

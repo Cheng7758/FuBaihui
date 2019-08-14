@@ -116,10 +116,6 @@ public class EaseConversationAdapter extends ArrayAdapter<EMConversation> {
         // get username or group id
         final String username = conversation.getUserName();
 //        Log.d("EaseUserUtils",username);
-
-
-
-
         if (conversation.getType() == EMConversationType.GroupChat) {
             String groupId = conversation.getUserName();
             if(EaseAtMessageHelper.get().hasAtMeMsg(groupId)){
@@ -140,9 +136,9 @@ public class EaseConversationAdapter extends ArrayAdapter<EMConversation> {
             if (username.equals("l8888")){
                 holder.name.setText("我爱司机客服");
             }else {
+//                SetUserInfoUtils.setUserInfo(getContext(),username,holder.name,holder.avatar);
                 SetUserInfoUtils.setUserInfo(getContext(),username,holder.name,holder.avatar);
             }
-
 
             holder.motioned.setVisibility(View.GONE);
         }

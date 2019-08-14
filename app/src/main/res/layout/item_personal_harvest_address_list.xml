@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_item_personal_harvest_address_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_item_personal_harvest_address_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="姓名"
+            android:textColor="#504D4D" />
+
+        <TextView
+            android:id="@+id/tv_item_personal_harvest_address_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="电话"
+            android:textColor="#504D4D" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_item_personal_harvest_address_detail_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_5"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="北京北京市朝阳区"
+        android:textColor="#504D4D" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="#CBCBCB" />
+
+    <LinearLayout
+        android:id="@+id/ll_item_personal_harvest_address_select_root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_10">
+
+        <CheckBox
+            android:id="@+id/ck_item_personal_harvest_address_selected_default"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:checked="false"
+            android:drawableLeft="@drawable/bg_login_checkbox_selector"
+            android:drawablePadding="@dimen/dp_10"
+            android:lines="1"
+            android:text="默认地址"
+            android:textColor="#504D4D"
+            android:textSize="@dimen/sp_12" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tv_item_personal_harvest_address_edit_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:drawableLeft="@drawable/harvest_address_icon02"
+            android:drawablePadding="@dimen/dp_5"
+            android:text="编辑"
+            android:textSize="@dimen/sp_12" />
+
+        <TextView
+            android:id="@+id/tv_item_personal_harvest_address_delete_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:drawableLeft="@drawable/harvest_address_icon03"
+            android:drawablePadding="@dimen/dp_5"
+            android:text="删除"
+            android:textSize="@dimen/sp_12" />
+    </LinearLayout>
+</LinearLayout>

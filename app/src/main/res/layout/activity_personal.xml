@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <include layout="@layout/title_register"/>
+        <include layout="@layout/title_register" />
 
         <Button
             android:id="@+id/btn_lottery"
@@ -19,36 +19,36 @@
             android:layout_alignParentRight="true"
             android:background="@null"
             android:text="抽奖"
-            android:textColor="#ffffff"/>
+            android:textColor="#ffffff" />
     </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:layout_marginTop="13dp"
-        android:background="#CBCBCB"/>
+        android:layout_marginTop="@dimen/dp_13"
+        android:background="#CBCBCB" />
 
     <RelativeLayout
         android:id="@+id/rl_user_head"
         android:layout_width="match_parent"
-        android:layout_height="76dp"
-        android:background="#ffffff"
-        android:layout_gravity="center_vertical">
+        android:layout_height="@dimen/dp_76"
+        android:layout_gravity="center_vertical"
+        android:background="#ffffff">
 
         <com.example.zhanghao.woaisiji.view.RoundImageView
             android:id="@+id/iv_head"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:layout_marginLeft="10dp"
+            android:layout_width="@dimen/dp_56"
+            android:layout_height="@dimen/dp_56"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_10"
             android:scaleType="fitXY"
-            android:src="@drawable/bill_driver_present" />
+            android:src="@drawable/ic_fubaihui" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_5"
             android:layout_toRightOf="@id/iv_head"
-            android:layout_marginLeft="5dp"
             android:gravity="center_vertical"
             android:orientation="vertical">
 
@@ -56,21 +56,21 @@
                 android:id="@+id/tv_user_nick"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="2dp"
+                android:layout_marginLeft="@dimen/dp_5"
+                android:layout_marginTop="@dimen/dp_2"
                 android:text="司机"
                 android:textColor="#000000"
-                android:textSize="14sp" />
+                android:textSize="@dimen/sp_14" />
 
             <TextView
                 android:id="@+id/tv_user_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="@dimen/dp_5"
+                android:layout_marginTop="@dimen/dp_6"
                 android:text="1234567890000"
                 android:textColor="#F0794D"
-                android:textSize="14sp" />
+                android:textSize="@dimen/sp_14" />
         </LinearLayout>
 
         <ImageButton
@@ -79,181 +79,207 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="25dp"
+            android:layout_marginRight="@dimen/dp_25"
             android:background="@null"
             android:src="@drawable/iv_enter" />
     </RelativeLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="#CBCBCB"/>
+        android:background="#CBCBCB" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.8dp"
-        android:layout_marginTop="16dp"
-        android:background="#CBCBCB"/>
+        android:layout_marginTop="@dimen/dp_16"
+        android:background="#CBCBCB" />
+
     <LinearLayout
         android:id="@+id/ll_my_friends"
         android:layout_width="match_parent"
-        android:gravity="center_vertical"
-        android:layout_height="58dp"
+        android:layout_height="@dimen/dp_58"
         android:background="@color/colorWhite"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
+
         <ImageView
-            android:layout_width="24dp"
-            android:layout_height="18dp"
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_28"
+            android:layout_marginLeft="@dimen/dp_13"
             android:scaleType="fitXY"
-            android:layout_marginLeft="13dp"
-            android:src="@drawable/personal_friends"/>
+            android:src="@drawable/personal_friends" />
+
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="@dimen/dp_0"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
             android:layout_weight="1"
-            android:layout_marginLeft="10dp"
             android:text="我的好友"
             android:textColor="#000000"
-            android:textSize="14sp"/>
+            android:textSize="@dimen/sp_14" />
+
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="25dp"
+            android:layout_marginRight="@dimen/dp_25"
             android:background="@null"
-            android:src="@drawable/iv_enter"/>
+            android:src="@drawable/iv_enter" />
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
-        android:layout_height="1.8dp"
-        android:background="#CBCBCB"/>
+        android:layout_height="@dimen/dp_1_5"
+        android:background="#CBCBCB" />
+
     <LinearLayout
         android:id="@+id/ll_collection"
         android:layout_width="match_parent"
-        android:gravity="center_vertical"
-        android:layout_height="58dp"
+        android:layout_height="@dimen/dp_58"
         android:background="@color/colorWhite"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
+
         <ImageView
-            android:layout_width="24dp"
-            android:layout_height="18dp"
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_18"
+            android:layout_marginLeft="@dimen/dp_13"
             android:scaleType="fitXY"
-            android:layout_marginLeft="13dp"
-            android:src="@drawable/personal_collection"/>
+            android:src="@drawable/personal_collection" />
+
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="@dimen/dp_0"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
             android:layout_weight="1"
-            android:layout_marginLeft="10dp"
             android:text="收藏"
             android:textColor="#000000"
-            android:textSize="14sp"/>
+            android:textSize="@dimen/sp_14" />
+
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="25dp"
+            android:layout_marginRight="@dimen/dp_25"
             android:background="@null"
-            android:src="@drawable/iv_enter"/>
+            android:src="@drawable/iv_enter" />
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1.8dp"
-        android:background="#CBCBCB"/>
+        android:background="#CBCBCB" />
+
     <LinearLayout
         android:id="@+id/ll_my_wallet"
         android:layout_width="match_parent"
-        android:gravity="center_vertical"
-        android:layout_height="58dp"
+        android:layout_height="@dimen/dp_58"
         android:background="@color/colorWhite"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
+
         <ImageView
-            android:layout_width="24dp"
-            android:layout_height="18dp"
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_18"
+            android:layout_marginLeft="@dimen/dp_13"
             android:scaleType="fitXY"
-            android:layout_marginLeft="13dp"
-            android:src="@drawable/personal_wallet"/>
+            android:src="@drawable/personal_wallet" />
+
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="@dimen/dp_0"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
             android:layout_weight="1"
-            android:layout_marginLeft="10dp"
             android:text="钱包"
             android:textColor="#000000"
-            android:textSize="14sp"/>
+            android:textSize="@dimen/sp_14" />
+
         <ImageButton
             android:id="@+id/ib_personal_wallet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="25dp"
+            android:layout_marginRight="@dimen/dp_25"
             android:background="@null"
-            android:src="@drawable/iv_enter"/>
+            android:src="@drawable/iv_enter" />
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1.8dp"
-        android:background="#CBCBCB"/>
+        android:background="#CBCBCB" />
+
     <LinearLayout
         android:id="@+id/ll_my_order_form"
         android:layout_width="match_parent"
-        android:gravity="center_vertical"
-        android:layout_height="58dp"
+        android:layout_height="@dimen/dp_58"
         android:background="@color/colorWhite"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
+
         <ImageView
-            android:layout_width="24dp"
-            android:layout_height="18dp"
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_18"
+            android:layout_marginLeft="@dimen/dp_13"
             android:scaleType="fitXY"
-            android:layout_marginLeft="13dp"
-            android:src="@drawable/icon04"/>
+            android:src="@drawable/icon04" />
+
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="@dimen/dp_0"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
             android:layout_weight="1"
-            android:layout_marginLeft="10dp"
             android:text="我的订单"
             android:textColor="#000000"
-            android:textSize="14sp"/>
+            android:textSize="@dimen/sp_14" />
+
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="25dp"
+            android:layout_marginRight="@dimen/dp_25"
             android:background="@null"
-            android:src="@drawable/iv_enter"/>
+            android:src="@drawable/iv_enter" />
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1.8dp"
-        android:background="#CBCBCB"/>
+        android:background="#CBCBCB" />
+
     <LinearLayout
         android:id="@+id/ll_setting"
         android:layout_width="match_parent"
-        android:gravity="center_vertical"
-        android:layout_height="58dp"
+        android:layout_height="@dimen/dp_58"
         android:background="@color/colorWhite"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
+
         <ImageView
-            android:layout_width="24dp"
-            android:layout_height="18dp"
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_18"
+            android:layout_marginLeft="@dimen/dp_13"
             android:scaleType="fitXY"
-            android:layout_marginLeft="13dp"
-            android:src="@drawable/personal_setting"/>
+            android:src="@drawable/personal_setting" />
+
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="@dimen/dp_0"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
             android:layout_weight="1"
-            android:layout_marginLeft="10dp"
             android:text="设置"
             android:textColor="#000000"
-            android:textSize="14sp"/>
+            android:textSize="@dimen/sp_14" />
+
         <ImageButton
             android:id="@+id/ib_personal_setting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="25dp"
+            android:layout_marginRight="@dimen/dp_25"
             android:background="@null"
-            android:src="@drawable/iv_enter"/>
+            android:src="@drawable/iv_enter" />
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="#CBCBCB"/>
+        android:background="#CBCBCB" />
 
 </LinearLayout>

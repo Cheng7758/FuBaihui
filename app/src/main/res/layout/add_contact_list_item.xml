@@ -7,17 +7,17 @@
     <RelativeLayout
         android:id="@+id/ll_user"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="@dimen/dp_60"
         android:background="@drawable/ease_mm_listitem"
         android:duplicateParentState="true"
         android:visibility="gone">
 
         <ImageView
             android:id="@+id/avatar"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_width="@dimen/dp_45"
+            android:layout_height="@dimen/dp_45"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="11dp"
+            android:layout_marginLeft="@dimen/dp_11"
             android:scaleType="fitXY"
             android:src="@drawable/em_default_avatar" />
 
@@ -26,23 +26,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="18dp"
+            android:layout_marginLeft="@dimen/dp_18"
             android:layout_toRightOf="@id/avatar"
             android:textColor="#0F0F0F"
-            android:textSize="16sp" />
+            android:textSize="@dimen/sp_16" />
 
 
         <Button
             android:id="@+id/indicator"
             android:layout_width="wrap_content"
-            android:layout_height="36dp"
+            android:layout_height="@dimen/dp_36"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="11dp"
+            android:layout_marginRight="@dimen/dp_11"
             android:background="@drawable/em_button_bg"
-            android:paddingLeft="12dp"
-            android:paddingRight="12dp"
+            android:paddingLeft="@dimen/dp_12"
+            android:paddingRight="@dimen/dp_12"
             android:text="@string/button_add"
-            android:textSize="14sp" />
+            android:textSize="@dimen/sp_14" />
     </RelativeLayout>
 </LinearLayout>

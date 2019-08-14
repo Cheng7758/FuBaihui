@@ -3,22 +3,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:padding="8dp">
+    android:padding="@dimen/dp_8">
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="80dp"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="@dimen/dp_80"
         android:layout_weight="1"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/tv_consult_title"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="@dimen/dp_0"
             android:layout_weight="1"
             android:text="标题"
             android:textColor="#000224"
-            android:textSize="16sp" />
+            android:textSize="@dimen/sp_16" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,17 +32,17 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="2016年8月19日 11:00"
-                android:textSize="12sp" />
+                android:textSize="@dimen/sp_12" />
 
             <TextView
                 android:id="@+id/tv_consult_read"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="6dp"
+                android:layout_marginRight="@dimen/dp_6"
                 android:drawableLeft="@drawable/tv_read"
                 android:gravity="center_vertical"
                 android:text="6359"
-                android:textSize="14sp" />
+                android:textSize="@dimen/sp_14" />
 
             <TextView
                 android:id="@+id/tv_consult_praise"
@@ -51,22 +51,22 @@
                 android:drawableLeft="@drawable/tv_praise"
                 android:gravity="center_vertical"
                 android:text="365"
-                android:textSize="14sp"
+                android:textSize="@dimen/sp_14"
                 android:visibility="gone" />
         </LinearLayout>
     </LinearLayout>
 
     <RelativeLayout
-        android:layout_width="80dp"
-        android:layout_height="80dp">
+        android:layout_width="@dimen/dp_80"
+        android:layout_height="@dimen/dp_80">
         <ImageView
             android:id="@+id/iv_consult_default"
-            android:layout_width="66dp"
-            android:layout_height="66dp"
+            android:layout_width="@dimen/dp_66"
+            android:layout_height="@dimen/dp_66"
             android:layout_centerInParent="true"
             android:background="@null"
             android:scaleType="fitXY"
-            android:src="@drawable/ic_launcher" />
+            android:src="@drawable/ic_fubaihui" />
     </RelativeLayout>
 
 

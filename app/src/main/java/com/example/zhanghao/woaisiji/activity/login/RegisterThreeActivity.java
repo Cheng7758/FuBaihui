@@ -88,7 +88,7 @@ public class RegisterThreeActivity extends BaseActivity {
                     Toast.makeText(RegisterThreeActivity.this,"注册成功！",Toast.LENGTH_SHORT).show();
                     WoAiSiJiApp.setUid(registerResult.uid);
                     LoginUtils loginUtils = new LoginUtils(RegisterThreeActivity.this);
-                    loginUtils.emRegister(registerResult.uid, Constants.EMPASSWORD);
+                    loginUtils.emRegister(registerResult.uid, Constants.EMPASSWORD());
 //                    loginUtils.accessServerData(username,password);
                     for (Activity activity : PublicActivityList.activityList){
                         activity.finish();
@@ -115,7 +115,6 @@ public class RegisterThreeActivity extends BaseActivity {
         };
         WoAiSiJiApp.mRequestQueue.add(stringRequest);
     }
-
 
     private void transServerData(String response) {
         Gson gson = new Gson();

@@ -15,8 +15,8 @@
     <string name="load_succeed">加载成功</string>
     <string name="load_fail">加载失败</string>
 
-    <string name="login">登录</string>
-    <string name="forgot_password">忘记密码</string>
+    <string name="login">确认登录</string>
+    <string name="forgot_password">忘记密码？</string>
     <string name="register">立即注册</string>
     <string name="register_title_text">填写手机号码</string>
     <string name="register_phone">中国+86</string>

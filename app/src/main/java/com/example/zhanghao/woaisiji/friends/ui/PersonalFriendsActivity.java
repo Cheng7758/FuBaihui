@@ -109,7 +109,6 @@ public class PersonalFriendsActivity extends BaseActivity {
         } else if (getIntent().getBooleanExtra(Constant.ACCOUNT_REMOVED, false) && !isAccountRemovedDialogShow) {
             showAccountRemovedDialog();
         }*/
-
         inviteMessgeDao = new InviteMessgeDao(this);
         UserDao userDao = new UserDao(this);
         conversationListFragment = new ConversationListFragment();
@@ -125,7 +124,6 @@ public class PersonalFriendsActivity extends BaseActivity {
 
         //register broadcast receiver to receive the change of group from DemoHelper
         registerBroadcastReceiver();
-
 
         EMClient.getInstance().contactManager().setContactListener(new MyContactListener());
         //debug purpose only
@@ -363,7 +361,6 @@ public class PersonalFriendsActivity extends BaseActivity {
                 }
             }
         });
-
     }
 
     /**

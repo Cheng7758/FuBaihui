@@ -43,7 +43,7 @@ public class EaseContactList extends RelativeLayout {
                 if(adapter != null){
                 	adapter.clear();
                 	adapter.addAll(new ArrayList<EaseUser>(contactList));
-                	adapter.notifyDataSetChanged();	
+//                	adapter.notifyDataSetChanged();
                 }
                 break;
             default:

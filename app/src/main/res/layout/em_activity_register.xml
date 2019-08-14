@@ -19,17 +19,17 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_height="@dimen/dp_0"
+        android:layout_marginLeft="@dimen/dp_8"
+        android:layout_marginRight="@dimen/dp_8"
         android:layout_weight="1.5"
         android:orientation="vertical" >
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="54dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_height="@dimen/dp_54"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginRight="@dimen/dp_20"
             android:background="#fff" >
 
             <ImageView
@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="10dip"
+                android:layout_marginRight="@dimen/dp_10"
                 android:src="@drawable/em_icon_account" />
 
             <EditText
@@ -49,17 +49,17 @@
                 android:layout_toLeftOf="@id/iv_username"
                 android:background="@null"
                 android:hint="@string/user_name"
-                android:paddingLeft="10dip"
+                android:paddingLeft="@dimen/dp_10"
                 android:singleLine="true"
-                android:textSize="18sp" />
+                android:textSize="@dimen/sp_18" />
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="54dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_height="@dimen/dp_54"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginRight="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_10"
             android:background="#fff" >
 
             <ImageView
@@ -68,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="10dip"
+                android:layout_marginRight="@dimen/dp_10"
                 android:src="@drawable/em_icon_pwd" />
 
             <EditText
@@ -80,16 +80,16 @@
                 android:background="@null"
                 android:hint="@string/password"
                 android:inputType="textPassword"
-                android:paddingLeft="10dip"
+                android:paddingLeft="@dimen/dp_10"
                 android:singleLine="true"
-                android:textSize="18sp" />
+                android:textSize="@dimen/sp_18" />
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="54dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_height="@dimen/dp_54"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginRight="@dimen/dp_20"
             android:layout_marginTop="10dp"
             android:background="#fff" >
 
@@ -99,7 +99,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="10dip"
+                android:layout_marginRight="@dimen/dp_10"
                 android:src="@drawable/em_icon_pwd" />
 
             <EditText
@@ -111,32 +111,32 @@
                 android:background="@null"
                 android:hint="@string/confirmpassword"
                 android:inputType="textPassword"
-                android:paddingLeft="10dip"
+                android:paddingLeft="@dimen/dp_10"
                 android:singleLine="true"
-                android:textSize="18sp" />
+                android:textSize="@dimen/sp_18" />
         </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:layout_marginRight="@dimen/dp_8"
+            android:layout_marginTop="@dimen/dp_20"
             android:orientation="horizontal" >
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_10"
                 android:background="@drawable/em_button_login_bg"
                 android:onClick="register"
-                android:paddingBottom="7dp"
-                android:paddingTop="7dp"
+                android:paddingBottom="@dimen/dp_7"
+                android:paddingTop="@dimen/dp_7"
                 android:text="@string/register"
                 android:textColor="@android:color/white"
-                android:textSize="20sp" />
+                android:textSize="@dimen/dp_20" />
         </LinearLayout>
     </LinearLayout>
 

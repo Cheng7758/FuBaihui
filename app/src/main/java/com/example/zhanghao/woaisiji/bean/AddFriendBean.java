@@ -3,11 +3,10 @@ package com.example.zhanghao.woaisiji.bean;
 import java.util.List;
 
 public class AddFriendBean {
-
     /**
      * code : 200
-     * msg : 查找成功
-     * data : [{"id":"306","username":"18001077129","password":"9bbfdbd67dc3e6f8bc2352fb5c1cf689","confirm_password":"","email":null,"mobile":"","reg_time":"1515555941","reg_ip":"2071389247","last_login_time":"1523257720","last_login_ip":"1908954575","update_time":"1515555941","status":"1","place":null,"sex":"0","borthday":null,"likes":null,"relname":null,"marriage":"0","offer":null,"infonumber":null,"school":null,"working":null,"headpic":null,"code":null,"nickname":"18001077129"}]
+     * msg : success
+     * data : [{"nickname":"A","headpic":"","uid":"671","username":"18525241451","is_friend":"0     是否是好友 0不是 1已是好友"}]
      */
 
     private int code;
@@ -40,32 +39,122 @@ public class AddFriendBean {
 
     public static class DataBean {
         /**
-         * id : 306
-         * username : 18001077129
-         * password : 9bbfdbd67dc3e6f8bc2352fb5c1cf689
-         * confirm_password :
-         * email : null
-         * mobile :
-         * reg_time : 1515555941
-         * reg_ip : 2071389247
-         * last_login_time : 1523257720
-         * last_login_ip : 1908954575
-         * update_time : 1515555941
-         * status : 1
-         * place : null
-         * sex : 0
-         * borthday : null
-         * likes : null
-         * relname : null
-         * marriage : 0
-         * offer : null
-         * infonumber : null
-         * school : null
-         * working : null
-         * headpic : null
-         * code : null
-         * nickname : 18001077129
+         * nickname : A
+         * headpic :
+         * uid : 671
+         * username : 18525241451
+         * is_friend : 0     是否是好友 0不是 1已是好友
          */
+
+        private String nickname;
+        private String headpic;
+        private String uid;
+        private String username;
+        private String is_friend;
+
+        public String getNickname() {
+            return nickname;
+        }
+
+        public void setNickname(String nickname) {
+            this.nickname = nickname;
+        }
+
+        public String getHeadpic() {
+            return headpic;
+        }
+
+        public void setHeadpic(String headpic) {
+            this.headpic = headpic;
+        }
+
+        public String getUid() {
+            return uid;
+        }
+
+        public void setUid(String uid) {
+            this.uid = uid;
+        }
+
+        public String getUsername() {
+            return username;
+        }
+
+        public void setUsername(String username) {
+            this.username = username;
+        }
+
+        public String getIs_friend() {
+            return is_friend;
+        }
+
+        public void setIs_friend(String is_friend) {
+            this.is_friend = is_friend;
+        }
+    }
+/*
+    *//**
+     * code : 200
+     * msg : 查找成功
+     * data : [{"id":"306","username":"18001077129","password":"9bbfdbd67dc3e6f8bc2352fb5c1cf689","confirm_password":"","email":null,"mobile":"","reg_time":"1515555941","reg_ip":"2071389247","last_login_time":"1523257720","last_login_ip":"1908954575","update_time":"1515555941","status":"1","place":null,"sex":"0","borthday":null,"likes":null,"relname":null,"marriage":"0","offer":null,"infonumber":null,"school":null,"working":null,"headpic":null,"code":null,"nickname":"18001077129"}]
+     *//*
+
+    private int code;
+    private String msg;
+    private List<DataBean> data;
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    public List<DataBean> getData() {
+        return data;
+    }
+
+    public void setData(List<DataBean> data) {
+        this.data = data;
+    }
+
+    public static class DataBean {
+        *//**
+     * id : 306
+     * username : 18001077129
+     * password : 9bbfdbd67dc3e6f8bc2352fb5c1cf689
+     * confirm_password :
+     * email : null
+     * mobile :
+     * reg_time : 1515555941
+     * reg_ip : 2071389247
+     * last_login_time : 1523257720
+     * last_login_ip : 1908954575
+     * update_time : 1515555941
+     * status : 1
+     * place : null
+     * sex : 0
+     * borthday : null
+     * likes : null
+     * relname : null
+     * marriage : 0
+     * offer : null
+     * infonumber : null
+     * school : null
+     * working : null
+     * headpic : null
+     * code : null
+     * nickname : 18001077129
+     *//*
 
         private String id;
         private String username;
@@ -292,5 +381,6 @@ public class AddFriendBean {
         public void setNickname(String nickname) {
             this.nickname = nickname;
         }
-    }
+    }*/
+
 }

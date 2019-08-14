@@ -26,6 +26,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.blankj.utilcode.util.ToastUtils;
 import com.bumptech.glide.Glide;
 import com.example.zhanghao.woaisiji.R;
 import com.example.zhanghao.woaisiji.WoAiSiJiApp;
@@ -54,12 +55,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class DriverReviewFragment extends BaseFragment implements CircleContract.View{
+public class DriverReviewFragment extends BaseFragment implements CircleContract.View {
 
     /**
      * TitleBar
      */
-    private TextView tv_title_bar_view_centre_title,tv_title_bar_view_right_right_introduction;
+    private TextView tv_title_bar_view_centre_title, tv_title_bar_view_right_right_introduction;
 
     private CircleAdapter circleAdapter;
     private LinearLayout edittextbody;
@@ -81,10 +82,11 @@ public class DriverReviewFragment extends BaseFragment implements CircleContract
     private final static int TYPE_PULLREFRESH = 1;
     private final static int TYPE_UPLOADREFRESH = 2;
     private static AlterResultBean resultBean;
+
     @Override
     public View initBaseFragmentView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.view_page_driver_review, container, false);
-        if (!TextUtils.isEmpty(WoAiSiJiApp.getUid())){
+        if (!TextUtils.isEmpty(WoAiSiJiApp.getUid())) {
             presenter = new CirclePresenter(this);
             initView(view);
             presenter.loadData(TYPE_PULLREFRESH);
@@ -92,7 +94,7 @@ public class DriverReviewFragment extends BaseFragment implements CircleContract
         return view;
     }
 
-    @SuppressLint({ "ClickableViewAccessibility", "InlinedApi" })
+    @SuppressLint({"ClickableViewAccessibility", "InlinedApi"})
     private void initView(View rootView) {
         tv_title_bar_view_centre_title = (TextView) rootView.findViewById(R.id.tv_title_bar_view_centre_title);
         tv_title_bar_view_right_right_introduction = (TextView) rootView.findViewById(R.id.tv_title_bar_view_right_right_introduction);
@@ -121,7 +123,6 @@ public class DriverReviewFragment extends BaseFragment implements CircleContract
     /**
      * 初始化监听
      */
-
     private void initListener() {
         //发布
         tv_title_bar_view_right_right_introduction.setOnClickListener(new View.OnClickListener() {
@@ -144,13 +145,8 @@ public class DriverReviewFragment extends BaseFragment implements CircleContract
         recyclerView.setRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        presenter.loadData(TYPE_PULLREFRESH);
-                        recyclerView.setRefreshing(false);
-                    }
-                }, 2000);
+                presenter.loadData(TYPE_PULLREFRESH);
+                recyclerView.setRefreshing(false);
             }
         });
 
@@ -158,25 +154,37 @@ public class DriverReviewFragment extends BaseFragment implements CircleContract
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                Glide.with(getActivity()).resumeRequests();
+//                Glide.with(getActivity()).resumeRequests();
             }
+
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
-                if(newState != RecyclerView.SCROLL_STATE_IDLE){
-                    Glide.with(getActivity()).pauseRequests();
+                if (newState != RecyclerView.SCROLL_STATE_IDLE) {
+//                    Glide.with(getActivity()).pauseRequests();
                 }
 
             }
         });
+
+        recyclerView.setupMoreListener(new OnMoreListener() {
+            @Override
+            public void onMoreAsked(int overallItemsCount, int itemsBeforeMore, int maxLastVisiblePosition) {
+                // 加载数据
+                presenter.pager++;
+                presenter.getDataFromServer(TYPE_UPLOADREFRESH);
+
+            }
+        }, 1);
+
         sendIv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (presenter != null) {
                     //发布评论
-                    String content =  editText.getText().toString().trim();
-                    if(TextUtils.isEmpty(content)){
-                        Toast.makeText(getActivity(), "评论内容不能为空...", Toast.LENGTH_SHORT).show();
+                    String content = editText.getText().toString().trim();
+                    if (TextUtils.isEmpty(content)) {
+                        ToastUtils.showShort("评论内容不能为空...");
                         return;
                     }
                     presenter.addComment(content, commentConfig);
@@ -191,26 +199,26 @@ public class DriverReviewFragment extends BaseFragment implements CircleContract
             public void onGlobalLayout() {
                 Rect r = new Rect();
                 bodyLayout.getWindowVisibleDisplayFrame(r);
-                int statusBarH =  Utils.getStatusBarHeight(getContext());//状态栏高度
+                int statusBarH = Utils.getStatusBarHeight(getContext());//状态栏高度
                 int screenH = bodyLayout.getRootView().getHeight();
-                if(r.top != statusBarH ){
+                if (r.top != statusBarH) {
                     //在这个demo中r.top代表的是状态栏高度，在沉浸式状态栏时r.top＝0，通过getStatusBarHeight获取状态栏高度
                     r.top = statusBarH;
                 }
                 int keyboardH = screenH - (r.bottom - r.top);
-                if(keyboardH == currentKeyboardH){//有变化时才处理，否则会陷入死循环
+                if (keyboardH == currentKeyboardH) {//有变化时才处理，否则会陷入死循环
                     return;
                 }
                 currentKeyboardH = keyboardH;
                 screenHeight = screenH;//应用屏幕的高度
                 editTextBodyHeight = edittextbody.getHeight();
 
-                if(keyboardH<150){//说明是隐藏键盘的情况
+                if (keyboardH < 150) {//说明是隐藏键盘的情况
                     updateEditTextBodyVisible(View.GONE, null);
                     return;
                 }
                 //偏移listview
-                if(layoutManager!=null && commentConfig != null){
+                if (layoutManager != null && commentConfig != null) {
                     layoutManager.scrollToPositionWithOffset(commentConfig.circlePosition + CircleAdapter.HEADVIEW_SIZE,
                             getListviewOffset(commentConfig));
                 }
@@ -221,44 +229,45 @@ public class DriverReviewFragment extends BaseFragment implements CircleContract
 
     /**
      * 测量偏移量
+     *
      * @param commentConfig
      * @return
      */
     private int getListviewOffset(CommentConfig commentConfig) {
-        if(commentConfig == null)
+        if (commentConfig == null)
             return 0;
-        int listviewOffset = screenHeight - selectCircleItemH - currentKeyboardH - editTextBodyHeight ;
-        if(commentConfig.commentType == CommentConfig.Type.REPLY){
+        int listviewOffset = screenHeight - selectCircleItemH - currentKeyboardH - editTextBodyHeight;
+        if (commentConfig.commentType == CommentConfig.Type.REPLY) {
             //回复评论的情况
             listviewOffset = listviewOffset + selectCommentItemOffset;
         }
         return listviewOffset;
     }
 
-    private void measureCircleItemHighAndCommentItemOffset(CommentConfig commentConfig){
-        if(commentConfig == null)
+    private void measureCircleItemHighAndCommentItemOffset(CommentConfig commentConfig) {
+        if (commentConfig == null)
             return;
         int firstPosition = layoutManager.findFirstVisibleItemPosition();
         //只能返回当前可见区域（列表可滚动）的子项
         View selectCircleItem = layoutManager.getChildAt(commentConfig.circlePosition + CircleAdapter.HEADVIEW_SIZE - firstPosition);
-        if(selectCircleItem != null){
+        if (selectCircleItem != null) {
             selectCircleItemH = selectCircleItem.getHeight();
         }
 
-        if(commentConfig.commentType == CommentConfig.Type.REPLY){
+        if (commentConfig.commentType == CommentConfig.Type.REPLY) {
             //回复评论的情况
             CommentListView commentLv = (CommentListView) selectCircleItem.findViewById(R.id.commentList);
-            if(commentLv!=null){
+            if (commentLv != null) {
                 //找到要回复的评论view,计算出该view距离所属动态底部的距离
                 View selectCommentItem = commentLv.getChildAt(commentConfig.commentPosition);
-                if(selectCommentItem != null){
+                if (selectCommentItem != null) {
                     //选择的commentItem距选择的CircleItem底部的距离
                     selectCommentItemOffset = 0;
                     View parentView = selectCommentItem;
                     do {
                         int subItemBottom = parentView.getBottom();
                         parentView = (View) parentView.getParent();
-                        if(parentView != null){
+                        if (parentView != null) {
                             selectCommentItemOffset += (parentView.getHeight() - subItemBottom);
                         }
                     } while (parentView != null && parentView != selectCircleItem);
@@ -267,27 +276,27 @@ public class DriverReviewFragment extends BaseFragment implements CircleContract
         }
     }
 
-
     // 将评论提交到服务器
     private void addCommentToServer(final String id, final CommentItem addItem) {
-        StringRequest addCommentRequest = new StringRequest(Request.Method.POST, ServerAddress.URL_CIRCLE_ADD_COMMENT, new Response.Listener<String>() {
+        StringRequest addCommentRequest = new StringRequest(Request.Method.POST, ServerAddress.
+                URL_CIRCLE_ADD_COMMENT, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Gson gson = new Gson();
-                resultBean = gson.fromJson(response,AlterResultBean.class);
+                resultBean = gson.fromJson(response, AlterResultBean.class);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
 
             }
-        }){
+        }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> params = new HashMap<>();
-                params.put("uid",WoAiSiJiApp.getUid());
-                params.put("cid",id);
-                params.put("content",addItem.getContent());
+                Map<String, String> params = new HashMap<>();
+                params.put("uid", WoAiSiJiApp.getUid());
+                params.put("cid", id);
+                params.put("content", addItem.getContent());
                 return params;
             }
         };
@@ -297,8 +306,8 @@ public class DriverReviewFragment extends BaseFragment implements CircleContract
     @Override
     public void update2DeleteCircle(String circleId) {
         List<CircleItem> circleItems = circleAdapter.getDatas();
-        for(int i=0; i<circleItems.size(); i++){
-            if(circleId.equals(circleItems.get(i).getId())){
+        for (int i = 0; i < circleItems.size(); i++) {
+            if (circleId.equals(circleItems.get(i).getId())) {
                 circleItems.remove(i);
                 circleAdapter.notifyDataSetChanged();
                 return;
@@ -309,7 +318,7 @@ public class DriverReviewFragment extends BaseFragment implements CircleContract
     @Override
     public void update2AddFavorite(int circlePosition, FavortItem addItem) {
         CircleItem item = (CircleItem) circleAdapter.getDatas().get(circlePosition);
-        item.setFavorNum(String.valueOf(Integer.parseInt(item.getFavorNum())+1));
+        item.setFavorNum(String.valueOf(Integer.parseInt(item.getFavorNum()) + 1));
         circleAdapter.notifyDataSetChanged();
     }
 
@@ -317,8 +326,8 @@ public class DriverReviewFragment extends BaseFragment implements CircleContract
     public void update2DeleteFavort(int circlePosition, String favortId) {
         CircleItem item = (CircleItem) circleAdapter.getDatas().get(circlePosition);
         List<FavortItem> items = item.getFavorters();
-        for(int i=0; i<items.size(); i++){
-            if(favortId.equals(items.get(i).getId())){
+        for (int i = 0; i < items.size(); i++) {
+            if (favortId.equals(items.get(i).getId())) {
                 items.remove(i);
                 circleAdapter.notifyDataSetChanged();
                 return;
@@ -328,10 +337,10 @@ public class DriverReviewFragment extends BaseFragment implements CircleContract
 
     @Override
     public void update2AddComment(int circlePosition, CommentItem addItem) {
-        if(addItem != null){
+        if (addItem != null) {
             circleAdapter.notifyDataSetChanged();
             CircleItem item = (CircleItem) circleAdapter.getDatas().get(circlePosition);
-            addCommentToServer(item.getId(),addItem);
+            addCommentToServer(item.getId(), addItem);
             item.getComments().add(addItem);
             circleAdapter.notifyDataSetChanged();
         }
@@ -343,8 +352,8 @@ public class DriverReviewFragment extends BaseFragment implements CircleContract
     public void update2DeleteComment(int circlePosition, String commentId) {
         CircleItem item = (CircleItem) circleAdapter.getDatas().get(circlePosition);
         List<CommentItem> items = item.getComments();
-        for(int i=0; i<items.size(); i++){
-            if(commentId.equals(items.get(i).getCid())){
+        for (int i = 0; i < items.size(); i++) {
+            if (commentId.equals(items.get(i).getCid())) {
                 items.remove(i);
                 circleAdapter.notifyDataSetChanged();
                 return;
@@ -357,38 +366,25 @@ public class DriverReviewFragment extends BaseFragment implements CircleContract
         this.commentConfig = commentConfig;
         edittextbody.setVisibility(visibility);
         measureCircleItemHighAndCommentItemOffset(commentConfig);
-        if(View.VISIBLE==visibility){
+        if (View.VISIBLE == visibility) {
             editText.requestFocus();
             //弹出键盘
-            CommonUtils.showSoftInput( editText.getContext(),  editText);
-        }else if(View.GONE==visibility){
+            CommonUtils.showSoftInput(editText.getContext(), editText);
+        } else if (View.GONE == visibility) {
             //隐藏键盘
-            CommonUtils.hideSoftInput( editText.getContext(),  editText);
+            CommonUtils.hideSoftInput(editText.getContext(), editText);
         }
     }
 
     @Override
     public void update2loadData(int loadType, List<CircleItem> datas) {
-        if (loadType == TYPE_PULLREFRESH){
+        if (loadType == TYPE_PULLREFRESH) {
             circleAdapter.setDatas(datas);
-        }else if(loadType == TYPE_UPLOADREFRESH){
+        } else if (loadType == TYPE_UPLOADREFRESH) {
             circleAdapter.getDatas().addAll(datas);
         }
         circleAdapter.notifyDataSetChanged();
-        recyclerView.setupMoreListener(new OnMoreListener() {
-            @Override
-            public void onMoreAsked(int overallItemsCount, int itemsBeforeMore, int maxLastVisiblePosition) {
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        // 加载数据
-                        presenter.pager ++;
-                        presenter.getDataFromServer(TYPE_UPLOADREFRESH);
-                    }
-                }, 2000);
-
-            }
-        }, 1);
+        recyclerView.setRefreshing(false);
     }
 
     @Override

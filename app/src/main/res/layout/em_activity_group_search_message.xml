@@ -15,28 +15,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:paddingBottom="7dp"
+            android:paddingBottom="@dimen/dp_7"
             android:paddingLeft="@dimen/padding_search_bar"
-            android:paddingRight="7dp"
-            android:paddingTop="7dp" >
+            android:paddingRight="@dimen/dp_7"
+            android:paddingTop="@dimen/dp_7" >
 
             <EditText
                 android:id="@+id/query"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="4dp"
+                android:layout_marginLeft="@dimen/dp_4"
                 android:background="@drawable/ease_seabar_input"
                 android:drawableLeft="@drawable/ease_search_bar_icon_normal"
                 android:hint="@string/search"
-                android:paddingBottom="5dp"
-                android:paddingLeft="5dp"
-                android:paddingTop="5dp"
+                android:paddingBottom="@dimen/dp_5"
+                android:paddingLeft="@dimen/dp_5"
+                android:paddingTop="@dimen/dp_5"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
                 android:singleLine="true"
                 android:imeOptions="actionSearch"
-                android:textSize="16sp"/>
+                android:textSize="@dimen/sp_16"/>
 
             <ImageButton
                 android:id="@+id/search_clear"
@@ -44,9 +44,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="3dp"
+                android:layout_marginRight="@dimen/dp_3"
                 android:background="@android:color/transparent"
-                android:padding="6dp"
+                android:padding="@dimen/dp_6"
                 android:src="@drawable/ease_search_clear"
                 android:visibility="invisible" />
         </RelativeLayout>
@@ -57,11 +57,11 @@
             android:layout_height="match_parent"
             android:layout_weight="0"
             android:gravity="center"
-            android:paddingLeft="6dp"
-            android:paddingRight="8dp"
+            android:paddingLeft="@dimen/dp_6"
+            android:paddingRight="@dimen/dp_8"
             android:text="@string/cancel"
             android:textColor="@color/holo_green_light"
-            android:textSize="15sp" />
+            android:textSize="@dimen/sp_15" />
     </LinearLayout>
 
     <FrameLayout
@@ -71,11 +71,11 @@
         <TextView
             android:id="@+id/tv_search"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="@dimen/dp_50"
             android:background="@drawable/ease_common_tab_bg"
-            android:paddingLeft="7dp"
+            android:paddingLeft="@dimen/dp_7"
             android:visibility="invisible"
-            android:textSize="15sp"
+            android:textSize="@dimen/sp_15"
             android:gravity="center_vertical"
             android:textColor="@color/btn_blue_normal" />
 
@@ -92,7 +92,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="@dimen/dp_80"
         android:visibility="invisible"
         android:text="No result"
             tools:ignore="HardcodedText" />

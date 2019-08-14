@@ -5,17 +5,14 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.zhanghao.woaisiji.R;
 import com.example.zhanghao.woaisiji.activity.AdvertisementWebViewActivity;
-import com.example.zhanghao.woaisiji.bean.HomePagerAdvertisementBean;
+import com.example.zhanghao.woaisiji.bean.GlobalSlideShow;
 import com.example.zhanghao.woaisiji.global.ServerAddress;
-import com.example.zhanghao.woaisiji.resp.RespGlobalSlideShow;
-import com.example.zhanghao.woaisiji.resp.RespHomePagerJXGG;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -26,9 +23,9 @@ import java.util.List;
  */
 public class HomePagerBanner extends PagerAdapter {
     private DisplayImageOptions options;
-    private List<RespGlobalSlideShow.GlobalSlideShow> mIvIds;
+    private List<GlobalSlideShow> mIvIds;
     private Context context;
-    public HomePagerBanner(Context context, List<RespGlobalSlideShow.GlobalSlideShow> ivIds) {
+    public HomePagerBanner(Context context, List<GlobalSlideShow> ivIds) {
        this.context=context;
         mIvIds = ivIds;
         options = new DisplayImageOptions.Builder()

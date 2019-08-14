@@ -7,5 +7,5 @@
         android:id="@+id/wv_detail_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="10dp"></WebView>
+        android:padding="@dimen/dp_10"></WebView>
 </RelativeLayout>

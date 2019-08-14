@@ -1,47 +1,54 @@
 package com.example.zhanghao.woaisiji.adapter;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewStub;
 import android.widget.BaseExpandableListAdapter;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.ActivityUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.bumptech.glide.Glide;
 import com.example.zhanghao.woaisiji.R;
-import com.example.zhanghao.woaisiji.resp.RespShoppingCarList;
+import com.example.zhanghao.woaisiji.activity.PersonalCouponActivity;
+import com.example.zhanghao.woaisiji.bean.my.PersonalCouponBean;
+import com.example.zhanghao.woaisiji.bean.shoppingcar.ShoppingCarGoodsInfo;
+import com.example.zhanghao.woaisiji.bean.shoppingcar.ShoppingCarStoreInfo;
+import com.example.network.utils.StringUtils;
 
 import java.util.List;
 
 public class ShoppingCarAdapter extends BaseExpandableListAdapter {
 
-    private List<RespShoppingCarList.ShoppingCarStoreInfo> groups;
+    public List<ShoppingCarStoreInfo> groups;
     private Context context;
     private CheckInterface checkInterface;
     private ModifyCountInterface modifyCountInterface;
     public int flag = 0;
-    int count=0;
+    int count = 0;
+    boolean isSilver;
     /**
      * 构造函数
      *
-     * @param groups   组元素列表
+     * @param groups  组元素列表
      * @param context
      */
-    public ShoppingCarAdapter(List<RespShoppingCarList.ShoppingCarStoreInfo> groups, Context context) {
+    public ShoppingCarAdapter(List<ShoppingCarStoreInfo> groups, Context context,boolean isSilver) {
         this.groups = groups;
         this.context = context;
+        this.isSilver = isSilver;
+    }
+
+    public void setSilver(boolean silver) {
+        isSilver = silver;
     }
 
     public void setCheckInterface(CheckInterface checkInterface) {
@@ -51,7 +58,6 @@ public class ShoppingCarAdapter extends BaseExpandableListAdapter {
     public void setModifyCountInterface(ModifyCountInterface modifyCountInterface) {
         this.modifyCountInterface = modifyCountInterface;
     }
-
 
 
     @Override
@@ -100,19 +106,47 @@ public class ShoppingCarAdapter extends BaseExpandableListAdapter {
         } else {
             gholder = (GroupViewHolder) convertView.getTag();
         }
-        final RespShoppingCarList.ShoppingCarStoreInfo group = (RespShoppingCarList.ShoppingCarStoreInfo) getGroup(groupPosition);
+        final ShoppingCarStoreInfo group = (ShoppingCarStoreInfo) getGroup(groupPosition);
+        if (gholder.tvSourceName.getTag() == null || !gholder.tvSourceName.getTag().toString().equals(group.getStore_name()+"")) {
+            gholder.tvSourceName.setText(group.getStore_name()+"");
+            gholder.tvSourceName.setTag(group.getStore_name());
+        }
+        if (gholder.determineChekbox.getTag()==null || Boolean.valueOf(gholder.determineChekbox.getTag().toString()) != group.isChoosed()) {
+            gholder.determineChekbox.setChecked(group.isChoosed());
+            gholder.determineChekbox.setTag(group.isChoosed());
+        }
 
-        gholder.tvSourceName.setText(group.getStore_name());
-        gholder.determineChekbox.setChecked(group.isChoosed());
         gholder.determineChekbox.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 group.setChoosed(((CheckBox) v).isChecked());
                 checkInterface.checkGroup(groupPosition, ((CheckBox) v).isChecked());// 暴露组选接口
             }
         });
+        gholder.couponContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isSilver)
+                    return;
+                String store_id = group.getStore_id();
+                Intent intent = new Intent(ActivityUtils.getTopActivity(), PersonalCouponActivity.class);
+                intent.putExtra("store_id",store_id);
+                intent.putExtra("selectedIndex",groupPosition);
+                ActivityUtils.startActivityForResult(ActivityUtils.getTopActivity(),intent,10);
+            }
+        });
+        PersonalCouponBean couponBean = group.couponBean;
+        gholder.couponContainer.setVisibility(isSilver ? View.GONE : View.VISIBLE);
+        if (couponBean != null){
+            String gold = couponBean.getGold();
+            String gold_condition = couponBean.getGold_condition();
 
-        notifyDataSetChanged();
+            String money_condition = couponBean.getMoney_condition();
+            String money = couponBean.getMoney();
+            String s = "满" + money_condition + "减" + money;
+            gholder.coupon.setText(s);
+        }
+//        notifyDataSetChanged();
         return convertView;
     }
 
@@ -128,15 +162,41 @@ public class ShoppingCarAdapter extends BaseExpandableListAdapter {
             cholder = (ChildViewHolder) convertView.getTag();
         }
 
-        final RespShoppingCarList.ShoppingCarGoodsInfo goodsInfo = (RespShoppingCarList.ShoppingCarGoodsInfo) getChild(groupPosition, childPosition);
+        final ShoppingCarGoodsInfo goodsInfo = (ShoppingCarGoodsInfo) getChild(groupPosition, childPosition);
 
         if (goodsInfo != null) {
-            cholder.tvTitle.setText(goodsInfo.getTitle());
-            cholder.tvPrice.setText("￥ " + goodsInfo.getPay_price() + "");
-            cholder.etNum.setText(goodsInfo.getNum() + "");
-            Glide.with(context).load(goodsInfo.getImg()).placeholder(R.drawable.icon_loading).into(cholder.ivAdapterListPic);
-            cholder.tvInventory.setText("库存：" + goodsInfo.getNumber());
-            cholder.checkBox.setChecked(goodsInfo.isChoosed());
+            if (cholder.tvTitle.getTag() == null || !cholder.tvTitle.getTag().equals(goodsInfo.getTitle())) {
+                cholder.tvTitle.setText(goodsInfo.getTitle());
+                cholder.tvTitle.setTag(goodsInfo.getTitle());
+            }
+            if (cholder.tvPrice.getTag() == null || !cholder.tvPrice.getTag().equals("￥" + goodsInfo.getPay_price() )) {
+                int pay_price = goodsInfo.getPay_price();
+                cholder.tvPrice.setText("￥ " + pay_price + "");
+                cholder.tvPrice.setTag("￥ " + pay_price + "");
+            }
+            if (cholder.etNum.getTag() == null || !cholder.etNum.getTag().equals(goodsInfo.getNum() + "")){
+                cholder.etNum.setText(goodsInfo.getNum() + "");
+                cholder.etNum.setTag(goodsInfo.getNum() + "");
+                cholder.etNum.setFocusable(false);
+
+                cholder.etNum.setFocusableInTouchMode(false);
+            }
+          if (cholder.ivAdapterListPic.getTag(R.id.img_tag_data) == null || !cholder.ivAdapterListPic.getTag().equals(goodsInfo.getImg()+"")) {
+              Glide.with(context).load(goodsInfo.getImg()).placeholder(R.drawable.ic_fubaihui)
+                      .into(cholder.ivAdapterListPic);
+              cholder.ivAdapterListPic.setTag(R.id.img_tag_data,goodsInfo.getImg());
+          }
+
+
+          if (cholder.tvInventory.getTag() == null || !cholder.tvInventory.getTag().equals("库存：" + goodsInfo.getNumber())) {
+              cholder.tvInventory.setText("库存：" + goodsInfo.getNumber());
+              cholder.tvInventory.setTag("库存：" + goodsInfo.getNumber());
+          }
+            if (cholder.checkBox.getTag()==null || Boolean.valueOf(cholder.checkBox.getTag().toString()) != goodsInfo.isChoosed()) {
+                cholder.checkBox.setChecked(goodsInfo.isChoosed());
+                cholder.checkBox.setTag(goodsInfo.isChoosed());
+            }
+
             cholder.checkBox.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -148,12 +208,22 @@ public class ShoppingCarAdapter extends BaseExpandableListAdapter {
             cholder.btAdd.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    int num = goodsInfo.getNum();
+                    String number = goodsInfo.getNumber();
+                    if (++num > Integer.parseInt(StringUtils.defaultStr(number,"0"))){
+                        ToastUtils.showShort("库存不足");
+                        return;
+                    }
                     modifyCountInterface.doIncrease(groupPosition, childPosition, cholder.etNum, cholder.checkBox.isChecked());// 暴露增加接口
                 }
             });
             cholder.btReduce.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if (goodsInfo.getNum() == 1){
+                        ToastUtils.showShort("至少要选择一个噢，可以点击右上方进行删除");
+                        return;
+                    }
                     modifyCountInterface.doDecrease(groupPosition, childPosition, cholder.etNum, cholder.checkBox.isChecked());// 暴露删减接口
                 }
             });
@@ -167,10 +237,7 @@ public class ShoppingCarAdapter extends BaseExpandableListAdapter {
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return false;
-
     }
-
-
 
     /**
      * 复选框接口
@@ -225,11 +292,14 @@ public class ShoppingCarAdapter extends BaseExpandableListAdapter {
     static class GroupViewHolder {
         CheckBox determineChekbox;
         TextView tvSourceName;
-
+        TextView coupon;
+        View couponContainer;
         @SuppressLint("WrongViewCast")
         GroupViewHolder(View view) {
             determineChekbox = (CheckBox) view.findViewById(R.id.cb_shopping_car_store_choose_store);
             tvSourceName = (TextView) view.findViewById(R.id.tv_shopping_car_store_name);
+            coupon = (TextView) view.findViewById(R.id.coupon);
+            couponContainer = view.findViewById(R.id.couponContainer);
         }
     }
 
@@ -242,8 +312,9 @@ public class ShoppingCarAdapter extends BaseExpandableListAdapter {
         TextView tvTitle;
         TextView tvPrice;
         TextView tvInventory;
-        TextView btAdd,btReduce;
+        TextView btAdd, btReduce;
         EditText etNum;
+
         ChildViewHolder(View view) {
             checkBox = (CheckBox) view.findViewById(R.id.cb_shopping_car_commodity_detail);
             ivAdapterListPic = (ImageView) view.findViewById(R.id.iv_shopping_car_commodity_detail);
@@ -262,8 +333,9 @@ public class ShoppingCarAdapter extends BaseExpandableListAdapter {
      * 购物车的数量修改编辑框的内容监听
      */
     class GoodsNumWatcher implements TextWatcher {
-        RespShoppingCarList.ShoppingCarGoodsInfo   goodsInfo;
-        public GoodsNumWatcher(RespShoppingCarList.ShoppingCarGoodsInfo goodsInfo) {
+        ShoppingCarGoodsInfo goodsInfo;
+
+        public GoodsNumWatcher(ShoppingCarGoodsInfo goodsInfo) {
             this.goodsInfo = goodsInfo;
         }
 
@@ -279,11 +351,10 @@ public class ShoppingCarAdapter extends BaseExpandableListAdapter {
 
         @Override
         public void afterTextChanged(Editable s) {
-            if(!TextUtils.isEmpty(s.toString())){//当输入的数字不为空时，更新数字
-                goodsInfo.setNum(Integer.valueOf(s.toString().trim()));
+            if (!TextUtils.isEmpty(s.toString())) {//当输入的数字不为空时，更新数字
+//                goodsInfo.setNum(Integer.valueOf(s.toString().trim()));
             }
         }
-
     }
 
     /**

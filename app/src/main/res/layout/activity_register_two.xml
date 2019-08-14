@@ -15,13 +15,13 @@
         android:layout_height="wrap_content"
         android:background="@null"
         android:gravity="center_vertical"
-        android:padding="12dp"
+        android:padding="@dimen/dp_12"
         android:text="验证码短信发送至1888888888"
-        android:textSize="12sp" />
+        android:textSize="@dimen/sp_12" />
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
+        android:layout_height="@dimen/dp_0_5"
         android:background="#CBCBCB" />
 
     <RelativeLayout
@@ -31,11 +31,11 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="36dp"
+            android:layout_height="@dimen/dp_36"
             android:background="@color/colorWhite"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingLeft="8dp">
+            android:paddingLeft="@dimen/dp_8">
 
             <TextView
                 android:id="@+id/tv_text"
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/register_phone"
-                android:textSize="16sp" />
+                android:textSize="@dimen/sp_16" />
 
             <EditText
                 android:id="@+id/edit_phone_codes"
@@ -55,35 +55,35 @@
 
         <TextView
             android:id="@+id/tv_count_time"
-            android:layout_width="80dp"
-            android:layout_height="24dp"
+            android:layout_width="@dimen/dp_80"
+            android:layout_height="@dimen/dp_24"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="5dp"
+            android:layout_marginRight="@dimen/dp_5"
             android:clickable="true"
             android:gravity="center"
             android:text="41秒后可重复"
             android:textColor="@color/colorWhite"
-            android:textSize="10sp" />
+            android:textSize="@dimen/sp_10" />
     </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
+        android:layout_height="@dimen/dp_0_5"
         android:background="#CBCBCB" />
 
     <Button
         android:id="@+id/btn_next_two"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginLeft="3dp"
-        android:layout_marginRight="3dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="@dimen/dp_40"
+        android:layout_marginLeft="@dimen/dp_3"
+        android:layout_marginRight="@dimen/dp_3"
+        android:layout_marginTop="@dimen/dp_16"
         android:background="@drawable/btn_register_default"
-        android:padding="4dp"
+        android:padding="@dimen/dp_4"
         android:text="下一步，设计密码"
         android:textColor="#ffffff"
-        android:textSize="12sp" />
+        android:textSize="@dimen/sp_12" />
 
 
 </LinearLayout>

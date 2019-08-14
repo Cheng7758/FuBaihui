@@ -8,43 +8,52 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/rg_shouye"
-        android:fadingEdgeLength="0dp"/>
+        android:fadingEdgeLength="0dp" />
     <!--底部菜单-->
     <RadioGroup
-        android:layout_alignParentBottom="true"
         android:id="@+id/rg_shouye"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/dp_5"
+        android:paddingTop="@dimen/dp_5">
 
         <RadioButton
             android:id="@+id/rb_home_page"
             style="@style/BottomTabStyle"
             android:checked="true"
             android:drawableTop="@drawable/selector_bottom_tab_home"
+            android:gravity="center"
             android:text="首页" />
 
         <RadioButton
             android:id="@+id/rb_driver_dynamic"
             style="@style/BottomTabStyle"
             android:drawableTop="@drawable/selevtor_bottom_tab_sijiquan"
-            android:text="商城点评" />
+            android:gravity="center"
+            android:text="分享" />
+
+        <RadioButton
+            android:id="@+id/rb_news_information"
+            style="@style/BottomTabStyle"
+            android:drawableTop="@drawable/selevtor_bottom_tab_zixun"
+            android:gravity="center"
+            android:text="新闻资讯" />
 
         <RadioButton
             android:id="@+id/rb_shopping_car"
             style="@style/BottomTabStyle"
             android:drawableTop="@drawable/selector_bottom_tab_gouwuche"
+            android:gravity="center"
             android:text="购物车" />
 
         <RadioButton
             android:id="@+id/rb_personal_setting"
             style="@style/BottomTabStyle"
             android:drawableTop="@drawable/selevtor_bottom_tab_geren"
+            android:gravity="center"
             android:text="我的" />
     </RadioGroup>
 </RelativeLayout>
-
-
-
-

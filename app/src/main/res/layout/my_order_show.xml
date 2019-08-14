@@ -14,7 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/ic_fbh_store"
-            android:drawablePadding="5dp"
+            android:drawablePadding="@dimen/dp_5"
             android:drawableRight="@drawable/ic_arrow_right"
             android:gravity="center"
             android:text="司机商城" />
@@ -33,14 +33,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/relativeLayout"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="@dimen/dp_10">
 
         <ImageView
             android:id="@+id/goods_img"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="@dimen/dp_80"
+            android:layout_height="@dimen/dp_80"
             android:scaleType="centerCrop"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@mipmap/ease_chat_face_pressed" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -48,7 +48,7 @@
             android:layout_toEndOf="@+id/goods_img"
             android:layout_toRightOf="@+id/goods_img"
             android:orientation="vertical"
-            android:padding="10dp">
+            android:padding="@dimen/dp_10">
 
             <TextView
                 android:id="@+id/goods_name"
@@ -61,12 +61,12 @@
                 android:id="@+id/linear"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp">
+                android:layout_marginTop="@dimen/dp_5">
 
                 <ImageView
                     android:id="@+id/symbol"
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"
+                    android:layout_width="@dimen/dp_12"
+                    android:layout_height="@dimen/dp_12"
                     android:layout_gravity="center"
                     android:scaleType="fitXY"
                     android:src="@drawable/tag_10" />
@@ -75,7 +75,7 @@
                     android:id="@+id/goods_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginLeft="@dimen/dp_5"
                     android:text="@string/app_name"
                     android:textColor="#FF0000" />
             </LinearLayout>
@@ -87,7 +87,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="@dimen/dp_10"
             android:text="×1" />
 
     </RelativeLayout>
@@ -99,14 +99,14 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/relativeLayout2"
         android:text="@string/app_name"
-        android:textSize="12sp" />
+        android:textSize="@dimen/sp_12" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/pay_price"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_10"
         android:gravity="right">
 
         <TextView
@@ -114,25 +114,88 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/order_border"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:layout_marginRight="10dp"
-            android:textSize="11sp"
-            android:text="取消订单" />
+            android:paddingBottom="@dimen/dp_5"
+            android:paddingLeft="@dimen/dp_10"
+            android:visibility="gone"
+            android:paddingRight="@dimen/dp_10"
+            android:paddingTop="@dimen/dp_5"
+            android:text="取消订单"
+            android:textSize="@dimen/sp_11" />
+
+        <TextView
+            android:id="@+id/check_the_logistics"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:background="@drawable/order_border"
+            android:paddingBottom="@dimen/dp_5"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingRight="@dimen/dp_10"
+            android:paddingTop="@dimen/dp_5"
+            android:visibility="gone"
+            android:text="查看物流"
+            android:textSize="@dimen/sp_11" />
+
+        <TextView
+            android:id="@+id/refund"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:background="@drawable/order_border"
+            android:paddingBottom="@dimen/dp_5"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingRight="@dimen/dp_10"
+            android:paddingTop="@dimen/dp_5"
+            android:visibility="gone"
+            android:text="申请退款"
+            android:textSize="@dimen/sp_11" />
+
+        <TextView
+            android:id="@+id/payment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:background="@drawable/order_border_color"
+            android:gravity="center"
+            android:minEms="4"
+            android:paddingBottom="@dimen/dp_5"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingRight="@dimen/dp_10"
+            android:paddingTop="@dimen/dp_5"
+            android:visibility="gone"
+            android:text="付款"
+            android:textSize="@dimen/sp_11" />
+
+        <TextView
+            android:id="@+id/evaluate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:background="@drawable/order_border_color"
+            android:gravity="center"
+            android:minEms="4"
+            android:visibility="gone"
+            android:paddingBottom="@dimen/dp_5"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingRight="@dimen/dp_10"
+            android:paddingTop="@dimen/dp_5"
+            android:text="评价"
+            android:textSize="@dimen/sp_11" />
 
         <TextView
             android:id="@+id/confirmation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
             android:background="@drawable/order_border_color"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:textSize="11sp"
-            android:text="确认收货" />
+            android:minEms="4"
+            android:visibility="gone"
+            android:paddingBottom="@dimen/dp_5"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingRight="@dimen/dp_10"
+            android:paddingTop="@dimen/dp_5"
+            android:text="确认收货"
+            android:textSize="@dimen/sp_11" />
     </LinearLayout>
 
 </RelativeLayout>

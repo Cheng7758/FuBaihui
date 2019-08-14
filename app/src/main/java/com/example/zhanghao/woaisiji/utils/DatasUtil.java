@@ -28,7 +28,7 @@ public class DatasUtil {
     /**
      * 评论id自增长
      */
-    public static final User curUser = new User(WoAiSiJiApp.getUid(), WoAiSiJiApp.getCurrentUserInfo().getNickname(), WoAiSiJiApp.getCurrentUserInfo().getPic());
+    public static User curUser = null;
 
     public static List<CircleItem> createCircleDatas(List<CircleIndexBean.ListBean> list) {
         List<CircleItem>circleDatas = new ArrayList<>();
@@ -169,8 +169,14 @@ public class DatasUtil {
 //		item.setCid(String.valueOf(commentId++));
 //		item.setCid();
         item.setContent(content);
-        item.setUser(curUser);
+        item.setUser(curUser());
         return item;
+    }
+
+    private static User curUser() {
+        if (curUser == null)
+            curUser = new User(WoAiSiJiApp.getUid(), WoAiSiJiApp.getCurrentUserInfo().getNickname(), WoAiSiJiApp.getCurrentUserInfo().getPic());
+        return curUser;
     }
 
     /**
@@ -182,7 +188,7 @@ public class DatasUtil {
         CommentItem item = new CommentItem();
 //		item.setId(String.valueOf(commentId++));
         item.setContent(content);
-        item.setUser(curUser);
+        item.setUser(curUser());
         item.setToReplyUser(replyUser);
         return item;
     }
@@ -191,7 +197,7 @@ public class DatasUtil {
     public static CircleItem createVideoItem(String videoUrl, String imgUrl) {
         CircleItem item = new CircleItem();
         item.setId(String.valueOf(circleId++));
-        item.setUser(curUser);
+        item.setUser(curUser());
         //item.setContent(getContent());
         item.setCreateTime("12月24日");
 

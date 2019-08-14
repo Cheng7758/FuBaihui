@@ -212,7 +212,7 @@
     <string name="location_message">位置信息</string>
     <string name="location_prefix">[我的位置]</string>
     <string name="location_recv">[%1$s的位置]</string>
-    <string name="login">登录</string>
+    <string name="login">确认登录</string>
     <string name="login_failure_failed">登录失败: 获取好友或群聊失败</string>
     <string name="logout">退出登录</string>
     <string name="logout_hint">退出后不会删除任何历史数据，下次登录依然可以使用本账号</string>
@@ -245,7 +245,7 @@
     <string name="recoding_fail">录音失败，请重试！</string>
     <string name="recording_video">录制视频</string>
     <string name="refreshing_group_list">正在刷新群列表</string>
-    <string name="register">注册</string>
+    <string name="register">立即注册</string>
     <string name="relay_call">Relay</string>
     <string name="release_to_cancel">松开手指，取消发送</string>
     <string name="remove_group_of">解除群屏蔽失败，请检查网络或稍后重试</string>

@@ -27,13 +27,13 @@
             android:layout_gravity="center"
             android:text="我的收藏"
             android:textColor="#ffffff"
-            android:textSize="18sp" />
+            android:textSize="@dimen/sp_18" />
     </android.support.v7.widget.Toolbar>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/collection_rlv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/my_collection_toolbar"/>
+        android:layout_below="@id/my_collection_toolbar" />
 
 </RelativeLayout>

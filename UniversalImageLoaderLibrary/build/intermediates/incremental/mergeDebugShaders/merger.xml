@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="E:\AndroidWorkSpace\WoAiSiJi\UniversalImageLoaderLibrary\src\main\shaders"/></dataSet><dataSet config="debug"><source path="E:\AndroidWorkSpace\WoAiSiJi\UniversalImageLoaderLibrary\src\debug\shaders"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="E:\AndroidWorkSpace\FuBaihui\UniversalImageLoaderLibrary\src\main\shaders"/></dataSet><dataSet config="debug"><source path="E:\AndroidWorkSpace\FuBaihui\UniversalImageLoaderLibrary\src\debug\shaders"/></dataSet></merger>

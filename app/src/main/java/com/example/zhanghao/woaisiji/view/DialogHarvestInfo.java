@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
+import android.text.InputType;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
@@ -37,9 +38,6 @@ public class DialogHarvestInfo extends Dialog {
 
     };
 
-    /*protected DialogHarvestInfo(@NonNull Context context) {
-        super(context);
-    }*/
     public DialogHarvestInfo(Context context, int position) {
         super(context);
         this.context = context;
@@ -51,8 +49,6 @@ public class DialogHarvestInfo extends Dialog {
         super.onCreate(savedInstanceState);
         WindowManager.LayoutParams params = getWindow().getAttributes();
         params.gravity = Gravity.BOTTOM;
-
-//        params.width = LinearLayout.LayoutParams.MATCH_PARENT;
         setContentView(R.layout.dialog_harvest_info);
         initView();
 
@@ -65,24 +61,20 @@ public class DialogHarvestInfo extends Dialog {
         editDailogContent = (EditText) findViewById(R.id.edit_dialog_content);
         btnDialogCancel = (Button) findViewById(R.id.btn_dialog_cancel);
         btnDialogCertain = (Button) findViewById(R.id.btn_dialog_certain);
+        if (position==2||position==3){
+            //输入类型为数字文本
+            editDailogContent.setInputType(InputType.TYPE_CLASS_NUMBER);
+            if (position==2)
+                editDailogContent.setMaxEms(11);
+            else
+                editDailogContent.setMaxEms(6);
+        }
     }
 
     private void initTitle() {
         if (position>0){
             tvDialogTitle.setText(strTitle[position-1]);
         }
-
-        /*switch (position){
-            case 1:
-                tvDialogTitle.setText(strTitle[0]);
-                break;
-            case 2:
-                tvDialogTitle.setText(strTitle[1]);
-                break;
-            case 3:
-                tvDialogTitle.setText(strTitle[2]);
-                break;
-        }*/
     }
 
     private void responseClickLister() {
@@ -110,6 +102,6 @@ public class DialogHarvestInfo extends Dialog {
         this.listener = listener;
     }
     public interface SendDataListener{
-        public void sendData(String data);
+        void sendData(String data);
     }
 }

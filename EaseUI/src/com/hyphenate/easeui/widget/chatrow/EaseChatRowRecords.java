@@ -23,7 +23,6 @@ public class EaseChatRowRecords extends EaseChatRow {
     }
 
 
-
     @Override
     protected void onFindViewById() {
         percentageView = (TextView) findViewById(R.id.percentage);
@@ -52,18 +51,16 @@ public class EaseChatRowRecords extends EaseChatRow {
     @Override
     protected void onInflateView() {
         try {
-            if(message.getStringAttribute("nameTitle").equals("金币转让")){
+            if(message.getStringAttribute("nameTitle").equals("金积分转让")){
                 inflater.inflate(message.direct() == EMMessage.Direct.RECEIVE ?
                         R.layout.ease_row_received_records : R.layout.ease_row_sent_records,this);
-            }else  if(message.getStringAttribute("nameTitle").equals("银币转让")) {
+            }else if(message.getStringAttribute("nameTitle").equals("银积分转让")) {
                 inflater.inflate(message.direct() == EMMessage.Direct.RECEIVE ?
                         R.layout.ease_row_received_records_s : R.layout.ease_row_sent_records_s,this);
             }
         } catch (HyphenateException e) {
             e.printStackTrace();
         }
-
-
     }
     @Override
     protected void onBubbleClick() {

@@ -55,7 +55,10 @@ public class CirclePresenter implements CircleContract.Presenter{
 		getDataFromServer(loadType);
 	}
 
-	//=======================================================================
+	/**
+	 * 获取服务器  商城点评数据
+	 * @param loadType
+	 */
 	public void getDataFromServer(final int loadType){
 		StringRequest uploadDataRequest = new StringRequest(Request.Method.POST, ServerAddress.URL_DRIVER_REVIEW_COMMENT_LIST, new Response.Listener<String>() {
 			@Override

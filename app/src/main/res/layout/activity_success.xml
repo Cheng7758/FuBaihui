@@ -12,5 +12,5 @@
         android:id="@+id/textView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="175dp" />
+        android:layout_marginTop="@dimen/dp_175" />
 </RelativeLayout>

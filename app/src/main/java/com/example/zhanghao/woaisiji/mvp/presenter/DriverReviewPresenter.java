@@ -53,7 +53,7 @@ public class DriverReviewPresenter implements DriverReviewContract.Presenter{
 	}
 
 	/**
-	 * 获取列表
+	 * 获取服务器  商城点评数据
 	 * @param loadType
 	 */
 	public void getDataFromServer(final int loadType){

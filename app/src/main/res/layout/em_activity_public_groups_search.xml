@@ -21,11 +21,11 @@
             android:layout_centerInParent="true"
             android:text="@string/search_pubic_group"
             android:textColor="#fff"
-            android:textSize="18sp" />
+            android:textSize="@dimen/sp_18" />
 
         <Button
             android:id="@+id/search"
-            android:layout_width="54dp"
+            android:layout_width="@dimen/dp_54"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
@@ -33,35 +33,35 @@
             android:onClick="searchGroup"
             android:text="@string/button_search"
             android:textColor="#fff"
-            android:textSize="16sp" />
+            android:textSize="@dimen/sp_16" />
     </RelativeLayout>
 
     <EditText
         android:id="@+id/et_search_id"
         android:layout_width="match_parent"
-        android:layout_height="39dp"
-        android:layout_margin="10dp"
+        android:layout_height="@dimen/dp_39"
+        android:layout_margin="@dimen/dp_10"
         android:background="@drawable/em_button_normal_shape"
         android:hint="@string/group_id"
-        android:paddingLeft="5dp"
+        android:paddingLeft="@dimen/dp_5"
         android:singleLine="true"
         android:textColorHint="#b3b3b3"
-        android:textSize="18sp" />
+        android:textSize="@dimen/sp_18" />
 
     <RelativeLayout
         android:id="@+id/rl_searched_group"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="@dimen/dp_60"
         android:onClick="enterToDetails"
         android:background="@drawable/ease_mm_listitem"
         android:visibility="gone" >
 
         <ImageView
             android:id="@+id/avatar"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_width="@dimen/dp_45"
+            android:layout_height="@dimen/dp_45"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="11dp"
+            android:layout_marginLeft="@dimen/dp_11"
             android:scaleType="fitXY"
             android:src="@drawable/em_group_icon" />
 
@@ -70,10 +70,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="18dp"
+            android:layout_marginLeft="@dimen/sp_18"
             android:layout_toRightOf="@id/avatar"
             android:textColor="#0F0F0F"
-            android:textSize="16sp" />
+            android:textSize="@dimen/sp_16" />
     </RelativeLayout>
 
 </LinearLayout>

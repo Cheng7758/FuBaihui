@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.zhanghao.woaisiji.bean.pay.RechargeGoldIntegralWXAppResponse;
 import com.tencent.mm.sdk.constants.Build;
 import com.tencent.mm.sdk.modelpay.PayReq;
 import com.tencent.mm.sdk.openapi.IWXAPI;
@@ -73,12 +74,13 @@ public class WeChatPayService {
 				false);
 	}
 
-	public void pay() {
+	public void pay(RechargeGoldIntegralWXAppResponse rechargeGoldIntegralWXAppResponse) {
 		// 检测是否安装了微信
 		boolean isWeChat = api.getWXAppSupportAPI() >= Build.PAY_SUPPORTED_SDK_INT;
 		if (isWeChat) {
 //			Toast.makeText(context,"用户安装了微信",Toast.LENGTH_SHORT).show();
-			new GetPrepayIdTask().execute();
+//			new GetPrepayIdTask().execute();
+			sendPayReq(rechargeGoldIntegralWXAppResponse);
 		}else {
 			Toast.makeText(context,"请先安装微信客户端!",Toast.LENGTH_SHORT).show();
 		}
@@ -95,7 +97,7 @@ public class WeChatPayService {
 		@Override
 		protected void onPostExecute(String result) {
 			// 第三步, 发送支付请求
-			sendPayReq(result);
+//			sendPayReq(result);
 		}
 
 		@Override
@@ -118,53 +120,17 @@ public class WeChatPayService {
 
 	/**
 	 * 发送支付请求
-	 * @param prepayId 预付Id
+	 * @param rechargeGoldIntegralWXAppResponse
 	 */
-	private void sendPayReq(String prepayId) {
+	private void sendPayReq(RechargeGoldIntegralWXAppResponse rechargeGoldIntegralWXAppResponse) {
 		PayReq req = new PayReq();
-		req.appId = WeChatConstans.APP_ID;
-//		req.partnerId = WeChatConstans.PARTNER_ID;
-		req.partnerId = WeChatConstans.PARTNER_ID;
-		req.prepayId = prepayId;
-		req.nonceStr = genNonceStr();
-		req.timeStamp = String.valueOf(genTimeStamp());
-		req.packageValue = "Sign=WXPay";
-
-//		Toast.makeText(context,"预付单："+prepayId, Toast.LENGTH_SHORT).show();
-
-		List<NameValuePair> signParams = new LinkedList<NameValuePair>();
-		signParams.add(new BasicNameValuePair("appid", req.appId));
-
-		signParams.add(new BasicNameValuePair("noncestr", req.nonceStr));
-
-		signParams.add(new BasicNameValuePair("package", req.packageValue));
-
-		signParams.add(new BasicNameValuePair("partnerid", req.partnerId));
-
-		signParams.add(new BasicNameValuePair("prepayid", req.prepayId));
-
-		signParams.add(new BasicNameValuePair("timestamp", req.timeStamp));
-
-		req.sign = genPackageSign(signParams);
-
-
-
-//		Log.d("WeChatPayService",req.appId);
-//		Toast.makeText(context,"appid："+req.appId, Toast.LENGTH_SHORT).show();
-//		Log.d("WeChatPayService",req.nonceStr);
-//		Toast.makeText(context,"nonceStr："+req.nonceStr, Toast.LENGTH_SHORT).show();
-//		Log.d("WeChatPayService",req.packageValue);
-//		Toast.makeText(context,"packageValue："+req.packageValue, Toast.LENGTH_SHORT).show();
-//		Log.d("WeChatPayService",req.partnerId);
-//		Toast.makeText(context,"partnerId："+req.partnerId, Toast.LENGTH_SHORT).show();
-//		Log.d("WeChatPayService",req.prepayId);
-//		Toast.makeText(context,"prepayId："+req.prepayId, Toast.LENGTH_SHORT).show();
-//		Log.d("WeChatPayService",req.timeStamp);
-//		Toast.makeText(context,"timeStamp："+req.timeStamp, Toast.LENGTH_SHORT).show();
-//		Log.d("WeChatPayService",req.sign);
-//		Toast.makeText(context,"sign："+req.sign, Toast.LENGTH_SHORT).show();
-
-
+		req.appId = rechargeGoldIntegralWXAppResponse.getAppid();
+		req.partnerId = rechargeGoldIntegralWXAppResponse.getPartnerid();
+		req.prepayId = rechargeGoldIntegralWXAppResponse.getPrepayid();
+		req.nonceStr = rechargeGoldIntegralWXAppResponse.getNoncestr();
+		req.timeStamp = rechargeGoldIntegralWXAppResponse.getTimestamp();
+		req.packageValue = rechargeGoldIntegralWXAppResponse.getPackageX();
+		req.sign = rechargeGoldIntegralWXAppResponse.getSign();
 
 		// 传递的额外信息,字符串信息,自定义格式
 		 req.extData = type +"#" + out_trade_no + "#" +total_fee;

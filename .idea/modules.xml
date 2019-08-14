@@ -3,12 +3,15 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/EaseUI/EaseUI.iml" filepath="$PROJECT_DIR$/EaseUI/EaseUI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FuBaihui.iml" filepath="$PROJECT_DIR$/FuBaihui.iml" />
       <module fileurl="file://$PROJECT_DIR$/UniversalImageLoaderLibrary/UniversalImageLoaderLibrary.iml" filepath="$PROJECT_DIR$/UniversalImageLoaderLibrary/UniversalImageLoaderLibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/UpMarqueeView/UpMarqueeView.iml" filepath="$PROJECT_DIR$/UpMarqueeView/UpMarqueeView.iml" />
       <module fileurl="file://$PROJECT_DIR$/UpdateLibrary/UpdateLibrary.iml" filepath="$PROJECT_DIR$/UpdateLibrary/UpdateLibrary.iml" />
-      <module fileurl="file://$PROJECT_DIR$/WoAiSiJi.iml" filepath="$PROJECT_DIR$/WoAiSiJi.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/network/network.iml" filepath="$PROJECT_DIR$/network/network.iml" />
+      <module fileurl="file://$PROJECT_DIR$/popLongGe/popLongGe.iml" filepath="$PROJECT_DIR$/popLongGe/popLongGe.iml" />
       <module fileurl="file://$PROJECT_DIR$/wheelview/wheelview.iml" filepath="$PROJECT_DIR$/wheelview/wheelview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xrecyclerview/xrecyclerview.iml" filepath="$PROJECT_DIR$/xrecyclerview/xrecyclerview.iml" />
     </modules>
   </component>
 </project>

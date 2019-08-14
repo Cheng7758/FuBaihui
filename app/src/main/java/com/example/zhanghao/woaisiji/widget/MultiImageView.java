@@ -190,7 +190,7 @@ public class MultiImageView extends LinearLayout {
 		return imageView;
 	}
 
-	private class ImageOnClickListener implements View.OnClickListener{
+	private class ImageOnClickListener implements OnClickListener{
 
 		private int position;
 		public ImageOnClickListener(int position){

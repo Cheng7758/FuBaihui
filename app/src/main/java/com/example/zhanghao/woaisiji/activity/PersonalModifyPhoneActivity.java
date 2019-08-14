@@ -17,6 +17,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.zhanghao.woaisiji.R;
 import com.example.zhanghao.woaisiji.WoAiSiJiApp;
+import com.example.zhanghao.woaisiji.bean.my.PersonalInfoBean;
 import com.example.zhanghao.woaisiji.friends.ui.BaseActivity;
 import com.example.zhanghao.woaisiji.global.ServerAddress;
 import com.example.zhanghao.woaisiji.resp.RespNull;
@@ -98,9 +99,14 @@ public class PersonalModifyPhoneActivity extends BaseActivity implements View.On
                 Gson gson = new Gson();
                 RespNull respNull = gson.fromJson(response, RespNull.class);
                 if(respNull.getCode() == 200){
-                    PrefUtils.setString(PersonalModifyPhoneActivity.this, "username", et_personal_modify_phone_input_new_number.getText().toString());
-                    WoAiSiJiApp.getCurrentUserInfo().setUsername(et_personal_modify_phone_input_new_number.getText().toString());
+                    PersonalInfoBean currentUserInfo = gson.fromJson(PrefUtils.getString(PersonalModifyPhoneActivity.this,
+                            "personal_info", ""),PersonalInfoBean.class);
+                    currentUserInfo.setUsername(et_personal_modify_phone_input_new_number.getText().toString());
+                    String modifyNickNameStr=gson.toJson(currentUserInfo);
+                    PrefUtils.setString(PersonalModifyPhoneActivity.this,"personal_info",modifyNickNameStr);
+                    WoAiSiJiApp.setCurrentUserInfo(currentUserInfo);
                     Toast.makeText(PersonalModifyPhoneActivity.this,"修改成功",Toast.LENGTH_SHORT).show();
+
                     Intent intent = new Intent();
                     intent.setAction(KeyPool.ACTION_MODIFY_PERSONAL_INFO);
                     LocalBroadcastManager.getInstance(PersonalModifyPhoneActivity.this).sendBroadcast(intent);

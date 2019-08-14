@@ -89,7 +89,8 @@ public class SearchResultActivity extends Activity implements PullToRefreshLayou
 
     private void getDataFromServer() {
         // 获取服务器数据
-        StringRequest stickyRequest = new StringRequest(Request.Method.POST, ServerAddress.URL_DRIVER_SOCIAL, new Response.Listener<String>() {
+        StringRequest stickyRequest = new StringRequest(Request.Method.POST,
+                ServerAddress.URL_DRIVER_SOCIAL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 transServerData(response,INFO_SEARCH);
@@ -228,7 +229,12 @@ public class SearchResultActivity extends Activity implements PullToRefreshLayou
                 viewHolder = (ViewHolder) view.getTag();
             }
             final SocialPagerStickyBean.SocialList item = getItem(i);
-            viewHolder.tvSocialMemberNickName.setText(item.nickname);
+
+            if (item.nickname.length() == 11) {
+                viewHolder.tvSocialMemberNickName.setText("***");
+            }else {
+                viewHolder.tvSocialMemberNickName.setText(item.nickname);
+            }
             if (item.prov != null) {
                 StringRequest addressInfoRequest = new StringRequest(Request.Method.POST, ServerAddress.URL_DRIVER_MEMBER_ADDRESS, new Response.Listener<String>() {
                     @Override
@@ -278,20 +284,24 @@ public class SearchResultActivity extends Activity implements PullToRefreshLayou
                 viewHolder.tvSocialMemberbasicInfo.setText(basicInfo);
             }
             ImageLoader.getInstance().displayImage(ServerAddress.SERVER_ROOT+item.headpic,viewHolder.ivSocialMemberHead,options,null);
-            viewHolder.llSocialMemberItem.setOnClickListener(new View.OnClickListener() {
+            /*viewHolder.llSocialMemberItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(SearchResultActivity.this, PersonalInfoDetailActivity.class);
                     intent.putExtra("uid", item.uid);
                     startActivity(intent);
                 }
-            });
+            });*/
             viewHolder.tvSocialMemberItemFate.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     String username = item.uid;
                     // demo中直接进入聊天页面，实际一般是进入用户详情页
-                    startActivity(new Intent(SearchResultActivity.this, ChatActivity.class).putExtra("userId", username));
+                    Intent intent = new Intent(SearchResultActivity.this, ChatActivity.class);
+                    intent.putExtra("userId", item.uid);
+                    intent.putExtra("username", item.nickname);
+                    intent.putExtra("pic", item.headpic);
+                    startActivity(intent);
                 }
             });
             return view;

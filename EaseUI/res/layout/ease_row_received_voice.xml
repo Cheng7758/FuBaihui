@@ -25,7 +25,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="@dimen/margin_chat_activity"
-            android:background="@drawable/ic_launcher"
+            android:background="@drawable/ease_ic_launcher"
             android:scaleType="fitXY" />
 
         <RelativeLayout

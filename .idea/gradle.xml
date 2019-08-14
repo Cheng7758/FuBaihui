@@ -13,7 +13,10 @@
             <option value="$PROJECT_DIR$/UpMarqueeView" />
             <option value="$PROJECT_DIR$/UpdateLibrary" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/network" />
+            <option value="$PROJECT_DIR$/popLongGe" />
             <option value="$PROJECT_DIR$/wheelview" />
+            <option value="$PROJECT_DIR$/xrecyclerview" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

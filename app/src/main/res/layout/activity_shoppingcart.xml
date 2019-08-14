@@ -6,15 +6,15 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/dp_50"
         android:background="@color/main_color_green">
 
         <ImageView
             android:id="@+id/iv_register_back"
-            android:layout_width="20dp"
+            android:layout_width="@dimen/dp_20"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="@dimen/dp_8"
             android:src="@mipmap/white_left"/>
 
         <LinearLayout
@@ -28,35 +28,35 @@
             <Button
                 android:id="@+id/btn_zhengping"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="@dimen/dp_30"
                 android:text="正品商城"
                 android:textColor="#646464"
-                android:textSize="16sp"
+                android:textSize="@dimen/sp_16"
                 android:background="#ffffff"/>
             <View
-                android:layout_width="1dp"
+                android:layout_width="@dimen/dp_1"
                 android:layout_height="match_parent"
                 android:background="#fff"/>
             <Button
                 android:id="@+id/btn_duihuan"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="@dimen/dp_30"
                 android:background="@null"
                 android:text="银积分商城"
                 android:textColor="#ffffff"
-                android:textSize="16sp" />
+                android:textSize="@dimen/sp_16" />
             <View
-                android:layout_width="1dp"
+                android:layout_width="@dimen/dp_10"
                 android:layout_height="match_parent"
                 android:background="#fff"/>
             <Button
                 android:background="@null"
                 android:id="@+id/btn_jinbi"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="@dimen/dp_30"
                 android:text="金积分商城"
                 android:textColor="#ffffff"
-                android:textSize="16sp" />
+                android:textSize="@dimen/sp_16" />
         </LinearLayout>
 
     </RelativeLayout>
@@ -64,7 +64,7 @@
     <LinearLayout
         android:id="@+id/ll_mall_type_name"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="@dimen/dp_40"
         android:gravity="center_vertical">
 
         <TextView
@@ -72,23 +72,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableRight="@drawable/iv_enter"
-            android:drawablePadding="8dp"
-            android:paddingLeft="10dp"
+            android:drawablePadding="@dimen/dp_8"
+            android:paddingLeft="@dimen/dp_10"
             android:gravity="center_vertical"
             android:text="正品商城"
             android:textColor="#2B2B2B"
-            android:textSize="16dp" />
+            android:textSize="@dimen/dp_16" />
 
         <TextView
             android:id="@+id/tv_bianji"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="@dimen/dp_10"
             android:gravity="end"
             android:text="编辑"
             android:textColor="#2B2B2B"
-            android:textSize="16dp" />
+            android:textSize="@dimen/dp_16" />
     </LinearLayout>
 
     <ListView
@@ -100,7 +100,7 @@
     <RelativeLayout
         android:id="@+id/rlBottomBar"
         android:layout_width="match_parent"
-        android:layout_height="46dp"
+        android:layout_height="@dimen/dp_46"
         android:layout_alignParentBottom="true"
         android:background="#FFFFFF">
 
@@ -114,19 +114,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:paddingRight="15dp"
+                android:paddingRight="@dimen/dp_15"
                 android:text="合计:"
                 android:textColor="#000"
-                android:textSize="14sp" />
+                android:textSize="@dimen/sp_14" />
             <TextView
                 android:id="@+id/tv_count_money"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:paddingRight="15dp"
+                android:paddingRight="@dimen/dp_15"
                 android:text="￥0.0"
                 android:textColor="#f70700"
-                android:textSize="15sp" />
+                android:textSize="@dimen/sp_15" />
 
             <TextView
                 android:id="@+id/btnSettle"
@@ -135,15 +135,15 @@
                 android:background="@drawable/bg_round_orange_color"
                 android:gravity="center_vertical"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:paddingLeft="18dp"
-                android:paddingRight="18dp"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_10"
+                android:paddingLeft="@dimen/dp_18"
+                android:paddingRight="@dimen/dp_18"
+                android:paddingTop="@dimen/dp_8"
+                android:paddingBottom="@dimen/dp_8"
                 android:text="结算"
                 android:textColor="#FFF"
-                android:textSize="14sp"/>
+                android:textSize="@dimen/sp_14"/>
         </LinearLayout>
     </RelativeLayout>
 </LinearLayout>

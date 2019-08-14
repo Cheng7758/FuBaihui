@@ -20,7 +20,7 @@
             android:layout_centerInParent="true"
             android:text="@string/title_user_profile"
             android:textColor="#fff"
-            android:textSize="18sp" />
+            android:textSize="@dimen/sp_18" />
     </RelativeLayout>
     <LinearLayout 
         android:layout_width="fill_parent"
@@ -31,16 +31,16 @@
         <RelativeLayout 
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingBottom="@dimen/dp_10"
             >
             <ImageView 
                 android:id="@+id/user_head_avatar"
-                android:layout_width="60dip"
-                android:layout_height="60dip"
+                android:layout_width="@dimen/dp_60"
+                android:layout_height="@dimen/dp_60"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:layout_margin="8dip"
+                android:layout_margin="@dimen/dp_8"
                 android:scaleType="centerCrop"
                 android:src="@drawable/em_default_avatar"
                 />
@@ -51,7 +51,7 @@
                 android:layout_above="@+id/user_head_avatar"
                 android:layout_alignBottom="@+id/user_head_avatar"
                 android:layout_alignRight="@+id/user_head_avatar"
-                android:layout_margin="3dip"
+                android:layout_margin="@dimen/dp_3"
                 android:src="@drawable/em_profile_headphoto_update_icon"
                 />
             
@@ -64,7 +64,7 @@
                 <LinearLayout 
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dip"
+                    android:layout_marginTop="@dimen/dp_8"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
                     >
@@ -73,7 +73,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="#000000"
-                        android:textSize="16sp"
+                        android:textSize="@dimen/sp_16"
                         />
                 </LinearLayout>
             </LinearLayout>
@@ -89,16 +89,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#ffffff"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dip"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingBottom="@dimen/dp_10"
             >
             <TextView 
 				android:layout_width="wrap_content"                
 				android:layout_height="wrap_content"
-				android:layout_margin="5dp"
+				android:layout_margin="@dimen/dp_5"
 				android:layout_alignParentLeft="true"
 				android:text="@string/nickname"
-				android:textSize="16sp"
+				android:textSize="@dimen/sp_16"
 				android:gravity="center_vertical"
 				android:textColor="#808080"
                 android:background="#FFFFFF"
@@ -107,10 +107,10 @@
                 android:id="@+id/user_nickname"
 				android:layout_width="wrap_content"                
 				android:layout_height="wrap_content"
-				android:layout_margin="5dp"
+				android:layout_margin="@dimen/dp_5"
 				android:layout_alignParentRight="true"
-				android:paddingRight="20dip"
-				android:textSize="16sp"
+				android:paddingRight="@dimen/dp_20"
+				android:textSize="@dimen/sp_16"
 				android:gravity="center_vertical"
 				android:textColor="#3366cc"
                 android:background="#FFFFFF"
@@ -122,7 +122,7 @@
                 android:src="@drawable/em_ic_right_arrow"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_margin="5dip"
+                android:layout_margin="@dimen/dp_5"
                 />
         </RelativeLayout>
     </LinearLayout>

@@ -3,22 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp"
+    android:padding="@dimen/dp_10"
     android:background="@android:color/white"
     android:orientation="vertical">
 
     <!--上层-->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp">
+        android:layout_height="@dimen/dp_45">
 
         <ImageView
             android:id="@+id/headIv"
-            android:layout_width="45dp"
+            android:layout_width="@dimen/dp_45"
             android:layout_height="match_parent"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="@dimen/dp_20"
             android:scaleType="fitCenter"
-            android:src="@drawable/ic_launcher" />
+            android:src="@drawable/ic_fubaihui" />
 
         <TextView
             android:id="@+id/nameTv"
@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/headIv"
-            android:textSize="15dp"
+            android:textSize="@dimen/sp_15"
             android:text="用户名"/>
 
         <TextView
@@ -39,66 +39,64 @@
             android:textColor="@color/im_font_color_text_hint"
             android:layout_toRightOf="@id/headIv"
             android:text="发表时间"
-            android:textSize="12dp" />
+            android:textSize="@dimen/sp_12" />
     </RelativeLayout>
 
     <!--下层部分-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/dp_10"
         android:orientation="horizontal" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
-
             <!--文字-->
             <com.example.zhanghao.woaisiji.widget.ExpandTextView
                 android:id="@+id/contentTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="@dimen/dp_5"
                 app:showLines="4"/>
-
             <!-- 不同的地方 -->
 			<ViewStub 
 			    android:id="@+id/viewStub"
 			    android:layout_width="match_parent"
 			    android:layout_height="wrap_content"
-                android:layout_marginTop="5dp" />
+                android:layout_marginTop="@dimen/dp_5" />
 
             <!-- 地址、时间 、删除 、点赞、 评论 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/dp_8"
                 android:orientation="horizontal" >
 
                 <TextView
                     android:id="@+id/deleteBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:paddingLeft="3dp"
-                    android:paddingRight="3dp"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:paddingLeft="@dimen/dp_3"
+                    android:paddingRight="@dimen/dp_3"
                     android:text="删除"
-                    android:textSize="12sp"
+                    android:textSize="@dimen/sp_12"
                     android:textColor="@color/color_8290AF"
                     android:background="@drawable/im_selector_social_dig_name_bg"
                     android:visibility="gone"/>
 
                 <View
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="@dimen/dp_1"
                     android:layout_weight="1" />
 
                 <ImageView
                  android:id="@+id/snsBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
+                    android:layout_marginRight="@dimen/dp_6"
                     android:src="@drawable/im_snsimg"/>
             </LinearLayout>
 
@@ -106,10 +104,10 @@
                 android:id="@+id/digCommentBody"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:minHeight="10dp"
-                android:paddingTop="12dp"
-                android:paddingRight="12dp"
-                android:paddingBottom="8dp"
+                android:minHeight="@dimen/dp_10"
+                android:paddingTop="@dimen/dp_12"
+                android:paddingRight="@dimen/dp_12"
+                android:paddingBottom="@dimen/dp_8"
                 android:orientation="vertical" >
 
                 <com.example.zhanghao.woaisiji.widget.PraiseListView
@@ -118,17 +116,17 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:lineSpacingMultiplier="1.1"
-                    android:textSize="14sp"
+                    android:textSize="@dimen/sp_14"
                     android:textColor="@color/praise_item"
                     app:item_color="@color/praise_item" />
 
                 <View 
                     android:id="@+id/lin_dig"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/dp_1"
                     android:background="@color/im_line_color"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp" />
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:layout_marginBottom="@dimen/dp_5" />
 
                 <com.example.zhanghao.woaisiji.widget.CommentListView
                     android:id="@+id/commentList"

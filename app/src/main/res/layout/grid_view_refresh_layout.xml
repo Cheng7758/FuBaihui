@@ -22,12 +22,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        android:columnWidth="90dp"
+        android:columnWidth="@dimen/dp_90"
         android:gravity="center"
-        android:horizontalSpacing="2dp"
+        android:horizontalSpacing="@dimen/dp_2"
         android:numColumns="2"
         android:stretchMode="columnWidth"
-        android:verticalSpacing="2dp" />
+        android:verticalSpacing="@dimen/dp_2" />
 
     <include layout="@layout/load_more" />
 

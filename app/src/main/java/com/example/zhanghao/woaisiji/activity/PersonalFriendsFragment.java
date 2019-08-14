@@ -64,6 +64,8 @@ import com.hyphenate.easeui.utils.EaseCommonUtils;
 import com.hyphenate.easeui.widget.EaseContactList;
 import com.hyphenate.util.EMLog;
 import com.hyphenate.util.NetUtils;
+import com.jcodecraeer.xrecyclerview.gold.GoldManager;
+import com.jcodecraeer.xrecyclerview.gold.UserManager;
 /*import com.umeng.analytics.MobclickAgent;
 import com.umeng.update.UmengUpdateAgent;*/
 
@@ -81,6 +83,7 @@ import java.util.Map;
 /**
  * Created by admin on 2016/9/28.
  */
+//TODO 好友列表有时候显示有时候不显示
 @SuppressLint("NewApi")
 public class PersonalFriendsFragment extends EaseContactListFragment {
 
@@ -100,10 +103,10 @@ public class PersonalFriendsFragment extends EaseContactListFragment {
     @SuppressLint("InflateParams")
     @Override
     protected void initView() {
-
         super.initView();
 
-        @SuppressLint("InflateParams") View headerView = LayoutInflater.from(getActivity()).inflate(R.layout.activity_personal_friends, null);
+        @SuppressLint("InflateParams") View headerView = LayoutInflater.from(getActivity())
+                .inflate(R.layout.activity_personal_friends, null);
         HeaderItemClickListener clickListener = new HeaderItemClickListener();
         applicationItem = (ContactItemView) headerView.findViewById(R.id.application_item);
         applicationItem.setOnClickListener(clickListener);
@@ -166,17 +169,27 @@ public class PersonalFriendsFragment extends EaseContactListFragment {
         setContactsMap(m);
         super.setUpView();
 
+        //TODO 好友列表 给聊天详情传昵称用  传昵称不能直接给他toChatUsername变了
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 EaseUser user = (EaseUser) listView.getItemAtPosition(position);
                 if (user != null) {
+                    UserManager.toId = GoldManager.toUserId = user.getUsername();
+                    UserManager.toName = GoldManager.toUserName = user.getNickname();
+                    UserManager.toPic = GoldManager.toUserPic =  user.getAvatar();
+                    Log.e("----pic", user.getAvatar() + "=====uid" + user.getUsername()
+                            + "---name" + user.getNick()+"--"+user.getNickname());
                     String username = user.getUsername();
                     String userId = user.getNick();
                     // demo中直接进入聊天页面，实际一般是进入用户详情页
 //                    startActivity(new Intent(getActivity(), ChatActivity.class).putExtra("userId", username));
-                    startActivity(new Intent(getActivity(), ChatActivity.class).putExtra("userId", username));
+                    Intent intent = new Intent(getActivity(), ChatActivity.class);
+                    intent.putExtra("userId", username);
+//                    intent.putExtra("username", userId);
+//                    intent.putExtra("pic", user.getAvatar());
+                    startActivity(intent);
                 }
             }
         });
@@ -200,7 +213,6 @@ public class PersonalFriendsFragment extends EaseContactListFragment {
                 });
             }
         });
-
 
         contactSyncListener = new ContactSyncListener();
         DemoHelper.getInstance().addSyncContactListener(contactSyncListener);
@@ -247,7 +259,6 @@ public class PersonalFriendsFragment extends EaseContactListFragment {
                 }
                 getContactList();
                 contactListLayout.refresh();
-
             }
 
             @Override
@@ -256,7 +267,6 @@ public class PersonalFriendsFragment extends EaseContactListFragment {
             }
         });
     }
-
 
     @Override
     public void onDestroy() {
@@ -318,7 +328,6 @@ public class PersonalFriendsFragment extends EaseContactListFragment {
         return super.onContextItemSelected(item);
     }
 
-
     /**
      * 删除联系人
      * @param tobeDeleteUser
@@ -342,13 +351,15 @@ public class PersonalFriendsFragment extends EaseContactListFragment {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
-                params.put("uid", ((WoAiSiJiApp) (getActivity().getApplication())).getUid());
-                params.put("pid", tobeDeleteUser.getUsername());
+                /*params.put("uid", ((WoAiSiJiApp) (getActivity().getApplication())).getUid());
+                params.put("pid", tobeDeleteUser.getUsername());*/
+                params.put("uid", WoAiSiJiApp.getUid());
+                params.put("token", WoAiSiJiApp.token);
+                params.put("friend_id",tobeDeleteUser.getUsername());
                 return params;
             }
         };
         WoAiSiJiApp.mRequestQueue.add(deleteFriendsRequest);
-
 //        new Thread(new Runnable() {
 //            public void run() {
 //                try {
@@ -464,8 +475,6 @@ public class PersonalFriendsFragment extends EaseContactListFragment {
                 }
             });
         }
-
     }
-
 
 }

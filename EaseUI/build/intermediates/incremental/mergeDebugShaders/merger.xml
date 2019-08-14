@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="E:\AndroidWorkSpace\WoAiSiJi\EaseUI\src\main\shaders"/></dataSet><dataSet config="debug"><source path="E:\AndroidWorkSpace\WoAiSiJi\EaseUI\build-types\debug\shaders"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="E:\AndroidWorkSpace\FuBaihui\EaseUI\src\main\shaders"/></dataSet><dataSet config="debug"><source path="E:\AndroidWorkSpace\FuBaihui\EaseUI\build-types\debug\shaders"/></dataSet></merger>

@@ -3,13 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#FAFAFA"
-    android:padding="5dp"
+    android:padding="@dimen/dp_5"
     android:orientation="vertical">
 
     <ImageView
         android:id="@+id/iv_shangpintu"
         android:layout_width="match_parent"
-        android:layout_height="130dp"
+        android:layout_height="@dimen/dp_130"
         android:scaleType="fitXY"
         android:src="@drawable/weixianshi" />
 
@@ -18,36 +18,36 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
+        android:paddingLeft="@dimen/dp_5"
+        android:paddingRight="@dimen/dp_5"
         android:maxLines="2"
         android:gravity="center_vertical"
         android:text="热卖OPPO正品水晶mp3可爱mp3"
         android:textColor="#474747"
-        android:textSize="12sp" />
+        android:textSize="@dimen/sp_12" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="@dimen/dp_5"
         android:orientation="horizontal">
         <TextView
             android:id="@+id/price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:paddingLeft="8dp"
+            android:paddingLeft="@dimen/dp_8"
             android:text="999"
             android:textColor="#FB6A2D"
-            android:textSize="10sp" />
+            android:textSize="@dimen/sp_10" />
 
         <TextView
             android:id="@+id/payment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingRight="10dp"
+            android:paddingRight="@dimen/dp_10"
             android:text="74人付款"
-            android:textSize="10sp" />
+            android:textSize="@dimen/sp_10" />
     </LinearLayout>
 
 </LinearLayout>

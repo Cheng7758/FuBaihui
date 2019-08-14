@@ -1,27 +1,24 @@
 package com.example.zhanghao.woaisiji.bean.my;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Cheng on 2019/7/1.
  */
 
-public class OrderBean {
+public class OrderBean implements Parcelable {
+
     /**
      * code : 200
-     * data : [{"id":"2530","goods_id":"1406","goods_name":"大双肩旅行者背包（A）","goods_num":"1","goods_price":"830.63","discount":"0.00","pay_price":830.63,"status_o":2,"status_m":"卖家已发货","goods_img":"/Uploads/Picture/2018-11-19/5bf2b3fa0e988.jpg","store_id":"1","store_name":null,"symbol":"/Public/Mobile/images/x.png"},{"id":"2531","goods_id":"1548","goods_name":"汽车专用鹿皮擦车巾","goods_num":"1","goods_price":"27.00","discount":"0.00","pay_price":27,"status_o":-1,"status_m":"订单已取消","goods_img":"/Uploads/Picture/2017-10-24/59eeb4a826b3b.jpg","store_id":"649","store_name":null,"symbol":"/Public/Mobile/images/jin.png"},{"id":"2532","goods_id":"1616","goods_name":"预约","goods_num":"1","goods_price":"1.00","discount":"0.00","pay_price":1,"status_o":1,"status_m":"待发货","goods_img":"/Uploads/Goods/20190617/5d075253c471e.png","ymd":"2019-06-18","ytime":"12:00-13:00","store_id":0,"store_name":"福百惠自营","symbol":"/Public/Mobile/images/yin.png"}]
+     * data : [{"id":"2713","ordernum":"20190717110145","goods_id":"1671","goods_name":"海尔施特劳斯净水机","goods_num":"1","goods_price":"3280.00","wuliu":"","wuliunum":"","discount":"0.00","pay_price":3280,"status_o":0,"status_m":"未付款","goods_img":"/Uploads/Goods/20190712/5d281a66030d2.jpg","store_id":0,"store_name":"福百惠自营","symbol":"/Public/Mobile/images/x.png"},{"id":"2711","ordernum":"20190717108628","goods_id":"1622","goods_name":"长城摩托车专用油","goods_num":"1","goods_price":"50.00","wuliu":"","wuliunum":"","discount":"0.00","pay_price":50,"status_o":1,"status_m":"待发货","goods_img":"/Uploads/Goods/20190625/5d11889a5ae01.png","store_id":0,"store_name":"福百惠自营","symbol":"/Public/Mobile/images/x.png"},{"id":"2710","ordernum":"20190717111814","goods_id":"1671","goods_name":"海尔施特劳斯净水机","goods_num":"1","goods_price":"3280.00","wuliu":"","wuliunum":"","discount":"0.00","pay_price":3280,"status_o":1,"status_m":"待发货","goods_img":"/Uploads/Goods/20190712/5d281a66030d2.jpg","store_id":0,"store_name":"福百惠自营","symbol":"/Public/Mobile/images/x.png"},{"id":"2707","ordernum":"20190717098327","goods_id":"1621","goods_name":"夏季棉麻马甲女薄款韩版中长款收腰马夹百搭坎肩无袖风衣款女大码","goods_num":"1","goods_price":"1000.00","wuliu":"","wuliunum":"","discount":"0.00","pay_price":1000,"status_o":0,"status_m":"未付款","goods_img":"/Uploads/Goods/20190625/5d1186f45dad6.png","store_id":0,"store_name":"福百惠自营","symbol":"/Public/Mobile/images/x.png"},{"id":"2706","ordernum":"20190717097002","goods_id":"1673","goods_name":"贵妻芒果百色特有的桂七，桂七--唯一一款视为贡品的香果","goods_num":"1","goods_price":"1.00","wuliu":"","wuliunum":"","discount":"0.00","pay_price":1,"status_o":0,"status_m":"未付款","goods_img":"/Uploads/Goods/20190713/5d299cbcc750a.jpg","store_id":0,"store_name":"福百惠自营","symbol":"/Public/Mobile/images/x.png"},{"id":"2705","ordernum":"20190717097829","goods_id":"1673","goods_name":"贵妻芒果百色特有的桂七，桂七--唯一一款视为贡品的香果","goods_num":"1","goods_price":"1.00","wuliu":"","wuliunum":"","discount":"0.00","pay_price":1,"status_o":0,"status_m":"未付款","goods_img":"/Uploads/Goods/20190713/5d299cbcc750a.jpg","store_id":0,"store_name":"福百惠自营","symbol":"/Public/Mobile/images/x.png"}]
      */
 
     private int code;
     private List<DataBean> data;
-
-    @Override
-    public String toString() {
-        return "OrderBean{" +
-                "code=" + code +
-                ", data=" + data +
-                '}';
-    }
 
     public int getCode() {
         return code;
@@ -39,61 +36,45 @@ public class OrderBean {
         this.data = data;
     }
 
-    public static class DataBean {
-        @Override
-        public String toString() {
-            return "DataBean{" +
-                    "id='" + id + '\'' +
-                    ", goods_id='" + goods_id + '\'' +
-                    ", goods_name='" + goods_name + '\'' +
-                    ", goods_num='" + goods_num + '\'' +
-                    ", goods_price='" + goods_price + '\'' +
-                    ", discount='" + discount + '\'' +
-                    ", pay_price=" + pay_price +
-                    ", status_o=" + status_o +
-                    ", status_m='" + status_m + '\'' +
-                    ", goods_img='" + goods_img + '\'' +
-                    ", store_id='" + store_id + '\'' +
-                    ", store_name=" + store_name +
-                    ", symbol='" + symbol + '\'' +
-                    ", ymd='" + ymd + '\'' +
-                    ", ytime='" + ytime + '\'' +
-                    '}';
-        }
+
+    public static class DataBean implements Parcelable {
 
         /**
-         * id : 2530
-         * goods_id : 1406
-         * goods_name : 大双肩旅行者背包（A）
+         * id : 2713
+         * ordernum : 20190717110145
+         * goods_id : 1671
+         * goods_name : 海尔施特劳斯净水机
          * goods_num : 1
-         * goods_price : 830.63
+         * goods_price : 3280.00
+         * wuliu :
+         * wuliunum :
          * discount : 0.00
-         * pay_price : 830.63
-         * status_o : 2
-         * status_m : 卖家已发货
-         * goods_img : /Uploads/Picture/2018-11-19/5bf2b3fa0e988.jpg
-         * store_id : 1
-         * store_name : null
+         * pay_price : 3280
+         * status_o : 0
+         * status_m : 未付款
+         * goods_img : /Uploads/Goods/20190712/5d281a66030d2.jpg
+         * store_id : 0
+         * store_name : 福百惠自营
          * symbol : /Public/Mobile/images/x.png
-         * ymd : 2019-06-18
-         * ytime : 12:00-13:00
          */
 
         private String id;
+        private String ordernum;
         private String goods_id;
         private String goods_name;
         private String goods_num;
         private String goods_price;
+        private String wuliu;
+        private String wuliunum;
         private String discount;
-        private double pay_price;
+        private int pay_price;
+        private int pay_type;
         private int status_o;
         private String status_m;
         private String goods_img;
-        private String store_id;
+        private int store_id;
         private String store_name;
         private String symbol;
-        private String ymd;
-        private String ytime;
 
         public String getId() {
             return id;
@@ -101,6 +82,14 @@ public class OrderBean {
 
         public void setId(String id) {
             this.id = id;
+        }
+
+        public String getOrdernum() {
+            return ordernum;
+        }
+
+        public void setOrdernum(String ordernum) {
+            this.ordernum = ordernum;
         }
 
         public String getGoods_id() {
@@ -135,6 +124,22 @@ public class OrderBean {
             this.goods_price = goods_price;
         }
 
+        public String getWuliu() {
+            return wuliu;
+        }
+
+        public void setWuliu(String wuliu) {
+            this.wuliu = wuliu;
+        }
+
+        public String getWuliunum() {
+            return wuliunum;
+        }
+
+        public void setWuliunum(String wuliunum) {
+            this.wuliunum = wuliunum;
+        }
+
         public String getDiscount() {
             return discount;
         }
@@ -143,12 +148,19 @@ public class OrderBean {
             this.discount = discount;
         }
 
-        public double getPay_price() {
+        public int getPay_price() {
             return pay_price;
         }
 
-        public void setPay_price(double pay_price) {
+        public void setPay_price(int pay_price) {
             this.pay_price = pay_price;
+        }
+        public int getPay_type() {
+            return pay_type;
+        }
+
+        public void setPay_type(int pay_type) {
+            this.pay_type = pay_type;
         }
 
         public int getStatus_o() {
@@ -175,11 +187,11 @@ public class OrderBean {
             this.goods_img = goods_img;
         }
 
-        public String getStore_id() {
+        public int getStore_id() {
             return store_id;
         }
 
-        public void setStore_id(String store_id) {
+        public void setStore_id(int store_id) {
             this.store_id = store_id;
         }
 
@@ -199,20 +211,98 @@ public class OrderBean {
             this.symbol = symbol;
         }
 
-        public String getYmd() {
-            return ymd;
+        @Override
+        public int describeContents() {
+            return 0;
         }
 
-        public void setYmd(String ymd) {
-            this.ymd = ymd;
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            dest.writeString(this.id);
+            dest.writeString(this.ordernum);
+            dest.writeString(this.goods_id);
+            dest.writeString(this.goods_name);
+            dest.writeString(this.goods_num);
+            dest.writeString(this.goods_price);
+            dest.writeString(this.wuliu);
+            dest.writeString(this.wuliunum);
+            dest.writeString(this.discount);
+            dest.writeInt(this.pay_price);
+            dest.writeInt(this.pay_type);
+            dest.writeInt(this.status_o);
+            dest.writeString(this.status_m);
+            dest.writeString(this.goods_img);
+            dest.writeInt(this.store_id);
+            dest.writeString(this.store_name);
+            dest.writeString(this.symbol);
         }
 
-        public String getYtime() {
-            return ytime;
+        public DataBean() {
         }
 
-        public void setYtime(String ytime) {
-            this.ytime = ytime;
+        protected DataBean(Parcel in) {
+            this.id = in.readString();
+            this.ordernum = in.readString();
+            this.goods_id = in.readString();
+            this.goods_name = in.readString();
+            this.goods_num = in.readString();
+            this.goods_price = in.readString();
+            this.wuliu = in.readString();
+            this.wuliunum = in.readString();
+            this.discount = in.readString();
+            this.pay_price = in.readInt();
+            this.pay_type = in.readInt();
+            this.status_o = in.readInt();
+            this.status_m = in.readString();
+            this.goods_img = in.readString();
+            this.store_id = in.readInt();
+            this.store_name = in.readString();
+            this.symbol = in.readString();
         }
+
+        public static final Creator<DataBean> CREATOR = new Creator<DataBean>() {
+            @Override
+            public DataBean createFromParcel(Parcel source) {
+                return new DataBean(source);
+            }
+
+            @Override
+            public DataBean[] newArray(int size) {
+                return new DataBean[size];
+            }
+        };
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.code);
+        dest.writeList(this.data);
+    }
+
+    public OrderBean() {
+    }
+
+    protected OrderBean(Parcel in) {
+        this.code = in.readInt();
+        this.data = new ArrayList<DataBean>();
+        in.readList(this.data, DataBean.class.getClassLoader());
+    }
+
+    public static final Creator<OrderBean> CREATOR = new Creator<OrderBean>
+            () {
+        @Override
+        public OrderBean createFromParcel(Parcel source) {
+            return new OrderBean(source);
+        }
+
+        @Override
+        public OrderBean[] newArray(int size) {
+            return new OrderBean[size];
+        }
+    };
 }

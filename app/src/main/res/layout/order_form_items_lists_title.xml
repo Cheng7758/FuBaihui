@@ -3,24 +3,24 @@
     android:id="@+id/rl_order_form_item_title"
     android:layout_width="match_parent"
     android:gravity="center_vertical"
-    android:layout_height="50dp">
+    android:layout_height="@dimen/dp_50">
     <TextView
         android:id="@+id/tv_order_form_source"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
+        android:layout_marginLeft="@dimen/dp_8"
         android:text="订单号"
         android:textSize="16sp"/>
     <TextView
         android:id="@+id/tv_order_form_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="6dp"
-        android:layout_marginLeft="6dp"
+        android:layout_marginRight="@dimen/dp_6"
+        android:layout_marginLeft="@dimen/dp_6"
         android:layout_alignParentRight="true"
         android:text="待发货"
         android:textColor="#ff0000"
-        android:textSize="14sp"/>
+        android:textSize="@dimen/sp_16"/>
     <TextView
         android:id="@+id/tv_order_form_alipay"
         android:layout_width="wrap_content"
@@ -28,5 +28,5 @@
         android:layout_toLeftOf="@id/tv_order_form_status"
         android:text="待付款"
         android:textColor="#ff0000"
-        android:textSize="14sp"/>
+        android:textSize="@dimen/sp_14"/>
 </RelativeLayout>

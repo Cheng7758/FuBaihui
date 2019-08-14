@@ -27,7 +27,7 @@
             android:layout_gravity="center"
             android:text="我的订单"
             android:textColor="#ffffff"
-            android:textSize="18sp" />
+            android:textSize="@dimen/sp_18" />
 
     </android.support.v7.widget.Toolbar>
 

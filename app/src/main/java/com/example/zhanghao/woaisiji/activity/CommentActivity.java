@@ -144,7 +144,7 @@ public class CommentActivity extends Activity {
                 String url=ServerAddress.SERVER_ROOT+item.getStarts();
                 ImageLoader.getInstance().displayImage(url,viewHolder.portrait);
             }else {
-                viewHolder.portrait.setImageResource(R.drawable.ic_launcher);
+                viewHolder.portrait.setImageResource(R.drawable.ic_fubaihui);
             }
 
             return convertView;

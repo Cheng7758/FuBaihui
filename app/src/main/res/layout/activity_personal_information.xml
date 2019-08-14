@@ -10,18 +10,18 @@
     <LinearLayout
         android:id="@+id/ll_information_sex"
         android:layout_width="match_parent"
-        android:layout_height="36dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="@dimen/dp_36"
+        android:layout_marginTop="@dimen/dp_20"
         android:background="@color/colorWhite"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="80dp"
+            android:layout_width="@dimen/dp_80"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="@dimen/dp_8"
             android:text="性别"
-            android:textSize="14sp"
+            android:textSize="@dimen/sp_14"
             android:textColor="#000025"/>
 
         <TextView
@@ -33,7 +33,7 @@
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="@dimen/dp_10"
             android:background="@null"
             android:src="@drawable/iv_enter" />
 
@@ -42,27 +42,27 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
+        android:layout_height="@dimen/dp_0_5"
         android:background="#CBCBCB" />
     <LinearLayout
         android:id="@+id/ll_information_birthday"
         android:layout_width="match_parent"
-        android:layout_height="36dp"
+        android:layout_height="@dimen/dp_36"
         android:background="@color/colorWhite"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="80dp"
+            android:layout_width="@dimen/dp_80"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="@dimen/dp_8"
             android:text="生日"
-            android:textSize="14sp"
+            android:textSize="@dimen/sp_14"
             android:textColor="#000025"/>
 
         <TextView
             android:id="@+id/tv_info_birth_day"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/dp_0"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="1992-02-02" />
@@ -70,7 +70,7 @@
             android:id="@+id/ib_personal_birthday"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="@dimen/dp_10"
             android:background="@null"
             android:src="@drawable/iv_enter" />
 
@@ -78,23 +78,23 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="@dimen/dp_1"
         android:background="#CBCBCB" />
 
     <LinearLayout
         android:id="@+id/ll_information_age"
         android:layout_width="match_parent"
-        android:layout_height="36dp"
+        android:layout_height="@dimen/dp_36"
         android:background="@color/colorWhite"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="80dp"
+            android:layout_width="@dimen/dp_80"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="@dimen/dp_8"
             android:text="年龄"
-            android:textSize="14sp"
+            android:textSize="@dimen/sp_14"
             android:textColor="#000025"/>
 
         <TextView
@@ -108,7 +108,7 @@
             android:id="@+id/ib_user_ni"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="@dimen/dp_10"
             android:visibility="gone"
             android:background="@null"
             android:src="@drawable/iv_enter" />
@@ -116,22 +116,22 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="@dimen/dp_1"
         android:background="#CBCBCB" />
     <LinearLayout
         android:id="@+id/ll_information_constellation"
         android:layout_width="match_parent"
-        android:layout_height="36dp"
+        android:layout_height="@dimen/dp_36"
         android:background="@color/colorWhite"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="80dp"
+            android:layout_width="@dimen/dp_80"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="@dimen/dp_8"
             android:text="星座"
-            android:textSize="14sp"
+            android:textSize="@dimen/sp_14"
             android:textColor="#000025"/>
 
         <TextView
@@ -144,7 +144,7 @@
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="@dimen/dp_10"
             android:background="@null"
             android:visibility="gone"
             android:src="@drawable/iv_enter" />
@@ -152,24 +152,24 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="@dimen/dp_1"
         android:background="#CBCBCB" />
 
     <LinearLayout
         android:id="@+id/ll_information_mobile"
         android:layout_width="match_parent"
-        android:layout_height="36dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="@dimen/dp_36"
+        android:layout_marginTop="@dimen/dp_20"
         android:background="@color/colorWhite"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="80dp"
+            android:layout_width="@dimen/dp_80"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="@dimen/dp_8"
             android:text="电话"
-            android:textSize="14sp"
+            android:textSize="@dimen/sp_14"
             android:textColor="#000025"/>
 
         <TextView
@@ -183,23 +183,23 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
+        android:layout_height="@dimen/dp_0_5"
         android:background="#CBCBCB" />
 
     <LinearLayout
         android:id="@+id/ll_information_marriage"
         android:layout_width="match_parent"
-        android:layout_height="36dp"
+        android:layout_height="@dimen/dp_36"
         android:background="@color/colorWhite"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="80dp"
+            android:layout_width="@dimen/dp_80"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="@dimen/dp_8"
             android:text="婚姻"
-            android:textSize="14sp"
+            android:textSize="@dimen/sp_14"
             android:textColor="#000025"/>
 
         <TextView
@@ -212,7 +212,7 @@
             android:id="@+id/ib_personal_marry"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="@dimen/dp_10"
             android:background="@null"
             android:src="@drawable/iv_enter" />
 
@@ -220,22 +220,22 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="@dimen/dp_1"
         android:background="#CBCBCB" />
     <LinearLayout
         android:id="@+id/ll_information_mon_income"
         android:layout_width="match_parent"
-        android:layout_height="36dp"
+        android:layout_height="@dimen/dp_36"
         android:background="@color/colorWhite"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="80dp"
+            android:layout_width="@dimen/dp_80"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="@dimen/dp_8"
             android:text="月收入"
-            android:textSize="14sp"
+            android:textSize="@dimen/sp_14"
             android:textColor="#000025"/>
 
         <TextView
@@ -247,7 +247,7 @@
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="@dimen/dp_10"
             android:background="@null"
             android:src="@drawable/iv_enter" />
 
@@ -255,22 +255,22 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="@dimen/dp_1"
         android:background="#CBCBCB" />
     <LinearLayout
         android:id="@+id/ll_information_education"
         android:layout_width="match_parent"
-        android:layout_height="36dp"
+        android:layout_height="@dimen/dp_36"
         android:background="@color/colorWhite"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="80dp"
+            android:layout_width="@dimen/dp_80"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="@dimen/dp_8"
             android:text="教育程度"
-            android:textSize="14sp"
+            android:textSize="@dimen/sp_14"
             android:textColor="#000025"/>
 
         <TextView
@@ -282,7 +282,7 @@
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="@dimen/dp_10"
             android:background="@null"
             android:src="@drawable/iv_enter" />
 
@@ -290,21 +290,21 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="@dimen/dp_1"
         android:background="#CBCBCB" />
     <LinearLayout
         android:id="@+id/ll_information_location"
         android:layout_width="match_parent"
-        android:layout_height="36dp"
+        android:layout_height="@dimen/dp_36"
         android:visibility="gone"
         android:background="@color/colorWhite"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="80dp"
+            android:layout_width="@dimen/dp_80"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="@dimen/dp_8"
             android:text="所在地" />
 
         <TextView
@@ -316,7 +316,7 @@
             android:id="@+id/ib_personal_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="@dimen/dp_10"
             android:background="@null"
             android:src="@drawable/iv_enter" />
 
@@ -324,19 +324,19 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
+        android:layout_height="@dimen/dp_0_5"
         android:background="#CBCBCB" />
     <LinearLayout
         android:id="@+id/ll_information_hometown"
         android:layout_width="match_parent"
-        android:layout_height="36dp"
+        android:layout_height="@dimen/dp_36"
         android:background="@color/colorWhite"
         android:visibility="gone"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="80dp"
+            android:layout_width="@dimen/dp_80"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:text="故乡" />
@@ -350,7 +350,7 @@
             android:id="@+id/ib_personal_hometown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="@dimen/dp_10"
             android:background="@null"
             android:src="@drawable/iv_enter" />
 
@@ -358,7 +358,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
+        android:layout_height="@dimen/dp_0_5"
         android:background="#CBCBCB" />
 
 </LinearLayout>

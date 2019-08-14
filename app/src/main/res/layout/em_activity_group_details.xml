@@ -20,9 +20,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="9dp"
+                android:layout_marginLeft="@dimen/dp_9"
                 android:scaleType="centerInside"
-                android:src="@drawable/em_mm_title_back" />
+                android:src="@drawable/back" />
         </LinearLayout>
 
         <TextView
@@ -31,12 +31,12 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:textColor="#ffffff"
-            android:textSize="20sp" />
+            android:textSize="@dimen/sp_20" />
 
         <ProgressBar
             android:id="@+id/progressBar"
-            android:layout_width="26dp"
-            android:layout_height="26dp"
+            android:layout_width="@dimen/dp_26"
+            android:layout_height="@dimen/dp_26"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="7dp" />
@@ -57,28 +57,28 @@
                 android:id="@+id/gridview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="13dp"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_13"
                 android:background="@drawable/em_app_pref_bg"
                 android:gravity="start"
-                android:horizontalSpacing="6dp"
+                android:horizontalSpacing="@dimen/dp_6"
                 android:listSelector="@android:color/transparent"
                 android:numColumns="4"
-                android:verticalSpacing="10dp" />
+                android:verticalSpacing="@dimen/dp_10" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="1dip"
-                android:layout_marginLeft="10dip"
-                android:layout_marginRight="10dip"
+                android:layout_height="@dimen/dp_1"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_10"
                 android:background="#E6E6E6" />
 
             <RelativeLayout
                 android:id="@+id/rl_group_id"
                 android:layout_width="match_parent"
-                android:layout_height="50dip"
+                android:layout_height="@dimen/dp_50"
                 android:background="@drawable/em_btn_bottom_selector"
                 android:visibility="gone" >
 
@@ -87,10 +87,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:paddingLeft="20dip"
+                    android:paddingLeft="@dimen/dp_20"
                     android:text="@string/group_id"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/sp_18"
                     android:typeface="serif" />
 
                 <TextView
@@ -99,20 +99,20 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="20dp" />
+                    android:layout_marginRight="@dimen/dp_20" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="1dip"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginLeft="10dip"
-                    android:layout_marginRight="10dip"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_marginRight="@dimen/dp_10"
                     android:background="#E6E6E6" />
             </RelativeLayout>
 			<RelativeLayout
                 android:id="@+id/rl_group_nick"
                 android:layout_width="match_parent"
-                android:layout_height="50dip"
+                android:layout_height="@dimen/dp_50"
                 android:background="@drawable/em_btn_bottom_selector"
                 android:visibility="gone" >
 
@@ -121,10 +121,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:paddingLeft="20dip"
+                    android:paddingLeft="@dimen/dp_20"
                     android:text="@string/group_nick"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/sp_18"
                     android:typeface="serif" />
                 
                   <TextView 
@@ -133,22 +133,22 @@
                     android:layout_width="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/tv_group_nick"
-                    android:layout_marginLeft="10dp"
-                    android:textSize="18sp"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:textSize="@dimen/sp_18"
                     /> 
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="1dip"
+                    android:layout_height="@dimen/dp_1"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginLeft="10dip"
-                    android:layout_marginRight="10dip"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_marginRight="@dimen/dp_10"
                     android:background="#E6E6E6" />
             </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/rl_group_owner"
                 android:layout_width="match_parent"
-                android:layout_height="50dip"
+                android:layout_height="@dimen/dp_50"
                 android:background="@drawable/em_btn_bottom_selector"
                 android:visibility="gone" >
 
@@ -157,10 +157,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:paddingLeft="20dip"
+                    android:paddingLeft="@dimen/dp_20"
                     android:text="@string/group_owner"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/sp_18"
                     android:typeface="serif" />
                 
                   <TextView 
@@ -169,22 +169,22 @@
                     android:layout_width="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/tv_group_owner"
-                    android:layout_marginLeft="10dp"
-                    android:textSize="18sp"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:textSize="@dimen/sp_18"
                     /> 
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="1dip"
+                    android:layout_height="@dimen/dp_1"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginLeft="10dip"
-                    android:layout_marginRight="10dip"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_marginRight="@dimen/dp_10"
                     android:background="#E6E6E6" />
             </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/clear_all_history"
                 android:layout_width="match_parent"
-                android:layout_height="50dip"
+                android:layout_height="@dimen/dp_50"
                 android:background="@drawable/em_btn_bottom_selector" >
 
                 <TextView
@@ -192,25 +192,25 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:gravity="center_vertical|left"
-                    android:paddingLeft="20dip"
+                    android:paddingLeft="@dimen/dp_20"
                     android:text="@string/Empty_the_chat_record"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/sp_18"
                     android:typeface="serif" />
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="1dip"
+                    android:layout_height="@dimen/dp_1"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginLeft="10dip"
-                    android:layout_marginRight="10dip"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_marginRight="@dimen/dp_10"
                     android:background="#E6E6E6" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/rl_change_group_name"
                 android:layout_width="match_parent"
-                android:layout_height="50dip"
+                android:layout_height="@dimen/dp_50"
                 android:background="@drawable/em_btn_bottom_selector" >
 
                 <TextView
@@ -218,25 +218,25 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:gravity="center_vertical|left"
-                    android:paddingLeft="20dip"
+                    android:paddingLeft="@dimen/dp_20"
                     android:text="@string/Change_the_group_name"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/sp_18"
                     android:typeface="serif" />
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="1dip"
+                    android:layout_height="@dimen/dp_1"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginLeft="10dip"
-                    android:layout_marginRight="10dip"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_marginRight="@dimen/dp_10"
                     android:background="#E6E6E6" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/rl_blacklist"
                 android:layout_width="match_parent"
-                android:layout_height="50dip"
+                android:layout_height="@dimen/dp_50"
                 android:background="@drawable/em_btn_bottom_selector" >
 
                 <TextView
@@ -244,36 +244,36 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:gravity="center_vertical|left"
-                    android:paddingLeft="20dip"
+                    android:paddingLeft="@dimen/dp_20"
                     android:text="@string/blacklist"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/sp_18"
                     android:typeface="serif" />
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="1dip"
+                    android:layout_height="@dimen/dp_1"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginLeft="10dip"
-                    android:layout_marginRight="10dip"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_marginRight="@dimen/dp_10"
                     android:background="#E6E6E6" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/rl_switch_block_groupmsg"
                 android:layout_width="match_parent"
-                android:layout_height="50dip"
+                android:layout_height="@dimen/dp_50"
                 android:background="@drawable/em_btn_bottom_selector"
-                android:padding="10dip" >
+                android:padding="@dimen/dp_10" >
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:paddingLeft="10dip"
+                    android:paddingLeft="@dimen/dp_10"
                     android:text="@string/Shielding_of_the_message"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/sp_18"
                     android:typeface="serif" />
 
                 <com.hyphenate.easeui.widget.EaseSwitchButton
@@ -286,14 +286,14 @@
             </RelativeLayout>
               <TextView
                 android:layout_width="match_parent"
-                android:layout_height="1dip"
-                android:layout_marginLeft="10dip"
-                android:layout_marginRight="10dip"
+                android:layout_height="@dimen/dp_1"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_10"
                 android:background="#E6E6E6" />
              <RelativeLayout
                 android:id="@+id/rl_search"
                 android:layout_width="match_parent"
-                android:layout_height="50dip"
+                android:layout_height="@dimen/dp_50"
                 android:background="@drawable/em_btn_bottom_selector" >
 
                 <TextView
@@ -301,18 +301,18 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:gravity="center_vertical|left"
-                    android:paddingLeft="20dip"
+                    android:paddingLeft="@dimen/dp_20"
                     android:text="@string/serach_group_message"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/sp_18"
                     android:typeface="serif" />
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="1dip"
+                    android:layout_height="@dimen/dp_10"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginLeft="10dip"
-                    android:layout_marginRight="10dip"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_marginRight="@dimen/dp_10"
                     android:background="#E6E6E6" />
             </RelativeLayout>
 
@@ -322,14 +322,14 @@
                 android:id="@+id/btn_exit_grp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="11dp"
+                android:layout_margin="@dimen/dp_11"
                 android:background="@drawable/em_btn_style_alert_dialog_special"
                 android:onClick="exitGroup"
-                android:paddingBottom="7dp"
-                android:paddingTop="7dp"
+                android:paddingBottom="@dimen/dp_7"
+                android:paddingTop="@dimen/dp_7"
                 android:text="@string/Exit_the_group_chat"
                 android:textColor="@android:color/white"
-                android:textSize="18sp" />
+                android:textSize="@dimen/sp_18" />
 
             <Button
                 android:id="@+id/btn_exitdel_grp"
@@ -338,11 +338,11 @@
                 android:layout_margin="11dp"
                 android:background="@drawable/em_btn_style_alert_dialog_special"
                 android:onClick="exitDeleteGroup"
-                android:paddingBottom="7dp"
-                android:paddingTop="7dp"
+                android:paddingBottom="@dimen/dp_7"
+                android:paddingTop="@dimen/dp_7"
                 android:text="@string/dismiss_group"
                 android:textColor="@android:color/white"
-                android:textSize="18sp"
+                android:textSize="@dimen/sp_18"
                 android:visibility="gone" />
         </LinearLayout>
     </ScrollView>

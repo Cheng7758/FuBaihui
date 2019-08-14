@@ -2,10 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="10dp"
+    android:layout_marginTop="@dimen/dp_10"
     android:background="@color/colorWhite"
     android:orientation="horizontal"
-    android:padding="8dp">
+    android:padding="@dimen/dp_8">
 
     <TextView
         android:id="@+id/tv_text"
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="@string/register_phone"
-        android:textSize="14sp" />
+        android:textSize="@dimen/sp_14" />
 
     <EditText
         android:layout_width="0dp"

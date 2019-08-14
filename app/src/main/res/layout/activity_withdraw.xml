@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.zhanghao.woaisiji.activity.money.WithdrawActivity">
+
+    <include layout="@layout/title_bar_view_layout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="@dimen/dp_20">
+
+        <TextView
+            android:layout_width="@dimen/dp_0"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp_16"
+            android:text="绑定账号：" />
+        <EditText
+            android:id="@+id/input_number"
+            android:layout_width="@dimen/dp_0"
+            android:layout_weight="3"
+            android:inputType="number"
+            android:layout_height="wrap_content"
+            android:hint="请输入支付宝/微信账号"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/immediately_binding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_26"
+        android:text="立即绑定"/>
+
+</LinearLayout>

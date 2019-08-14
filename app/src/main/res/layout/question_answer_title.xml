@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
+    android:layout_height="@dimen/dp_50"
     android:background="#FF5000">
 
     <ImageView
         android:id="@+id/iv_question_answer_back"
-        android:layout_width="30dp"
-        android:layout_height="20dp"
+        android:layout_width="@dimen/dp_30"
+        android:layout_height="@dimen/dp_20"
         android:layout_centerVertical="true"
         android:layout_marginLeft="10dp"
         android:src="@mipmap/white_left" />
@@ -18,10 +18,10 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="@dimen/dp_20"
         android:text="我的提问"
         android:textColor="#FCFDF5"
-        android:textSize="18dp" />
+        android:textSize="@dimen/sp_18" />
 
     <Button
         android:id="@+id/btn_travel_release"
@@ -33,5 +33,5 @@
         android:background="@null"
         android:text="提交"
         android:textColor="@color/white"
-        android:textSize="16sp" />
+        android:textSize="@dimen/sp_16" />
 </RelativeLayout>

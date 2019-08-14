@@ -1,8 +1,5 @@
 package com.example.zhanghao.woaisiji.bean.my;
 
-
-import com.contrarywind.interfaces.IPickerViewData;
-
 import java.util.List;
 
 /**

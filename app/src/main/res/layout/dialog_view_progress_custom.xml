@@ -7,7 +7,7 @@
     android:background="@drawable/bg_progress_custom_dialog"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="20dip" >
+    android:padding="@dimen/dp_20" >
     <ImageView
         android:id="@+id/iv_dialog_view_custom_loading"
         android:layout_width="wrap_content"

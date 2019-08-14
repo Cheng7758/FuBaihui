@@ -9,8 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:paddingBottom="20dp"
-        android:paddingTop="20dp" >
+        android:paddingBottom="@dimen/dp_20"
+        android:paddingTop="@dimen/dp_20" >
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -22,7 +22,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="60dp"
+                android:layout_marginLeft="@dimen/dp_60"
                 android:background="@drawable/pull_icon_big" />
 
             <ImageView
@@ -30,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="60dp"
+                android:layout_marginLeft="@dimen/dp_60"
                 android:background="@drawable/refreshing"
                 android:visibility="gone" />
 
@@ -41,14 +41,14 @@
                 android:layout_centerInParent="true"
                 android:text="下拉刷新"
                 android:textColor="@android:color/white"
-                android:textSize="16sp" />
+                android:textSize="@dimen/sp_16" />
 
             <ImageView
                 android:id="@+id/state_iv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="8dp"
+                android:layout_marginRight="@dimen/dp_8"
                 android:layout_toLeftOf="@id/state_tv"
                 android:visibility="gone" />
         </RelativeLayout>

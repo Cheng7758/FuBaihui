@@ -44,6 +44,7 @@ import java.util.List;
 /**
  * Created by admin on 2016/9/28.
  */
+//TODO   我的好友列表有时候不显示 加完好友不能刷新列表
 public class LoveDriverFriendsActivity extends EaseBaseActivity {
 
     protected static final String TAG = "LoveDriverFriendsActivity";
@@ -53,13 +54,13 @@ public class LoveDriverFriendsActivity extends EaseBaseActivity {
 //    private TextView unreadAddressLable;
 
     private Button[] mTabs;
-//    private ContactListFragment contactListFragment;
+    //    private ContactListFragment contactListFragment;
     private Fragment[] fragments;
     private int index;
     private int currentTabIndex;
-    // user logged into another device
+    // user logged into another device用户登录到另一个设备
     public boolean isConflict = false;
-    // user account was removed
+    // user account was removed 删除用户帐户
     private boolean isCurrentAccountRemoved = false;
     private PersonalFriendsFragment friendsFragment;
 
@@ -70,30 +71,32 @@ public class LoveDriverFriendsActivity extends EaseBaseActivity {
     private BroadcastReceiver broadcastReceiver;
     private LocalBroadcastManager broadcastManager;
 
-
-
-
     public boolean getCurrentAccountRemoved() {
         return isCurrentAccountRemoved;
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //make sure activity will not in background if user is logged into another device or removed
-        if (savedInstanceState != null && savedInstanceState.getBoolean(Constant.ACCOUNT_REMOVED, false)) {
-            DemoHelper.getInstance().logout(false,null);
+        //确保在用户登录到其他设备或删除时活动不会在后台进行
+        if (savedInstanceState != null && savedInstanceState.getBoolean(Constant.ACCOUNT_REMOVED,
+                false)) {
+            //退出环信
+            DemoHelper.getInstance().logout(false, null);
             finish();
             startActivity(new Intent(this, LoginActivity.class));
             return;
-        } else if (savedInstanceState != null && savedInstanceState.getBoolean("isConflict", false)) {
+        } else if (savedInstanceState != null && savedInstanceState.getBoolean("isConflict",
+                false)) {
             finish();
             startActivity(new Intent(this, LoginActivity.class));
             return;
         }
         setContentView(R.layout.activity_love_drive_friends);
         // runtime permission for android 6.0, just require all permissions here for simple
-        requestPermissions();
-
+        //android 6.0的运行时权限，这里只需要简单的所有权限
+        requestPermissions();   //请求权限
 //        initView();
 
         inviteMessgeDao = new InviteMessgeDao(this);
@@ -101,17 +104,19 @@ public class LoveDriverFriendsActivity extends EaseBaseActivity {
         friendsFragment = new PersonalFriendsFragment();
         fragments = new Fragment[]{friendsFragment};
 
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, friendsFragment).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, friendsFragment)
+                .commit();
 
         //register broadcast receiver to receive the change of group from DemoHelper
+        //注册广播接收器，从DemoHelper接收组的更改
         registerBroadcastReceiver();
 
-
         EMClient.getInstance().contactManager().setContactListener(new MyContactListener());
-        //debug purpose only
+        //debug purpose only 调试的目的
         registerInternalDebugReceiver();
     }
 
+    //请求权限
     @TargetApi(23)
     private void requestPermissions() {
         PermissionsManager.getInstance().requestAllManifestPermissionsIfNecessary(this, new PermissionsResultAction() {
@@ -153,7 +158,6 @@ public class LoveDriverFriendsActivity extends EaseBaseActivity {
         currentTabIndex = index;*/
     }
 
-
     EMMessageListener messageListener = new EMMessageListener() {
 
         @Override
@@ -175,7 +179,7 @@ public class LoveDriverFriendsActivity extends EaseBaseActivity {
                     RedPacketUtil.receiveRedPacketAckMessage(message);
                 }*/
             }
-            //end of red packet code
+            //end of red packet code结束红包代码
             refreshUIWithMessage();
         }
 
@@ -188,17 +192,17 @@ public class LoveDriverFriendsActivity extends EaseBaseActivity {
         }
 
         @Override
-        public void onMessageChanged(EMMessage message, Object change) {}
+        public void onMessageChanged(EMMessage message, Object change) {
+        }
     };
-
 
     private void refreshUIWithMessage() {
         runOnUiThread(new Runnable() {
             public void run() {
-                // refresh unread count
+                // refresh unread count 刷新未读计数
 //                updateUnreadLabel();
                 if (currentTabIndex == 0) {
-                    // refresh conversation list
+                    // refresh conversation list 刷新对话列表
                     if (friendsFragment != null) {
                         friendsFragment.refresh();
                     }
@@ -206,7 +210,6 @@ public class LoveDriverFriendsActivity extends EaseBaseActivity {
             }
         });
     }
-
 
     @Override
     public void back(View view) {
@@ -227,7 +230,7 @@ public class LoveDriverFriendsActivity extends EaseBaseActivity {
 //                updateUnreadLabel();
 //                updateUnreadAddressLable();
                 if (currentTabIndex == 0) {
-                    // refresh conversation list
+                    // refresh conversation list  刷新对话列表
                   /*  if (conversationListFragment != null) {
                         conversationListFragment.refresh();
                     }*/
@@ -237,9 +240,14 @@ public class LoveDriverFriendsActivity extends EaseBaseActivity {
                     }*/
                 }
                 String action = intent.getAction();
-                if(action.equals(Constant.ACTION_GROUP_CHANAGED)){
-                    if (EaseCommonUtils.getTopActivity(LoveDriverFriendsActivity.this).equals(GroupsActivity.class.getName())) {
+                if (action.equals(Constant.ACTION_GROUP_CHANAGED)) {
+                    if (EaseCommonUtils.getTopActivity(LoveDriverFriendsActivity.this)
+                            .equals(GroupsActivity.class.getName())) {
                         GroupsActivity.instance.onResume();
+                    } else {
+                        Intent a = new Intent(LoveDriverFriendsActivity.this, GroupsActivity.class);
+                        a.setFlags(Intent.FLAG_ACTIVITY_TASK_ON_HOME);
+                        startActivity(a);
                     }
                 }
                 //red packet code : 处理红包回执透传消息
@@ -256,7 +264,9 @@ public class LoveDriverFriendsActivity extends EaseBaseActivity {
 
     public class MyContactListener implements EMContactListener {
         @Override
-        public void onContactAdded(String username) {}
+        public void onContactAdded(String username) {
+        }
+
         @Override
         public void onContactDeleted(final String username) {
             runOnUiThread(new Runnable() {
@@ -271,22 +281,27 @@ public class LoveDriverFriendsActivity extends EaseBaseActivity {
                 }
             });
         }
+
         @Override
-        public void onContactInvited(String username, String reason) {}
+        public void onContactInvited(String username, String reason) {
+        }
+
         @Override
-        public void onContactAgreed(String username) {}
+        public void onContactAgreed(String username) {
+        }
+
         @Override
-        public void onContactRefused(String username) {}
+        public void onContactRefused(String username) {
+        }
     }
 
-    private void unregisterBroadcastReceiver(){
+    private void unregisterBroadcastReceiver() {
         broadcastManager.unregisterReceiver(broadcastReceiver);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
         if (conflictBuilder != null) {
             conflictBuilder.create().dismiss();
             conflictBuilder = null;
@@ -297,12 +312,11 @@ public class LoveDriverFriendsActivity extends EaseBaseActivity {
             unregisterReceiver(internalDebugReceiver);
         } catch (Exception e) {
         }
-
     }
-
 
     /**
      * get unread event notification count, including application, accepted, etc
+     * 获取未读事件通知计数，包括应用程序、已接受等
      *
      * @return
      */
@@ -314,6 +328,7 @@ public class LoveDriverFriendsActivity extends EaseBaseActivity {
 
     /**
      * get unread message count
+     * 获取未读消息计数
      *
      * @return
      */
@@ -321,11 +336,11 @@ public class LoveDriverFriendsActivity extends EaseBaseActivity {
         int unreadMsgCountTotal = 0;
         int chatroomUnreadMsgCount = 0;
         unreadMsgCountTotal = EMClient.getInstance().chatManager().getUnreadMsgsCount();
-        for(EMConversation conversation: EMClient.getInstance().chatManager().getAllConversations().values()){
-            if(conversation.getType() == EMConversation.EMConversationType.ChatRoom)
-                chatroomUnreadMsgCount=chatroomUnreadMsgCount+conversation.getUnreadMsgCount();
+        for (EMConversation conversation : EMClient.getInstance().chatManager().getAllConversations().values()) {
+            if (conversation.getType() == EMConversation.EMConversationType.ChatRoom)
+                chatroomUnreadMsgCount = chatroomUnreadMsgCount + conversation.getUnreadMsgCount();
         }
-        return unreadMsgCountTotal-chatroomUnreadMsgCount;
+        return unreadMsgCountTotal - chatroomUnreadMsgCount;
     }
 
     private InviteMessgeDao inviteMessgeDao;
@@ -333,14 +348,13 @@ public class LoveDriverFriendsActivity extends EaseBaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
         if (!isConflict && !isCurrentAccountRemoved) {
 //            updateUnreadLabel();
 //            updateUnreadAddressLable();
         }
 
-        // unregister this event listener when this activity enters the
-        // background
+        // unregister this event listener when this activity enters the background
+        //当此活动进入后台时注销此事件侦听器
         DemoHelper sdkHelper = DemoHelper.getInstance();
         sdkHelper.pushActivity(this);
 
@@ -352,7 +366,6 @@ public class LoveDriverFriendsActivity extends EaseBaseActivity {
         EMClient.getInstance().chatManager().removeMessageListener(messageListener);
         DemoHelper sdkHelper = DemoHelper.getInstance();
         sdkHelper.popActivity(this);
-
         super.onStop();
     }
 
@@ -372,35 +385,34 @@ public class LoveDriverFriendsActivity extends EaseBaseActivity {
         return super.onKeyDown(keyCode, event);
     }
 
-
-
-
     /**
      * debug purpose only, you can ignore this
+     * 只用于调试，您可以忽略它
      */
     private void registerInternalDebugReceiver() {
         internalDebugReceiver = new BroadcastReceiver() {
 
             @Override
             public void onReceive(Context context, Intent intent) {
-                DemoHelper.getInstance().logout(false,new EMCallBack() {
-
+                DemoHelper.getInstance().logout(false, new EMCallBack() {
                     @Override
                     public void onSuccess() {
                         runOnUiThread(new Runnable() {
                             public void run() {
                                 finish();
-                                startActivity(new Intent(LoveDriverFriendsActivity.this, EmLoginActivity.class));
-
+                                startActivity(new Intent(LoveDriverFriendsActivity.this,
+                                        EmLoginActivity.class));
                             }
                         });
                     }
 
                     @Override
-                    public void onProgress(int progress, String status) {}
+                    public void onProgress(int progress, String status) {
+                    }
 
                     @Override
-                    public void onError(int code, String message) {}
+                    public void onError(int code, String message) {
+                    }
                 });
             }
         };
@@ -413,7 +425,5 @@ public class LoveDriverFriendsActivity extends EaseBaseActivity {
                                            @NonNull int[] grantResults) {
         PermissionsManager.getInstance().notifyPermissionsChange(permissions, grantResults);
     }
-
-
 
 }

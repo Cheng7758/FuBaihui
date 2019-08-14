@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -10,30 +10,30 @@
         android:fitsSystemWindows="true"
         android:orientation="vertical">
         <!--title-->
-        <include layout="@layout/title_bar_view_layout"/>
+        <include layout="@layout/title_bar_view_layout" />
 
         <!--个人信息-->
         <RelativeLayout
             android:id="@+id/rl_home_my_page_top_user_head"
             android:layout_width="match_parent"
-            android:layout_height="76dp"
-            android:layout_margin="13dp"
-            android:background="@drawable/round_rectangle"
-            android:layout_gravity="center_vertical">
+            android:layout_height="@dimen/dp_76"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="@dimen/dp_13"
+            android:background="@drawable/round_rectangle">
 
             <ImageView
                 android:id="@+id/iv_view_my_fragment_head"
-                android:layout_width="56dp"
-                android:layout_height="56dp"
-                android:layout_marginLeft="10dp"
+                android:layout_width="@dimen/dp_56"
+                android:layout_height="@dimen/dp_56"
                 android:layout_centerVertical="true"
-                android:scaleType="fitXY"/>
+                android:layout_marginLeft="@dimen/dp_10"
+                android:scaleType="fitXY" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dp_5"
                 android:layout_toRightOf="@id/iv_view_my_fragment_head"
-                android:layout_marginLeft="5dp"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
 
@@ -41,21 +41,21 @@
                     android:id="@+id/tv_user_nick"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginLeft="@dimen/dp_5"
+                    android:layout_marginTop="@dimen/dp_2"
                     android:text=""
                     android:textColor="#000000"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/sp_14" />
 
                 <TextView
                     android:id="@+id/tv_user_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginLeft="@dimen/dp_5"
+                    android:layout_marginTop="@dimen/dp_6"
                     android:text=""
                     android:textColor="#F0794D"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/sp_14" />
             </LinearLayout>
 
             <ImageButton
@@ -63,311 +63,410 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="25dp"
+                android:layout_marginRight="@dimen/dp_25"
                 android:background="@null"
                 android:src="@drawable/iv_enter" />
         </RelativeLayout>
 
         <!--积分详情-->
         <LinearLayout
-            android:layout_marginLeft="13dp"
-            android:layout_marginRight="13dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_13"
+            android:layout_marginRight="@dimen/dp_13"
+            android:background="@color/white"
             android:orientation="vertical"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:background="@color/white">
+            android:paddingLeft="@dimen/dp_5"
+            android:paddingRight="@dimen/dp_5">
             <!--&lt;!&ndash;金积分&ndash;&gt;-->
             <!--<RelativeLayout-->
-                <!--android:id="@+id/rl_home_my_page_mid_gold_integral"-->
-                <!--android:paddingTop="10dp"-->
-                <!--android:paddingBottom="10dp"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content">-->
-                <!--<TextView-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:drawableLeft="@drawable/home_my_page_gold_jifen"-->
-                    <!--android:text="金积分"-->
-                    <!--style="@style/my_page_mid_integral_style"/>-->
-                <!--<TextView-->
-                    <!--android:layout_alignParentRight="true"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:drawableRight="@drawable/ic_arrow_right"-->
-                    <!--android:text="0"-->
-                    <!--style="@style/my_page_mid_integral_style"/>-->
+            <!--android:id="@+id/rl_home_my_page_mid_gold_integral"-->
+            <!--android:paddingTop="10dp"-->
+            <!--android:paddingBottom="10dp"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
+            <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:drawableLeft="@drawable/home_my_page_gold_jifen"-->
+            <!--android:text="金积分"-->
+            <!--style="@style/my_page_mid_integral_style"/>-->
+            <!--<TextView-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:drawableRight="@drawable/ic_arrow_right"-->
+            <!--android:text="0"-->
+            <!--style="@style/my_page_mid_integral_style"/>-->
             <!--</RelativeLayout>-->
             <!--&lt;!&ndash;银积分&ndash;&gt;-->
             <!--<RelativeLayout-->
-                <!--android:id="@+id/rl_home_my_page_mid_sliver_integral"-->
-                <!--android:paddingTop="10dp"-->
-                <!--android:paddingBottom="10dp"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content">-->
-                <!--<TextView-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:drawableLeft="@drawable/home_my_page_sliver_jifen"-->
-                    <!--android:text="银积分"-->
-                    <!--style="@style/my_page_mid_integral_style"/>-->
-                <!--<TextView-->
-                    <!--android:layout_alignParentRight="true"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:drawableRight="@drawable/ic_arrow_right"-->
-                    <!--android:text="0"-->
-                    <!--style="@style/my_page_mid_integral_style"/>-->
+            <!--android:id="@+id/rl_home_my_page_mid_sliver_integral"-->
+            <!--android:paddingTop="10dp"-->
+            <!--android:paddingBottom="10dp"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
+            <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:drawableLeft="@drawable/home_my_page_sliver_jifen"-->
+            <!--android:text="银积分"-->
+            <!--style="@style/my_page_mid_integral_style"/>-->
+            <!--<TextView-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:drawableRight="@drawable/ic_arrow_right"-->
+            <!--android:text="0"-->
+            <!--style="@style/my_page_mid_integral_style"/>-->
             <!--</RelativeLayout>-->
             <!--优惠券-->
             <RelativeLayout
                 android:id="@+id/rl_home_my_page_mid_coupon"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/dp_10"
+                android:paddingTop="@dimen/dp_10">
+
                 <TextView
+                    style="@style/my_page_mid_integral_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/home_my_page_mid_coupon"
                     android:text="优惠券"
-                    style="@style/my_page_mid_integral_style"/>
+                    android:textSize="@dimen/sp_16" />
+
                 <TextView
-                    android:layout_alignParentRight="true"
+                    style="@style/my_page_mid_integral_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableRight="@drawable/ic_arrow_right"
-                    android:text="0 张"
-                    style="@style/my_page_mid_integral_style"/>
+                    android:layout_alignParentRight="true"
+                    android:drawableRight="@drawable/ic_arrow_right" />
             </RelativeLayout>
             <!--设置-->
             <RelativeLayout
                 android:id="@+id/rl_home_my_page_mid_setting"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/dp_10"
+                android:paddingTop="@dimen/dp_10">
+
                 <TextView
+                    style="@style/my_page_mid_integral_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/home_my_page_mid_setting"
                     android:text="设  置"
-                    style="@style/my_page_mid_integral_style"/>
+                    android:textSize="@dimen/sp_16" />
+
                 <TextView
-                    android:layout_alignParentRight="true"
+                    style="@style/my_page_mid_integral_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableRight="@drawable/ic_arrow_right"
-                    style="@style/my_page_mid_integral_style"/>
+                    android:layout_alignParentRight="true"
+                    android:drawableRight="@drawable/ic_arrow_right" />
             </RelativeLayout>
             <!--客服-->
             <RelativeLayout
                 android:id="@+id/rl_home_my_page_mid_kefu"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/dp_10"
+                android:paddingTop="@dimen/dp_10"
+                android:visibility="gone">
+
                 <TextView
+                    style="@style/my_page_mid_integral_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/home_my_page_mid_kefu"
                     android:text="客  服"
-                    style="@style/my_page_mid_integral_style"/>
+                    android:textSize="@dimen/sp_16" />
+
                 <TextView
-                    android:layout_alignParentRight="true"
+                    style="@style/my_page_mid_integral_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableRight="@drawable/ic_arrow_right"
-                    style="@style/my_page_mid_integral_style"/>
+                    android:layout_alignParentRight="true"
+                    android:drawableRight="@drawable/ic_arrow_right" />
+            </RelativeLayout>
+            <!--我的推荐-->
+            <RelativeLayout
+                android:id="@+id/rl_home_my_page_mid_recommend"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/dp_10"
+                android:paddingTop="@dimen/dp_10">
+
+                <TextView
+                    style="@style/my_page_mid_integral_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/home_my_page_mid_recommend"
+                    android:text="我的推荐"
+                    android:textSize="@dimen/sp_16" />
+
+                <TextView
+                    style="@style/my_page_mid_integral_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:drawableRight="@drawable/ic_arrow_right" />
             </RelativeLayout>
             <!--推荐码-->
             <RelativeLayout
                 android:id="@+id/rl_my_page_mid_referral_code"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/dp_10"
+                android:paddingTop="@dimen/dp_10">
+
                 <TextView
+                    style="@style/my_page_mid_integral_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/home_my_page_mid_referral_code"
                     android:text="推荐码"
-                    style="@style/my_page_mid_integral_style"/>
+                    android:textSize="@dimen/sp_16" />
+
                 <TextView
-                    android:layout_alignParentRight="true"
+                    style="@style/my_page_mid_integral_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableRight="@drawable/ic_arrow_right"
-                    style="@style/my_page_mid_integral_style"/>
+                    android:layout_alignParentRight="true"
+                    android:drawableRight="@drawable/ic_arrow_right" />
             </RelativeLayout>
             <!--收货地址-->
             <RelativeLayout
                 android:id="@+id/rl_my_page_mid_shipping_address"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/dp_10"
+                android:paddingTop="@dimen/dp_10">
+
                 <TextView
+                    style="@style/my_page_mid_integral_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/location"
                     android:text="收货地址"
-                    style="@style/my_page_mid_integral_style"/>
+                    android:textSize="@dimen/sp_16" />
+
                 <TextView
-                    android:layout_alignParentRight="true"
+                    style="@style/my_page_mid_integral_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableRight="@drawable/ic_arrow_right"
-                    style="@style/my_page_mid_integral_style"/>
+                    android:layout_alignParentRight="true"
+                    android:drawableRight="@drawable/ic_arrow_right" />
             </RelativeLayout>
             <!--商家入驻-->
             <RelativeLayout
                 android:id="@+id/rl_my_page_mid_recruitment"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/dp_10"
+                android:paddingTop="@dimen/dp_10">
+
                 <TextView
+                    style="@style/my_page_mid_integral_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/recruitment"
                     android:text="商家入驻"
-                    style="@style/my_page_mid_integral_style"/>
+                    android:textSize="@dimen/sp_16" />
+
                 <TextView
-                    android:layout_alignParentRight="true"
+                    style="@style/my_page_mid_integral_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableRight="@drawable/ic_arrow_right"
-                    style="@style/my_page_mid_integral_style"/>
+                    android:layout_alignParentRight="true"
+                    android:drawableRight="@drawable/ic_arrow_right" />
+            </RelativeLayout>
+            <!--商家登录-->
+            <RelativeLayout
+                android:id="@+id/rl_my_page_mid_merchant_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/dp_10"
+                android:paddingTop="@dimen/dp_10">
+
+                <TextView
+                    style="@style/my_page_mid_integral_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/recruitment"
+                    android:text="商家登录"
+                    android:textSize="@dimen/sp_16" />
+
+                <TextView
+                    style="@style/my_page_mid_integral_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:drawableRight="@drawable/ic_arrow_right" />
+            </RelativeLayout>
+
+            <!--平台热线-->
+            <RelativeLayout
+                android:id="@+id/rl_my_page_mid_merchant_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/dp_10"
+                android:paddingTop="@dimen/dp_10">
+
+                <TextView
+                    style="@style/my_page_mid_integral_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/platform_hotline"
+                    android:text="平台热线"
+                    android:textSize="@dimen/sp_16" />
+
+                <TextView
+                    style="@style/my_page_mid_integral_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:drawableRight="@drawable/ic_arrow_right" />
             </RelativeLayout>
         </LinearLayout>
 
         <!--我的好友-->
         <LinearLayout
-            android:layout_marginTop="16dp"
-            android:layout_marginLeft="13dp"
-            android:layout_marginRight="13dp"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_13"
+            android:layout_marginRight="@dimen/dp_13"
+            android:layout_marginTop="@dimen/dp_16"
             android:background="@color/white"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/dp_15"
+            android:paddingLeft="@dimen/dp_8"
+            android:paddingRight="@dimen/dp_8"
+            android:paddingTop="@dimen/dp_15">
             <!--我的好友-->
             <LinearLayout
                 android:id="@+id/ll_my_page_bottom_my_friends"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:layout_gravity="center">
+                android:orientation="vertical">
+
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/home_my_page_bottom_my_friends"/>
+                    android:layout_width="@dimen/dp_40"
+                    android:layout_height="@dimen/dp_40"
+                    android:src="@drawable/home_my_page_bottom_my_friends" />
+
                 <TextView
-                    android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
                     android:text="我的好友"
-                    android:textSize="14dp"
-                    android:textColor="@color/red"/>
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/sp_14" />
             </LinearLayout>
             <!--我的收藏-->
             <LinearLayout
                 android:id="@+id/ll_my_page_bottom_my_collection"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:layout_gravity="center">
+                android:orientation="vertical">
+
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/home_my_page_bottom_my_collection"/>
+                    android:layout_width="@dimen/dp_40"
+                    android:layout_height="@dimen/dp_40"
+                    android:src="@drawable/home_my_page_bottom_my_collection" />
+
                 <TextView
-                    android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
                     android:text="我的收藏"
-                    android:textSize="14dp"
-                    android:textColor="@color/red"/>
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/sp_14" />
             </LinearLayout>
             <!--我的钱包-->
             <LinearLayout
                 android:id="@+id/ll_my_page_bottom_my_money_package"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:layout_gravity="center">
+                android:orientation="vertical">
+
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/home_my_page_bottom_my_money_packge"/>
+                    android:layout_width="@dimen/dp_40"
+                    android:layout_height="@dimen/dp_40"
+                    android:src="@drawable/home_my_page_bottom_my_money_packge" />
+
                 <TextView
-                    android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
                     android:text="我的钱包"
-                    android:textSize="14dp"
-                    android:textColor="@color/red"/>
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/sp_14" />
             </LinearLayout>
             <!--我的订单-->
             <LinearLayout
                 android:id="@+id/ll_my_page_bottom_my_cargo"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:layout_gravity="center">
+                android:orientation="vertical">
+
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/home_my_page_bottom_my_cargo"/>
+                    android:layout_width="@dimen/dp_40"
+                    android:layout_height="@dimen/dp_40"
+                    android:src="@drawable/home_my_page_bottom_my_cargo" />
+
                 <TextView
-                    android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
                     android:text="我的订单"
-                    android:textSize="14dp"
-                    android:textColor="@color/red"/>
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/sp_14" />
             </LinearLayout>
         </LinearLayout>
 
 
         <LinearLayout
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp"
-            android:layout_marginLeft="13dp"
-            android:layout_marginRight="13dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/dp_40"
+            android:layout_marginLeft="@dimen/dp_13"
+            android:layout_marginRight="@dimen/dp_13"
+            android:layout_marginTop="@dimen/dp_40"
             android:gravity="center"
-            android:layout_gravity="center">
+            android:orientation="horizontal">
+
             <View
                 android:layout_width="0dp"
+                android:layout_height="@dimen/dp_1"
                 android:layout_weight="1"
-                android:layout_height="1dp"
                 android:background="#888"></View>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15dp"
                 android:text=" 没有更多内容了 "
-                android:textColor="#888"/>
+                android:textColor="#888"
+                android:textSize="@dimen/sp_15" />
+
             <View
                 android:layout_width="0dp"
+                android:layout_height="@dimen/dp_1"
                 android:layout_weight="1"
-                android:layout_height="1dp"
                 android:background="#888"></View>
         </LinearLayout>
     </LinearLayout>

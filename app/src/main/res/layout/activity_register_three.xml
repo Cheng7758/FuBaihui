@@ -10,10 +10,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/dp_10"
         android:background="@color/colorWhite"
         android:orientation="horizontal"
-        android:padding="8dp">
+        android:padding="@dimen/dp_8">
 
         <TextView
             android:layout_width="0dp"
@@ -21,7 +21,7 @@
             android:layout_weight="1"
             android:text="@string/register_pwd"
             android:textColor="#303030"
-            android:textSize="18sp" />
+            android:textSize="@dimen/sp_18" />
 
         <EditText
             android:id="@+id/et_register_password"
@@ -29,16 +29,16 @@
             android:layout_height="wrap_content"
             android:layout_weight="3"
             android:inputType="textPassword"
-            android:textSize="18sp"
+            android:textSize="@dimen/sp_18"
             android:background="@null" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/dp_10"
         android:background="@color/colorWhite"
         android:orientation="horizontal"
-        android:padding="8dp">
+        android:padding="@dimen/dp_8">
 
         <TextView
             android:layout_width="0dp"
@@ -46,28 +46,28 @@
             android:layout_weight="1"
             android:text="@string/register_confirm_pwd"
             android:textColor="#303030"
-            android:textSize="18sp" />
+            android:textSize="@dimen/sp_18" />
 
         <EditText
             android:id="@+id/et_register_confirm_password"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:textSize="18sp"
+            android:textSize="@dimen/sp_18"
             android:inputType="textPassword"
             android:background="@null" />
     </LinearLayout>
     <Button
         android:id="@+id/btn_register"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginLeft="3dp"
-        android:layout_marginRight="3dp"
+        android:layout_height="@dimen/dp_40"
+        android:layout_marginTop="@dimen/dp_20"
+        android:layout_marginLeft="@dimen/dp_3"
+        android:layout_marginRight="@dimen/dp_3"
         android:text="注册"
         android:background="@drawable/btn_register_selected"
         android:textColor="#ffffff"
-        android:textSize="12sp"
-        android:padding="4dp"/>
+        android:textSize="@dimen/sp_12"
+        android:padding="@dimen/dp_4"/>
 
 </LinearLayout>

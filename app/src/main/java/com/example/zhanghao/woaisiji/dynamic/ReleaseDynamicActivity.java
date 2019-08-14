@@ -13,6 +13,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
@@ -48,27 +49,34 @@ import com.example.zhanghao.woaisiji.dynamic.bean.DynamicImageBean;
 import com.example.zhanghao.woaisiji.dynamic.uploadimg.FileUploadImage;
 import com.example.zhanghao.woaisiji.dynamic.util.Bimp;
 import com.example.zhanghao.woaisiji.dynamic.util.FileUtils;
+import com.example.zhanghao.woaisiji.dynamic.util.PictureUtil;
 import com.example.zhanghao.woaisiji.dynamic.util.PublicWay;
 import com.example.zhanghao.woaisiji.dynamic.util.Res;
+import com.example.zhanghao.woaisiji.friends.ui.BaseActivity;
 import com.example.zhanghao.woaisiji.global.ServerAddress;
+import com.example.zhanghao.woaisiji.resp.RespData;
+import com.example.zhanghao.woaisiji.resp.RespNull;
+import com.example.zhanghao.woaisiji.utils.FunctionUtils;
 import com.google.gson.Gson;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
  * Created by admin on 2016/10/18.
  */
-public class ReleaseDynamicActivity extends Activity {
+public class ReleaseDynamicActivity extends BaseActivity {
     private static final String TAG = "ReleaseDynamicActivity";
 
     /**
      * titleBar
      */
-    private TextView tv_title_bar_view_centre_title,tv_title_bar_view_right_right_introduction;
+    private TextView tv_title_bar_view_centre_title, tv_title_bar_view_right_right_introduction;
 
     private static final int REQUEST_CODE_GALLERY = 1;
     private static final int REQUEST_CUT_PHOTO = 3;
@@ -85,7 +93,6 @@ public class ReleaseDynamicActivity extends Activity {
     private AlterResultBean resultBean;
     private Button btnDialogCancel;
     private Button btnDialogCamera;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,7 +114,6 @@ public class ReleaseDynamicActivity extends Activity {
                     new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE},
                     1);
         }
-
         setContentView(parentView);
         initView();
         initViewRelease();
@@ -118,12 +124,67 @@ public class ReleaseDynamicActivity extends Activity {
         tv_title_bar_view_right_right_introduction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // 发布说说
-                releaseDynamicToServer();
-                for (Activity activity : PublicWay.activityList) {
-                    activity.finish();
+                if (TextUtils.isEmpty(editContent.getText().toString())) {
+                    Toast.makeText(ReleaseDynamicActivity.this, "请输入要发布的内容", Toast.LENGTH_SHORT).show();
+                    return;
                 }
-                finish();
+                showProgressDialog();
+                if (Bimp.tempSelectBitmap.size() > 0) {
+                    final List<File> filesList = new ArrayList<>();
+                    for (int i = 0; i < Bimp.tempSelectBitmap.size(); i++) {
+                        filesList.add(new File(Bimp.tempSelectBitmap.get(i).getImagePath()));
+                    }
+
+                    new Thread() {
+                        @Override
+                        public void run() {
+                            final List<File> comList = new ArrayList<>();
+                            for (File file : filesList) {
+                                Bitmap compressBitmap = PictureUtil.compressImage(file.getAbsolutePath());
+                                if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+                                    String saveFilePath = getExternalCacheDir().getPath() + file.getAbsolutePath().substring(file.getAbsolutePath().lastIndexOf("/"));
+                                    System.out.println("save:" + saveFilePath);
+                                    boolean isSave = PictureUtil.saveBitmap(compressBitmap, saveFilePath);
+
+                                    if (isSave) {
+                                        comList.add(new File(saveFilePath));
+                                    }
+                                }
+                                ;
+                            }
+
+                            if (!comList.isEmpty()) {
+                                //上传图片
+                                FunctionUtils.uploadServiceImgGroup(new Response.Listener<String>() {
+                                    @Override
+                                    public void onResponse(String response) {
+                                        dismissProgressDialog();
+                                        if (TextUtils.isEmpty(response))
+                                            return;
+                                        Gson gson = new Gson();
+                                        RespData respData = null;
+                                        try {
+                                            respData = gson.fromJson(response, RespData.class);
+                                        }catch (Exception e){}
+                                        if (respData != null && respData.getCode() == 200) {
+                                            pictureId = respData.getData();
+//                                getImageId();
+                                            releaseDynamicToServer();
+                                        }
+                                    }
+                                }, new Response.ErrorListener() {
+                                    @Override
+                                    public void onErrorResponse(VolleyError error) {
+                                        dismissProgressDialog();
+                                    }
+                                }, comList, "");
+                            }
+                        }
+                    }.start();
+
+                } else {
+                    releaseDynamicToServer();
+                }
             }
         });
     }
@@ -143,21 +204,29 @@ public class ReleaseDynamicActivity extends Activity {
         }
     }
 
+    /**
+     * 发布点评
+     */
     private void releaseDynamicToServer() {
         final String content = editContent.getText().toString().trim();
         if (!TextUtils.isEmpty(content)) {
-            StringRequest releaseRequest = new StringRequest(Request.Method.POST, ServerAddress.URL_CIRCLE_RELEASE_DYNAMIC, new Response.Listener<String>() {
+            StringRequest releaseRequest = new StringRequest(Request.Method.POST, ServerAddress.
+                    URL_CIRCLE_RELEASE_DYNAMIC, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
-                    transServerData(response);
-                    Toast.makeText(ReleaseDynamicActivity.this, resultBean.msg, Toast.LENGTH_SHORT).show();
-                    if (resultBean.code == 200) {
-
+                    dismissProgressDialog();
+                    if (TextUtils.isEmpty(response))
+                        return;
+                    Gson gson = new Gson();
+                    RespNull respNull = gson.fromJson(response, RespNull.class);
+                    if (respNull.getCode() == 200) {
+                        finish();
                     }
                 }
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
+                    dismissProgressDialog();
                     Toast.makeText(ReleaseDynamicActivity.this, "网络请求失败", Toast.LENGTH_SHORT).show();
                 }
             }) {
@@ -166,7 +235,6 @@ public class ReleaseDynamicActivity extends Activity {
                     Map<String, String> params = new HashMap<>();
                     params.put("uid", WoAiSiJiApp.getUid());
                     params.put("content", content);
-                    Log.d(TAG, pictureId);
                     if (!TextUtils.isEmpty(pictureId)) {
                         params.put("picture", pictureId);
                     }
@@ -177,29 +245,12 @@ public class ReleaseDynamicActivity extends Activity {
         }
     }
 
-    private void transServerData(String response) {
-        Gson gson = new Gson();
-        resultBean = gson.fromJson(response, AlterResultBean.class);
-    }
-
     @Override
     protected void onRestart() {
         super.onRestart();
         gridAdapter.update();
-        pictureId = "";
-        getImageId();
-    }
-
-    //    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            for (int i = 0; i < PublicWay.activityList.size(); i++) {
-                if (null != PublicWay.activityList.get(i)) {
-                    PublicWay.activityList.get(i).finish();
-                }
-            }
-        }
-        return true;
+//        pictureId = "";
+//        getImageId();
     }
 
     private void initView() {
@@ -219,8 +270,8 @@ public class ReleaseDynamicActivity extends Activity {
         pop.setOutsideTouchable(true);
         pop.setContentView(view);
 
-
         view.findViewById(R.id.tv_dialog_title).setVisibility(View.GONE);
+        //从相册获取
         btnDialogGallery = (Button) view.findViewById(R.id.dialog_btn_gallery);
         btnDialogGallery.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -234,6 +285,7 @@ public class ReleaseDynamicActivity extends Activity {
 //                finish();
             }
         });
+        //拍照
         btnDialogCamera = (Button) view.findViewById(R.id.dialog_btn_camera);
         btnDialogCamera.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -252,7 +304,7 @@ public class ReleaseDynamicActivity extends Activity {
             }
         });
 
-        gvSelectImage = (GridView) findViewById(R.id.gv_select_image);
+        gvSelectImage = (GridView) findViewById(R.id.gv_select_image);  //添加图片按钮
         gvSelectImage.setSelector(new ColorDrawable(Color.TRANSPARENT));
         gridAdapter = new GridAdapter(this);
         gridAdapter.update();
@@ -266,7 +318,6 @@ public class ReleaseDynamicActivity extends Activity {
                 } else {
 
                 }
-
             }
         });
 
@@ -291,13 +342,61 @@ public class ReleaseDynamicActivity extends Activity {
                 if (Bimp.tempSelectBitmap.size() < 9 && resultCode == RESULT_OK) {
                     DynamicImageBean takePhoto = new DynamicImageBean();
                     takePhoto.setImagePath(FileUtils.picPath);
-                    Log.d("ss", "相机的" + FileUtils.picPath);
+                    Log.d("-------ss", "相机的" + FileUtils.picPath);
+                    if (Bimp.tempSelectBitmap != null) {
+                        Bimp.tempSelectBitmap.clear();
+                    }
                     Bimp.tempSelectBitmap.add(takePhoto);
+                    new Thread() {
+
+                    }.start();
+                    Bitmap compressBitmap = PictureUtil.compressImage(takePhoto.getImagePath());
+                    if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+                        String saveFilePath = getExternalCacheDir().getPath() + FileUtils.picPath.substring(FileUtils.picPath.lastIndexOf("/"));
+                        System.out.println("save:" + saveFilePath);
+                        boolean isSave = PictureUtil.saveBitmap(compressBitmap, saveFilePath);
+                        if (isSave) {
+                            Bimp.tempSelectBitmap.clear();
+                            takePhoto = new DynamicImageBean();
+                            takePhoto.setImagePath(saveFilePath);
+                            Bimp.tempSelectBitmap.add(takePhoto);
+
+                            showProgressDialog();
+                            if (Bimp.tempSelectBitmap.size() > 0) {
+                                List<File> filesList = new ArrayList<>();
+                                for (int i = 0; i < Bimp.tempSelectBitmap.size(); i++) {
+                                    filesList.add(new File(Bimp.tempSelectBitmap.get(i).getImagePath()));
+                                }
+                                //上传图片
+                                FunctionUtils.uploadServiceImgGroup(new Response.Listener<String>() {
+                                    @Override
+                                    public void onResponse(String response) {
+                                        dismissProgressDialog();
+                                        if (TextUtils.isEmpty(response))
+                                            return;
+                                        Gson gson = new Gson();
+                                        RespData respData = gson.fromJson(response, RespData.class);
+                                        if (respData.getCode() == 200) {
+                                            pictureId = respData.getData();
+//                                getImageId();
+                                            releaseDynamicToServer();
+                                        }
+                                    }
+                                }, new Response.ErrorListener() {
+                                    @Override
+                                    public void onErrorResponse(VolleyError error) {
+                                        dismissProgressDialog();
+                                    }
+                                }, filesList, "");
+                            } else {
+                                releaseDynamicToServer();
+                            }
+                        }
+                    }
                 }
                 break;
         }
     }
-
 
     @SuppressLint("HandlerLeak")
     public class GridAdapter extends BaseAdapter {
@@ -408,7 +507,6 @@ public class ReleaseDynamicActivity extends Activity {
             }).start();
         }
     }
-
 
     // 使用系统当前日期加以调整作为照片的名称
     private static String getPhotoFileName() {

@@ -268,7 +268,12 @@ public class NewMemberDetailPager extends BasePagerDetail implements PullToRefre
                 public void onClick(View view) {
                     String username = item.name;
                     // demo中直接进入聊天页面，实际一般是进入用户详情页
-                    mActivity.startActivity(new Intent(mActivity, ChatActivity.class).putExtra("userId", username));
+                    Intent intent = new Intent(mActivity, ChatActivity.class);
+
+                    intent.putExtra("userId", item.uid);
+                    intent.putExtra("username", item.nickname);
+                    intent.putExtra("pic", item.headpic);
+                    mActivity.startActivity(intent);
                 }
             });
             return view;

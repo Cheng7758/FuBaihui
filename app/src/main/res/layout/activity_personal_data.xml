@@ -7,212 +7,231 @@
 
     <include layout="@layout/title_personal" />
 
-   <!-- <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="@color/colorRegisterBg">
+    <!-- <RelativeLayout
+         android:layout_width="match_parent"
+         android:layout_height="56dp"
+         android:background="@color/colorRegisterBg">
 
-        <ImageView
-            android:id="@+id/iv_register_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_centerVertical="true"
-            android:src="@drawable/back1"/>
-        <TextView
-            android:id="@+id/tv_register_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/iv_register_back"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:text="个人资料"
-            android:textSize="18sp"
-            android:textColor="@color/colorWhite"
-            />
+         <ImageView
+             android:id="@+id/iv_register_back"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="8dp"
+             android:layout_centerVertical="true"
+             android:src="@drawable/back1"/>
+         <TextView
+             android:id="@+id/tv_register_title"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_toRightOf="@id/iv_register_back"
+             android:layout_centerVertical="true"
+             android:layout_marginLeft="20dp"
+             android:layout_marginTop="5dp"
+             android:layout_marginBottom="5dp"
+             android:text="个人资料"
+             android:textSize="18sp"
+             android:textColor="@color/colorWhite"
+             />
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="8dp"
-            android:layout_alignParentRight="true"
-            android:visibility="gone"
-            android:background="@null"/>
+         <ImageButton
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_centerVertical="true"
+             android:layout_marginRight="8dp"
+             android:layout_alignParentRight="true"
+             android:visibility="gone"
+             android:background="@null"/>
 
-    </RelativeLayout>-->
+     </RelativeLayout>-->
 
     <LinearLayout
         android:id="@+id/ll_replace_header"
         android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center_vertical"
+        android:layout_height="@dimen/dp_90"
+        android:layout_marginTop="@dimen/dp_10"
         android:background="@color/colorWhite"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_8"
             android:layout_weight="1"
-            android:layout_marginLeft="8dp"
             android:text="头像"
             android:textColor="#000000"
-            android:textSize="16sp"/>
+            android:textSize="@dimen/sp_16" />
+
         <com.example.zhanghao.woaisiji.view.RoundImageView
             android:id="@+id/iv_personal_head"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:src="@drawable/bill_driver_present"
-            />
+            android:layout_width="@dimen/dp_70"
+            android:layout_height="@dimen/dp_70"
+            android:src="@drawable/ic_fubaihui" />
+
         <ImageButton
             android:id="@+id/ib_update_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="@dimen/dp_5"
+            android:layout_marginRight="@dimen/dp_5"
             android:background="@null"
-            android:src="@drawable/iv_enter"/>
+            android:src="@drawable/iv_enter" />
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="#CBCBCB"/>
+        android:layout_height="@dimen/dp_0_5"
+        android:background="#CBCBCB" />
+
     <LinearLayout
         android:id="@+id/ll_user_account"
         android:layout_width="match_parent"
-        android:layout_height="46dp"
-        android:gravity="center_vertical"
+        android:layout_height="@dimen/dp_46"
         android:background="@color/colorWhite"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="46dp"
-            android:layout_marginLeft="8dp"
-            android:gravity="center_vertical"
+            android:layout_height="@dimen/dp_46"
+            android:layout_marginLeft="@dimen/dp_8"
             android:layout_weight="1"
+            android:gravity="center_vertical"
             android:text="账号"
-            android:textSize="16sp"
-            android:textColor="#000000"/>
+            android:textColor="#000000"
+            android:textSize="@dimen/sp_16" />
+
         <TextView
             android:id="@+id/tv_user_account_num"
             android:layout_width="wrap_content"
-            android:layout_height="46dp"
+            android:layout_height="@dimen/dp_46"
             android:gravity="center_vertical"
             android:text="aaaaaaaaaa"
-            android:textSize="16sp"/>
+            android:textSize="@dimen/sp_16" />
+
         <ImageButton
             android:id="@+id/ib_user_number"
             android:layout_width="wrap_content"
-            android:layout_height="36dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp"
-            android:gravity="center_vertical"
+            android:layout_height="@dimen/dp_36"
+            android:layout_marginLeft="@dimen/dp_5"
+            android:layout_marginRight="@dimen/dp_5"
             android:background="@null"
-            android:src="@drawable/iv_enter"/>
+            android:gravity="center_vertical"
+            android:src="@drawable/iv_enter" />
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="#CBCBCB"/>
+        android:layout_height="@dimen/dp_0_5"
+        android:background="#CBCBCB" />
+
     <LinearLayout
         android:id="@+id/ll_user_nick"
         android:layout_width="match_parent"
-        android:layout_height="46dp"
-        android:gravity="center_vertical"
+        android:layout_height="@dimen/dp_46"
         android:background="@color/colorWhite"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="46dp"
-            android:layout_marginLeft="8dp"
-            android:gravity="center_vertical"
+            android:layout_height="@dimen/dp_46"
+            android:layout_marginLeft="@dimen/dp_8"
             android:layout_weight="1"
+            android:gravity="center_vertical"
             android:text="昵称"
-            android:textSize="16sp"
-            android:textColor="#000000"/>
+            android:textColor="#000000"
+            android:textSize="@dimen/sp_16" />
+
         <TextView
             android:id="@+id/tv_data_user_nick"
             android:layout_width="wrap_content"
-            android:layout_height="46dp"
+            android:layout_height="@dimen/dp_46"
             android:gravity="center_vertical"
             android:text="aaaaaaaaaa"
-            android:textSize="16sp"/>
+            android:textSize="@dimen/sp_16" />
+
         <ImageButton
             android:id="@+id/ib_user_nick"
             android:layout_width="wrap_content"
-            android:layout_height="36dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp"
-            android:gravity="center_vertical"
+            android:layout_height="@dimen/dp_36"
+            android:layout_marginLeft="@dimen/dp_5"
+            android:layout_marginRight="@dimen/dp_5"
             android:background="@null"
-            android:src="@drawable/iv_enter"/>
+            android:gravity="center_vertical"
+            android:src="@drawable/iv_enter" />
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="#CBCBCB"/>
+        android:layout_height="@dimen/dp_0_5"
+        android:background="#CBCBCB" />
+
     <LinearLayout
         android:id="@+id/ll_basic_information"
         android:layout_width="match_parent"
-        android:layout_height="46dp"
-        android:gravity="center_vertical"
+        android:layout_height="@dimen/dp_46"
         android:background="@color/colorWhite"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="46dp"
-            android:layout_marginLeft="8dp"
+            android:layout_height="@dimen/dp_46"
+            android:layout_marginLeft="@dimen/dp_8"
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:text="基本信息"
-            android:textSize="16sp"
-            android:textColor="#000000"/>
+            android:textColor="#000000"
+            android:textSize="@dimen/sp_16" />
 
         <ImageButton
             android:id="@+id/ib_basic_information"
             android:layout_width="wrap_content"
-            android:layout_height="36dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp"
-            android:gravity="center_vertical"
+            android:layout_height="@dimen/dp_36"
+            android:layout_marginLeft="@dimen/dp_5"
+            android:layout_marginRight="@dimen/dp_5"
             android:background="@null"
-            android:src="@drawable/iv_enter"/>
+            android:gravity="center_vertical"
+            android:src="@drawable/iv_enter" />
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="#CBCBCB"/>
+        android:layout_height="@dimen/dp_0_5"
+        android:background="#CBCBCB" />
+
     <LinearLayout
         android:id="@+id/ll_harvest_address"
         android:layout_width="match_parent"
-        android:layout_height="46dp"
-        android:gravity="center_vertical"
+        android:layout_height="@dimen/dp_46"
         android:background="@color/colorWhite"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="46dp"
-            android:layout_marginLeft="8dp"
+            android:layout_height="@dimen/dp_46"
+            android:layout_marginLeft="@dimen/dp_8"
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:text="我的收货地址"
-            android:textSize="16sp"
-            android:textColor="#000000"/>
+            android:textColor="#000000"
+            android:textSize="@dimen/sp_16" />
 
         <ImageButton
             android:id="@+id/ib_harvest_address"
             android:layout_width="wrap_content"
-            android:layout_height="36dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp"
+            android:layout_height="@dimen/dp_36"
+            android:layout_marginLeft="@dimen/dp_5"
+            android:layout_marginRight="@dimen/dp_5"
             android:background="@null"
             android:gravity="center_vertical"
-            android:src="@drawable/iv_enter"/>
+            android:src="@drawable/iv_enter" />
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="#CBCBCB"/>
+        android:layout_height="@dimen/dp_0_5"
+        android:background="#CBCBCB" />
 </LinearLayout>

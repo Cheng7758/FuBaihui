@@ -6,7 +6,7 @@
     android:orientation="vertical">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/dp_50"
         android:background="#FF5000">
         <Button
             android:id="@+id/btn_back1"
@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="内容"
-            android:textSize="20sp"
+            android:textSize="@dimen/sp_20"
             android:textColor="@color/white"/>
         <Button
             android:id="@+id/btn_travel_release"
@@ -32,23 +32,23 @@
             android:layout_centerVertical="true"
             android:background="@null"
             android:text="发布"
-            android:textSize="16sp"
+            android:textSize="@dimen/sp_16"
             android:textColor="@color/white"/>
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="@dimen/dp_80"
         android:background="@color/white">
 
         <EditText
             android:id="@+id/et_release_title"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:padding="5dp"
+            android:layout_height="@dimen/dp_60"
+            android:padding="@dimen/dp_5"
             android:background="@null"
             android:hint="你的标题（20字以内）"
-            android:textSize="16dp"/>
+            android:textSize="@dimen/dp_16"/>
 
         <TextView
             android:id="@+id/tv_release_title_num_limit"
@@ -57,24 +57,24 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:text="20/20"
-            android:textSize="12sp" />
+            android:textSize="@dimen/sp_12" />
     </RelativeLayout>
 
     <View
         android:id="@+id/dashLine"
         android:layout_width="match_parent"
-        android:layout_height="3dp"
+        android:layout_height="@dimen/dp_3"
         android:background="@drawable/horizontal_line_divider"
         android:layerType="software"
         android:orientation="horizontal" />
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="260dp">
+        android:layout_height="@dimen/dp_260">
         <EditText
             android:id="@+id/my_edit_self_drive_content"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:padding="5dp"
+            android:layout_height="@dimen/dp_40"
+            android:padding="@dimen/dp_5"
             android:background="@null"
             android:hint="正文详情"
             android:maxLines="100" />
@@ -90,9 +90,9 @@
 
         <ImageView
             android:id="@+id/iv_selected_pic"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_margin="10dp"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="@dimen/dp_100"
+            android:layout_margin="@dimen/dp_10"
             android:background="@null"
             android:hint="正文详情"
             android:maxLines="100" />
@@ -100,7 +100,7 @@
             android:layout_width="match_parent"
             android:layout_alignParentBottom="true"
             android:background="#F2F2F2"
-            android:layout_height="40dp">
+            android:layout_height="@dimen/dp_40">
             <ImageButton
                 android:id="@+id/ib_self_drive_share"
                 android:layout_width="wrap_content"

@@ -1,5 +1,7 @@
 package com.example.zhanghao.woaisiji.resp;
 
+import com.example.zhanghao.woaisiji.bean.fbh.FBHStoreCategory;
+
 import java.util.List;
 
 /**
@@ -17,24 +19,4 @@ public class RespFBHStoreCategory extends RespBase{
         this.data = data;
     }
 
-    public static class FBHStoreCategory {
-
-        private String id ,title;
-
-        public String getId() {
-            return id;
-        }
-
-        public void setId(String id) {
-            this.id = id;
-        }
-
-        public String getTitle() {
-            return title;
-        }
-
-        public void setTitle(String title) {
-            this.title = title;
-        }
-    }
 }

@@ -8,18 +8,18 @@
     <RelativeLayout
         android:id="@+id/showallphoto_headview"
         android:layout_width="fill_parent"
-        android:layout_height="45dp"
+        android:layout_height="@dimen/dp_45"
         android:background="@drawable/plugin_camera_title_bar" 
         android:gravity="center_vertical"
         >
         <Button
             android:background="@drawable/plugin_camera_title_btn_back"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_width="70dp"
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_marginBottom="@dimen/dp_5"
+            android:layout_width="@dimen/dp_70"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:textSize="14sp"
+            android:textSize="@dimen/sp_14"
             android:textColor="#fff"
             android:id="@+id/showallphoto_back"
             android:text="@string/album"
@@ -31,20 +31,20 @@
        		android:text="@string/photo"
        		android:layout_centerInParent="true"
        		android:singleLine="true"
-       		android:textSize="20sp"		
+       		android:textSize="@dimen/sp_20"
 			android:textColor="#ffffff"
             />
         
         <Button
-            android:layout_width="67dp" 
+            android:layout_width="@dimen/dp_67"
       	    android:layout_height="wrap_content"
       	    android:layout_alignParentRight="true" 
       	    android:layout_centerVertical="true"
-      	    android:layout_marginRight="5dp"
+      	    android:layout_marginRight="@dimen/dp_5"
             android:id="@+id/showallphoto_cancel"
             android:text="@string/camera_cancel"
             android:textColor="#fff"
-        	android:textSize="15dp"
+        	android:textSize="@dimen/dp_15"
 			android:background="@drawable/plugin_camera_title_btn_cancel"
             />
     </RelativeLayout>
@@ -52,25 +52,25 @@
     <RelativeLayout
         android:id="@+id/showallphoto_bottom_layout"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/dp_50"
         android:layout_alignParentBottom="true"
         android:background="@drawable/plugin_camera_bottom_bar" >
 
         <Button
             android:id="@+id/showallphoto_preview"
-            android:layout_width="90dp"
+            android:layout_width="@dimen/dp_90"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="@dimen/dp_10"
             android:text="@string/preview"
             android:background="@drawable/plugin_camera_title_btn_preview"
             />
         <Button
             android:id="@+id/showallphoto_ok_button"
-            android:layout_width="90dp"
+            android:layout_width="@dimen/dp_90"
             android:layout_height="wrap_content"
-             android:layout_marginRight="10dp"
+             android:layout_marginRight="@dimen/dp_10"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:text="@string/unfinished"
@@ -86,10 +86,10 @@
         android:layout_above="@id/showallphoto_bottom_layout"
         android:layout_below="@id/showallphoto_headview"
         android:layout_centerInParent="true"
-        android:layout_marginTop="2dp"
-        android:horizontalSpacing="10dp"
+        android:layout_marginTop="@dimen/dp_2"
+        android:horizontalSpacing="@dimen/dp_10"
         android:numColumns="4"
-        android:verticalSpacing="10dp"
+        android:verticalSpacing="@dimen/dp_10"
         android:background="@color/albumback" />
 
     <ProgressBar

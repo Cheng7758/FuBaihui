@@ -16,7 +16,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="@dimen/dp_200"
             android:background="#FF5000"
             android:orientation="vertical">
 
@@ -25,7 +25,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="@dimen/dp_24"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -41,13 +41,13 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:button="@null"
-                        android:drawablePadding="8dp"
+                        android:drawablePadding="@dimen/dp_8"
                         android:drawableTop="@drawable/wenda_tiwen"
                         android:gravity="center_horizontal"
-                        android:padding="10dp"
+                        android:padding="@dimen/dp_10"
                         android:text="提问"
                         android:textColor="#FCFDF5"
-                        android:textSize="18sp" />
+                        android:textSize="@dimen/sp_18" />
 
                     <RadioButton
                         android:id="@+id/rb_my_answer"
@@ -55,13 +55,13 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:button="@null"
-                        android:drawablePadding="8dp"
+                        android:drawablePadding="@dimen/dp_8"
                         android:drawableTop="@drawable/wenda_wodehuida"
                         android:gravity="center_horizontal"
-                        android:padding="10dp"
+                        android:padding="@dimen/dp_10"
                         android:text="我的回答"
                         android:textColor="#FCFDF5"
-                        android:textSize="18sp" />
+                        android:textSize="@dimen/sp_18" />
 
                     <RadioButton
                         android:id="@+id/rb_my_questions"
@@ -69,13 +69,13 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:button="@null"
-                        android:drawablePadding="8dp"
+                        android:drawablePadding="@dimen/dp_0"
                         android:drawableTop="@drawable/wenda_wodetiwen"
                         android:gravity="center_horizontal"
-                        android:padding="10dp"
+                        android:padding="@dimen/dp_10"
                         android:text="我的提问"
                         android:textColor="#FCFDF5"
-                        android:textSize="18sp" />
+                        android:textSize="@dimen/sp_18" />
                 </RadioGroup>
 
             </LinearLayout>
@@ -90,7 +90,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingTop="10dp">
+            android:paddingTop="@dimen/dp_10">
 
             <RadioGroup
                 android:id="@+id/rg_question_answer_indicator"
@@ -100,41 +100,41 @@
 
                 <RadioButton
                     android:id="@+id/rb_newest_indicator"
-                    android:layout_width="80dp"
+                    android:layout_width="@dimen/dp_80"
                     android:layout_height="wrap_content"
                     android:button="@null"
                     android:gravity="center"
                     android:checked="true"
                     android:text="最新"
                     android:textColor="@color/txt_tab_green_selector"
-                    android:textSize="16sp" />
+                    android:textSize="@dimen/sp_16" />
 
                 <RadioButton
                     android:id="@+id/rb_recommend_indicator"
-                    android:layout_width="80dp"
+                    android:layout_width="@dimen/dp_80"
                     android:layout_height="wrap_content"
                     android:button="@null"
                     android:gravity="center"
                     android:text="推荐"
                     android:textColor="@color/txt_tab_green_selector"
-                    android:textSize="16sp" />
+                    android:textSize="@dimen/sp_16" />
 
                 <RadioButton
                     android:id="@+id/rb_high_price_indicator"
-                    android:layout_width="80dp"
+                    android:layout_width="@dimen/dp_80"
                     android:layout_height="wrap_content"
                     android:button="@null"
                     android:gravity="center"
                     android:text="高悬赏"
                     android:textColor="@color/txt_tab_green_selector"
-                    android:textSize="16sp" />
+                    android:textSize="@dimen/sp_16" />
             </RadioGroup>
 
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="3dp"
-                android:layout_marginTop="2dp">
+                android:layout_marginBottom="@dimen/dp_3"
+                android:layout_marginTop="@dimen/dp_2">
                 <!-- android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"-->
 
@@ -160,7 +160,7 @@
                 android:layout_height="match_parent"
                 android:background="#FFFFFF"
                 android:divider="#D5D5D5"
-                android:dividerHeight="1dp">
+                android:dividerHeight="@dimen/dp_1">
 
             </com.example.zhanghao.woaisiji.view.SiJiWenDaListView>
 

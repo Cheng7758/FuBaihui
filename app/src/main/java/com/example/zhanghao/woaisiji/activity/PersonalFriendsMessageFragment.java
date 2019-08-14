@@ -45,6 +45,7 @@ public class PersonalFriendsMessageFragment extends EaseConversationListFragment
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 EMConversation conversation = conversationListView.getItem(position);
                 String username = conversation.getUserName();
+//                String username = conversation.get();
 //                Log.d("toChat",username);
                 if (username.equals(EMClient.getInstance().getCurrentUser()))
                     Toast.makeText(getActivity(), R.string.Cant_chat_with_yourself, Toast.LENGTH_SHORT).show();
@@ -79,7 +80,6 @@ public class PersonalFriendsMessageFragment extends EaseConversationListFragment
         }
     }
 
-
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         getActivity().getMenuInflater().inflate(R.menu.em_delete_message, menu);
@@ -93,7 +93,8 @@ public class PersonalFriendsMessageFragment extends EaseConversationListFragment
         } else if (item.getItemId() == R.id.delete_conversation) {
             deleteMessage = false;
         }
-        EMConversation tobeDeleteCons = conversationListView.getItem(((AdapterView.AdapterContextMenuInfo) item.getMenuInfo()).position);
+        EMConversation tobeDeleteCons = conversationListView.getItem(((AdapterView.AdapterContextMenuInfo)
+                item.getMenuInfo()).position);
         if (tobeDeleteCons == null) {
             return true;
         }
@@ -109,7 +110,6 @@ public class PersonalFriendsMessageFragment extends EaseConversationListFragment
             e.printStackTrace();
         }
         refresh();
-
         // update unread count
 //        ((PersonalFriendsActivity) getActivity()).updateUnreadLabel();
 //        ((PersonalFriendsActivity) getActivity()).updateUnreadLabel();

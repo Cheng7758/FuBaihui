@@ -19,7 +19,7 @@ public class MyOrderActivity extends AppCompatActivity implements View.OnClickLi
     private ImageView my_order_back;
     private TabLayout tabLayout;
     private ViewPager pager;
-    String[] tabTitle = new String[]{"全部","待付款","待发货","待收货","评价"};
+    String[] tabTitle = new String[]{"全部", "待付款", "待发货", "待收货", "评价"};
     private ArrayList<Fragment> fragmentList;
 
     @Override
@@ -33,10 +33,10 @@ public class MyOrderActivity extends AppCompatActivity implements View.OnClickLi
     private void initData() {
         fragmentList = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
-            fragmentList.add(new MyOrderFragment(i));
+            MyOrderFragment instance = MyOrderFragment.getInstance(i);
+            fragmentList.add(instance);
         }
-
-        pager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()){
+        pager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
 
             @Override
             public int getCount() {

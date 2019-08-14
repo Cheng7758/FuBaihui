@@ -1,10 +1,8 @@
 package com.example.zhanghao.woaisiji.fragment.my;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -14,12 +12,11 @@ import android.view.ViewGroup;
 
 import com.example.zhanghao.woaisiji.R;
 import com.example.zhanghao.woaisiji.WoAiSiJiApp;
-import com.example.zhanghao.woaisiji.activity.my.MyOrderActivity;
-import com.example.zhanghao.woaisiji.activity.my.MyOrderDetailActivity;
 import com.example.zhanghao.woaisiji.adapter.my.MyOrderAdapter;
 import com.example.zhanghao.woaisiji.bean.my.OrderBean;
 import com.example.zhanghao.woaisiji.httpurl.Myserver;
 import com.example.zhanghao.woaisiji.utils.http.NetManager;
+import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import java.util.HashMap;
 import java.util.List;
@@ -38,20 +35,25 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * A simple {@link Fragment} subclass.
  */
 @SuppressLint("ValidFragment")
-public class MyOrderFragment extends Fragment {
+public class MyOrderFragment extends Fragment implements XRecyclerView.LoadingListener {
 
-    private RecyclerView order_rlv;
+    private XRecyclerView order_rlv;
     private int mIndex;
     private MyOrderAdapter mAdapter;
 
-    public MyOrderFragment(int pI) {
-        mIndex = pI;
+    public static MyOrderFragment getInstance(int i) {
+        MyOrderFragment fragment = new MyOrderFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt("i", i);
+        fragment.setArguments(bundle);
+        return fragment;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_my_order, container, false);
+        mIndex = getArguments().getInt("i");
         initView(view);
         initData();
         return view;
@@ -60,8 +62,8 @@ public class MyOrderFragment extends Fragment {
     private void initData() {
         final String uid = WoAiSiJiApp.getUid();
         final String token = WoAiSiJiApp.token;
-        Map<String, String> params = new HashMap<>();
-        params.put("select_t", mIndex + "");
+        Map<String, Object> params = new HashMap<>();
+        params.put("select_t", mIndex );
         params.put("uid", uid);
         params.put("token", token);
         NetManager.getNetManager().getMyService(Myserver.url)
@@ -76,11 +78,16 @@ public class MyOrderFragment extends Fragment {
 
                     @Override
                     public void onNext(OrderBean value) {
+                        if (value.getData() == null) {
+                            return;
+                        }
                         Log.e("--订单", value.getData().toString());
-                        final List<OrderBean.DataBean> beanList = value.getData();
-                        order_rlv.setLayoutManager(new LinearLayoutManager(getContext()));
-                        mAdapter = new MyOrderAdapter(getContext(), beanList, mIndex);
-                        order_rlv.setAdapter(mAdapter);
+                        if (value.getCode() == 200 && value.getData().size() > 0) {
+                            final List<OrderBean.DataBean> beanList = value.getData();
+                            order_rlv.setLayoutManager(new LinearLayoutManager(getContext()));
+                            mAdapter = new MyOrderAdapter(getContext(), beanList, mIndex);
+                            order_rlv.setAdapter(mAdapter);
+                        }
                     }
 
                     @Override
@@ -96,7 +103,19 @@ public class MyOrderFragment extends Fragment {
     }
 
     private void initView(View view) {
-        order_rlv = (RecyclerView) view.findViewById(R.id.order_rlv);
+        order_rlv = (XRecyclerView) view.findViewById(R.id.order_rlv);
+        order_rlv.setLoadingListener(this);
     }
 
+    @Override
+    public void onRefresh() {
+        initData();
+        order_rlv.refreshComplete();
+        mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onLoadMore() {
+        order_rlv.refreshComplete();
+    }
 }

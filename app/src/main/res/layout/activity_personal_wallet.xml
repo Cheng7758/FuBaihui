@@ -5,214 +5,234 @@
     android:background="#f2f2f2"
     android:orientation="vertical">
 
-    <include
-        layout="@layout/title_bar_view_layout"/>
+    <include layout="@layout/title_bar_view_layout" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="#f2f2f2">
+        android:background="#f2f2f2"
+        android:orientation="horizontal">
         <!--金积分-->
         <LinearLayout
             android:id="@+id/ll_personal_wallet_gold_integral"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="@dimen/dp_0"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
             android:orientation="vertical"
-            android:gravity="center">
+            android:paddingBottom="@dimen/dp_15"
+            android:paddingTop="@dimen/dp_15">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_personal_my_wallet_gold_integral"
-                android:drawablePadding="10dp"
-                android:textSize="15dp"
-                android:text="金积分"/>
+                android:drawablePadding="@dimen/dp_10"
+                android:text="金积分"
+                android:textSize="@dimen/dp_15" />
+
             <TextView
                 android:id="@+id/tv_personal_wallet_gold_integral"
-                android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text=""/>
+                android:layout_marginTop="@dimen/dp_10"
+                android:text=""
+                android:textSize="@dimen/dp_20" />
         </LinearLayout>
+
         <View
-            android:layout_width="1dp"
+            android:layout_width="@dimen/dp_1"
             android:layout_height="match_parent"
-            android:background="#e3e3e3"/>
+            android:background="#e3e3e3" />
         <!--余额-->
         <LinearLayout
             android:id="@+id/ll_personal_wallet_balance"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="@dimen/dp_0"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
             android:orientation="vertical"
-            android:gravity="center">
+            android:paddingBottom="@dimen/dp_15"
+            android:paddingTop="@dimen/dp_15">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_personal_my_wallet_balance"
-                android:drawablePadding="10dp"
-                android:textSize="15dp"
-                android:text="余额"/>
+                android:drawablePadding="@dimen/dp_10"
+                android:text="余额"
+                android:textSize="@dimen/dp_15" />
+
             <TextView
-                android:layout_marginTop="10dp"
                 android:id="@+id/tv_personal_wallet_balance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text=""/>
+                android:layout_marginTop="@dimen/dp_10"
+                android:text=""
+                android:textSize="@dimen/dp_20" />
         </LinearLayout>
 
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#e3e3e3"/>
+        android:layout_height="@dimen/dp_1"
+        android:background="#e3e3e3" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="#f2f2f2">
+        android:background="#f2f2f2"
+        android:orientation="horizontal">
         <!--商家金积分-->
         <LinearLayout
             android:id="@+id/ll_personal_wallet_merchant_gold_integral"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="@dimen/dp_0"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
             android:orientation="vertical"
-            android:gravity="center">
+            android:paddingBottom="@dimen/dp_15"
+            android:paddingTop="@dimen/dp_15">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_personal_my_wallet_gold_integral"
-                android:drawablePadding="10dp"
-                android:textSize="15dp"
-                android:text="商家金积分"/>
+                android:drawablePadding="@dimen/dp_10"
+                android:text="商家金积分"
+                android:textSize="@dimen/dp_15" />
+
             <TextView
-                android:layout_marginTop="10dp"
                 android:id="@+id/tv_personal_wallet_merchant_gold_integral"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text=""/>
+                android:layout_marginTop="@dimen/dp_10"
+                android:text=""
+                android:textSize="@dimen/dp_20" />
         </LinearLayout>
+
         <View
-            android:layout_width="1dp"
+            android:layout_width="@dimen/dp_1"
             android:layout_height="match_parent"
-            android:background="#e3e3e3"/>
+            android:background="#e3e3e3" />
         <!--银积分-->
         <LinearLayout
             android:id="@+id/ll_personal_wallet_silver_integral"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="@dimen/dp_0"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
             android:orientation="vertical"
-            android:gravity="center">
+            android:paddingBottom="@dimen/dp_15"
+            android:paddingTop="@dimen/dp_15">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_personal_my_wallet_silver_integral"
                 android:drawablePadding="10dp"
-                android:textSize="15dp"
-                android:text="银积分"/>
+                android:text="银积分"
+                android:textSize="15dp" />
+
             <TextView
                 android:id="@+id/tv_personal_wallet_silver_integral"
-                android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text=""/>
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textSize="20dp" />
         </LinearLayout>
 
     </LinearLayout>
 
     <LinearLayout
-        android:paddingRight="13dp"
-        android:paddingLeft="13dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#fff"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingLeft="13dp"
+        android:paddingRight="13dp">
         <!--商家收款码-->
         <RelativeLayout
             android:id="@+id/rl_personal_my_wallet_merchant_collection_code"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="13dp"
+            android:gravity="center_vertical"
             android:paddingBottom="13dp"
-            android:gravity="center_vertical">
+            android:paddingTop="13dp"
+            android:visibility="gone">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_personal_my_wallet_collection_code"
                 android:drawablePadding="15dp"
                 android:text="商家收款码"
-                android:textSize="15dp"/>
+                android:textSize="15dp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:background="@drawable/ic_arrow_right"/>
+                android:background="@drawable/ic_arrow_right" />
         </RelativeLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#e3e3e3"/>
+            android:background="#e3e3e3" />
         <!--账单明细-->
         <RelativeLayout
             android:id="@+id/rl_personal_my_wallet_billing_detail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="13dp"
+            android:gravity="center_vertical"
             android:paddingBottom="13dp"
-            android:gravity="center_vertical">
+            android:paddingTop="13dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_personal_my_wallet_billing_detail"
                 android:drawablePadding="15dp"
                 android:text="账单明细"
-                android:textSize="15dp"/>
+                android:textSize="15dp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:background="@drawable/ic_arrow_right"/>
+                android:background="@drawable/ic_arrow_right" />
         </RelativeLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#e3e3e3"/>
+            android:background="#e3e3e3" />
 
         <!--购买金积分-->
         <RelativeLayout
             android:id="@+id/rl_personal_my_wallet_buy_gold_integral"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="13dp"
+            android:gravity="center_vertical"
             android:paddingBottom="13dp"
-            android:gravity="center_vertical">
+            android:paddingTop="13dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_personal_my_wallet_buy_gold_integral"
                 android:drawablePadding="15dp"
                 android:text="购买金积分"
-                android:textSize="15dp"/>
+                android:textSize="15dp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:background="@drawable/ic_arrow_right"/>
+                android:background="@drawable/ic_arrow_right" />
         </RelativeLayout>
 
     </LinearLayout>

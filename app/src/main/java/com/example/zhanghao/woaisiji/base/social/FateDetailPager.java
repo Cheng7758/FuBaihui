@@ -183,9 +183,15 @@ public class FateDetailPager extends BasePagerDetail implements View.OnClickList
 
                 break;
             case R.id.btn_social_fate:
-                String username = socialLists.get(position).name;
+                SocialPagerStickyBean.SocialList socialList = socialLists.get(position);
+                String username = socialList.name;
                 // demo中直接进入聊天页面，实际一般是进入用户详情页
-                mActivity.startActivity(new Intent(mActivity, ChatActivity.class).putExtra("userId", username));
+                Intent userId = new Intent(mActivity, ChatActivity.class)
+                        .putExtra("userId", socialList.uid)
+                        .putExtra("username",username)
+                        .putExtra("pic",socialList.headpic)
+                        ;
+                mActivity.startActivity(userId);
                 break;
             case R.id.iv_social_detail_image:
                 Intent intent = new Intent(mActivity, PersonalInfoDetailActivity.class);

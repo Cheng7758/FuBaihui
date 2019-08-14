@@ -3,6 +3,7 @@ package com.example.zhanghao.woaisiji.wxapi;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -14,8 +15,12 @@ import com.example.zhanghao.woaisiji.R;
 import com.example.zhanghao.woaisiji.WoAiSiJiApp;
 import com.example.zhanghao.woaisiji.activity.PaySuccessActivity;
 import com.example.zhanghao.woaisiji.activity.PaymentMethodActivity;
+import com.example.zhanghao.woaisiji.activity.RechargeGoldIntegralActivity;
 import com.example.zhanghao.woaisiji.global.ServerAddress;
+import com.example.zhanghao.woaisiji.resp.RespData;
+import com.example.zhanghao.woaisiji.utils.FunctionUtils;
 import com.example.zhanghao.woaisiji.utils.PublicActivityList;
+import com.google.gson.Gson;
 import com.tencent.mm.sdk.constants.ConstantsAPI;
 import com.tencent.mm.sdk.modelbase.BaseReq;
 import com.tencent.mm.sdk.modelbase.BaseResp;
@@ -56,7 +61,6 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
         String[] str = data.split("#");
         type = str[0];
         orderId = str[1];
-//		Toast.makeText(WXPayEntryActivity.this,orderId, Toast.LENGTH_SHORT).show();
         fee = str[2];
 //		Toast.makeText(WXPayEntryActivity.this,fee, Toast.LENGTH_SHORT).show();
 //		type = "1";
@@ -83,42 +87,38 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
 		// 支付结果回调...
 		if (resp.getType() == ConstantsAPI.COMMAND_PAY_BY_WX) {
 			if(resp.errCode == 0){//支付成功
-
-				StringRequest WxPayEndRequest = new StringRequest(Request.Method.POST, ServerAddress.URL_GLOD_BACK, new Response.Listener<String>() {
-					@Override
-					public void onResponse(String response) {
-						Toast.makeText(WXPayEntryActivity.this,"支付成功", Toast.LENGTH_SHORT).show();
-					}
-				}, new Response.ErrorListener() {
-					@Override
-					public void onErrorResponse(VolleyError error) {
-
-					}
-				}){
-					@Override
-					protected Map<String, String> getParams() throws AuthFailureError {
-						Map<String,String> params = new HashMap<>();
-						params.put("uid", WoAiSiJiApp.getUid());
-						params.put("orderid",orderId);
-						return params;
-					}
-				};
-				WoAiSiJiApp.mRequestQueue.add(WxPayEndRequest);
-				Intent intent = new Intent(WXPayEntryActivity.this,PaySuccessActivity.class);
-				intent.putExtra("order_num",orderId);
-				Double good_price = Double.valueOf(fee);
-				intent.putExtra("good_price",good_price);
-				startActivity(intent);
-				WXPayEntryActivity.this.finish();
+				wxPayEnd();
 			}else{
 				Toast.makeText(WXPayEntryActivity.this,"支付失败", Toast.LENGTH_SHORT).show();
 				WXPayEntryActivity.this.finish();
 			}
 		}else{
-//			Toast.makeText(WXPayEntryActivity.this,"支付失败", Toast.LENGTH_SHORT).show();
 			WXPayEntryActivity.this.finish();
 		}
 	}
 
-	
+	private void wxPayEnd() {
+		FunctionUtils.paymentEndCallBack(type , orderId,new Response.Listener<String>() {
+			@Override
+			public void onResponse(String response) {
+				if (TextUtils.isEmpty(response))
+					return;
+				Gson gson = new Gson();
+				RespData respConversion = gson.fromJson(response,RespData.class);
+				if (respConversion.getCode()==200){
+					Intent intent = new Intent(WXPayEntryActivity.this, PaySuccessActivity.class);
+					intent.putExtra("order_num", orderId);
+					intent.putExtra("good_price", fee);
+					startActivity(intent);
+					finish();
+				}
+			}
+		}, new Response.ErrorListener() {
+			@Override
+			public void onErrorResponse(VolleyError error) {
+			}
+		});
+	}
+
+
 }

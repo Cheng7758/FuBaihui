@@ -64,7 +64,6 @@ public class PersonalInfoDetailActivity extends BaseActivity implements View.OnC
             R.id.iv_detail_info_edit04,R.id.iv_detail_info_edit05,R.id.iv_detail_info_edit06,R.id.iv_detail_info_edit07
     };
 
-
     private String[] tvLeftValue = {"个人独白","职务","电话",
             "品牌","地址","城市",
             "民族"
@@ -90,7 +89,6 @@ public class PersonalInfoDetailActivity extends BaseActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_info_detail);//个人信息界面
 
-
         userId = ((WoAiSiJiApp)getApplication()).getUid();
 
         // 初始化布局
@@ -101,7 +99,6 @@ public class PersonalInfoDetailActivity extends BaseActivity implements View.OnC
     }
 
     private void initView() {
-
         btnDetailInfoBack = (Button) findViewById(R.id.btn_detail_info_back);
         btnDetailInfoBack.setOnClickListener(this);
         tvDetailInfoNickName = (TextView) findViewById(R.id.tv_detail_info_nickname);

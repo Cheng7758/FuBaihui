@@ -1,223 +1,244 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f7f7f7">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <include
-            layout="@layout/title_bar_view_layout"/>
+
+        <include layout="@layout/title_bar_view_layout" />
 
         <!--账户头像-->
         <RelativeLayout
             android:id="@+id/rl_personal_setting_hv_root"
+            style="@style/personal_setting_style"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/personal_setting_style">
+            android:layout_height="wrap_content">
+
             <TextView
-                android:layout_alignParentLeft="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:textSize="16dp"
-                android:text="账户头像"/>
+                android:text="头像"
+                android:textSize="@dimen/dp_16" />
+
             <ImageView
-                android:layout_alignParentRight="true"
                 android:id="@+id/iv_personal_setting_hv"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/icon_loading" />
-        </RelativeLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#dddddd"/>
-        <!--账户昵称-->
-        <RelativeLayout
-            android:id="@+id/rl_personal_setting_nick_name_root"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/personal_setting_style">
-            <TextView
-                android:layout_alignParentLeft="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:textSize="16dp"
-                android:text="账户昵称"/>
-            <TextView
+                android:layout_width="@dimen/dp_40"
+                android:layout_height="@dimen/dp_40"
                 android:layout_alignParentRight="true"
-                android:id="@+id/tv_personal_setting_nick_name"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:gravity="center_vertical"
-                android:textColor="#bbb"
-                android:textSize="16dp"
-                android:text=""
-                android:drawableRight="@drawable/ic_arrow_right"/>
+                android:src="@drawable/ic_fubaihui" />
         </RelativeLayout>
+
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#dddddd"/>
+            android:layout_height="@dimen/dp_1"
+            android:background="#dddddd" />
+
         <!--手机号-->
         <RelativeLayout
             android:id="@+id/rl_personal_setting_phone_root"
+            style="@style/personal_setting_style"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/personal_setting_style">
+            android:layout_height="wrap_content">
+
             <TextView
-                android:layout_alignParentLeft="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:textSize="16dp"
-                android:text="手机号"/>
+                android:text="账号"
+                android:textSize="@dimen/dp_16" />
+
             <TextView
                 android:id="@+id/tv_personal_setting_phone"
-                android:layout_alignParentRight="true"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="@dimen/dp_40"
+                android:layout_alignParentRight="true"
+                android:drawableRight="@drawable/ic_arrow_right"
                 android:gravity="center_vertical"
                 android:textColor="#bbb"
-                android:textSize="16dp"
-                android:drawableRight="@drawable/ic_arrow_right"/>
+                android:textSize="@dimen/dp_16" />
         </RelativeLayout>
+
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#dddddd"/>
+            android:layout_height="@dimen/dp_1"
+            android:background="#dddddd" />
+        <!--账户昵称-->
+        <RelativeLayout
+            android:id="@+id/rl_personal_setting_nick_name_root"
+            style="@style/personal_setting_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:text="昵称"
+                android:textSize="@dimen/dp_16" />
+
+            <TextView
+                android:id="@+id/tv_personal_setting_nick_name"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_40"
+                android:layout_alignParentRight="true"
+                android:drawableRight="@drawable/ic_arrow_right"
+                android:gravity="center_vertical"
+                android:text=""
+                android:textColor="#bbb"
+                android:textSize="@dimen/dp_16" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="#dddddd" />
         <!--密码管理-->
         <RelativeLayout
             android:id="@+id/rl_personal_setting_pwd_manager_root"
+            style="@style/personal_setting_style"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/personal_setting_style">
+            android:layout_height="wrap_content">
+
             <TextView
-                android:layout_alignParentLeft="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:textSize="16dp"
-                android:text="密码管理"/>
+                android:text="密码管理"
+                android:textSize="@dimen/dp_16" />
+
             <TextView
-                android:layout_alignParentRight="true"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="@dimen/dp_40"
+                android:layout_alignParentRight="true"
+                android:drawableRight="@drawable/ic_arrow_right"
                 android:gravity="center_vertical"
                 android:textColor="#bbb"
-                android:textSize="16dp"
-                android:drawableRight="@drawable/ic_arrow_right"/>
+                android:textSize="@dimen/dp_16" />
         </RelativeLayout>
+
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#dddddd"/>
+            android:layout_height="@dimen/dp_1"
+            android:background="#dddddd" />
 
         <!--清除缓存-->
         <RelativeLayout
             android:id="@+id/rl_personal_setting_clean_cache_root"
+            style="@style/personal_setting_style"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/personal_setting_style">
+            android:layout_height="wrap_content">
+
             <TextView
-                android:layout_alignParentLeft="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:textSize="16dp"
-                android:text="清除缓存"/>
+                android:text="清除缓存"
+                android:textSize="@dimen/dp_16" />
+
             <TextView
-                android:layout_alignParentRight="true"
                 android:id="@+id/tv_personal_setting_clear_cache"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="@dimen/dp_40"
+                android:layout_alignParentRight="true"
                 android:gravity="center_vertical"
+                android:text=""
                 android:textColor="#bbb"
-                android:textSize="16dp"
-                android:text=""/>
+                android:textSize="@dimen/dp_16" />
         </RelativeLayout>
+
         <View
             android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:background="#dddddd"/>
+            android:layout_height="@dimen/dp_20"
+            android:background="#dddddd" />
 
         <!--意见反馈-->
         <RelativeLayout
             android:id="@+id/rl_personal_setting_feedback_root"
+            style="@style/personal_setting_style"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/personal_setting_style">
+            android:layout_height="wrap_content">
+
             <TextView
-                android:layout_alignParentLeft="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:textSize="16dp"
-                android:text="意见反馈"/>
+                android:text="意见反馈"
+                android:textSize="@dimen/dp_16" />
+
             <TextView
-                android:layout_alignParentRight="true"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="@dimen/dp_40"
+                android:layout_alignParentRight="true"
+                android:drawableRight="@drawable/ic_arrow_right"
                 android:gravity="center_vertical"
                 android:textColor="#bbb"
-                android:textSize="16dp"
-                android:drawableRight="@drawable/ic_arrow_right"/>
+                android:textSize="@dimen/dp_16" />
         </RelativeLayout>
+
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#dddddd"/>
+            android:layout_height="@dimen/dp_1"
+            android:background="#dddddd" />
 
 
         <!--关于我们-->
         <RelativeLayout
             android:id="@+id/rl_personal_setting_about_us_root"
+            style="@style/personal_setting_style"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/personal_setting_style">
+            android:layout_height="wrap_content">
+
             <TextView
-                android:layout_alignParentLeft="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:textSize="16dp"
-                android:text="关于我们"/>
+                android:text="关于我们"
+                android:textSize="@dimen/dp_16" />
+
             <TextView
-                android:layout_alignParentRight="true"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="@dimen/dp_40"
+                android:layout_alignParentRight="true"
+                android:drawableRight="@drawable/ic_arrow_right"
                 android:gravity="center_vertical"
                 android:textColor="#bbb"
-                android:textSize="16dp"
-                android:drawableRight="@drawable/ic_arrow_right"/>
+                android:textSize="@dimen/dp_16" />
         </RelativeLayout>
+
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#dddddd"/>
+            android:layout_height="@dimen/dp_1"
+            android:background="#dddddd" />
 
         <TextView
-            android:layout_marginTop="20dp"
             android:id="@+id/tv_personal_setting_version_code"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:textSize="18dp"
-            android:text="v1.0"/>
+            android:layout_marginTop="@dimen/dp_20"
+            android:text="v1.0"
+            android:textSize="@dimen/dp_18" />
 
         <Button
-            android:layout_marginTop="40dp"
             android:id="@+id/btn_personal_setting_logout"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="@dimen/dp_50"
             android:layout_alignParentBottom="true"
+            android:layout_marginTop="@dimen/dp_40"
             android:background="@drawable/bg_rectangle_green_color"
             android:text="退出账号"
-            android:textColor="@color/colorWhite"/>
+            android:textColor="@color/colorWhite" />
     </LinearLayout>
 </ScrollView>

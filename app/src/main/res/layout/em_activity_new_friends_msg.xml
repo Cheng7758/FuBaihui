@@ -20,7 +20,7 @@
             android:layout_centerInParent="true"
             android:text="@string/Application_and_notify"
             android:textColor="#fff"
-            android:textSize="18sp" />
+            android:textSize="@dimen/sp_18" />
     </RelativeLayout>
 
     <ListView

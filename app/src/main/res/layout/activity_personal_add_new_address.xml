@@ -3,176 +3,129 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <include layout="@layout/title_personal" />
-    <LinearLayout
-        android:id="@+id/ll_harvest_username"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:gravity="center_vertical"
-        android:background="@color/colorWhite"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="130dp"
-            android:layout_height="36dp"
-            android:layout_marginLeft="8dp"
-            android:gravity="center_vertical"
-            android:text="收货人"
-            android:textColor="#504D4D"/>
-        <TextView
-            android:id="@+id/tv_harvest_username"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="aaaaaaaaaa"/>
-        <ImageButton
-            android:id="@+id/ib_user_number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:layout_marginRight="8dp"
-            android:src="@drawable/iv_enter"/>
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#CBCBCB"/>
-    <LinearLayout
-        android:id="@+id/ll_harvest_mobile"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:gravity="center_vertical"
-        android:background="@color/colorWhite"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="130dp"
-            android:layout_height="36dp"
-            android:layout_marginLeft="8dp"
-            android:gravity="center_vertical"
-            android:text="联系电话"
-            android:textColor="#504D4D"/>
-        <TextView
-            android:id="@+id/tv_harvest_mobile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="aaaaaaaaaa"/>
-        <ImageButton
-            android:id="@+id/ib_location_mobile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
-            android:background="@null"
-            android:src="@drawable/iv_enter"/>
 
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#CBCBCB"/>
+    <include layout="@layout/title_bar_view_layout" />
+    <!--收货人-->
     <LinearLayout
-        android:id="@+id/ll_harvest_codes"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:gravity="center_vertical"
-        android:background="@color/colorWhite"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="130dp"
-            android:layout_height="36dp"
-            android:gravity="center_vertical"
-            android:layout_marginLeft="8dp"
-            android:text="邮政编码"
-            android:textColor="#504D4D"/>
-        <TextView
-            android:id="@+id/tv_harvest_codes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="aaaaaaaaaa"/>
-
-        <ImageButton
-            android:id="@+id/ib_location_codes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
-            android:background="@null"
-            android:src="@drawable/iv_enter"/>
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#CBCBCB"/>
-    <LinearLayout
-        android:id="@+id/ll_harvest_street"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:visibility="gone"
-        android:gravity="center_vertical"
-        android:background="@color/colorWhite"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_weight="1"
-            android:text="街道"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="请选择"/>
-
-        <ImageButton
-            android:id="@+id/ib_location_street"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginRight="8dp"
-            android:background="@null"
-            android:src="@drawable/iv_enter"/>
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#CBCBCB"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@color/colorWhite"
-        android:orientation="vertical">
-        <EditText
-            android:id="@+id/edit_harvest_detail_address"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@null"
-            android:layout_marginLeft="8dp"
-            android:hint="详细地址"/>
-    </LinearLayout>
-
-
-    <LinearLayout
+        android:id="@+id/ll_personal_add_new_address_consignee"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:visibility="gone"
         android:background="@color/colorWhite"
-        android:orientation="horizontal">
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_10">
+
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
             android:layout_weight="1"
-            android:text="默认地址"/>
+            android:gravity="center_vertical"
+            android:text="收货人*"
+            android:textColor="#504D4D"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:id="@+id/tv_personal_add_new_address_consignee"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_weight="2"
+            android:text="" />
 
         <ImageButton
-            android:id="@+id/ib_harvest_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:src="@drawable/harvest_address_default"/>
+            android:background="@null"
+            android:src="@drawable/iv_enter" />
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#CBCBCB"/>
+        android:background="#CBCBCB" />
+    <!--联系电话-->
+    <LinearLayout
+        android:id="@+id/ll_personal_add_new_address_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_10">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="联系电话*"
+            android:textColor="#504D4D"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:id="@+id/tv_personal_add_new_address_phone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_weight="2"
+            android:text="" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:src="@drawable/iv_enter" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#CBCBCB" />
+    <!--邮政编码-->
+    <!--<LinearLayout
+        android:id="@+id/ll_personal_add_new_address_postcode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="邮政编码*"
+            android:textColor="#504D4D"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_personal_add_new_address_postcode"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="2"
+            android:text="" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:src="@drawable/iv_enter" />
+    </LinearLayout>-->
+
+    <EditText
+        android:id="@+id/edit_personal_add_new_address_input_detail_address"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginLeft="@dimen/dp_8"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="#fff"
+        android:gravity="top"
+        android:hint="详细地址" />
+
 </LinearLayout>

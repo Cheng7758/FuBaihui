@@ -15,13 +15,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
+                android:padding="@dimen/dp_8"
                 android:text="问:"
-                android:textSize="18sp"
+                android:textSize="@dimen/sp_18"
                 android:textColor="#35B056"/>
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="@dimen/dp_20"
+                android:layout_height="@dimen/dp_20"
                 android:layout_gravity="center_vertical"
                 android:src="@drawable/qian"
                 android:scaleType="fitXY"
@@ -30,9 +30,9 @@
                 android:id="@+id/tv_question_detail_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
+                android:padding="@dimen/dp_8"
                 android:text="0"
-                android:textSize="18sp"
+                android:textSize="@dimen/sp_18"
                 android:textColor="#F67800"/>
         </LinearLayout>
 
@@ -40,33 +40,33 @@
             android:id="@+id/tv_question_detail_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp"
+            android:padding="@dimen/dp_8"
             android:text="问题内容"
-            android:textSize="18sp"/>
+            android:textSize="@dimen/sp_18"/>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp">
+            android:padding="@dimen/dp_8">
             <TextView
                 android:id="@+id/tv_question_detail_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="时间"
-                android:textSize="14sp"/>
+                android:textSize="@dimen/sp_14"/>
             <TextView
                 android:id="@+id/tv_question_detail_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:text="回答人数"
-                android:textSize="14sp"/>
+                android:textSize="@dimen/sp_14"/>
         </RelativeLayout>
 
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="10dp"
+        android:layout_height="@dimen/dp_10"
         android:background="#CBCBCB"/>
     <com.example.zhanghao.woaisiji.refresh.PullToRefreshLayout
         android:id="@+id/refresh_view"
@@ -82,18 +82,18 @@
             android:layout_height="match_parent"
             android:background="#FFFFFF"
             android:divider="#D5D5D5"
-            android:dividerHeight="1dp" />
+            android:dividerHeight="@dimen/dp_1" />
 
         <include layout="@layout/load_more" />
     </com.example.zhanghao.woaisiji.refresh.PullToRefreshLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="@dimen/dp_40"
         android:orientation="horizontal">
         <Button
             android:id="@+id/btn_my_reply"
-            android:layout_width="200dp"
+            android:layout_width="@dimen/dp_200"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:background="#35B056"

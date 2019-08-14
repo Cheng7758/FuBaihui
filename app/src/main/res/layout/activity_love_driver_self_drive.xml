@@ -11,27 +11,27 @@
         >
         <Button
             android:id="@+id/btn_release"
-            android:layout_width="60dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
+            android:layout_width="@dimen/dp_60"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginLeft="@dimen/dp_10"
             android:background="@null"
             android:drawableLeft="@drawable/btn_release"
             android:text="发布"
-            android:textSize="14sp"/>
+            android:textSize="@dimen/sp_14"/>
         <Button
             android:id="@+id/btn_released"
-            android:layout_width="74dp"
-            android:layout_height="40dp"
-            android:layout_marginRight="10dp"
+            android:layout_width="@dimen/dp_74"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginRight="@dimen/dp_10"
             android:layout_alignParentRight="true"
             android:background="@null"
             android:drawableLeft="@drawable/btn_released"
             android:text="已发布"
-            android:textSize="14sp"/>
+            android:textSize="@dimen/sp_14"/>
     </RelativeLayout>
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="@dimen/dp_1"
         android:background="#cbcbcb"/>
     <com.example.zhanghao.woaisiji.refresh.PullToRefreshLayout
         android:id="@+id/refresh_view"

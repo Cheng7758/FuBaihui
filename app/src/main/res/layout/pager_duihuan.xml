@@ -5,21 +5,21 @@
         <RelativeLayout
             android:id="@+id/Rl_duihuan"
             android:layout_width="match_parent"
-            android:layout_height="40dp">
+            android:layout_height="@dimen/dp_40">
             <TextView
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="@dimen/dp_10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="兑换商城"
-                android:textSize="16dp"
+                android:textSize="@dimen/dp_16"
                 android:textColor="#2B2B2B"
                 android:layout_centerVertical="true"
                 android:layout_alignParentStart="true"
                 android:id="@+id/duihuanshangcheng" />
             <ImageView
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="@dimen/dp_20"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="@dimen/dp_30"
                 android:src="@drawable/iv_enter"
                 android:layout_centerVertical="true"
                 android:layout_toEndOf="@+id/duihuanshangcheng" />
@@ -27,10 +27,10 @@
                 android:id="@+id/tv_duihuanBianJia"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16dp"
+                android:textSize="@dimen/dp_16"
                 android:textColor="#2B2B2B"
                 android:text="编辑"
-                android:layout_marginEnd="29dp"
+                android:layout_marginEnd="@dimen/dp_29"
                 android:layout_alignTop="@+id/duihuanshangcheng"
                 android:layout_alignParentEnd="true" />
         </RelativeLayout>
@@ -60,24 +60,24 @@
                     android:id="@+id/tvCountMoney"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="@dimen/dp_5"
+                    android:layout_marginTop="@dimen/dp_5"
                     android:gravity="right"
                     android:text="合计:￥0.0"
                     android:textColor="#ff2600"
-                    android:textSize="13sp"/>
+                    android:textSize="@dimen/sp_13"/>
 
                 <TextView
                     android:id="@+id/tvPostPrice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="@dimen/dp_5"
+                    android:layout_marginRight="@dimen/dp_5"
+                    android:layout_marginTop="@dimen/dp_5"
                     android:gravity="right"
                     android:text="不含运费"
                     android:textColor="#666666"
-                    android:textSize="11sp"/>
+                    android:textSize="@dimen/sp_11"/>
             </LinearLayout>
 
             <TextView
@@ -86,13 +86,13 @@
                 android:layout_height="match_parent"
                 android:background="#ff5000"
                 android:gravity="center_vertical"
-                android:paddingBottom="5dp"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:paddingTop="5dp"
+                android:paddingBottom="@dimen/dp_5"
+                android:paddingLeft="@dimen/dp_20"
+                android:paddingRight="@dimen/dp_20"
+                android:paddingTop="@dimen/dp_5"
                 android:text="结算"
                 android:textColor="#FFF"
-                android:textSize="14sp"/>
+                android:textSize="@dimen/sp_14"/>
         </LinearLayout>
     </RelativeLayout>
 </LinearLayout>

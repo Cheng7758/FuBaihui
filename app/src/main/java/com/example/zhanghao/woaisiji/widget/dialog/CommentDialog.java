@@ -14,7 +14,8 @@ import android.widget.TextView;
 import com.example.zhanghao.woaisiji.R;
 import com.example.zhanghao.woaisiji.bean.CommentItem;
 import com.example.zhanghao.woaisiji.mvp.presenter.CirclePresenter;
-import com.example.zhanghao.woaisiji.utils.DatasUtil;
+import com.jcodecraeer.xrecyclerview.gold.UserManager;
+import com.example.network.utils.StringUtils;
 
 /*import com.yiw.circledemo.R;
 import com.yiw.circledemo.bean.CommentItem;
@@ -30,7 +31,7 @@ import com.yiw.circledemo.utils.DatasUtil;*/
 *
  */
 public class CommentDialog extends Dialog implements
-		android.view.View.OnClickListener {
+		View.OnClickListener {
 
 	private Context mContext;
 	private CirclePresenter mPresenter;
@@ -72,7 +73,7 @@ public class CommentDialog extends Dialog implements
 		copyTv.setOnClickListener(this);
 		TextView deleteTv = (TextView) findViewById(R.id.deleteTv);
 		if (mCommentItem != null
-				&& DatasUtil.curUser.getId().equals(
+				&& StringUtils.defaultStr(UserManager.myId,"").equals(
 						mCommentItem.getUser().getId())) {
 			deleteTv.setVisibility(View.VISIBLE);
 		} else {

@@ -12,7 +12,7 @@
         <LinearLayout
             android:id="@+id/ll_order_form_set_height"
             android:layout_width="match_parent"
-            android:layout_height="130dp">
+            android:layout_height="@dimen/dp_130">
 
             <ExpandableListView
                 android:id="@+id/lv_order_form_items"
@@ -30,7 +30,7 @@
             android:id="@+id/tv_order_form_total"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
+            android:layout_marginRight="@dimen/dp_8"
             android:layout_alignParentRight="true"
             android:text="共一件商品" />
 
@@ -48,28 +48,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="8dp"
+                android:layout_marginRight="@dimen/dp_8"
                 android:background="@null"
                 android:text="取消订单"
-                android:textSize="14sp"/>
+                android:textSize="@dimen/sp_14"/>
             <Button
                 android:id="@+id/btn_order_form_confirm_accept"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="8dp"
+                android:layout_marginRight="@dimen/dp_8"
                 android:background="@null"
                 android:text="付款"
-                android:textSize="14sp"/>
+                android:textSize="@dimen/sp_14"/>
             <Button
                 android:id="@+id/btn_order_form_view_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="8dp"
+                android:layout_marginRight="@dimen/dp_8"
                 android:background="@null"
                 android:text="查看详情"
-                android:textSize="14sp"/>
+                android:textSize="@dimen/sp_14"/>
         </LinearLayout>
 
 

@@ -113,4 +113,8 @@ public class EaseTitleBar extends RelativeLayout{
     public RelativeLayout getRightLayout(){
         return rightLayout;
     }
+
+    public TextView getTitleText() {
+        return titleView;
+    }
 }

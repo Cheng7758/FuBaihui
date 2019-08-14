@@ -5,9 +5,9 @@ import com.example.zhanghao.woaisiji.global.ServerAddress;
 import java.util.List;
 
 
-public class RespCommodityList extends RespBase{
+public class RespCommodityList extends RespBase {
 
-    private List<CommodityDataDetail> data ;
+    private List<CommodityDataDetail> data;
 
     public List<CommodityDataDetail> getData() {
         return data;
@@ -17,17 +17,40 @@ public class RespCommodityList extends RespBase{
         this.data = data;
     }
 
-    public static class CommodityDataDetail{
-        private String id ;
-        private String category ;
-        private String title ;
-        private String price ;
-        private String number ;
-        private String cover ;
-        private String price_sc ;
-        private String sorts ;
-        private String silver ;
-        private String people ;
+    @Override
+    public String toString() {
+        return "RespCommodityList{" +
+                "data=" + data +
+                '}';
+    }
+
+    public static class CommodityDataDetail {
+        private String id;
+        private String category;
+        private String title;
+        private String price;
+        private String number;
+        private String cover;
+        private String price_sc;
+        private String sorts;
+        private String silver;
+        private String people;
+
+        @Override
+        public String toString() {
+            return "CommodityDataDetail{" +
+                    "id='" + id + '\'' +
+                    ", category='" + category + '\'' +
+                    ", title='" + title + '\'' +
+                    ", price='" + price + '\'' +
+                    ", number='" + number + '\'' +
+                    ", cover='" + cover + '\'' +
+                    ", price_sc='" + price_sc + '\'' +
+                    ", sorts='" + sorts + '\'' +
+                    ", silver='" + silver + '\'' +
+                    ", people='" + people + '\'' +
+                    '}';
+        }
 
         public String getId() {
             return id;
@@ -70,7 +93,7 @@ public class RespCommodityList extends RespBase{
         }
 
         public String getCover() {
-            return ServerAddress.SERVER_ROOT+cover;
+            return ServerAddress.SERVER_ROOT + cover;
         }
 
         public void setCover(String cover) {

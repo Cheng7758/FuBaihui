@@ -304,7 +304,7 @@ public class DemoHelper {
             @Override
             public String getTitle(EMMessage message) {
                 //you can update title here
-                return "我爱司机";
+                return "福百惠";
             }
 
             @Override
@@ -352,6 +352,8 @@ public class DemoHelper {
                     intent = new Intent(appContext, VoiceCallActivity.class);
                 } else {
                     ChatType chatType = message.getChatType();
+                    String userName = message.getUserName();
+                    intent.putExtra("username",userName);
                     if (chatType == ChatType.Chat) { // single chat message
                         intent.putExtra("userId", message.getFrom());
                         intent.putExtra("chatType", Constant.CHATTYPE_SINGLE);
@@ -363,7 +365,6 @@ public class DemoHelper {
                         } else {
                             intent.putExtra("chatType", Constant.CHATTYPE_CHATROOM);
                         }
-
                     }
                 }
                 return intent;
@@ -597,7 +598,7 @@ public class DemoHelper {
             msg.setTo(groupId);
             msg.setMsgId(UUID.randomUUID().toString());
             msg.addBody(new EMTextMessageBody(inviter + " " + st3));
-            msg.setStatus(EMMessage.Status.SUCCESS);
+            msg.setStatus(Status.SUCCESS);
             // save invitation as messages
             EMClient.getInstance().chatManager().saveMessage(msg);
             // notify invitation message
@@ -612,6 +613,10 @@ public class DemoHelper {
      */
     public class MyContactListener implements EMContactListener {
 
+        /**
+         * 添加好哟
+         * @param username
+         */
         @Override
         public void onContactAdded(String username) {
             // save contact
@@ -627,6 +632,10 @@ public class DemoHelper {
             broadcastManager.sendBroadcast(new Intent(Constant.ACTION_CONTACT_CHANAGED));
         }
 
+        /**
+         * 删除
+         * @param username
+         */
         @Override
         public void onContactDeleted(String username) {
             Map<String, EaseUser> localUsers = DemoHelper.getInstance().getContactList();
@@ -637,6 +646,11 @@ public class DemoHelper {
             broadcastManager.sendBroadcast(new Intent(Constant.ACTION_CONTACT_CHANAGED));
         }
 
+        /**
+         *
+         * @param username
+         * @param reason
+         */
         @Override
         public void onContactInvited(String username, String reason) {
             List<InviteMessage> msgs = inviteMessgeDao.getMessagesList();
@@ -659,6 +673,10 @@ public class DemoHelper {
             broadcastManager.sendBroadcast(new Intent(Constant.ACTION_CONTACT_CHANAGED));
         }
 
+        /**
+         *
+         * @param username
+         */
         @Override
         public void onContactAgreed(String username) {
             List<InviteMessage> msgs = inviteMessgeDao.getMessagesList();
@@ -677,6 +695,10 @@ public class DemoHelper {
             broadcastManager.sendBroadcast(new Intent(Constant.ACTION_CONTACT_CHANAGED));
         }
 
+        /**
+         *
+         * @param username
+         */
         @Override
         public void onContactRefused(String username) {
             // your request was refused
@@ -1077,6 +1099,7 @@ public class DemoHelper {
 
         isSyncingContactsWithServer = true;
 
+        //获取好友列表，开发者需要根据 username 去自己服务器获取好友的详情。
         new Thread() {
             @Override
             public void run() {
@@ -1090,7 +1113,6 @@ public class DemoHelper {
                         notifyContactsSyncListener(false);
                         return;
                     }
-
                     Map<String, EaseUser> userlist = WoAiSiJiApp.m;
 //                   Map<String, EaseUser> userlist = new HashMap<String, EaseUser>();
                     /*for (String username : usernames) {

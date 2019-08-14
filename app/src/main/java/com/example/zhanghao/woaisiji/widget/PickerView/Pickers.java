@@ -12,6 +12,16 @@ public class Pickers implements Serializable {
 
     private String showConetnt;
 
+    private String pickersId ;
+
+    public String getPickersId() {
+        return pickersId;
+    }
+
+    public void setPickersId(String pickersId) {
+        this.pickersId = pickersId;
+    }
+
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
@@ -28,7 +38,8 @@ public class Pickers implements Serializable {
         super();
     }
 
-    public Pickers(String pShowConetnt) {
+    public Pickers(String pShowConetnt, String pickersId) {
         showConetnt = pShowConetnt;
+        this.pickersId = pickersId;
     }
 }

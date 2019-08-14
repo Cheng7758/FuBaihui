@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="46dp"
+    android:layout_height="@dimen/dp_46"
     android:background="#FF5000">
 
     <ImageView
         android:id="@+id/iv_social_back"
-        android:layout_width="30dp"
-        android:layout_height="20dp"
+        android:layout_width="@dimen/dp_30"
+        android:layout_height="@dimen/dp_20"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="12dp"
+        android:layout_marginLeft="@dimen/dp_12"
         android:background="@mipmap/white_left" />
 
     <ImageView
         android:id="@+id/iv_msg_notice"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="@dimen/dp_30"
+        android:layout_height="@dimen/dp_30"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="15dp"
+        android:layout_marginRight="@dimen/dp_15"
         android:layout_centerVertical="true"
         android:background="@drawable/xiaoxiquan" />
 
     <ImageView
         android:id="@+id/iv_gouwuche"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="@dimen/dp_40"
+        android:layout_height="@dimen/dp_40"
         android:layout_toLeftOf="@id/iv_msg_notice"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="12dp"
+        android:layout_marginRight="@dimen/dp_12"
         android:layout_centerVertical="true"
         android:background="@drawable/gouwuche" />
 

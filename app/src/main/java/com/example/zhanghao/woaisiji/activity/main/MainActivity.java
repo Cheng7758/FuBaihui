@@ -7,10 +7,12 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -18,9 +20,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
@@ -31,28 +32,32 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.zhanghao.woaisiji.R;
 import com.example.zhanghao.woaisiji.WoAiSiJiApp;
+import com.example.zhanghao.woaisiji.activity.PersonalWalletActivity;
+import com.example.zhanghao.woaisiji.activity.home.ZxingDetailsActivity;
 import com.example.zhanghao.woaisiji.activity.login.LoginActivity;
+import com.example.zhanghao.woaisiji.activity.merchant.MerchantPayActivity;
 import com.example.zhanghao.woaisiji.bean.Update;
 import com.example.zhanghao.woaisiji.fragment.BaseFragment;
 import com.example.zhanghao.woaisiji.fragment.DriverReviewFragment;
 import com.example.zhanghao.woaisiji.fragment.HomePageFragment;
 import com.example.zhanghao.woaisiji.fragment.MyFragment;
 import com.example.zhanghao.woaisiji.fragment.ShoppingCarFragment;
+import com.example.zhanghao.woaisiji.fragment.home.CommentFragment;
+import com.example.zhanghao.woaisiji.fragment.home.NewsZixunFragment;
 import com.example.zhanghao.woaisiji.friends.Constant;
 import com.example.zhanghao.woaisiji.friends.DemoHelper;
-import com.example.zhanghao.woaisiji.friends.LogoutEm;
 import com.example.zhanghao.woaisiji.friends.ui.BaseActivity;
 import com.example.zhanghao.woaisiji.friends.ui.ChatActivity;
 import com.example.zhanghao.woaisiji.friends.ui.GroupsActivity;
-import com.example.zhanghao.woaisiji.global.Constants;
-import com.example.zhanghao.woaisiji.global.LoginUtils;
 import com.example.zhanghao.woaisiji.global.ServerAddress;
-import com.example.zhanghao.woaisiji.serverdata.FriendsListData;
-import com.example.zhanghao.woaisiji.serverdata.GetToken;
+import com.example.zhanghao.woaisiji.resp.RespPersonalWallet;
+import com.example.zhanghao.woaisiji.utils.KeyPool;
 import com.example.zhanghao.woaisiji.utils.PrefUtils;
-import com.example.zhanghao.woaisiji.utils.SharedPrefUtil;
+import com.example.zhanghao.woaisiji.utils.SharedPrefrenceUtils;
 import com.example.zhanghao.woaisiji.viewpage.NoScrollViewPager;
 import com.google.gson.Gson;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 import com.hyphenate.EMContactListener;
 import com.hyphenate.EMMessageListener;
 import com.hyphenate.chat.EMClient;
@@ -82,17 +87,38 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private HashMap<Integer, BaseFragment> mSavedFragment = new HashMap<Integer, BaseFragment>();
 
     private NoScrollViewPager vp_main_switch_function;
-    private RadioButton rb_home_page, rb_driver_dynamic, rb_shopping_car, rb_personal_setting;
+    private RadioButton rb_home_page, rb_driver_dynamic, rb_shopping_car, rb_personal_setting,
+            rb_news_information;
     private MainFragmentAdapter pagerAdapter;
+    private long touchTime = 0;
+    private int flags = 1;
+    private SharedPreferences mSharedPreferences;
+    private CommentFragment commentFragment;
+    private ShoppingCarFragment shoppingCarFragment;
+
+    @Override
+    public void onBackPressed() {
+        // 模板自动生成的，大概是说如果左侧抽屉栏被打开，按返回键的时候关闭抽屉栏而不是退出程序
+        long currentTime = System.currentTimeMillis();
+        if (currentTime - touchTime > 2000) {
+            Snackbar.make(vp_main_switch_function, "再按一次退出程序", Snackbar.LENGTH_SHORT).show();
+            touchTime = currentTime;
+        } else {
+            super.onBackPressed();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         initView();//实例化控件
         initData();//网络请求数据，即页面显示
         initListener();//初始化监听
-
+        /*if (!TextUtils.isEmpty(WoAiSiJiApp.getUid())) {
+            qianbao();
+        }*/
         if (getIntent().getBooleanExtra(Constant.ACCOUNT_CONFLICT, false) && !isConflictDialogShow) {
             showConflictDialog();
         } else if (getIntent().getBooleanExtra(Constant.ACCOUNT_REMOVED, false) && !isAccountRemovedDialogShow) {
@@ -113,11 +139,50 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         registerBroadcastReceiver();
     }
 
+    private void qianbao() {
+        StringRequest registerRequest = new StringRequest(Request.Method.POST,
+                ServerAddress.URL_MY_PERSONAL_INFO_MY_WALLET, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if (TextUtils.isEmpty(response)) return;
+                Gson gson = new Gson();
+                RespPersonalWallet respPersonalWallet = gson.fromJson(response, RespPersonalWallet.class);
+                if (respPersonalWallet.getCode() == 200) {
+                    SharedPrefrenceUtils.putObject(MainActivity.this, "yue", respPersonalWallet);
+                } else {
+                    if (!TextUtils.isEmpty(respPersonalWallet.getMsg()))
+                        Toast.makeText(MainActivity.this, respPersonalWallet.getMsg(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                dismissProgressDialog();
+                Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            // 携带参数
+            @Override
+            protected HashMap<String, String> getParams()
+                    throws AuthFailureError {
+                HashMap<String, String> params = new HashMap<String, String>();
+                params.put("uid", (WoAiSiJiApp.getUid()));
+                return params;
+            }
+        };
+        WoAiSiJiApp.mRequestQueue.add(registerRequest);
+    }
+
     private void initData() {
         mSavedFragment.put(0, new HomePageFragment());
-        mSavedFragment.put(1, new DriverReviewFragment());
-        mSavedFragment.put(2, new ShoppingCarFragment());
-        mSavedFragment.put(3, new MyFragment());
+//        mSavedFragment.put(1, new DriverReviewFragment());
+        commentFragment = new CommentFragment();
+//        mSavedFragment.put(3, new ShoppingCarFragment());
+        mSavedFragment.put(1, commentFragment);
+        mSavedFragment.put(2, new NewsZixunFragment());
+        shoppingCarFragment = new ShoppingCarFragment();
+        mSavedFragment.put(3, shoppingCarFragment);
+        mSavedFragment.put(4, new MyFragment());
     }
 
     //控件初始化
@@ -131,6 +196,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         rb_driver_dynamic = (RadioButton) findViewById(R.id.rb_driver_dynamic);
         rb_shopping_car = (RadioButton) findViewById(R.id.rb_shopping_car);
         rb_personal_setting = (RadioButton) findViewById(R.id.rb_personal_setting);
+        rb_news_information = (RadioButton) findViewById(R.id.rb_news_information);
     }
 
     private void initListener() {
@@ -138,7 +204,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         rb_driver_dynamic.setOnClickListener(this);
         rb_shopping_car.setOnClickListener(this);
         rb_personal_setting.setOnClickListener(this);
-
+        rb_news_information.setOnClickListener(this);
     }
 
     private void update() {
@@ -151,7 +217,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                     if (update.getCode() == 200) {
                         if (update.getInfo() != null) {
                             String versioninfo = update.getInfo().getVersion_name();
-
                             if (!currentversion.equals(versioninfo)) {
                                 //对话框提示有新版本，更新与否，点击更新跳转链接，不更新关闭
                                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
@@ -182,7 +247,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                     params.put("app_id", "1");
                     params.put("did", "0ebb87ed6c3355a2a45825dd0873ccff");
                     params.put("version_name", currentversion);
-
                     return params;
                 }
             };
@@ -201,10 +265,19 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
+//        setIntent(intent);
+//        intent = getIntent();
         if (intent.getBooleanExtra(Constant.ACCOUNT_CONFLICT, false) && !isConflictDialogShow) {
             showConflictDialog();
         } else if (intent.getBooleanExtra(Constant.ACCOUNT_REMOVED, false) && !isAccountRemovedDialogShow) {
             showAccountRemovedDialog();
+        } else if (!TextUtils.isEmpty(intent.getStringExtra(KeyPool.ACTION_LOGINOUT)) &&
+                KeyPool.ACTION_LOGINOUT.equals(intent.getStringExtra(KeyPool.ACTION_LOGINOUT))) {
+            vp_main_switch_function.setCurrentItem(0, true);
+            rb_home_page.setChecked(true);
+        } else if (!TextUtils.isEmpty(intent.getStringExtra("GetintoType"))) {
+            vp_main_switch_function.setCurrentItem(3, true);    //购物车fragment
+            rb_shopping_car.setChecked(true);
         }
     }
 
@@ -214,11 +287,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         if (TextUtils.isEmpty(WoAiSiJiApp.getUid())) {
             rb_home_page.setChecked(true);
             vp_main_switch_function.setCurrentItem(1, false);
-        } else {
-            //MyFragment
-//            if (currentTabIndex == 3) {
-//                ((MyFragment) mSavedFragment.get(currentTabIndex)).obtainImgUrlFromServer();
-//            }
         }
     }
 
@@ -237,7 +305,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                     vp_main_switch_function.setCurrentItem(1, false);
                 }
                 break;
-            case R.id.rb_shopping_car://购物车
+            case R.id.rb_news_information://新闻资讯
                 if (TextUtils.isEmpty(WoAiSiJiApp.getUid())) {
                     rb_home_page.setChecked(true);
                     startActivity(new Intent(MainActivity.this, LoginActivity.class));
@@ -245,8 +313,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                     vp_main_switch_function.setCurrentItem(2, false);
                 }
                 break;
-
-            case R.id.rb_personal_setting://我
+            case R.id.rb_shopping_car://购物车
                 if (TextUtils.isEmpty(WoAiSiJiApp.getUid())) {
                     rb_home_page.setChecked(true);
                     startActivity(new Intent(MainActivity.this, LoginActivity.class));
@@ -254,7 +321,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                     vp_main_switch_function.setCurrentItem(3, false);
                 }
                 break;
-            default:
+            case R.id.rb_personal_setting://我的
+                if (TextUtils.isEmpty(WoAiSiJiApp.getUid())) {
+                    rb_home_page.setChecked(true);
+                    startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                } else {
+                    vp_main_switch_function.setCurrentItem(4, false);
+                }
                 break;
         }
     }
@@ -267,12 +340,22 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //                ((HomePageFragment)mSavedFragment.get(currentTabIndex)).updateUnreadLabel();
 //            }
 //        }
+        //存储token
+//        Log.e("-----token1",WoAiSiJiApp.token.toString());
+//        mSharedPreferences = getSharedPreferences("token", MODE_PRIVATE);
+//        SharedPreferences.Editor editor = mSharedPreferences.edit();
+//        editor.putString("token",WoAiSiJiApp.token);
+//        editor.commit();//这是将数据提交
+
         if (TextUtils.isEmpty(WoAiSiJiApp.getUid())) {
             vp_main_switch_function.setCurrentItem(0, false);
         }
         DemoHelper sdkHelper = DemoHelper.getInstance();
         sdkHelper.pushActivity(this);
         EMClient.getInstance().chatManager().addMessageListener(messageListener);
+        if (commentFragment != null) {
+            commentFragment.loadData(1);
+        }
     }
 
     @Override
@@ -339,7 +422,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
             @Override
             public void onReceive(Context context, Intent intent) {
-                ((HomePageFragment) getCurrentFragment(currentTabIndex)).updateUnreadLabel();
+                Fragment currentFragment = getCurrentFragment(currentTabIndex);
+                if (currentFragment instanceof HomePageFragment)
+                    ((HomePageFragment) currentFragment).updateUnreadLabel();
                 if (currentTabIndex == 0) {
                     ((HomePageFragment) mSavedFragment.get(currentTabIndex)).refreshUIWithMessageCurrentTabIndex0();
                 } else if (currentTabIndex == 1) {
@@ -455,9 +540,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             } catch (Exception e) {
                 EMLog.e(TAG, "---------color conflictBuilder error" + e.getMessage());
             }
-
         }
-
     }
 
     public Fragment getCurrentFragment(int position) {
@@ -468,7 +551,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         }
         return currentFragment;
     }
-
 
     public class MainFragmentAdapter extends FragmentPagerAdapter {
 
@@ -483,7 +565,35 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         @Override
         public int getCount() {
-            return 4;
+            return 5;
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (data != null && resultCode == 111)
+            shoppingCarFragment.onActivityResult(requestCode,resultCode,data);
+        //扫码结果
+        IntentResult intentResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if (intentResult != null) {
+            if (intentResult.getContents() == null) {
+                //扫码失败
+                Toast.makeText(MainActivity.this, "扫码失败", Toast.LENGTH_SHORT).show();
+            } else {
+                String result = intentResult.getContents();//返回值
+                Log.e("----扫码结果", result.toString());
+                //textView.setText("扫码结果：" + result);
+                if (result.contains("http")) {
+                    Intent intent = new Intent(MainActivity.this, ZxingDetailsActivity.class);
+                    intent.putExtra("details", result);
+                    startActivity(intent);
+                } else if (result.contains("id")) {
+                    Intent intent = new Intent(MainActivity.this, MerchantPayActivity.class);
+                    intent.putExtra("store_id", result);
+                    startActivity(intent);
+                }
+            }
         }
     }
 }

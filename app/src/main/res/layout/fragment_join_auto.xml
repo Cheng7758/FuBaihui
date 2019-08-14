@@ -11,21 +11,21 @@
     <TextView
         android:id="@+id/tv_01"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/dp_50"
         android:text="TextView_01"
         android:gravity="center"
         />
     <TextView
         android:id="@+id/tv_02"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/dp_50"
         android:text="TextView_02"
         android:gravity="center"
         />
     <TextView
         android:id="@+id/tv_03"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/dp_50"
         android:text="TextView_03"
         android:gravity="center"
         />

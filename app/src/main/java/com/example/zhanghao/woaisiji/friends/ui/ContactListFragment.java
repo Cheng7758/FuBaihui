@@ -43,6 +43,8 @@ import com.hyphenate.easeui.domain.EaseUser;
 import com.hyphenate.easeui.ui.EaseContactListFragment;
 import com.hyphenate.util.EMLog;
 import com.hyphenate.util.NetUtils;
+import com.jcodecraeer.xrecyclerview.gold.GoldManager;
+import com.jcodecraeer.xrecyclerview.gold.UserManager;
 
 import java.util.Hashtable;
 import java.util.Map;
@@ -65,7 +67,8 @@ public class ContactListFragment extends EaseContactListFragment {
     @Override
     protected void initView() {
         super.initView();
-        @SuppressLint("InflateParams") View headerView = LayoutInflater.from(getActivity()).inflate(R.layout.em_contacts_header, null);
+        @SuppressLint("InflateParams") View headerView = LayoutInflater.from(getActivity())
+                .inflate(R.layout.em_contacts_header, null);
         HeaderItemClickListener clickListener = new HeaderItemClickListener();
         applicationItem = (ContactItemView) headerView.findViewById(R.id.application_item);
         applicationItem.setOnClickListener(clickListener);
@@ -125,6 +128,9 @@ public class ContactListFragment extends EaseContactListFragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 EaseUser user = (EaseUser)listView.getItemAtPosition(position);
                 if (user != null) {
+                    UserManager.toId = GoldManager.toUserId = user.getUsername();
+                    UserManager.toName = GoldManager.toUserName = user.getNickname();
+                    UserManager.toPic = GoldManager.toUserPic =  user.getAvatar();
                     String username = user.getUsername();
                     // demo中直接进入聊天页面，实际一般是进入用户详情页
                     startActivity(new Intent(getActivity(), ChatActivity.class).putExtra("userId", username));

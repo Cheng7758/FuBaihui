@@ -5,11 +5,14 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
+import android.provider.Settings;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -32,6 +35,9 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.blankj.utilcode.util.ActivityUtils;
+import com.blankj.utilcode.util.ToastUtils;
+import com.blankj.utilcode.util.Utils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.animation.GlideAnimation;
@@ -40,47 +46,72 @@ import com.dreamlive.upmarqueeview.UPMarqueeView;
 import com.example.zhanghao.woaisiji.R;
 import com.example.zhanghao.woaisiji.WoAiSiJiApp;
 import com.example.zhanghao.woaisiji.activity.AdvertisementWebViewActivity;
-import com.example.zhanghao.woaisiji.activity.SliverIntegralShangCheng;
 import com.example.zhanghao.woaisiji.activity.FBHStoreActivity;
+import com.example.zhanghao.woaisiji.activity.FBHStoreActivity2;
 import com.example.zhanghao.woaisiji.activity.ILoveShopActivity;
 import com.example.zhanghao.woaisiji.activity.LoveDriverSociallyActivity;
 import com.example.zhanghao.woaisiji.activity.PersonalFriendsMessageActivity;
 import com.example.zhanghao.woaisiji.activity.ProductDetailActivity2;
 import com.example.zhanghao.woaisiji.activity.QuestionAnswerActivity;
+import com.example.zhanghao.woaisiji.activity.SliverIntegralStoreActivity;
 import com.example.zhanghao.woaisiji.activity.YangHuLianSuo;
+import com.example.zhanghao.woaisiji.activity.announcement.AnnouncementDetailsActivity;
+import com.example.zhanghao.woaisiji.activity.home.ZxingDetailsActivity;
 import com.example.zhanghao.woaisiji.activity.login.LoginActivity;
+import com.example.zhanghao.woaisiji.activity.search.SearchResultsActivity;
 import com.example.zhanghao.woaisiji.activity.send.JoinAutoActivity;
+import com.example.zhanghao.woaisiji.activity.zxingview.QrCodeActivity;
 import com.example.zhanghao.woaisiji.adapter.HomePagerBanner;
 import com.example.zhanghao.woaisiji.add.ImageViewAdapter;
+import com.example.zhanghao.woaisiji.bean.GlobalSlideShow;
 import com.example.zhanghao.woaisiji.bean.Update;
+import com.example.zhanghao.woaisiji.bean.homepage.GongGao;
+import com.example.zhanghao.woaisiji.bean.homepage.JingXuan;
+import com.example.zhanghao.woaisiji.bean.homesearch.HomeSearch;
 import com.example.zhanghao.woaisiji.friends.ui.ChatActivity;
 import com.example.zhanghao.woaisiji.friends.ui.ContactListFragment;
 import com.example.zhanghao.woaisiji.friends.ui.ConversationListFragment;
 import com.example.zhanghao.woaisiji.global.ServerAddress;
+import com.example.zhanghao.woaisiji.httpurl.Myserver;
 import com.example.zhanghao.woaisiji.resp.RespGlobalSlideShow;
 import com.example.zhanghao.woaisiji.resp.RespHomePagerJXGG;
 import com.example.zhanghao.woaisiji.tools.CircleCornerTransform;
 import com.example.zhanghao.woaisiji.utils.DensityUtils;
+import com.example.zhanghao.woaisiji.utils.FunctionUtils;
+import com.example.zhanghao.woaisiji.utils.http.NetManager;
 import com.google.gson.Gson;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+import com.google.zxing.qrcode.QRCodeWriter;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMConversation;
 import com.loveplusplus.update.UpdateChecker;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
+
 import static com.example.zhanghao.woaisiji.global.ServerAddress.URL_GLOBAL_SLIDE_SHOW;
 import static com.example.zhanghao.woaisiji.global.ServerAddress.URL_HOME_PAGE_JINGXUAN_GONGGAO;
 
-public class HomePageFragment extends BaseFragment implements View.OnClickListener{
+public class HomePageFragment extends BaseFragment implements View.OnClickListener {
 
     private TextView unreadLabel;
     private android.app.AlertDialog.Builder accountRemovedBuilder;
-
 
     protected static final String TAG = "MainActivity";
     List<View> views = new ArrayList<>();
@@ -92,25 +123,24 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
     /**
      * 精选
      */
-    private List<RespHomePagerJXGG.JingXuan> BottomGoods = new ArrayList<>();
+    private List<JingXuan> BottomGoods = new ArrayList<>();
 
     /**
      * 司机公告
      */
-    private List<RespHomePagerJXGG.GongGao> noticeListData = new ArrayList<>();
+    private List<GongGao> noticeListData = new ArrayList<>();
     private EditText et_home_page_search;
 
     private ViewPager viewPager;//顶部轮播和中部轮播
     private HomePagerBanner TopCarouselAdapter, BodyCarouselAdapter;//顶部轮播适配器和中部轮播适配器
     //顶部轮播数据源
-    private List<RespGlobalSlideShow.GlobalSlideShow> TopCarousel = new ArrayList<>();
+    private List<GlobalSlideShow> TopCarousel = new ArrayList<>();
     //中部轮播数据源
-    private List<RespGlobalSlideShow.GlobalSlideShow> BodyCarousel = new ArrayList<>();
+    private List<GlobalSlideShow> BodyCarousel = new ArrayList<>();
 
     private LinearLayout topLayout;
     private UPMarqueeView upview1;
-
-    private LinearLayout ll_home_page_fbh_store,ll_home_page_silver_store,ll_home_page_search_vip,
+    private LinearLayout ll_home_page_fbh_store, ll_home_page_silver_store, ll_home_page_search_vip,
             ll_home_page_join_us;
 
     private ImageView[] imageViews;
@@ -121,10 +151,15 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
     private ImageView ivProductSearch;
     private LinearLayout ll_home_page_message;
     private Update update;
+    private int REQUEST_CODE_SCAN = 111;
+    private int flags = 1;
+    private HomeSearch.DataBean mData;
+    private int mCheckPermission;
 
     @Override
-    public View initBaseFragmentView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.view_page_home_page, container,false);
+    public View initBaseFragmentView(LayoutInflater inflater, ViewGroup container, Bundle
+            savedInstanceState) {
+        View view = inflater.inflate(R.layout.view_page_home_page, container, false);
         constructionMethod(view);
         return view;
     }
@@ -146,10 +181,13 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
             WoAiSiJiApp.isUpdateTip = true;
         }
         if (Build.VERSION.SDK_INT >= 23) {
-            int checkPermission = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION);
+            int checkPermission = ContextCompat.checkSelfPermission(getActivity(), Manifest
+                    .permission.ACCESS_COARSE_LOCATION);
             if (checkPermission != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
-                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission
+                        .ACCESS_COARSE_LOCATION}, 1);
+                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission
+                        .ACCESS_FINE_LOCATION}, 1);
                 Log.d("TTTT", "弹出提示");
             }
         }
@@ -165,12 +203,15 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
     //控件初始化
     private void initView(View rootView) {
         //八个选项
-        ll_home_page_fbh_store = (LinearLayout) rootView.findViewById(R.id.ll_home_page_fbh_store);//司机商城
-        ll_home_page_silver_store = (LinearLayout) rootView.findViewById(R.id.ll_home_page_silver_store);//银币商城
-        ll_home_page_search_vip = (LinearLayout) rootView.findViewById(R.id.ll_home_page_search_vip);//搜索会员
-        ll_home_page_join_us = (LinearLayout) rootView.findViewById(R.id.ll_home_page_join_us);//加入我们
-
-        imageButton = (ImageView) rootView.findViewById(R.id.imageButton);//左上角扫一扫按钮
+        ll_home_page_fbh_store = (LinearLayout) rootView.findViewById(R.id
+                .ll_home_page_fbh_store);//司机商城
+        ll_home_page_silver_store = (LinearLayout) rootView.findViewById(R.id
+                .ll_home_page_silver_store);//银币商城
+        ll_home_page_search_vip = (LinearLayout) rootView.findViewById(R.id
+                .ll_home_page_search_vip);//搜索会员
+        ll_home_page_join_us = (LinearLayout) rootView.findViewById(R.id.ll_home_page_join_us);
+        //加入我们
+        imageButton = (ImageView) rootView.findViewById(R.id.imageButton);//左上角汽车按钮
         et_home_page_search = (EditText) rootView.findViewById(R.id.et_home_page_search);//搜索框
         ivProductSearch = (ImageView) rootView.findViewById(R.id.iv_product_search);//白色搜索按钮
         ll_home_page_message = (LinearLayout) rootView.findViewById(R.id.ll_home_page_message);//消息
@@ -178,15 +219,14 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
         topLayout = (LinearLayout) rootView.findViewById(R.id.topLayout);
 
         banner = (ImageView) rootView.findViewById(R.id.app_body_banner);//条幅
-        upview1 = (UPMarqueeView) rootView.findViewById(R.id.upview1);//上下轮播，司机公告右边
+        upview1 = (UPMarqueeView) rootView.findViewById(R.id.upview1);//上下轮播，平台公告
 
         //司机精选下面6张图片
-        goodImgs[0] = (ImageView)rootView.findViewById(R.id.iv_goods1);
+        goodImgs[0] = (ImageView) rootView.findViewById(R.id.iv_goods1);
         goodImgs[1] = (ImageView) rootView.findViewById(R.id.iv_goods2);
         goodImgs[2] = (ImageView) rootView.findViewById(R.id.iv_goods3);
         goodImgs[3] = (ImageView) rootView.findViewById(R.id.iv_goods4);
     }
-
 
     private void initListener() {
         ll_home_page_fbh_store.setOnClickListener(this);
@@ -195,7 +235,6 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
         ll_home_page_join_us.setOnClickListener(this);
 
         banner.setOnClickListener(this);
-
         // 扫一扫监听事件
         imageButton.setOnClickListener(this);
         // 搜索监听事件
@@ -210,9 +249,11 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     handled = true;
                     /*隐藏软键盘*/
-                    InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    InputMethodManager inputMethodManager = (InputMethodManager) getActivity()
+                            .getSystemService(Context.INPUT_METHOD_SERVICE);
                     if (inputMethodManager.isActive()) {
-                        inputMethodManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
+                        inputMethodManager.hideSoftInputFromWindow(getActivity().getCurrentFocus()
+                                .getWindowToken(), 0);
                     }
                     searchFunction();
                 }
@@ -223,7 +264,7 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
 
     //轮播效果的实现
     private Handler handler = new Handler() {
-        public void handleMessage(android.os.Message msg) {
+        public void handleMessage(Message msg) {
             switch (msg.what) {
                 case 1:
                     currentItem = (currentItem + 1) % TopCarousel.size();
@@ -234,7 +275,8 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
     };
 
     private void startAd() {
-        ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
+        ScheduledExecutorService scheduledExecutorService = Executors
+                .newSingleThreadScheduledExecutor();
         scheduledExecutorService.scheduleAtFixedRate(new ScrollTask(), 1, 3, TimeUnit.SECONDS);
         //scheduledExecutorService.scheduleAtFixedRate(new ScrollTask02(), 1, 3, TimeUnit.SECONDS);
     }
@@ -253,7 +295,7 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
         }
     }
 
-    //点击事件-----------------------------------------------------------------------------------------------------
+    //点击事件--------------------------------------------------------------------------------------
     @SuppressLint("WrongConstant")
     @Override
     public void onClick(View v) {
@@ -263,25 +305,47 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
                 searchFunction();
                 break;
             case R.id.ll_home_page_message://消息
-                // 进入好友消息列表
-                startActivity(new Intent(getActivity(), PersonalFriendsMessageActivity.class));
+                if (!TextUtils.isEmpty((WoAiSiJiApp.getUid()))) {
+                    // 直接进入好友消息列表
+                    startActivity(new Intent(getActivity(), PersonalFriendsMessageActivity.class));
+                } else {
+                    startActivity(new Intent(getActivity(), LoginActivity.class));
+                }
                 break;
             case R.id.app_body_banner://中部条幅
                 startActivity(new Intent(getActivity(), ILoveShopActivity.class));
                 break;
-            //福百惠商城
-            case R.id.ll_home_page_fbh_store:
-                Intent intent = new Intent(getActivity(), FBHStoreActivity.class);
-                intent.putExtra("fromType",0);
+            case R.id.ll_home_page_fbh_store://福百惠商城
+//                Intent intent = new Intent(getActivity(), FBHStoreActivity.class);
+                Intent intent = new Intent(getActivity(), FBHStoreActivity2.class);
+                intent.putExtra("fromType", 0);
                 startActivity(intent);
                 break;
 //            case R.id.duihuanshangcheng://银币商城
-            case R.id.ll_home_page_silver_store:
-//                startActivity(new Intent(getActivity(), SliverIntegralShangCheng.class));
+            case R.id.ll_home_page_silver_store://银积分商城
+//                if (!TextUtils.isEmpty((WoAiSiJiApp.getUid()))) {
+                if (Build.VERSION.SDK_INT >= 23) {
+                    int mCheckPermission = ContextCompat.checkSelfPermission(getActivity(),
+                            Manifest.permission.ACCESS_COARSE_LOCATION);
+                    if (mCheckPermission != PackageManager.PERMISSION_GRANTED) {
+                        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest
+                                .permission.ACCESS_COARSE_LOCATION}, 1);
+                        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest
+                                .permission.ACCESS_FINE_LOCATION}, 1);
+                        Log.d("TTTT", "弹出提示");
+                    }
+                }
+                //跳转到银积分商城页面
+                FunctionUtils.requestSilverIntegral(getActivity());
+//                startActivity(new Intent(getActivity(), SliverIntegralStoreActivity.class));
+                /*} else {
+                    startActivity(new Intent(getActivity(), LoginActivity.class));
+                }*/
+                //Toast.makeText(getContext(), "系统正在优化，请耐心等待", Toast.LENGTH_SHORT).show();
                 break;
 //            case R.id.aisiji://搜索会员
             case R.id.ll_home_page_search_vip://搜索会员
-                if (!TextUtils.isEmpty((WoAiSiJiApp.getUid()))){
+                if (!TextUtils.isEmpty((WoAiSiJiApp.getUid()))) {
                     //直接跳转到这里
                     startActivity(new Intent(getActivity(), LoveDriverSociallyActivity.class));
                 } else {
@@ -289,21 +353,25 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
                 }
                 break;
 //            case R.id.iv_daily_sign://加盟
-            case R.id.ll_home_page_join_us://加盟
-                if (!TextUtils.isEmpty((WoAiSiJiApp.getUid()))){
-                    if (Build.VERSION.SDK_INT >= 23) {
-                        int checkPermission = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION);
-                        if (checkPermission != PackageManager.PERMISSION_GRANTED) {
-                            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
-                            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-                            Log.d("TTTT", "弹出提示");
-                        }
-
+            case R.id.ll_home_page_join_us://加盟商家
+//                if (!TextUtils.isEmpty((WoAiSiJiApp.getUid()))) {
+                if (Build.VERSION.SDK_INT >= 23) {
+                    int checkPermission = ContextCompat.checkSelfPermission(getActivity(),
+                            Manifest.permission.ACCESS_COARSE_LOCATION);
+                    if (checkPermission != PackageManager.PERMISSION_GRANTED) {
+                        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest
+                                .permission.ACCESS_COARSE_LOCATION}, 1);
+                        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest
+                                .permission.ACCESS_FINE_LOCATION}, 1);
+                        Log.d("TTTT", "弹出提示");
                     }
-                    startActivity(new Intent(getActivity(), JoinAutoActivity.class));
-                } else {
-                    startActivity(new Intent(getActivity(), LoginActivity.class));
                 }
+                //跳转到加盟商家页面
+                FunctionUtils.requestFranchisee(getActivity());
+
+                /*} else {
+                    startActivity(new Intent(getActivity(), LoginActivity.class));
+                }*/
                 break;
             case R.id.yanghuliansuo://养护连锁
                 startActivity(new Intent(getActivity(), YangHuLianSuo.class));
@@ -312,29 +380,64 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
                 startActivity(new Intent(getActivity(), QuestionAnswerActivity.class));
                 break;
             case R.id.sijikefu://司机客服
-                if (TextUtils.isEmpty((WoAiSiJiApp.getUid()))){
+                if (TextUtils.isEmpty((WoAiSiJiApp.getUid()))) {
                     String username = "l8888";
                     if (WoAiSiJiApp.getUid().equals(username)) {
                         // 客服ID
-                        Toast.makeText(getActivity(), "自己不能与自己聊天", Toast.LENGTH_SHORT).show();
+                        ToastUtils.showShort("占无评价");
                     } else {
-                        startActivity(new Intent(getActivity(), ChatActivity.class).putExtra("userId", username));
+                        startActivity(new Intent(getActivity(), ChatActivity.class).putExtra
+                                ("userId", username));
                     }
                 } else {
                     startActivity(new Intent(getActivity(), LoginActivity.class));
                 }
                 break;
-            case R.id.imageButton://汽车扫描
-                // 扫一扫功能执行
-//                startActivity(new Intent(getContext(),CaptureActivity.class));
-                /*new IntentIntegrator(this)
-                        .setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES)// 扫码的类型,可选：一维码，二维码，一/二维码
+            case R.id.imageButton://扫一扫按钮
+                new IntentIntegrator(getActivity())
+                        .setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES)// 扫码的类型,
+                        // 可选：一维码，二维码，一/二维码
                         //.setPrompt("请对准二维码")// 设置提示语
                         .setCameraId(0)// 选择摄像头,可使用前置或者后置
                         .setBeepEnabled(true)// 是否开启声音,扫完码之后会"哔"的一声
-                        .initiateScan();// 初始化扫码*/
+                        .setCaptureActivity(QrCodeActivity.class)//自定义扫码界面
+                        .initiateScan();// 初始化扫码
+                break;
+            default:
                 break;
         }
+    }
+
+    /**
+     * 生成固定大小的二维码(不需网络权限)
+     *
+     * @param content 需要生成的内容
+     * @param width   二维码宽度
+     * @param height  二维码高度
+     * @return
+     */
+    private Bitmap generateBitmap(String content, int width, int height) {
+        QRCodeWriter qrCodeWriter = new QRCodeWriter();
+        Map<EncodeHintType, String> hints = new HashMap<>();
+        hints.put(EncodeHintType.CHARACTER_SET, "utf-8");
+        try {
+            BitMatrix encode = qrCodeWriter.encode(content, BarcodeFormat.QR_CODE, width, height,
+                    hints);
+            int[] pixels = new int[width * height];
+            for (int i = 0; i < height; i++) {
+                for (int j = 0; j < width; j++) {
+                    if (encode.get(j, i)) {
+                        pixels[i * width + j] = 0x00000000;
+                    } else {
+                        pixels[i * width + j] = 0xffffffff;
+                    }
+                }
+            }
+            return Bitmap.createBitmap(pixels, 0, width, width, height, Bitmap.Config.RGB_565);
+        } catch (WriterException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     /**
@@ -342,8 +445,8 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
      */
     private void searchFunction() {
         String keyWords = et_home_page_search.getText().toString();
-        if (TextUtils.isEmpty(keyWords)){
-            Toast.makeText(getActivity(),"关键字不能为空",Toast.LENGTH_SHORT).show();
+        if (TextUtils.isEmpty(keyWords)) {
+            Toast.makeText(getActivity(), "关键字不能为空", Toast.LENGTH_SHORT).show();
             return;
         }
         et_home_page_search.setText("");
@@ -361,7 +464,7 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
         });
     }
 
-    public void refreshUIWithMessageCurrentTabIndex0(){
+    public void refreshUIWithMessageCurrentTabIndex0() {
         getActivity().runOnUiThread(new Runnable() {
             public void run() {
                 if (conversationListFragment != null) {
@@ -370,10 +473,11 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
             }
         });
     }
-    public void refreshUIWithMessageCurrentTabIndex1(){
+
+    public void refreshUIWithMessageCurrentTabIndex1() {
         getActivity().runOnUiThread(new Runnable() {
             public void run() {
-                if(contactListFragment != null) {
+                if (contactListFragment != null) {
                     contactListFragment.refresh();
                 }
             }
@@ -395,28 +499,33 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
 
     /**
      * get unread message count
-     *消息数量
+     * 消息数量
+     *
      * @return
      */
     public int getUnreadMsgCountTotal() {
         int unreadMsgCountTotal = 0;
         int chatroomUnreadMsgCount = 0;
         unreadMsgCountTotal = EMClient.getInstance().chatManager().getUnreadMsgsCount();
-        for(EMConversation conversation: EMClient.getInstance().chatManager().getAllConversations().values()){
-            if(conversation.getType() == EMConversation.EMConversationType.ChatRoom)
-                chatroomUnreadMsgCount=chatroomUnreadMsgCount+conversation.getUnreadMsgCount();
+        for (EMConversation conversation : EMClient.getInstance().chatManager()
+                .getAllConversations().values()) {
+            if (conversation.getType() == EMConversation.EMConversationType.ChatRoom)
+                chatroomUnreadMsgCount = chatroomUnreadMsgCount + conversation.getUnreadMsgCount();
         }
-        return unreadMsgCountTotal-chatroomUnreadMsgCount;
+        return unreadMsgCountTotal - chatroomUnreadMsgCount;
     }
+
     /**
      * 网络请求
      */
     private List<ImageView> mImageViewList;
 
     public void HomePagerAdvertisement(final String url) {
-        int method = (!TextUtils.isEmpty(url)&&(URL_GLOBAL_SLIDE_SHOW).equals(url))?Request.Method.GET:Request.Method.POST;
+        int method = (!TextUtils.isEmpty(url) && (URL_GLOBAL_SLIDE_SHOW).equals(url)) ? Request
+                .Method.GET : Request.Method.POST;
         //网络请求
-        StringRequest HomePagerAdvertisementRequest = new StringRequest(method,url, new Response.Listener<String>() {
+        StringRequest HomePagerAdvertisementRequest = new StringRequest(method, url, new Response
+                .Listener<String>() {
             //请求网络数据成功
             @Override
             public void onResponse(String response) {
@@ -424,21 +533,24 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
                     return;
                 Gson gson = new Gson();
                 //APP顶部轮播
-                if (url.equals(URL_GLOBAL_SLIDE_SHOW)){
+                if (url.equals(URL_GLOBAL_SLIDE_SHOW)) {
                     mImageViewList = new ArrayList<>();
                     RespGlobalSlideShow slideShow =
                             gson.fromJson(response, RespGlobalSlideShow.class);//解析成对象
-                    if (slideShow.getCode()!=200)
+                    if (slideShow.getCode() != 200)
                         return;
-                    for (RespGlobalSlideShow.GlobalSlideShow bean : slideShow.getData()) {
+                    for (GlobalSlideShow bean : slideShow.getData()) {
                         TopCarousel.add(bean);//数据源添加bean
                         final ImageView imageView = new ImageView(getActivity());
                         Glide.with(getActivity())
-                                .load(ServerAddress.SERVER_ROOT + bean.getImg())
+                                .load(bean.getImg())
                                 .into(new SimpleTarget<GlideDrawable>() {
                                     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
                                     @Override
-                                    public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
+                                    public void onResourceReady(GlideDrawable resource,
+                                                                GlideAnimation<? super
+                                                                        GlideDrawable>
+                                                                        glideAnimation) {
                                         imageView.setBackground(resource);
                                     }
                                 });
@@ -446,34 +558,35 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
                     }
                     initImageView();
                     initViewPager();
-                }else if (url.equals(URL_HOME_PAGE_JINGXUAN_GONGGAO)){
+                } else if (url.equals(URL_HOME_PAGE_JINGXUAN_GONGGAO)) {
                     RespHomePagerJXGG homePagerJXGG =
                             gson.fromJson(response, RespHomePagerJXGG.class);//解析成对象
-                    if (homePagerJXGG.getCode()!=200)
+                    if (homePagerJXGG.getCode() != 200)
                         //司机公告
                         noticeListData.clear();
                     views.clear();
-                    if (homePagerJXGG.getData().getGonggao()!=null && homePagerJXGG.getData().getGonggao().size()>0)
+                    if (homePagerJXGG.getData().getGonggao() != null && homePagerJXGG.getData()
+                            .getGonggao().size() > 0)
                         noticeListData.addAll(homePagerJXGG.getData().getGonggao());
                     setView(noticeListData);//中有点击事件
                     upview1.setViews(views);
                     //APP司机精选下面六张图片
                     BottomGoods.clear();
-                    for (RespHomePagerJXGG.JingXuan bodyflash : homePagerJXGG.getData().getJingxuan()) {
+                    for (JingXuan bodyflash : homePagerJXGG.getData().getJingxuan()) {
                         BottomGoods.add(bodyflash);
                     }
                     for (int i = 0; i < BottomGoods.size(); i++) {
-                        if ( TextUtils.isEmpty(BottomGoods.get(i).getPath()) || i >= 4) {
+                        if (TextUtils.isEmpty(BottomGoods.get(i).getPath()) || i >= 4) {
                             break;
                         }
-                        if (i==3 &&i==2){
+                        if (i == 3 && i == 2) {
                             Picasso.with(getActivity())
                                     .load(ServerAddress.SERVER_ROOT + BottomGoods.get(i).getPath())
                                     .error(R.drawable.weixianshi)
                                     .transform(new CircleCornerTransform(getActivity()))
                                     .placeholder(R.drawable.weixianshi)
                                     .into(goodImgs[i]);
-                        }else
+                        } else
                             Picasso.with(getActivity())
                                     .load(ServerAddress.SERVER_ROOT + BottomGoods.get(i).getPath())
                                     .error(R.drawable.weixianshi)
@@ -484,8 +597,10 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
                             @Override
                             public void onClick(View view) {
                                 //六张点击跳到图文详情
-                                Intent intent = new Intent(getActivity(), ProductDetailActivity2.class);
+                                Intent intent = new Intent(getActivity(),
+                                        ProductDetailActivity2.class);
                                 intent.putExtra("id", BottomGoods.get(count).getId());
+                                intent.putExtra("type",0);
                                 startActivity(intent);
                             }
                         });
@@ -501,16 +616,15 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
         });
         //添加网络请求队列
         WoAiSiJiApp.mRequestQueue.add(HomePagerAdvertisementRequest);
-
     }
 
-
-    private void setView(final List<RespHomePagerJXGG.GongGao> notice) {
+    private void setView(final List<GongGao> notice) {
 
         for (int i = 0; i < notice.size(); i++) {
             final int position = i;
             //设置滚动的单个布局
-            LinearLayout moreView = (LinearLayout) LayoutInflater.from(getActivity()).inflate(R.layout.itme_upmarquee, null);
+            LinearLayout moreView = (LinearLayout) getActivity().getLayoutInflater().inflate(R
+                    .layout.itme_upmarquee, null);
             //初始化布局的控件
             TextView tv1 = (TextView) moreView.findViewById(R.id.tv1);
             //进行对控件赋值
@@ -522,21 +636,24 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
         upview1.setOnItemClickListener(new UPMarqueeView.OnItemClickListener() {
             @Override
             public void onItemClick(int position, View view) {
-                Intent intent = new Intent(getActivity(), AdvertisementWebViewActivity.class);
+                //                Intent intent = new Intent(getActivity(),
+                // AdvertisementWebViewActivity.class);
+                Intent intent = new Intent(getActivity(), AnnouncementDetailsActivity.class);
                 intent.putExtra("id", notice.get(position).getNid());
-                intent.putExtra("content", notice.get(position).getTitle());
+                intent.putExtra("title", notice.get(position).getTitle());
                 startActivity(intent);
             }
         });
     }
 
-//  -顶部轮播viewpager的显示-----------------------------------------------------------------
+    // 顶部轮播viewpager的显示--------------------------------------------------
     private void initViewPager() {
         viewPager.setAdapter(new ImageViewAdapter(getActivity(), mImageViewList));
         final int length = mImageViewList.size();
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            public void onPageScrolled(int position, float positionOffset, int
+                    positionOffsetPixels) {
             }
 
             @Override
@@ -545,7 +662,7 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
                     @Override
                     public void run() {
                         SystemClock.sleep(3000);
-                        if (getActivity()==null)
+                        if (getActivity() == null)
                             return;
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
@@ -564,7 +681,8 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
                     @Override
                     public void onClick(View view) {
                         //顶部轮播点击进广告网站
-                        Intent intent = new Intent(getActivity(), AdvertisementWebViewActivity.class);
+                        Intent intent = new Intent(getActivity(), AdvertisementWebViewActivity
+                                .class);
                         intent.putExtra("content", TopCarousel.get(position).getTzurl());
                         startActivity(intent);
                     }
@@ -588,7 +706,8 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
             ImageView point = new ImageView(getActivity());
             point.setImageResource(R.drawable.shape_point_gray);
             // 初始化参数布局
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup
+                    .LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             if (i > 0) {
                 // 从第二个设置左边距
                 params.leftMargin = DensityUtils.dip2px(10, getActivity());

@@ -89,7 +89,8 @@ public class PickAtUserActivity extends BaseActivity{
                         EaseUser user = (EaseUser) listView.getItemAtPosition(position);
                         if (EMClient.getInstance().getCurrentUser().equals(user.getUsername()))
                             return;
-                        setResult(RESULT_OK, new Intent().putExtra("username", user.getUsername()));
+//                        setResult(RESULT_OK, new Intent().putExtra("username", user.getUsername()));
+                        setResult(RESULT_OK, new Intent().putExtra("username", WoAiSiJiApp.getCurrentUserInfo().getNickname()));
                     }else{
                         setResult(RESULT_OK, new Intent().putExtra("username", getString(R.string.all_members)));
                     }
@@ -97,20 +98,15 @@ public class PickAtUserActivity extends BaseActivity{
                     EaseUser user = (EaseUser) listView.getItemAtPosition(position);
                     if (EMClient.getInstance().getCurrentUser().equals(user.getUsername()))
                         return;
-                    setResult(RESULT_OK, new Intent().putExtra("username", user.getUsername()));
+//                    setResult(RESULT_OK, new Intent().putExtra("username", user.getUsername()));
+                    setResult(RESULT_OK, new Intent().putExtra("username",WoAiSiJiApp.getCurrentUserInfo().getNickname()));
                 }
 
                 finish();
             }
         });
 
-
-
-
-
     }
-
-
 
     private void addHeadView(){
         View view = LayoutInflater.from(this).inflate(R.layout.ease_row_contact, listView, false);

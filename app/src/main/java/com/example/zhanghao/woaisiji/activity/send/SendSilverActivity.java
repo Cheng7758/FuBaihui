@@ -22,20 +22,31 @@ import com.android.volley.toolbox.StringRequest;
 import com.example.zhanghao.woaisiji.R;
 import com.example.zhanghao.woaisiji.WoAiSiJiApp;
 import com.example.zhanghao.woaisiji.bean.SendGold;
+import com.example.zhanghao.woaisiji.bean.pay.PaySignBean;
 import com.example.zhanghao.woaisiji.friends.ui.ChatActivity;
-import com.example.zhanghao.woaisiji.friends.ui.ChatFragment;
 import com.example.zhanghao.woaisiji.global.ServerAddress;
+import com.example.zhanghao.woaisiji.httpurl.Myserver;
+import com.example.zhanghao.woaisiji.utils.http.NetManager;
 import com.google.gson.Gson;
+import com.jcodecraeer.xrecyclerview.gold.UserManager;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
+
+//TODO  苹果给安卓转账（银积分）条目变成黄色条目  另外银积分转账变成金积分转账
 public class SendSilverActivity extends AppCompatActivity {
     private ImageView registerBack;
-    private TextView tvRegisterTitle,tv_touid;
+    private TextView tvRegisterTitle, tv_touid;
     private Button btn_gold;
-    private String uid, userid, num,name;
+    private String uid, userid, num, name;
     private EditText edt;
+    private String mData;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +64,7 @@ public class SendSilverActivity extends AppCompatActivity {
                 builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        goldBuy();
+                        paySign();  //支付签名
                     }
                 });
                 builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -82,7 +93,6 @@ public class SendSilverActivity extends AppCompatActivity {
             //Editable s  可变字符串  表示输入后的字符串
             String numString = s.toString();
             num = numString;
-
         }
 
         @Override
@@ -94,23 +104,24 @@ public class SendSilverActivity extends AppCompatActivity {
         }
     }
 
+    //银积分转账接口
     private void goldBuy() {
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, ServerAddress.URL_GLOD_SLIVER, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, ServerAddress.URL_GLOD_SEND,
+                new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Gson gson = new Gson();
                 SendGold sendGold = gson.fromJson(response, SendGold.class);
                 if (sendGold.getCode() == 200) {
                     Intent intent = new Intent();
-                    Log.d("123", num+uid+userid);
+                    Log.d("123", num + uid + userid);
                     intent.setClass(SendSilverActivity.this, ChatActivity.class);
                     Bundle bundle2 = new Bundle();
-                    bundle2.putString("goldStr", num+"个银币");
+                    bundle2.putString("goldStr", num + "银积分");
                     bundle2.putString("uid", uid);
                     bundle2.putString("toChatUsername", userid);
-                    bundle2.putString("nameTitle2", name);
-                    bundle2.putString("nameTitle", "银币转让");
+                    bundle2.putString("nameTitle2", "转给"+ UserManager.toName);
+                    bundle2.putString("nameTitle", "银积分转让");
                     intent.putExtra("bundle2", bundle2);
 
                     setResult(0, intent);
@@ -129,9 +140,12 @@ public class SendSilverActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("uid", uid);
-                params.put("user_pid", userid);
-                params.put("num", num);
+                params.put("uid", WoAiSiJiApp.getUid());
+                params.put("token", WoAiSiJiApp.token);
+                params.put("give_uid", userid);
+                params.put("price", num);
+                params.put("type", 1 + "");
+                params.put("sign", mData);
                 return params;
             }
         };
@@ -143,10 +157,51 @@ public class SendSilverActivity extends AppCompatActivity {
         uid = intent.getStringExtra("uid");
         userid = intent.getStringExtra("uesr_pid");
         tvRegisterTitle = (TextView) findViewById(R.id.tv_register_title);
-        tvRegisterTitle.setText("银币转让");
+        tvRegisterTitle.setText("银积分转让");
         registerBack = (ImageView) findViewById(R.id.iv_register_back);
         name = intent.getStringExtra("name");
         tv_touid = (TextView) findViewById(R.id.tv_touid);
         tv_touid.setText(name);
+    }
+
+    //支付签名
+    private void paySign() {
+        HashMap<String, String> map = new HashMap<>();
+        map.put("uid", WoAiSiJiApp.getUid());
+        map.put("token", WoAiSiJiApp.token);
+        map.put("give_uid", userid);
+        map.put("price", num);
+        map.put("type", 1 + "");
+        NetManager.getNetManager().getMyService(Myserver.url)
+                .getPaySignBean(map) //支付签名
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<PaySignBean>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(PaySignBean value) {
+                        if (value != null) {
+                            mData = value.getData();
+                            goldBuy();  //转让银积分
+                            Log.e("----paySign", mData);
+                        } else {
+                            return;
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 }

@@ -6,14 +6,14 @@
     android:background="#252C39"
     android:orientation="vertical"
     android:id="@+id/root_layout"
-    android:paddingLeft="20dp"
-    android:paddingRight="20dp" >
+    android:paddingLeft="@dimen/sp_20"
+    android:paddingRight="@dimen/sp_20" >
 
    <LinearLayout
         android:id="@+id/topLayout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="5dp"
+        android:layout_height="@dimen/dp_0"
+        android:layout_marginTop="@dimen/dp_5"
         android:layout_weight="1"
         android:gravity="center_horizontal"
         android:orientation="vertical" >
@@ -23,9 +23,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/voip_interface_text_color"
-            android:textSize="22sp"
-            android:paddingLeft="12dp"
-            android:paddingRight="12dp"
+            android:textSize="@dimen/sp_22"
+            android:paddingLeft="@dimen/dp_12"
+            android:paddingRight="@dimen/dp_12"
             android:visibility="visible" />
 
         <com.hyphenate.chatuidemo.widget.MyChronometer
@@ -46,47 +46,47 @@
         <TextView
             android:id="@+id/tv_calling_duration"
             android:layout_width="wrap_content"
-            android:layout_height="25dp"
+            android:layout_height="@dimen/dp_25"
             android:textColor="@color/voip_interface_text_color"
-            android:textSize="15sp"
+            android:textSize="@dimen/sp_15"
             android:visibility="visible" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="@dimen/dp_0"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:layout_weight="2" >
 
         <ImageView
             android:id="@+id/swing_card"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="@dimen/dp_60"
+            android:layout_height="@dimen/dp_60"
             android:scaleType="fitXY"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/dp_10"
             android:src="@drawable/em_default_avatar" />
         
         <TextView
             android:id="@+id/tv_nick"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/dp_10"
               android:textColor="@android:color/white"
-              android:textSize="20sp"
+              android:textSize="@dimen/sp_20"
               android:text="张三"
             tools:ignore="HardcodedText" />
         <TextView
             android:id="@+id/tv_network_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/dp_10"
             android:textColor="@android:color/white" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="0dp"
+        android:layout_height="@dimen/dp_0"
         android:layout_weight="2"
         android:orientation="vertical" >
 
@@ -97,7 +97,7 @@
             tools:ignore="DisableBaselineAlignment">
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="@dimen/dp_0"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -113,14 +113,14 @@
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
+                    android:layout_marginTop="@dimen/dp_3"
                     android:gravity="center"
                     android:textColor="#666167"
                     android:text="@string/mute" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="@dimen/dp_0"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -146,17 +146,17 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp" >
+            android:layout_marginTop="@dimen/dp_20" >
 
             <Button
                 android:id="@+id/btn_hangup_call"
                 android:layout_width="fill_parent"
-                android:layout_height="60dp"
+                android:layout_height="@dimen/dp_60"
                 android:background="@drawable/em_call_hangup_bg"
                 android:gravity="center"
                 android:text="@string/hang_up"
                 android:textColor="@android:color/white"
-                android:textSize="20sp"
+                android:textSize="@dimen/sp_20"
                 android:visibility="invisible" />
 
             <LinearLayout
@@ -167,25 +167,25 @@
                 <Button
                     android:id="@+id/btn_refuse_call"
                     android:layout_width="wrap_content"
-                    android:layout_height="60dp"
+                    android:layout_height="@dimen/dp_60"
                     android:layout_weight="1"
                     android:background="@drawable/em_call_hangup_bg"
                     android:gravity="center"
                     android:text="@string/hang_up"
                     android:textColor="@android:color/white"
-                    android:textSize="20sp" />
+                    android:textSize="@dimen/sp_20" />
 
                 <Button
                     android:id="@+id/btn_answer_call"
                     android:layout_width="wrap_content"
-                    android:layout_height="60dp"
-                    android:layout_marginLeft="30dp"
+                    android:layout_height="@dimen/dp_60"
+                    android:layout_marginLeft="@dimen/dp_30"
                     android:layout_weight="1"
                     android:background="@drawable/em_call_answer_bg"
                     android:gravity="center"
                     android:text="@string/answer"
                     android:textColor="@android:color/white"
-                    android:textSize="20sp" />
+                    android:textSize="@dimen/sp_20" />
             </LinearLayout>
         </FrameLayout>
     </LinearLayout>

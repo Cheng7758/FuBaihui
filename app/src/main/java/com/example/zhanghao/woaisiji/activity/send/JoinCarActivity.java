@@ -117,8 +117,6 @@ public class JoinCarActivity extends AppCompatActivity implements SensorEventLis
             getLngAndLat(this);
         }
 
-
-
         registerBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -129,16 +127,16 @@ public class JoinCarActivity extends AppCompatActivity implements SensorEventLis
     }
     //listView的适配
     private void initListView() {
-
         questionLists = new ArrayList<>();
-        adapter = new JoinCarAdapter(JoinCarActivity.this);
+//        adapter = new JoinCarAdapter(this);
         // 获取服务器数据
         getDataFromServer();
 
     }
 
     private void getDataFromServer() {
-        StringRequest questionRequest = new StringRequest(Request.Method.POST, ServerAddress.URL_GPS, new Response.Listener<String>() {
+        StringRequest questionRequest = new StringRequest(Request.Method.POST, ServerAddress.URL_GPS,
+                new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 transServerData(response);
@@ -259,7 +257,6 @@ public class JoinCarActivity extends AppCompatActivity implements SensorEventLis
         }
     };
     private void goldBuy() {
-
         StringRequest stringRequest = new StringRequest(Request.Method.POST, ServerAddress.URL_GPS, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

@@ -15,7 +15,7 @@
             android:id="@+id/lv_order_form_all_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:dividerHeight="8dp"></com.example.zhanghao.woaisiji.refresh.BaseListView>
+            android:dividerHeight="@dimen/dp_8"></com.example.zhanghao.woaisiji.refresh.BaseListView>
 
        <include layout="@layout/load_more" />
 

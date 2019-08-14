@@ -48,15 +48,14 @@ public class LoginUtils {
     private MemberShipInfosBean memberShipInfos;
     private RespData tokenRsp;
 
-
-
     public LoginUtils(BaseActivity activity){
         this.mActivity = activity;
     }
 
     public void accessServerData(final String username, final String password) {
         mActivity.showProgressDialog();
-        StringRequest loginRequest = new StringRequest(Request.Method.POST, ServerAddress.URL_USER_LOGIN, new Response.Listener<String>() {
+        StringRequest loginRequest = new StringRequest(Request.Method.POST, ServerAddress.URL_USER_LOGIN,
+                new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 if (TextUtils.isEmpty(response)) {
@@ -74,15 +73,16 @@ public class LoginUtils {
                     // 从服务器获取会员信息
 //                    obtainDataFromServer();
                     // 从服务器获取好友列表
-//                    obtainFriendsFromServer();
+                    obtainFriendsFromServer();
                     // 环信登录
-                    emLogin(WoAiSiJiApp.getUid(), Constants.EMPASSWORD);
-                    if (loginSuccess == false){
+                    emLogin(WoAiSiJiApp.getUid(), Constants.EMPASSWORD());
+                    if (!loginSuccess){
                         // 环信注册
-                        emRegister(WoAiSiJiApp.getUid(),Constants.EMPASSWORD);
+                        emRegister(WoAiSiJiApp.getUid(),Constants.EMPASSWORD());
                         // 环信登录
-                        emLogin(WoAiSiJiApp.getUid(),Constants.EMPASSWORD);
+                        emLogin(WoAiSiJiApp.getUid(),Constants.EMPASSWORD());
                     }
+
                 } else {
                     if (!TextUtils.isEmpty(respLogin.getMsg()))
                         Toast.makeText(mActivity, "" + respLogin.getMsg(), Toast.LENGTH_SHORT).show();
@@ -161,7 +161,6 @@ public class LoginUtils {
                     EMClient.getInstance().createAccount(username, password);
                     mActivity.runOnUiThread(new Runnable() {
                         public void run() {
-//
                             // save current user
                             DemoHelper.getInstance().setCurrentUserName(username);
 //                            Toast.makeText(getApplicationContext(), getResources().getString(R.string.Registered_successfully), Toast.LENGTH_SHORT).show();
@@ -210,7 +209,6 @@ public class LoginUtils {
 //                Log.d(TAG, "login: onSuccess");
                 loginSuccess = true;
 
-
                 // ** manually load all local groups and conversation
                 EMClient.getInstance().groupManager().loadAllGroups();
                 EMClient.getInstance().chatManager().loadAllConversations();
@@ -225,7 +223,6 @@ public class LoginUtils {
 
                 // get user's info (this should be get from App's server or 3rd party service)
                 DemoHelper.getInstance().getUserProfileManager().asyncGetCurrentUserInfo();
-
 //                finish();
             }
 
@@ -256,6 +253,5 @@ public class LoginUtils {
                 tokenRsp = gson.fromJson(response, RespData.class);
                 break;
         }
-
     }
 }

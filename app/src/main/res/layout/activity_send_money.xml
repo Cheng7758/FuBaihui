@@ -9,7 +9,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.8dp"
+        android:layout_height="@dimen/dp_0_5"
         android:background="#CBCBCB" />
 
     <TextView
@@ -19,43 +19,43 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.8dp"
-        android:layout_marginTop="6dp"
+        android:layout_height="@dimen/dp_0_5"
+        android:layout_marginTop="@dimen/dp_6"
         android:background="#CBCBCB" />
 
     <RadioGroup
         android:id="@+id/rg_send_select"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/dp_50"
         android:background="@color/colorWhite"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <RadioButton
             android:id="@+id/rb_send_gold"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/dp_0"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="转金币"
             android:textColor="#000000"
-            android:textSize="14sp"
+            android:textSize="@dimen/sp_14"
             android:gravity="center"
             android:button="@null"
             android:background="@drawable/background_select"/>
 
         <View
-            android:layout_width="0.8dp"
+            android:layout_width="@dimen/dp_0_5"
             android:layout_height="match_parent"
             android:background="#CBCBCB" />
 
         <RadioButton
             android:id="@+id/rb_send_silver"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/dp_0"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="转银币"
             android:textColor="#000000"
-            android:textSize="14sp"
+            android:textSize="@dimen/sp_14"
             android:gravity="center"
             android:button="@null"
             android:background="@drawable/background_select"/>
@@ -64,13 +64,13 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.8dp"
+        android:layout_height="@dimen/dp_0_5"
         android:background="#CBCBCB" />
 
     <LinearLayout
         android:id="@+id/ll_send_to"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/dp_50"
         android:background="@color/colorWhite"
         android:gravity="center_vertical"
         android:orientation="horizontal">
@@ -79,35 +79,35 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:padding="10dp"
+            android:padding="@dimen/dp_10"
             android:text="转给谁:"
             android:textColor="#000000"
-            android:textSize="14sp" />
+            android:textSize="@dimen/sp_14" />
 
         <EditText
             android:id="@+id/et_send_person"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="请输入姓名"
-            android:textSize="14sp"
-            android:layout_marginRight="40dp"/>
+            android:textSize="@dimen/sp_14"
+            android:layout_marginRight="@dimen/dp_40"/>
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.8dp"
+        android:layout_height="@dimen/dp_0_5"
         android:background="#CBCBCB" />
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.8dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="@dimen/dp_0_5"
+        android:layout_marginTop="@dimen/dp_16"
         android:background="#CBCBCB" />
 
     <LinearLayout
         android:id="@+id/ll_send_number"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/dp_50"
         android:background="@color/colorWhite"
         android:gravity="center_vertical"
         android:orientation="horizontal">
@@ -116,36 +116,36 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:padding="10dp"
+            android:padding="@dimen/dp_10"
             android:text="金  额:"
             android:textColor="#000000"
-            android:textSize="14sp" />
+            android:textSize="@dimen/sp_14" />
 
         <EditText
             android:id="@+id/et_send_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="请输入金额"
-            android:textSize="14sp"
-            android:layout_marginRight="40dp"/>
+            android:textSize="@dimen/sp_14"
+            android:layout_marginRight="@dimen/dp_40"/>
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.8dp"
+        android:layout_height="@dimen/dp_0_5"
         android:background="#CBCBCB" />
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.8dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="@dimen/dp_0_5"
+        android:layout_marginTop="@dimen/dp_16"
         android:background="#CBCBCB" />
 
     <Button
         android:id="@+id/btn_send"
         android:layout_width="match_parent"
-        android:layout_height="44dp"
+        android:layout_height="@dimen/dp_44"
         android:background="@drawable/btn_register_selected"
         android:text="转  赠"
-        android:textSize="16sp" />
+        android:textSize="@dimen/sp_16" />
 </LinearLayout>

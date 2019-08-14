@@ -1,138 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EFEFEF"
     android:orientation="vertical"
     tools:context=".activity.PersonalDepositActivity">
-    <include
-        layout="@layout/title_bar_view_layout"/>
-    <View
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#D6D6D6"/>
-    <LinearLayout
-        android:paddingTop="10dp"
-        android:paddingBottom="5dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:layout_gravity="center_vertical"
-        android:gravity="center_vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="转入到余额"
-            android:textSize="17dp"
-            android:textColor="#333"/>
-        <EditText
-            android:id="@+id/et_personal_deposit_shift_to_balance"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:inputType="number"
-            android:background="@drawable/bg_round_ddd_color"/>
-    </LinearLayout>
-    <TextView
-        android:id="@+id/tv_personal_deposit_transferable_balance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:text="可转入余额:100"/>
 
-    <View
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#D6D6D6"/>
+    <include layout="@layout/title_bar_view_layout" />
 
-    <TextView
-        android:id="@+id/tv_personal_deposit_sure_shift"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_margin="30dp"
-        android:gravity="center"
-        android:text="确定转入"
-        android:textSize="16dp"
-        android:textColor="#fff"
-        android:background="@drawable/bg_round_green_color"/>
+        android:layout_height="match_parent">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#D6D6D6"/>
-
-    <LinearLayout
-        android:paddingTop="10dp"
-        android:paddingBottom="5dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="提现金额"
-            android:textSize="17dp"
-            android:textColor="#333"/>
-        <EditText
-            android:id="@+id/et_personal_deposit_input_deposit_amount"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:inputType="number"
-            android:background="@drawable/bg_round_ddd_color"/>
-    </LinearLayout>
+            android:background="#F7F7F7"
+            android:orientation="vertical">
 
-    <View
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#D6D6D6"/>
+            <LinearLayout
+                android:id="@+id/shift_to"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:background="#D6D6D6" />
 
-    <RadioGroup
-        android:padding="30dp"
-        android:id="@+id/rg_personal_deposit_way"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:orientation="vertical">
-        <RadioButton
-            android:id="@+id/rb_personal_deposit_zfb"
-            android:layout_width="180dp"
-            android:layout_height="40dp"
-            android:checked="true"
-            android:gravity="center"
-            android:text="支付宝" />
-        <RadioButton
-            android:id="@+id/rb_personal_deposit_wx"
-            android:layout_marginTop="10dp"
-            android:layout_width="180dp"
-            android:layout_height="40dp"
-            android:gravity="center"
-            android:text="微信" />
-    </RadioGroup>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/dp_5"
+                    android:paddingLeft="@dimen/dp_10"
+                    android:paddingRight="@dimen/dp_10"
+                    android:paddingTop="@dimen/dp_10">
 
-    <TextView
-        android:id="@+id/tv_personal_deposit_now"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_margin="30dp"
-        android:textColor="#fff"
-        android:text="立即体现"
-        android:textSize="18dp"
-        android:gravity="center"
-        android:background="@drawable/bg_rectangle_green_color"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="转入到余额"
+                        android:textColor="#333"
+                        android:textSize="@dimen/dp_17" />
+
+                    <EditText
+                        android:id="@+id/et_personal_deposit_shift_to_balance"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_5"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_round_ddd_color"
+                        android:inputType="number"
+                        android:paddingBottom="@dimen/dp_5"
+                        android:paddingLeft="@dimen/dp_10"
+                        android:paddingTop="@dimen/dp_5" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_personal_deposit_transferable_balance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:text="可转入余额:100" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:background="#D6D6D6" />
+
+                <TextView
+                    android:id="@+id/tv_personal_deposit_sure_shift"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_45"
+                    android:layout_margin="@dimen/dp_30"
+                    android:background="@drawable/bg_round_green_color"
+                    android:gravity="center"
+                    android:text="确定转入"
+                    android:textColor="#fff"
+                    android:textSize="@dimen/dp_16" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/withdraw_deposit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:background="#D6D6D6" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/dp_5"
+                    android:paddingLeft="@dimen/dp_10"
+                    android:paddingRight="@dimen/dp_10"
+                    android:paddingTop="@dimen/dp_10">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="提现金额"
+                        android:textColor="#333"
+                        android:textSize="@dimen/dp_17" />
+
+                    <EditText
+                        android:id="@+id/et_personal_deposit_input_deposit_amount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_5"
+                        android:background="@drawable/bg_round_ddd_color"
+                        android:inputType="number"
+                        android:paddingBottom="@dimen/dp_5"
+                        android:paddingLeft="@dimen/dp_10"
+                        android:paddingTop="@dimen/dp_5" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_personal_cash_balance_balance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:text="可提现余额:100" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:background="#D6D6D6" />
+
+                <RadioGroup
+                    android:id="@+id/rg_personal_deposit_way"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="@dimen/dp_30">
+
+                    <RadioButton
+                        android:id="@+id/rb_personal_deposit_zfb"
+                        android:layout_width="@dimen/dp_180"
+                        android:layout_height="@dimen/dp_30"
+                        android:background="@drawable/bg_deposit_zfb_selector"
+                        android:button="@null"
+                        android:checked="true"
+                        android:gravity="center" />
+
+                    <RadioButton
+                        android:id="@+id/rb_personal_deposit_wx"
+                        android:layout_width="@dimen/dp_180"
+                        android:layout_height="@dimen/dp_30"
+                        android:visibility="gone"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:background="@drawable/bg_deposit_weixin_selector"
+                        android:button="@null"
+                        android:gravity="center" />
+                </RadioGroup>
+
+                <TextView
+                    android:id="@+id/binding_zfb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawableLeft="@drawable/zhifubao"
+                    android:drawablePadding="@dimen/dp_10"
+                    android:gravity="center_vertical"
+                    android:text="未绑定支付宝"
+                    android:textSize="@dimen/sp_14" />
+
+                <TextView
+                    android:id="@+id/tv_personal_deposit_now"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_45"
+                    android:layout_margin="@dimen/dp_30"
+                    android:background="@drawable/bg_rectangle_green_color"
+                    android:gravity="center"
+                    android:text="立即提现"
+                    android:textColor="#fff"
+                    android:textSize="@dimen/sp_18" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

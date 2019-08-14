@@ -21,7 +21,7 @@
             android:layout_centerInParent="true"
             android:text="@string/black_item"
             android:textColor="#ffffff"
-            android:textSize="20sp" />
+            android:textSize="@dimen/sp_20" />
 
         <!-- <RelativeLayout
             android:id="@+id/container_remove"
@@ -43,7 +43,7 @@
 
         <RelativeLayout
             android:id="@+id/container_to_group"
-            android:layout_width="50dp"
+            android:layout_width="@dimen/dp_50"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:background="@drawable/ease_common_tab_bg"

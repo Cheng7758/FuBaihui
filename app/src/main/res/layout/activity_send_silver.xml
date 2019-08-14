@@ -6,53 +6,62 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.zhanghao.woaisiji.activity.send.SendSilverActivity">
+
     <include layout="@layout/title_personal" />
+
     <LinearLayout
-        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="120dp">
+        android:layout_height="@dimen/dp_120"
+        android:gravity="center">
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+
         <TextView
             android:id="@+id/tv_touid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
+
     <TextView
-        android:layout_marginLeft="30dp"
-        android:text="转账"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_30"
+        android:text="转账" />
+
     <LinearLayout
-        android:layout_marginLeft="30dp"
-        android:orientation="horizontal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_30"
+        android:orientation="horizontal">
+
         <TextView
-            android:text="银币"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="银币" />
+
         <EditText
-            android:gravity="center"
-            android:maxLength="7"
-            android:textColor="@color/colorRegisterBg"
-            android:digits="0123456789"
-            android:hint="请输入银币转让数量"
             android:id="@+id/gold_num"
             android:layout_width="match_parent"
-            android:layout_height="50dp" />
+            android:layout_height="@dimen/dp_50"
+            android:digits="0123456789"
+            android:gravity="center"
+            android:hint="请输入银币转让数量"
+            android:maxLength="7"
+            android:textColor="@color/colorRegisterBg" />
 
     </LinearLayout>
+
     <Button
         android:id="@+id/btn_gold"
-        android:layout_marginTop="80dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:textColor="#fff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_80"
         android:background="@color/colorRegisterBg"
         android:text="转账"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:textColor="#fff" />
 
 </LinearLayout>

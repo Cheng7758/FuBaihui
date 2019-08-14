@@ -6,23 +6,23 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/dp_50"
         android:background="@color/colorRegisterBg">
 
         <ImageView
             android:id="@+id/iv_register_back"
-            android:layout_width="30dp"
-            android:layout_height="20dp"
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="@dimen/dp_20"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="@dimen/dp_8"
             android:scaleType="fitXY"
             android:src="@mipmap/white_left" />
 
 
         <LinearLayout
             android:id="@+id/ll_personal_order_form"
-            android:layout_width="260dp"
-            android:layout_height="30dp"
+            android:layout_width="@dimen/dp_260"
+            android:layout_height="@dimen/dp_30"
             android:layout_centerInParent="true"
             android:background="#FF5000"
             android:orientation="horizontal">
@@ -31,27 +31,27 @@
                 android:background="#FF5000"
                 android:id="@+id/btn_siji"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="@dimen/dp_30"
                 android:text="司机商城"
                 android:textColor="#2C5F76"
-                android:textSize="16sp" />
+                android:textSize="@dimen/sp_16" />
 
             <Button
                 android:id="@+id/btn_yinbi"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="@dimen/dp_30"
                 android:background="#FF5000"
                 android:text="分红商城"
                 android:textColor="#2C5F76"
-                android:textSize="16sp" />
+                android:textSize="@dimen/sp_16" />
             <Button
                 android:background="#FF5000"
                 android:id="@+id/btn_jinbi"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="@dimen/dp_30"
                 android:text="积分商城"
                 android:textColor="#2C5F76"
-                android:textSize="16sp" />
+                android:textSize="@dimen/sp_16" />
         </LinearLayout>
 
 
@@ -72,7 +72,7 @@
             android:gravity="center"
             android:text="全部"
             android:textColor="@color/txt_tab_selector"
-            android:textSize="16sp" />
+            android:textSize="@dimen/sp_16" />
         <RadioButton
             android:id="@+id/rb_order_form_indicator_item02"
             android:layout_width="wrap_content"
@@ -82,7 +82,7 @@
             android:gravity="center"
             android:text="待发货"
             android:textColor="@color/txt_tab_selector"
-            android:textSize="16sp" />
+            android:textSize="@dimen/sp_16" />
 
         <RadioButton
             android:id="@+id/rb_order_form_indicator_item03"
@@ -93,7 +93,7 @@
             android:gravity="center"
             android:text="待收货"
             android:textColor="@color/txt_tab_selector"
-            android:textSize="16sp" />
+            android:textSize="@dimen/sp_16" />
         <RadioButton
             android:id="@+id/rb_order_form_indicator_item04"
             android:layout_width="wrap_content"
@@ -103,13 +103,13 @@
             android:gravity="center"
             android:text="待付款"
             android:textColor="@color/txt_tab_selector"
-            android:textSize="16sp" />
+            android:textSize="@dimen/sp_16" />
     </RadioGroup>
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="3dp">
+        android:layout_marginBottom="@dimen/dp_3">
 
         <ImageView
             android:id="@+id/iv_red_rectangle"

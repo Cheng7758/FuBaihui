@@ -12,7 +12,7 @@
         android:gravity="center_vertical" >
 
         <LinearLayout
-            android:layout_width="45dp"
+            android:layout_width="@dimen/dp_45"
             android:layout_height="match_parent"
             android:background="@drawable/ease_common_tab_bg"
             android:onClick="back" >
@@ -21,9 +21,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="9dp"
+                android:layout_marginLeft="@dimen/dp_9"
                 android:scaleType="centerInside"
-                android:src="@drawable/em_mm_title_back" />
+                android:src="@drawable/back" />
         </LinearLayout>
 
         <TextView
@@ -32,10 +32,10 @@
             android:layout_centerInParent="true"
             android:text="@string/The_new_group_chat"
             android:textColor="#ffffff"
-            android:textSize="20sp" />
+            android:textSize="@dimen/sp_20" />
 
         <Button
-            android:layout_width="60dp"
+            android:layout_width="@dimen/dp_60"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
@@ -43,52 +43,52 @@
             android:onClick="save"
             android:text="@string/button_save"
             android:textColor="#fff"
-            android:textSize="18sp" />
+            android:textSize="@dimen/sp_18" />
     </RelativeLayout>
 
     <EditText
         android:id="@+id/edit_group_name"
         android:layout_width="match_parent"
-        android:layout_height="39dp"
-        android:layout_margin="10dp"
+        android:layout_height="@dimen/dp_39"
+        android:layout_margin="@dimen/dp_10"
         android:background="@drawable/em_button_normal_shape"
         android:hint="@string/group_name"
-        android:paddingLeft="5dp"
+        android:paddingLeft="@dimen/dp_5"
         android:singleLine="true"
-        android:textSize="18sp" />
+        android:textSize="@dimen/dp_18" />
 
     <EditText
         android:id="@+id/edit_group_introduction"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
         android:background="@drawable/em_button_normal_shape"
         android:gravity="top"
         android:hint="@string/Group_chat_profile"
         android:lines="5"
-        android:paddingLeft="5dp"
-        android:paddingTop="5dp"
-        android:textSize="18sp" />
+        android:paddingLeft="@dimen/dp_5"
+        android:paddingTop="@dimen/dp_5"
+        android:textSize="@dimen/sp_18" />
     
     
     <LinearLayout 
         android:layout_width="match_parent"
-       android:layout_height="39dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+       android:layout_height="@dimen/dp_39"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
         android:background="@drawable/em_button_normal_shape"
         >
         <TextView 
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="@dimen/dp_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/Whether_the_public"
             android:textColor="#333"
             android:layout_gravity="center_vertical"
-            android:textSize="18sp"
+            android:textSize="@dimen/sp_18"
             android:layout_weight="1"
             />
         
@@ -106,21 +106,21 @@
     <LinearLayout 
         android:id="@+id/ll_open_invite"
         android:layout_width="match_parent"
-       android:layout_height="39dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+       android:layout_height="@dimen/dp_39"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
         android:background="@drawable/em_button_normal_shape"
         >
         <TextView 
             android:id="@+id/second_desc"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="@dimen/dp_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/Open_group_members_invited"
             android:textColor="#333"
             android:layout_gravity="center_vertical"
-            android:textSize="18sp"
+            android:textSize="@dimen/sp_18"
             android:layout_weight="1"
             />
         

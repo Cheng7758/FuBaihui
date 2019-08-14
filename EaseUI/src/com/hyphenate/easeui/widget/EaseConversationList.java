@@ -47,7 +47,6 @@ public class EaseConversationList extends ListView {
         super(context, attrs, defStyle);
         init(context, attrs);
     }
-
     
     private void init(Context context, AttributeSet attrs) {
         this.context = context;
@@ -60,7 +59,6 @@ public class EaseConversationList extends ListView {
         timeSize = ta.getDimension(R.styleable.EaseConversationList_cvsListTimeTextSize, 0);
         
         ta.recycle();
-        
     }
 
     public void init(List<EMConversation> conversationList){

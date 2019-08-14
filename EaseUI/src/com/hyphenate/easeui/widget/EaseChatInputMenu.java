@@ -139,7 +139,6 @@ public class EaseChatInputMenu extends LinearLayout {
     public EaseEmojiconMenuBase getEmojiconMenu(){
         return emojiconMenu;
     }
-    
 
     /**
      * register menu item
@@ -175,7 +174,6 @@ public class EaseChatInputMenu extends LinearLayout {
         chatExtendMenu.registerMenuItem(nameRes, drawableRes, itemId, listener);
     }
 
-
     protected void processChatMenu() {
         // send message button
         chatPrimaryMenu.setChatPrimaryMenuListener(new EaseChatPrimaryMenuListener() {
@@ -205,7 +203,6 @@ public class EaseChatInputMenu extends LinearLayout {
             public void onEditTextClicked() {
                 hideExtendMenuContainer();
             }
-
 
             @Override
             public boolean onPressToSpeakBtnTouch(View v, MotionEvent event) {
@@ -237,10 +234,8 @@ public class EaseChatInputMenu extends LinearLayout {
                 chatPrimaryMenu.onEmojiconDeleteEvent();
             }
         });
-
     }
-    
-   
+
     /**
      * insert text
      * @param text
@@ -294,7 +289,6 @@ public class EaseChatInputMenu extends LinearLayout {
                 chatExtendMenu.setVisibility(View.GONE);
                 emojiconMenu.setVisibility(View.VISIBLE);
             }
-
         }
     }
 

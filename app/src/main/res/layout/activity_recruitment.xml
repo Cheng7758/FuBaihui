@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="com.example.zhanghao.woaisiji.activity.RecruitmentActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/dp_50"
         android:background="@color/green">
 
         <ImageView
@@ -24,289 +23,372 @@
             android:layout_gravity="center"
             android:text="商家入驻"
             android:textColor="#ffffff"
-            android:textSize="18sp" />
+            android:textSize="@dimen/sp_18" />
     </android.support.v7.widget.Toolbar>
 
-    <LinearLayout
-        android:id="@+id/linear1"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/relative"
-        android:background="@color/white"
-        android:orientation="horizontal"
-        android:padding="10dp">
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="商户名称" />
-
-        <EditText
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:background="@null"
-            android:drawableLeft="@drawable/tag_10"
-            android:drawablePadding="10dp"
-            android:hint="商户名称" />
-    </LinearLayout>
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/linear1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relative"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="商户名称" />
+
+                <EditText
+                    android:id="@+id/et_recruitment_input_shop_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:background="@null"
+                    android:drawableLeft="@drawable/tag_10"
+                    android:drawablePadding="@dimen/dp_10"
+                    android:hint="商户名称" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linear1"
+                android:layout_marginTop="@dimen/dp_4"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="联系人" />
+
+                <EditText
+                    android:id="@+id/et_recruitment_input_people_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_24"
+                    android:background="@null"
+                    android:drawableLeft="@drawable/tag_10"
+                    android:drawablePadding="@dimen/dp_10"
+                    android:hint="您的称呼" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linear2"
+                android:layout_marginTop="@dimen/dp_4"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="手机号" />
+
+                <EditText
+                    android:id="@+id/et_recruitment_input_contact_way"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_24"
+                    android:background="@null"
+                    android:drawableLeft="@drawable/tag_10"
+                    android:drawablePadding="@dimen/dp_10"
+                    android:hint="您的联系方式"
+                    android:inputType="phone"
+                    android:maxLength="11" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linear3"
+                android:layout_marginTop="@dimen/dp_30"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="营业执照号" />
+
+                <EditText
+                    android:id="@+id/et_recruitment_input_licence_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_4"
+                    android:background="@null"
+                    android:drawableLeft="@drawable/tag_10"
+                    android:drawablePadding="@dimen/dp_10"
+                    android:hint="商家的营业执照编号" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linear4"
+                android:layout_marginTop="@dimen/dp_4"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_10">
+
+                <TextView
+                    android:id="@+id/zhizhao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="营业执照照片" />
+
+                <TextView
+                    android:id="@+id/select_file"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_toRightOf="@id/zhizhao"
+                    android:text="选择文件" />
+
+                <TextView
+                    style="@style/my_page_mid_integral_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:drawableRight="@drawable/ic_arrow_right" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/linear6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relativeLayout"
+                android:layout_marginTop="@dimen/dp_4"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="店铺分类" />
+
+                <TextView
+                    android:id="@+id/shop_classify"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:background="#D6D7D7"
+                    android:drawablePadding="@dimen/dp_6"
+                    android:drawableRight="@drawable/mall_secondary_normal_down"
+                    android:drawableTint="@color/black"
+                    android:paddingLeft="@dimen/dp_10"
+                    android:paddingRight="@dimen/dp_10"
+                    android:text="请选择"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linear6"
+                android:layout_marginTop="@dimen/dp_4"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="分类标签" />
+
+                <TextView
+                    android:id="@+id/classify_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:background="#D6D7D7"
+                    android:drawablePadding="@dimen/dp_6"
+                    android:drawableRight="@drawable/mall_secondary_normal_down"
+                    android:drawableTint="@color/black"
+                    android:paddingLeft="@dimen/dp_10"
+                    android:paddingRight="@dimen/dp_10"
+                    android:text="请选择"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linear7"
+                android:layout_marginTop="@dimen/dp_4"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="所在地点" />
+
+                <TextView
+                    android:id="@+id/location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:background="#D6D7D7"
+                    android:drawablePadding="@dimen/dp_6"
+                    android:drawableRight="@drawable/mall_secondary_normal_down"
+                    android:drawableTint="@color/black"
+                    android:paddingLeft="@dimen/dp_10"
+                    android:paddingRight="@dimen/dp_10"
+                    android:text="请选择"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linear8"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/dp_4"
+                android:padding="@dimen/dp_10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="详细地址" />
+
+                <EditText
+                    android:id="@+id/detail_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:background="@null"
+                    android:drawableLeft="@drawable/tag_10"
+                    android:drawablePadding="@dimen/dp_10"
+                    android:hint="请填写店铺的详细地址" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linearLayout"
+                android:layout_marginTop="@dimen/dp_30"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_10">
+
+                <CheckBox
+                    android:id="@+id/checkbox_yuedu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="我已经阅读并了解了" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="【入驻申请协议】。"
+                    android:textColor="@color/red" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/ruzhu_btn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_40"
+                android:layout_below="@id/linear9"
+                android:layout_margin="26dp"
+                android:background="@drawable/btn_selector"
+                android:text="立即申请入驻"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </ScrollView>
 
     <LinearLayout
-        android:id="@+id/linear2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/linear1"
-        android:layout_marginTop="4dp"
-        android:background="@color/white"
-        android:orientation="horizontal"
-        android:padding="10dp">
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="联系人" />
-
-        <EditText
+        <RelativeLayout
+            android:id="@+id/relative"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="24dp"
-            android:background="@null"
-            android:drawableLeft="@drawable/tag_10"
-            android:drawablePadding="10dp"
-            android:hint="您的称呼" />
-    </LinearLayout>
+            android:background="@color/white"
+            android:paddingLeft="@dimen/dp_16"
+            android:paddingRight="@dimen/dp_16"
+            android:paddingTop="@dimen/dp_10"
+            android:visibility="gone">
 
-    <LinearLayout
-        android:id="@+id/linear3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/linear2"
-        android:layout_marginTop="4dp"
-        android:background="@color/white"
-        android:orientation="horizontal"
-        android:padding="10dp">
+            <TextView
+                android:id="@+id/cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="取消"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_14" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="手机号" />
+            <TextView
+                android:id="@+id/confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="确定"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_14" />
+        </RelativeLayout>
 
-        <EditText
+        <com.example.zhanghao.woaisiji.widget.PickerView.PickerScrollView
+            android:id="@+id/pickerview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="24dp"
-            android:background="@null"
-            android:drawableLeft="@drawable/tag_10"
-            android:drawablePadding="10dp"
-            android:hint="您的联系方式" />
-    </LinearLayout>
+            android:layout_height="@dimen/dp_200"
+            android:background="@color/white"
+            android:visibility="gone" />
 
-    <LinearLayout
-        android:id="@+id/linear4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/linear3"
-        android:layout_marginTop="30dp"
-        android:background="@color/white"
-        android:orientation="horizontal"
-        android:padding="10dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="营业执照号" />
-
-        <EditText
+        <!--省市县三级联动-->
+        <LinearLayout
+            android:id="@+id/ll_recruitment_province_city_country_root"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="4dp"
-            android:background="@null"
-            android:drawableLeft="@drawable/tag_10"
-            android:drawablePadding="10dp"
-            android:hint="商家的营业执照编号" />
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <com.wx.wheelview.widget.WheelView
+                android:id="@+id/wheelview_recruitment_province"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <com.wx.wheelview.widget.WheelView
+                android:id="@+id/wheelview_recruitment_city"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <com.wx.wheelview.widget.WheelView
+                android:id="@+id/wheelview_recruitment_country"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
     </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linear5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/linear4"
-        android:layout_marginTop="4dp"
-        android:background="@color/white"
-        android:orientation="horizontal"
-        android:padding="10dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="营业执照照片" />
-
-        <TextView
-            android:id="@+id/select_file"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:background="#D6D7D7"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:text="选择文件"
-            android:textColor="@color/black" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linear6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/linear5"
-        android:layout_marginTop="4dp"
-        android:background="@color/white"
-        android:orientation="horizontal"
-        android:padding="10dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="店铺分类" />
-
-        <TextView
-            android:id="@+id/shop_classify"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:background="#D6D7D7"
-            android:drawablePadding="6dp"
-            android:drawableRight="@drawable/mall_secondary_normal_down"
-            android:drawableTint="@color/black"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:text="副食让利13%"
-            android:textColor="@color/black" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linear7"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/linear6"
-        android:layout_marginTop="4dp"
-        android:background="@color/white"
-        android:orientation="horizontal"
-        android:padding="10dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="分类标签" />
-
-        <TextView
-            android:id="@+id/classify_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:background="#D6D7D7"
-            android:drawablePadding="6dp"
-            android:drawableRight="@drawable/mall_secondary_normal_down"
-            android:drawableTint="@color/black"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:text="旗舰店"
-            android:textColor="@color/black" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linear8"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/linear7"
-        android:layout_marginTop="4dp"
-        android:background="@color/white"
-        android:orientation="horizontal"
-        android:padding="10dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="所在地点" />
-
-        <TextView
-            android:id="@+id/location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:background="#D6D7D7"
-            android:drawablePadding="6dp"
-            android:drawableRight="@drawable/mall_secondary_normal_down"
-            android:drawableTint="@color/black"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:text="请选择"
-            android:textColor="@color/black" />
-
-    </LinearLayout>
-
-    <RelativeLayout
-        android:id="@+id/relative"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:paddingTop="10dp"
-        android:visibility="gone">
-
-        <TextView
-            android:id="@+id/cancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="取消" />
-
-        <TextView
-            android:id="@+id/confirm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:text="确定" />
-    </RelativeLayout>
-
-    <com.example.zhanghao.woaisiji.widget.PickerView.PickerScrollView
-        android:id="@+id/pickerview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/relative"
-        android:background="@color/white"
-        android:visibility="gone" />
-
-    <LinearLayout
-        android:id="@+id/linear9"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/linear8"
-        android:layout_marginTop="30dp"
-        android:background="@color/white"
-        android:orientation="horizontal"
-        android:padding="10dp">
-
-        <CheckBox
-            android:id="@+id/checkbox_yuedu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="我已经阅读并了解了" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="【入驻申请协议】。"
-            android:textColor="@color/red" />
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/ruzhu_btn"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_below="@id/linear9"
-        android:layout_margin="26dp"
-        android:background="@drawable/btn_selector"
-        android:text="立即申请入驻"
-        android:textColor="@color/white" />
-
-</LinearLayout>
+</RelativeLayout>

@@ -60,6 +60,9 @@ public class CustomDialog extends Dialog {
 
 	@Override
 	public void show() {
+		Window window = getWindow();
+		if (window == null || window.isActive())
+			return;
 		super.show();
 		setLoadingRotate();
 
@@ -69,7 +72,7 @@ public class CustomDialog extends Dialog {
 		setContentView(R.layout.dialog_view_progress_custom);
 		android.view.WindowManager.LayoutParams params = this.getWindow().getAttributes();
 		params.height = Util.getRealHeight(context);
-		params.width = Util.getDisplayMetrics((Activity) context);
+		params.width = Util.getRealWidth(context);
 		getWindow().setAttributes(params);
 
 		iv_dialog_view_custom_loading = (ImageView) findViewById(R.id.iv_dialog_view_custom_loading);

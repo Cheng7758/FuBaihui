@@ -11,7 +11,7 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="40dp">
+        android:layout_height="@dimen/dp_40">
 
         <TextView
             android:layout_width="wrap_content"
@@ -38,10 +38,10 @@
         android:hint="请输入金币购买数量"
         android:id="@+id/num_0"
         android:layout_width="match_parent"
-        android:layout_height="50dp" />
+        android:layout_height="@dimen/dp_50" />
     <LinearLayout
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_40"
         android:gravity="right"
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -63,9 +63,9 @@
     </LinearLayout>
     <Button
         android:id="@+id/btn_buy_gold"
-        android:layout_marginTop="80dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginTop="@dimen/dp_80"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
         android:textColor="#fff"
         android:background="@color/colorRegisterBg"
         android:text="立即购买"

@@ -2,18 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp"
+    android:paddingTop="@dimen/dp_10"
+    android:paddingBottom="@dimen/dp_10"
     android:orientation="horizontal">
 
     <RelativeLayout
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginLeft="4dp">
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="@dimen/dp_100"
+        android:layout_marginLeft="@dimen/dp_4">
         <ImageView
             android:id="@+id/iv_collection"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
+            android:layout_width="@dimen/dp_90"
+            android:layout_height="@dimen/dp_90"
             android:layout_centerInParent="true"
             />
     </RelativeLayout>
@@ -21,21 +21,21 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginLeft="10dp">
+        android:layout_height="@dimen/dp_100"
+        android:layout_marginLeft="@dimen/dp_10">
         <TextView
             android:id="@+id/tv_collection_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="该商品已被删除"
-            android:padding="4dp"
+            android:padding="@dimen/dp_4"
             android:maxLines="2"
             android:textColor="#000000"
-            android:textSize="14sp"/>
+            android:textSize="@dimen/sp_14"/>
         <TextView
             android:id="@+id/tv_collection_silver"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="@dimen/dp_30"
             android:layout_centerVertical="true"
             android:layout_below="@id/tv_collection_title"
             android:text="送0银a币"
@@ -51,15 +51,15 @@
             />
         <Button
             android:id="@+id/btn_collection_add_cart"
-            android:layout_width="56dp"
-            android:layout_height="24dp"
+            android:layout_width="@dimen/dp_56"
+            android:layout_height="@dimen/dp_24"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="16dp"
+            android:layout_marginRight="@dimen/dp_16"
             android:background="@drawable/btn_shape_bg"
             android:text="查看详情"
             android:textColor="#ff0000"
-            android:textSize="10sp"/>
+            android:textSize="@dimen/sp_10"/>
     </RelativeLayout>
 
 </LinearLayout>

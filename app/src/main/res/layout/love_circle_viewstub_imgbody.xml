@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:layout_marginTop="5dp" >
+        android:layout_marginTop="@dimen/dp_5" >
     </com.example.zhanghao.woaisiji.widget.MultiImageView>
 
 </LinearLayout>

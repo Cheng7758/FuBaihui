@@ -3,35 +3,34 @@ package com.example.zhanghao.woaisiji.friends.ui;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.icu.text.AlphabeticIndex;
-import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.text.Editable;
 import android.text.Selection;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.zhanghao.woaisiji.R;
 import com.example.zhanghao.woaisiji.WoAiSiJiApp;
 import com.example.zhanghao.woaisiji.activity.send.SendGoldActivity;
 import com.example.zhanghao.woaisiji.activity.send.SendSilverActivity;
-import com.example.zhanghao.woaisiji.bean.SendGold;
 import com.example.zhanghao.woaisiji.friends.Constant;
 import com.example.zhanghao.woaisiji.friends.DemoHelper;
 import com.example.zhanghao.woaisiji.friends.domain.EmojiconExampleGroupData;
 import com.example.zhanghao.woaisiji.friends.domain.RobotUser;
 import com.example.zhanghao.woaisiji.friends.widget.ChatRowVoiceCall;
+import com.example.zhanghao.woaisiji.global.ServerAddress;
 import com.example.zhanghao.woaisiji.serverdata.ObtainUserInfo;
-import com.hyphenate.EMMessageListener;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMCmdMessageBody;
 import com.hyphenate.chat.EMGroup;
@@ -39,19 +38,31 @@ import com.hyphenate.chat.EMMessage;
 import com.hyphenate.chat.EMTextMessageBody;
 import com.hyphenate.easeui.EaseConstant;
 import com.hyphenate.easeui.domain.MemberShipInfosBean;
+import com.hyphenate.easeui.http.Myserver;
+import com.hyphenate.easeui.http.NetManager;
 import com.hyphenate.easeui.ui.EaseChatFragment;
 import com.hyphenate.easeui.ui.EaseChatFragment.EaseChatFragmentHelper;
+import com.hyphenate.easeui.utils.SetUserInfoUtils;
 import com.hyphenate.easeui.widget.chatrow.EaseChatRow;
 import com.hyphenate.easeui.widget.chatrow.EaseCustomChatRowProvider;
 import com.hyphenate.easeui.widget.emojicon.EaseEmojiconMenu;
 import com.hyphenate.util.EasyUtils;
-import com.hyphenate.util.PathUtil;
+import com.jcodecraeer.xrecyclerview.gold.GoldManager;
+import com.jcodecraeer.xrecyclerview.gold.UserManager;
 
-import java.io.File;
-import java.io.FileOutputStream;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
+
+//TODO   聊天会话 昵称和头像不显示
 public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHelper {
 
     // constant start from 11 to avoid conflict with constant in base class
@@ -67,7 +78,6 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
     private static final int REQUEST_CODE_GROUP_DETAIL = 13;
     private static final int REQUEST_CODE_CONTEXT_MENU = 14;
     private static final int REQUEST_CODE_SELECT_AT_USER = 15;
-
 
     private static final int MESSAGE_TYPE_SENT_VOICE_CALL = 1;
     private static final int MESSAGE_TYPE_RECV_VOICE_CALL = 2;
@@ -93,6 +103,59 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
      */
     private boolean isRobot;
     private String name;
+    private Bundle params = null;
+    private String userName;
+    //当前与聊天的用户id 用户名 头像
+    public static String toUID, toNickName, toPic;
+
+    public void setParams(Bundle bundle) {
+        this.params = bundle;
+        fragmentArgs = bundle;
+        if (bundle == null)
+            return;
+        Map<String, String> params = new HashMap<>();
+        final String userId = bundle.getString("userId");
+        params.put("uid", userId);
+        NetManager.getNetManager().getMyService(Myserver.url)
+                .getFriendsBean(params)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<SetUserInfoUtils.Bean>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(SetUserInfoUtils.Bean value) {
+                        Log.e("-----username",value.toString());
+
+                        if (value.code == 200) {
+                            try {
+                                JSONObject jsonObject = new JSONObject(value.toString());
+                                jsonObject = jsonObject.getJSONObject("data");
+                                jsonObject = jsonObject.getJSONObject(userId);
+
+                                    UserManager.toName = GoldManager.toUserName = userName = jsonObject.getString("nickname");
+                                    UserManager.toId = GoldManager.toUserId = userId;
+                                    UserManager.toPic = GoldManager.toUserPic = jsonObject.getString("headpic");
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override   //请求成功
+                    public void onComplete() {
+
+                    }
+                });
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -112,20 +175,23 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
 
         super.setUpView();
         if ("l8888".equals(toChatUsername)) {
-            titleBar.setTitle("我爱司机客服");
+            titleBar.setTitle("福百惠客服");
         } else {
-            // 聊天人的个人信息
+            // 聊天的个人信息
             ObtainUserInfo obtainUserInfo = new ObtainUserInfo();
             obtainUserInfo.getUserInfo(toChatUsername);
             obtainUserInfo.setSendDataListener(new ObtainUserInfo.SendDataListener() {
                 @Override
                 public void sendStringData(MemberShipInfosBean.MemberInfo data) {
-                    titleBar.setTitle(data.nickname);
-                    name = (data.nickname);
+                    Log.e("----nickname", data.nickname);
+//                    titleBar.setTitle(data.nickname+"----");
+//                    name = (data.nickname);
+                    TextView titleText = titleBar.getTitleText();
+                    SetUserInfoUtils.setUserInfo(getContext(), params.getString("userId"), titleText, null);
+                    name = (ServerAddress.SERVER_ROOT + WoAiSiJiApp.getCurrentUserInfo().getPic());
                 }
             });
         }
-
         // set click listener
 //        titleBar.setTitle("zhangyawei");
         titleBar.setLeftLayoutClickListener(new OnClickListener() {
@@ -169,10 +235,12 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
         //use the menu in base class
         super.registerExtendMenuItem();
         //extend menu items
-       // inputMenu.registerExtendMenuItem(R.string.attach_video, R.drawable.em_chat_video_selector, ITEM_VIDEO, extendMenuItemClickListener);
-        inputMenu.registerExtendMenuItem("金币转让", R.drawable.gold_coins_small, ITEM_GOLD, extendMenuItemClickListener);
-        inputMenu.registerExtendMenuItem("银币转让", R.drawable.silver_coins_small, ITEM_SLVIER, extendMenuItemClickListener);
-    //    inputMenu.registerExtendMenuItem("名片", R.drawable.ic_gold, RECORDS, extendMenuItemClickListener);
+        // inputMenu.registerExtendMenuItem(R.string.attach_video, R.drawable.em_chat_video_selector, ITEM_VIDEO, extendMenuItemClickListener);
+        inputMenu.registerExtendMenuItem("金积分转让", R.drawable.gold_coins_small,
+                ITEM_GOLD, extendMenuItemClickListener);
+        inputMenu.registerExtendMenuItem("银积分转让", R.drawable.silver_coins_small,
+                ITEM_SLVIER, extendMenuItemClickListener);
+        //    inputMenu.registerExtendMenuItem("名片", R.drawable.ic_gold, RECORDS, extendMenuItemClickListener);
 
         //        if(chatType == Constant.CHATTYPE_SINGLE){
 //            inputMenu.registerExtendMenuItem(R.string.attach_voice_call, R.drawable.em_chat_voice_call_selector, ITEM_VOICE_CALL, extendMenuItemClickListener);
@@ -186,9 +254,12 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
         //end of red packet code
     }
 
+    //转账完回调发送转账消息
+    @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+//        Log.e("------send", data.getDataString());
         if (0 == requestCode) {
             if (0 == resultCode) {
 //                intent.putExtra("goldStr", num);
@@ -196,17 +267,24 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
 //                intent.putExtra("toChatUsername", userid);
 //                intent.putExtra("nameTitle2", name);
 //                intent.putExtra("nameTitle", "银币转让");
+                if (data == null) return;
                 Bundle bundle2 = data.getBundleExtra("bundle2");
                 String pid = bundle2.getString("toChatUsername");
+                Log.d(TAG, "onActivityResult: " + pid);
                 String nameTitle = bundle2.getString("nameTitle");
+                Log.d(TAG, "onActivityResult: " + nameTitle);
+
                 String goldStr = bundle2.getString("goldStr");
+                Log.d(TAG, "onActivityResult: " + goldStr);
+
                 String nameTitle2 = bundle2.getString("nameTitle2");
+                Log.d(TAG, "onActivityResult: " + nameTitle2);
+
                 EMMessage message = EMMessage.createTxtSendMessage("转账", pid);
                 message.setAttribute("nameTitle", nameTitle);
-                message.setAttribute("nameTitle2", "转给" + nameTitle2);
+                message.setAttribute("nameTitle2", "转给"+ UserManager.toName);
                 message.setAttribute("goldStr", goldStr);
                 message.setAttribute("records", true);
-
                 if (chatType == EaseConstant.CHATTYPE_GROUP) {
                     message.setChatType(EMMessage.ChatType.GroupChat);
                 } else if (chatType == EaseConstant.CHATTYPE_CHATROOM) {
@@ -214,11 +292,9 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
                 }
                 EMClient.getInstance().chatManager().sendMessage(message);
                 messageList.refresh();
-
-                }
-
             }
-        super.onActivityResult(requestCode, resultCode, data);
+        }
+//        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_CONTEXT_MENU) {
             switch (resultCode) {
                 case ContextMenuActivity.RESULT_CODE_COPY: // copy
@@ -229,14 +305,11 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
                     conversation.removeMessage(contextMenuMessage.getMsgId());
                     messageList.refresh();
                     break;
-
                 case ContextMenuActivity.RESULT_CODE_FORWARD: // forward
                     Intent intent = new Intent(getActivity(), ForwardMessageActivity.class);
                     intent.putExtra("forward_msg_id", contextMenuMessage.getMsgId());
                     startActivity(intent);
-
                     break;
-
                 default:
                     break;
             }
@@ -285,7 +358,6 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
                     break;
             }
         }
-
     }
 
     @Override
@@ -301,7 +373,6 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
         return new CustomChatRowProvider();
     }
 
-
     @Override
     public void onEnterToChatDetails() {
         if (chatType == Constant.CHATTYPE_GROUP) {
@@ -310,11 +381,12 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
                 Toast.makeText(getActivity(), R.string.gorup_not_found, Toast.LENGTH_SHORT).show();
                 return;
             }
-            startActivityForResult(
-                    (new Intent(getActivity(), GroupDetailsActivity.class).putExtra("groupId", toChatUsername)),
-                    REQUEST_CODE_GROUP_DETAIL);
+            startActivityForResult((new Intent(getActivity(), GroupDetailsActivity.class)
+                    .putExtra("groupId", toChatUsername)), REQUEST_CODE_GROUP_DETAIL);
         } else if (chatType == Constant.CHATTYPE_CHATROOM) {
-            startActivityForResult(new Intent(getActivity(), ChatRoomDetailsActivity.class).putExtra("roomId", toChatUsername), REQUEST_CODE_GROUP_DETAIL);
+            //群聊
+            startActivityForResult(new Intent(getActivity(), ChatRoomDetailsActivity.class)
+                    .putExtra("roomId", toChatUsername), REQUEST_CODE_GROUP_DETAIL);
         }
     }
 
@@ -330,7 +402,6 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
     public void onAvatarLongClick(String username) {
         inputAtUsername(username);
     }
-
 
     @Override
     public boolean onMessageBubbleClick(EMMessage message) {
@@ -361,8 +432,9 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
 
     @Override
     public void onMessageBubbleLongClick(EMMessage message) {
-        // no message forward when in chat room
-        startActivityForResult((new Intent(getActivity(), ContextMenuActivity.class)).putExtra("message", message)
+        // no message forward when in chat room在聊天室里没有消息转发
+        startActivityForResult((new Intent(getActivity(), ContextMenuActivity.class))
+                        .putExtra("message", message)
                         .putExtra("ischatroom", chatType == EaseConstant.CHATTYPE_CHATROOM),
                 REQUEST_CODE_CONTEXT_MENU);
     }
@@ -377,22 +449,21 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
             case ITEM_FILE: //file
                 selectFileFromLocal();
                 break;
-            case ITEM_GOLD: //金币转让
+            case ITEM_GOLD: //金积分转让
                 Intent intent = new Intent(getActivity(), SendGoldActivity.class);
                 intent.putExtra("uid", WoAiSiJiApp.getUid());
-                intent.putExtra("uesr_pid", toChatUsername);
+                intent.putExtra("uesr_pid", toChatUsername);    //作为转账账号的id
                 intent.putExtra("name", name);
                 startActivityForResult(intent, 0);
                 //startActivity(intent);
                 break;
-            case ITEM_SLVIER: //银币转让
+            case ITEM_SLVIER: //银积分转让
                 Intent intent2 = new Intent(getActivity(), SendSilverActivity.class);
                 intent2.putExtra("uid", WoAiSiJiApp.getUid());
                 intent2.putExtra("uesr_pid", toChatUsername);
                 intent2.putExtra("name", name);
                 startActivityForResult(intent2, 0);
                 break;
-
             case RECORDS:
 //                EMMessage message = EMMessage.createTxtSendMessage("分享的扩展消息",toChatUsername);
 //                message.setChatType(EMMessage.ChatType.GroupChat);
@@ -403,11 +474,11 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
 //                EMClient.getInstance().chatManager().sendMessage(message);
 
                 EMMessage message = EMMessage.createTxtSendMessage("转账", toChatUsername);
-                message.setAttribute("nameTitle", "银币转让");
-                message.setAttribute("nameTitle2", "转给" + name);
-                message.setAttribute("goldStr", "1个金币");
+                message.setAttribute("nameTitle", "银积分转让");
+//                message.setAttribute("nameTitle2", "转给" + name);
+                message.setAttribute("nameTitle2", "转给" + UserManager.toName);
+                message.setAttribute("goldStr", "1金积分");
                 message.setAttribute("records", true);
-
                 if (chatType == EaseConstant.CHATTYPE_GROUP) {
                     message.setChatType(EMMessage.ChatType.GroupChat);
                 } else if (chatType == EaseConstant.CHATTYPE_CHATROOM) {
@@ -434,8 +505,6 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
         return false;
     }
 
-
-
     /**
      * select file
      */
@@ -445,7 +514,6 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
             intent = new Intent(Intent.ACTION_GET_CONTENT);
             intent.setType("*/*");
             intent.addCategory(Intent.CATEGORY_OPENABLE);
-
         } else {
             intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         }
@@ -496,10 +564,12 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
             if (message.getType() == EMMessage.Type.TXT) {
                 //voice call
                 if (message.getBooleanAttribute(Constant.MESSAGE_ATTR_IS_VOICE_CALL, false)) {
-                    return message.direct() == EMMessage.Direct.RECEIVE ? MESSAGE_TYPE_RECV_VOICE_CALL : MESSAGE_TYPE_SENT_VOICE_CALL;
+                    return message.direct() == EMMessage.Direct.RECEIVE ? MESSAGE_TYPE_RECV_VOICE_CALL
+                            : MESSAGE_TYPE_SENT_VOICE_CALL;
                 } else if (message.getBooleanAttribute(Constant.MESSAGE_ATTR_IS_VIDEO_CALL, false)) {
                     //video call
-                    return message.direct() == EMMessage.Direct.RECEIVE ? MESSAGE_TYPE_RECV_VIDEO_CALL : MESSAGE_TYPE_SENT_VIDEO_CALL;
+                    return message.direct() == EMMessage.Direct.RECEIVE ? MESSAGE_TYPE_RECV_VIDEO_CALL
+                            : MESSAGE_TYPE_SENT_VIDEO_CALL;
                 }
                 //red packet code : 红包消息和红包回执消息的chat row type
                /* else if (message.getBooleanAttribute(RedPacketConstant.MESSAGE_ATTR_IS_RED_PACKET_MESSAGE, false)) {
@@ -532,7 +602,6 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
             }
             return null;
         }
-
     }
 
 }

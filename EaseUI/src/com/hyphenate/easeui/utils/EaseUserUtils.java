@@ -45,11 +45,12 @@ public class EaseUserUtils {
                 Glide.with(context).load(avatarResId).into(imageView);
             } catch (Exception e) {
                 //use default avatar
-                Glide.with(context).load(user.getAvatar()).diskCacheStrategy(DiskCacheStrategy.ALL).placeholder(R.drawable.ic_launcher).into(imageView);
+                Glide.with(context.getApplicationContext()).load(user.getAvatar()).diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .placeholder(R.drawable.ease_chat_face_normal).into(imageView);
             }
         }else{
             // "http://www.woaisiji.com/Uploads/Picture/2016-10-13/57ff5fdb071e1.png"
-            Glide.with(context).load("http://www.woaisiji.com"+user.getAvatar()).into(imageView);
+            Glide.with(context.getApplicationContext()).load("http://www.woaisiji.com"+user.getAvatar()).into(imageView);
         }
     }
     

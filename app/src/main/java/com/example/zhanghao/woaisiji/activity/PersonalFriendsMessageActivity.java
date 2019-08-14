@@ -55,7 +55,7 @@ public class PersonalFriendsMessageActivity extends EaseBaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_love_drive_friends);
 
@@ -65,21 +65,22 @@ public class PersonalFriendsMessageActivity extends EaseBaseActivity {
         personalFriendsMessageFragment = new PersonalFriendsMessageFragment();
         fragments = new Fragment[]{personalFriendsMessageFragment};
 
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, personalFriendsMessageFragment).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container,
+                personalFriendsMessageFragment).commit();
 
         //register broadcast receiver to receive the change of group from DemoHelper
         registerBroadcastReceiver();
 
-
         EMClient.getInstance().contactManager().setContactListener(new MyContactListener());
         //debug purpose only
         registerInternalDebugReceiver();
-
     }
 
     public class MyContactListener implements EMContactListener {
         @Override
-        public void onContactAdded(String username) {}
+        public void onContactAdded(String username) {
+        }
+
         @Override
         public void onContactDeleted(final String username) {
             runOnUiThread(new Runnable() {
@@ -87,19 +88,25 @@ public class PersonalFriendsMessageActivity extends EaseBaseActivity {
                     if (ChatActivity.activityInstance != null && ChatActivity.activityInstance.toChatUsername != null &&
                             username.equals(ChatActivity.activityInstance.toChatUsername)) {
                         String st10 = getResources().getString(R.string.have_you_removed);
-                        Toast.makeText(PersonalFriendsMessageActivity.this, ChatActivity.activityInstance.getToChatUsername() + st10, Toast.LENGTH_LONG)
-                                .show();
+                        Toast.makeText(PersonalFriendsMessageActivity.this, ChatActivity.
+                                activityInstance.getToChatUsername() + st10, Toast.LENGTH_LONG).show();
                         ChatActivity.activityInstance.finish();
                     }
                 }
             });
         }
+
         @Override
-        public void onContactInvited(String username, String reason) {}
+        public void onContactInvited(String username, String reason) {
+        }
+
         @Override
-        public void onContactAgreed(String username) {}
+        public void onContactAgreed(String username) {
+        }
+
         @Override
-        public void onContactRefused(String username) {}
+        public void onContactRefused(String username) {
+        }
     }
 
     private void refreshUIWithMessage() {
@@ -151,7 +158,8 @@ public class PersonalFriendsMessageActivity extends EaseBaseActivity {
         }
 
         @Override
-        public void onMessageChanged(EMMessage message, Object change) {}
+        public void onMessageChanged(EMMessage message, Object change) {
+        }
     };
 
     private void registerBroadcastReceiver() {
@@ -180,8 +188,9 @@ public class PersonalFriendsMessageActivity extends EaseBaseActivity {
                     }*/
                 }
                 String action = intent.getAction();
-                if(action.equals(Constant.ACTION_GROUP_CHANAGED)){
-                    if (EaseCommonUtils.getTopActivity(PersonalFriendsMessageActivity.this).equals(GroupsActivity.class.getName())) {
+                if (action.equals(Constant.ACTION_GROUP_CHANAGED)) {
+                    if (EaseCommonUtils.getTopActivity(PersonalFriendsMessageActivity.this)
+                            .equals(GroupsActivity.class.getName())) {
                         GroupsActivity.instance.onResume();
                     }
                 }
@@ -197,6 +206,7 @@ public class PersonalFriendsMessageActivity extends EaseBaseActivity {
         broadcastManager.registerReceiver(broadcastReceiver, intentFilter);
     }
 
+
     /**
      * debug purpose only, you can ignore this
      */
@@ -205,7 +215,7 @@ public class PersonalFriendsMessageActivity extends EaseBaseActivity {
 
             @Override
             public void onReceive(Context context, Intent intent) {
-                DemoHelper.getInstance().logout(false,new EMCallBack() {
+                DemoHelper.getInstance().logout(false, new EMCallBack() {
 
                     @Override
                     public void onSuccess() {
@@ -213,16 +223,17 @@ public class PersonalFriendsMessageActivity extends EaseBaseActivity {
                             public void run() {
                                 finish();
                                 startActivity(new Intent(PersonalFriendsMessageActivity.this, LoginActivity.class));
-
                             }
                         });
                     }
 
                     @Override
-                    public void onProgress(int progress, String status) {}
+                    public void onProgress(int progress, String status) {
+                    }
 
                     @Override
-                    public void onError(int code, String message) {}
+                    public void onError(int code, String message) {
+                    }
                 });
             }
         };

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,7 +12,7 @@
         <!--头部-->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="@dimen/dp_50"
             android:background="#fff"
             android:focusable="true"
             android:focusableInTouchMode="true"
@@ -19,43 +20,44 @@
 
             <ImageView
                 android:id="@+id/imageButton"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="@dimen/dp_24"
+                android:layout_height="@dimen/dp_24"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_10"
                 android:src="@drawable/saoyisao" />
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="35dp"
+                android:layout_height="@dimen/dp_35"
                 android:layout_gravity="center_vertical"
-                android:layout_weight="2"
+                android:layout_weight="3"
                 android:background="@drawable/bg_home_page_search_box_input_area"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp">
+                android:paddingLeft="@dimen/dp_5"
+                android:paddingRight="@dimen/dp_5">
 
                 <EditText
                     android:id="@+id/et_home_page_search"
                     android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_weight="1"
+                    android:layout_height="@dimen/dp_30"
+                    android:layout_weight="3"
                     android:background="#f5f5f5"
                     android:focusable="true"
                     android:gravity="left|center_vertical"
+                    android:hint="搜索商品或商家"
                     android:imeOptions="actionSearch"
                     android:singleLine="true"
                     android:text=""
                     android:textColor="#969696"
                     android:textColorHint="#909090"
-                    android:textSize="16dp" />
+                    android:textSize="@dimen/sp_16" />
 
                 <ImageView
                     android:id="@+id/iv_product_search"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_20"
                     android:layout_gravity="center_vertical"
                     android:src="@drawable/home_page_search_box" />
             </LinearLayout>
@@ -64,8 +66,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp">
+                android:layout_marginLeft="@dimen/dp_2"
+                android:layout_marginRight="@dimen/dp_2">
 
                 <LinearLayout
                     android:id="@+id/ll_home_page_message"
@@ -75,23 +77,23 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:drawableTint="@color/gray"
-                        android:drawableTop="@drawable/xiaoxi" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableRight="@drawable/xiaoxi"
+                        android:drawableTint="@color/gray" />
                 </LinearLayout>
 
                 <TextView
                     android:id="@+id/unread_msg_number"
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
+                    android:layout_width="@dimen/dp_8"
+                    android:layout_height="@dimen/dp_8"
                     android:layout_alignParentRight="true"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginTop="3dp"
+                    android:layout_marginLeft="@dimen/dp_25"
+                    android:layout_marginTop="@dimen/dp_3"
                     android:background="@drawable/home_page_message_red_tip"
                     android:gravity="center"
                     android:textColor="@android:color/white"
-                    android:textSize="12sp"
+                    android:textSize="@dimen/sp_12"
                     android:visibility="gone" />
             </FrameLayout>
         </LinearLayout>
@@ -103,20 +105,20 @@
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp">
+                android:layout_height="@dimen/dp_200">
 
                 <android.support.v4.view.ViewPager
                     android:id="@+id/vp_shouyegundong"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp" />
+                    android:layout_height="@dimen/dp_200" />
 
                 <LinearLayout
                     android:id="@+id/topLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right|bottom"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="@dimen/dp_10"
+                    android:layout_marginRight="@dimen/dp_10"
                     android:gravity="center"
                     android:orientation="horizontal" />
             </FrameLayout>
@@ -126,7 +128,7 @@
                 android:layout_height="wrap_content"
                 android:background="#EBEBEB"
                 android:orientation="horizontal"
-                android:paddingTop="8dp"
+                android:paddingTop="@dimen/dp_8"
                 android:visibility="gone">
                 <!--服务点评-->
                 <LinearLayout
@@ -137,8 +139,8 @@
 
                     <ImageView
                         android:id="@+id/sijiquan"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="@dimen/dp_50"
+                        android:layout_height="@dimen/dp_50"
                         android:layout_gravity="center"
                         android:scaleType="fitXY"
                         android:src="@drawable/fuwudianping" />
@@ -159,8 +161,8 @@
 
                     <ImageView
                         android:id="@+id/sijishangcheng"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="@dimen/dp_50"
+                        android:layout_height="@dimen/dp_50"
                         android:layout_gravity="center"
                         android:scaleType="fitXY"
                         android:src="@drawable/sijishangcheng" />
@@ -180,8 +182,8 @@
 
                     <ImageView
                         android:id="@+id/duihuanshangcheng"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="@dimen/dp_50"
+                        android:layout_height="@dimen/dp_50"
                         android:layout_gravity="center"
                         android:scaleType="fitXY"
                         android:src="@drawable/yinbishangcheng" />
@@ -202,8 +204,8 @@
 
                     <ImageView
                         android:id="@+id/yanghuliansuo"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="@dimen/dp_50"
+                        android:layout_height="@dimen/dp_50"
                         android:layout_gravity="center"
                         android:scaleType="fitXY"
                         android:src="@drawable/jinbishangcheng" />
@@ -223,8 +225,8 @@
                 android:layout_height="wrap_content"
                 android:background="#EBEBEB"
                 android:orientation="horizontal"
-                android:paddingBottom="8dp"
-                android:paddingTop="8dp"
+                android:paddingBottom="@dimen/dp_8"
+                android:paddingTop="@dimen/dp_8"
                 android:visibility="gone">
                 <!--搜索会员-->
                 <LinearLayout
@@ -235,8 +237,8 @@
 
                     <ImageView
                         android:id="@+id/aisiji"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="@dimen/dp_50"
+                        android:layout_height="@dimen/dp_50"
                         android:layout_gravity="center"
                         android:scaleType="fitXY"
                         android:src="@drawable/sousuohuiyuan" />
@@ -256,8 +258,8 @@
 
                     <ImageView
                         android:id="@+id/sijiwenda"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="@dimen/dp_50"
+                        android:layout_height="@dimen/dp_50"
                         android:layout_gravity="center"
                         android:scaleType="fitXY"
                         android:src="@drawable/sijiwenda" />
@@ -277,8 +279,8 @@
 
                     <ImageView
                         android:id="@+id/sijikefu"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="@dimen/dp_50"
+                        android:layout_height="@dimen/dp_50"
                         android:layout_gravity="center"
                         android:scaleType="fitXY"
                         android:src="@drawable/sijikefu" />
@@ -298,8 +300,8 @@
 
                     <ImageView
                         android:id="@+id/iv_daily_sign"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="@dimen/dp_50"
+                        android:layout_height="@dimen/dp_50"
                         android:layout_gravity="center"
                         android:scaleType="fitXY"
                         android:src="@drawable/qixiujiameng" />
@@ -318,8 +320,8 @@
                 android:layout_height="wrap_content"
                 android:background="#fff"
                 android:orientation="horizontal"
-                android:paddingBottom="8dp"
-                android:paddingTop="8dp">
+                android:paddingBottom="@dimen/dp_8"
+                android:paddingTop="@dimen/dp_8">
                 <!--福百惠商城-->
                 <LinearLayout
                     android:id="@+id/ll_home_page_fbh_store"
@@ -329,8 +331,8 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="@dimen/dp_50"
+                        android:layout_height="@dimen/dp_50"
                         android:layout_gravity="center"
                         android:scaleType="fitXY"
                         android:src="@drawable/home_page_fbh_store" />
@@ -339,7 +341,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="@dimen/dp_5"
                         android:text="福百惠商城" />
                 </LinearLayout>
                 <!--银积分商城-->
@@ -351,8 +353,8 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="@dimen/dp_50"
+                        android:layout_height="@dimen/dp_50"
                         android:layout_gravity="center"
                         android:scaleType="fitXY"
                         android:src="@drawable/home_page_silver_store" />
@@ -361,7 +363,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="@dimen/dp_5"
                         android:text="银积分商城" />
                 </LinearLayout>
                 <!--搜索会员-->
@@ -373,8 +375,8 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="@dimen/dp_50"
+                        android:layout_height="@dimen/dp_50"
                         android:layout_gravity="center"
                         android:scaleType="fitXY"
                         android:src="@drawable/home_page_search_vip" />
@@ -383,7 +385,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="@dimen/dp_5"
                         android:text="搜索会员" />
                 </LinearLayout>
                 <!--加盟商家-->
@@ -395,8 +397,8 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="@dimen/dp_50"
+                        android:layout_height="@dimen/dp_50"
                         android:layout_gravity="center"
                         android:scaleType="fitXY"
                         android:src="@drawable/home_page_join_us" />
@@ -405,16 +407,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="@dimen/dp_5"
                         android:text="加盟商家" />
                 </LinearLayout>
-
             </LinearLayout>
 
             <ImageView
                 android:id="@+id/app_body_banner"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="@dimen/dp_70"
                 android:background="@drawable/weixianshi"
                 android:scaleType="fitXY"
                 android:visibility="gone" />
@@ -422,34 +423,34 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/dp_20"
                 android:gravity="center"
                 android:orientation="horizontal">
 
                 <View
-                    android:layout_width="50dp"
-                    android:layout_height="1dp"
+                    android:layout_width="@dimen/dp_50"
+                    android:layout_height="@dimen/dp_1"
                     android:background="#cfcfcf" />
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
+                    android:layout_height="@dimen/dp_40"
+                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_marginRight="@dimen/dp_15"
                     android:gravity="center"
                     android:text="平台精选"
-                    android:textSize="16dp" />
+                    android:textSize="@dimen/sp_16" />
 
                 <View
-                    android:layout_width="50dp"
-                    android:layout_height="1dp"
+                    android:layout_width="@dimen/dp_50"
+                    android:layout_height="@dimen/dp_1"
                     android:background="#cfcfcf" />
 
             </LinearLayout>
             <!--图片-->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="@dimen/dp_200"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -461,7 +462,7 @@
                     android:src="@drawable/weixianshi" />
 
                 <View
-                    android:layout_width="10dp"
+                    android:layout_width="@dimen/dp_10"
                     android:layout_height="match_parent" />
 
                 <LinearLayout
@@ -481,7 +482,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="@dimen/dp_10"
                         android:layout_weight="1"
                         android:orientation="horizontal">
 
@@ -497,7 +498,7 @@
                             android:id="@+id/iv_goods4"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_marginLeft="6dp"
+                            android:layout_marginLeft="@dimen/dp_6"
                             android:layout_weight="1"
                             android:scaleType="centerCrop"
                             android:src="@drawable/weixianshi" />
@@ -508,7 +509,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="@dimen/dp_1"
                 android:background="#DBDBDB" />
 
             <!--平台公告-->
@@ -516,7 +517,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_margin="15dp"
+                android:layout_margin="@dimen/dp_15"
                 android:background="@drawable/bg_round_gray_color">
 
                 <TextView
@@ -524,14 +525,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_margin="8dp"
+                    android:layout_margin="@dimen/dp_8"
                     android:text="@string/toutiao"
                     android:textColor="#000"
-                    android:textSize="14dp" />
+                    android:textSize="@dimen/sp_14" />
 
                 <View
-                    android:layout_width="1dp"
-                    android:layout_height="30dp"
+                    android:layout_width="@dimen/dp_1"
+                    android:layout_height="@dimen/dp_30"
                     android:layout_gravity="center_vertical"
                     android:background="#fff" />
 
@@ -540,7 +541,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="@dimen/dp_10"
                     android:layout_toRightOf="@+id/tbtv" />
             </LinearLayout>
         </LinearLayout>

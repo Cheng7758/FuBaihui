@@ -90,7 +90,7 @@ public class EaseContactAdapter extends ArrayAdapter<EaseUser> implements Sectio
         EaseUserUtils.setUserNick(username, holder.nameView);
 //        EaseUserUtils.setUserAvatar(getContext(), user.getUsername(), holder.avatar);
 //        ImageLoader.getInstance().displayImage(user.getAvatar(),holder.avatar);
-        Glide.with(getContext()).load(user.getAvatar()).into(holder.avatar);
+        Glide.with(getContext().getApplicationContext()).load(user.getAvatar()).into(holder.avatar);
 
 
         

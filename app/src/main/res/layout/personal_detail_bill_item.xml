@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="55dp"
-    android:padding="10dp"
+    android:layout_height="@dimen/dp_55"
+    android:padding="@dimen/dp_10"
     android:orientation="horizontal">
 
     <LinearLayout
-        android:layout_width="40dp"
+        android:layout_width="@dimen/dp_40"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="vertical">
@@ -14,28 +14,28 @@
             android:id="@+id/tv_date_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:textSize="12sp"
+            android:layout_marginTop="@dimen/dp_3"
+            android:textSize="@dimen/sp_12"
             android:text="今天"/>
         <TextView
             android:id="@+id/tv_date_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:textSize="12sp"
+            android:layout_marginTop="@dimen/dp_3"
+            android:textSize="@dimen/sp_12"
             android:text="时间"/>
     </LinearLayout>
     <ImageView
         android:id="@+id/iv_name"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginLeft="10dp"
+        android:layout_width="@dimen/dp_30"
+        android:layout_height="@dimen/dp_30"
+        android:layout_marginLeft="@dimen/dp_10"
         android:layout_gravity="center_vertical"
         android:src="@drawable/sign_in"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="@dimen/dp_10"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
@@ -43,19 +43,19 @@
             android:layout_weight="1">
             <TextView
                 android:id="@+id/tv_silver_value"
-                android:layout_width="60dp"
+                android:layout_width="@dimen/dp_60"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="@dimen/dp_3"
                 android:text="数值"
-                android:textSize="12sp"
+                android:textSize="@dimen/sp_12"
                 android:textColor="#000025"/>
             <TextView
                 android:id="@+id/tv_score_value"
-                android:layout_width="60dp"
+                android:layout_width="@dimen/dp_60"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="@dimen/dp_3"
                 android:text="数值"
-                android:textSize="12sp"
+                android:textSize="@dimen/sp_12"
                 android:textColor="#000025"/>
         </LinearLayout>
 
@@ -64,8 +64,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="@dimen/dp_3"
             android:text="来源"
-            android:textSize="12sp"/>
+            android:textSize="@dimen/sp_12"/>
     </LinearLayout>
 </LinearLayout>

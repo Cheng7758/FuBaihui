@@ -18,14 +18,14 @@
         <ImageView
             android:id="@+id/capture_mask_top"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="@dimen/dp_120"
             android:layout_alignParentTop="true"
             android:background="@drawable/shadow" />
 
         <RelativeLayout
             android:id="@+id/rl_crop"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="@dimen/dp_200"
+            android:layout_height="@dimen/dp_200"
             android:layout_below="@id/capture_mask_top"
             android:layout_centerHorizontal="true"
             android:background="@drawable/qr_code_bg" >
@@ -35,8 +35,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_marginBottom="5dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginBottom="@dimen/dp_5"
+                android:layout_marginTop="@dimen/dp_5"
                 android:src="@drawable/scan_line" />
         </RelativeLayout>
 

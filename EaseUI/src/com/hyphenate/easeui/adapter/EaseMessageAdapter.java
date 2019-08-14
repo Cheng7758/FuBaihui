@@ -17,11 +17,13 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 
+import com.google.gson.Gson;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMConversation;
 import com.hyphenate.chat.EMMessage;
@@ -41,7 +43,7 @@ import com.hyphenate.easeui.widget.chatrow.EaseCustomChatRowProvider;
 
 public class EaseMessageAdapter extends BaseAdapter {
 
-    private final static String TAG = "msg";
+    private final static String TAG = "msg___";
 
     private Context context;
 
@@ -224,6 +226,7 @@ public class EaseMessageAdapter extends BaseAdapter {
     }
 
     protected EaseChatRow createChatRow(Context context, EMMessage message, int position) {
+        Log.d(TAG, "createChatRow: "+message);
         EaseChatRow chatRow = null;
         if (customRowProvider != null && customRowProvider.getCustomChatRow(message, position, this) != null) {
             return customRowProvider.getCustomChatRow(message, position, this);

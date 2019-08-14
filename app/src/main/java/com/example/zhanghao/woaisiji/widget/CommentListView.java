@@ -102,7 +102,7 @@ public class CommentListView extends LinearLayout {
         if(mDatas == null || mDatas.size() == 0){
             return;
         }
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        LayoutParams layoutParams = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         for(int i=0; i<mDatas.size(); i++){
             final int index = i;
             View view = getView(index);
@@ -148,7 +148,7 @@ public class CommentListView extends LinearLayout {
 //        commentTv.setTextColor(Color.BLACK);
 
         commentTv.setMovementMethod(circleMovementMethod);
-        commentTv.setOnClickListener(new View.OnClickListener() {
+        commentTv.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (circleMovementMethod.isPassToTv()) {
@@ -158,7 +158,7 @@ public class CommentListView extends LinearLayout {
                 }
             }
         });
-        commentTv.setOnLongClickListener(new View.OnLongClickListener() {
+        commentTv.setOnLongClickListener(new OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 if (circleMovementMethod.isPassToTv()) {

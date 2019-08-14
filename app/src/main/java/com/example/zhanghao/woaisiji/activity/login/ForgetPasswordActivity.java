@@ -67,8 +67,6 @@ public class ForgetPasswordActivity extends BaseActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         PublicActivityList.activityList.add(this);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_forget_password);
         initView();
         initClickListener();
@@ -155,7 +153,7 @@ public class ForgetPasswordActivity extends BaseActivity implements View.OnClick
         rl_title_bar_view_root = (RelativeLayout) findViewById(R.id.rl_title_bar_view_root);
         rl_title_bar_view_root.setBackgroundColor(ContextCompat.getColor(ForgetPasswordActivity.this,R.color.white));
         iv_title_bar_view_left_left = (ImageView) findViewById(R.id.iv_title_bar_view_left_left);
-        iv_title_bar_view_left_left.setImageResource(R.drawable.ic_back_left);
+        iv_title_bar_view_left_left.setImageResource(R.drawable.back);
         iv_title_bar_view_left_left.setVisibility(View.VISIBLE);
         tv_title_bar_view_centre_title = (TextView) findViewById(R.id.tv_title_bar_view_centre_title);
         tv_title_bar_view_centre_title.setTextColor(ContextCompat.getColor(ForgetPasswordActivity.this,R.color.black));

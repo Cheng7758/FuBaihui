@@ -2,7 +2,7 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="40dp">
+    android:layout_height="@dimen/dp_40">
     <!--正在加载-->
     <LinearLayout
         android:id="@+id/ll_base_quick_loading_root"
@@ -14,14 +14,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="?android:attr/progressBarStyleSmall"
-            android:layout_marginRight="4dp" />
+            android:layout_marginRight="@dimen/dp_4" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="4dp"
+            android:layout_marginLeft="@dimen/dp_4"
             android:text="正在加载中"
             android:textColor="#999999"
-            android:textSize="14dp"/>
+            android:textSize="@dimen/sp_14"/>
     </LinearLayout>
     <!--加载失败-->
     <FrameLayout
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textColor="#999999"
-            android:textSize="14dp"
+            android:textSize="@dimen/sp_14"
             android:text="暂无数据"/>
 
     </FrameLayout>
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textColor="#999999"
-            android:textSize="14dp"
+            android:textSize="@dimen/sp_14"
             android:text="已全部加载"/>
 
     </FrameLayout>

@@ -3,6 +3,7 @@ package com.example.zhanghao.woaisiji.adapter.my;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,6 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.zhanghao.woaisiji.R;
 import com.example.zhanghao.woaisiji.activity.ProductDetailActivity2;
-import com.example.zhanghao.woaisiji.activity.my.MyCollectionActivity;
 import com.example.zhanghao.woaisiji.bean.my.MyCollectionBean;
 import com.example.zhanghao.woaisiji.global.ServerAddress;
 
@@ -26,6 +26,7 @@ public class MyCollectionAdapter extends RecyclerView.Adapter<MyCollectionAdapte
     private Context mContext;
     private List<MyCollectionBean.DataBean> mList;
     private LayoutInflater mInflater;
+
     public MyCollectionAdapter(Context pContext, List<MyCollectionBean.DataBean> pList) {
         mContext = pContext;
         mList = pList;
@@ -60,11 +61,33 @@ public class MyCollectionAdapter extends RecyclerView.Adapter<MyCollectionAdapte
                 mContext.startActivity(intent);
             }
         });
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if (itemLongClick != null) {
+                    itemLongClick.onItemLongClick(position, mList.get(position).getId());
+                }
+                return true;
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return mList.size();
+    }
+
+    //定义接口
+    public interface OnItemLongClickListener {
+        void onItemLongClick(int position, String goods_id);
+    }
+
+    //声明这个接口变量
+    private OnItemLongClickListener itemLongClick;
+
+    //提供set方法
+    public void setItemLongClickListener(OnItemLongClickListener itemLongClickListener) {
+        itemLongClick = itemLongClickListener;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

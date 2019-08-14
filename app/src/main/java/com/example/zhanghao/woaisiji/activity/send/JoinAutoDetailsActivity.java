@@ -71,7 +71,7 @@ public class JoinAutoDetailsActivity extends BaseActivity {
 
         img_url = getIntent().getStringExtra("img_car");
         String url = ServerAddress.SERVER_ROOT + img_url;
-        Glide.with(this).load(url).error(R.drawable.icon_loading).into(iv_join_us_detail_merchant_picture);
+        Glide.with(this).load(url).error(R.drawable.ic_fubaihui).into(iv_join_us_detail_merchant_picture);
         if (!TextUtils.isEmpty(getIntent().getStringExtra("tx_name"))) {
             tv_join_us_detail_merchant_name.setText(getIntent().getStringExtra("tx_name"));
             tv_title_bar_view_left_text.setText(getIntent().getStringExtra("tx_name"));

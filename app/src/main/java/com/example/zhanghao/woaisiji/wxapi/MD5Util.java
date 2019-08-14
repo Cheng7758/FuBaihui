@@ -1,6 +1,8 @@
 package com.example.zhanghao.woaisiji.wxapi;
 
 
+import org.xutils.common.util.MD5;
+
 import java.security.MessageDigest;
 
 /**

@@ -2,25 +2,26 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/rl_title_bar_view_root"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
+    android:layout_height="@dimen/dp_50"
     android:background="@color/main_color_green">
 
     <ImageView
         android:id="@+id/iv_title_bar_view_left_left"
-        android:layout_width="20dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
+        android:paddingLeft="@dimen/dp_20"
+        android:paddingRight="@dimen/dp_10"
         android:scaleType="fitCenter"
-        android:layout_marginLeft="20dp"
-        android:src="@mipmap/white_left"
+        android:src="@drawable/back"
         android:visibility="gone" />
 
     <ImageView
         android:id="@+id/iv_title_bar_view_left_right_exit"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="@dimen/dp_30"
+        android:layout_height="@dimen/dp_30"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="@dimen/dp_15"
         android:layout_toRightOf="@+id/iv_title_bar_view_left_left"
         android:src="@drawable/icon_close_page"
         android:visibility="gone" />
@@ -30,13 +31,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="@dimen/dp_15"
         android:layout_toRightOf="@+id/iv_title_bar_view_left_left"
         android:ellipsize="end"
         android:maxLength="10"
         android:text=""
         android:textColor="@color/colorWhite"
-        android:textSize="20sp"
+        android:textSize="@dimen/dp_20"
         android:visibility="gone" />
 
     <TextView
@@ -44,11 +45,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginBottom="@dimen/dp_5"
+        android:layout_marginLeft="@dimen/dp_40"
+        android:layout_marginRight="@dimen/dp_40"
+        android:layout_marginTop="@dimen/dp_5"
+        android:ellipsize="end"
+        android:lines="1"
         android:text=""
         android:textColor="@color/colorWhite"
-        android:textSize="20sp" />
+        android:textSize="@dimen/sp_20" />
 
     <TextView
         android:id="@+id/tv_title_bar_view_right_right_introduction"
@@ -56,33 +61,32 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:layout_marginBottom="5dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="5dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
+        android:layout_marginBottom="@dimen/dp_5"
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_5"
+        android:paddingLeft="@dimen/dp_10"
+        android:paddingRight="@dimen/dp_10"
         android:text=""
         android:textColor="@color/colorWhite"
-        android:textSize="16sp"
-        android:visibility="gone" />
+        android:textSize="@dimen/sp_16" />
 
     <LinearLayout
         android:id="@+id/ll_title_bar_view_search_root"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="@dimen/dp_35"
         android:layout_centerInParent="true"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
+        android:layout_marginLeft="@dimen/dp_50"
+        android:layout_marginRight="@dimen/dp_50"
         android:background="@drawable/bg_home_page_search_box_input_area"
         android:orientation="horizontal"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
+        android:paddingLeft="@dimen/dp_5"
+        android:paddingRight="@dimen/dp_5"
         android:visibility="gone">
 
         <EditText
             android:id="@+id/et_title_bar_view_search"
             android:layout_width="0dp"
-            android:layout_height="30dp"
+            android:layout_height="@dimen/dp_30"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:background="#f5f5f5"
@@ -93,12 +97,12 @@
             android:text=""
             android:textColor="#969696"
             android:textColorHint="#909090"
-            android:textSize="16dp" />
+            android:textSize="@dimen/dp_16" />
 
         <ImageView
             android:id="@+id/iv_title_bar_view_do_search"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
             android:layout_gravity="center_vertical"
             android:src="@drawable/home_page_search_box" />
     </LinearLayout>

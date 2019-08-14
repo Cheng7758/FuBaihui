@@ -14,7 +14,7 @@ public class LogoutEm {
     }
 
     public static void logout(){
-        DemoHelper.getInstance().logout(false,new EMCallBack() {
+        DemoHelper.getInstance().logout(true,new EMCallBack() {
 
             @Override
             public void onSuccess() {

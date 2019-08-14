@@ -8,19 +8,19 @@
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="@dimen/dp_60"
         android:gravity="center"
         android:text="标题"
         android:textColor="#000000"
-        android:textSize="16sp"
+        android:textSize="@dimen/sp_16"
         android:textStyle="bold" />
     <TextView
         android:id="@+id/tvMessage"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="@dimen/dp_60"
         android:gravity="center"
         android:text="内容"
-        android:textSize="16sp" />
+        android:textSize="@dimen/sp_16" />
 
     <View
         android:layout_width="match_parent"
@@ -29,7 +29,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="@dimen/dp_40"
         android:orientation="horizontal" >
 
         <TextView
@@ -39,7 +39,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="取消"
-            android:textSize="14sp" />
+            android:textSize="@dimen/sp_14" />
 
         <View
             android:layout_width="0.3dp"
@@ -53,7 +53,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="确定"
-            android:textSize="14sp" />
+            android:textSize="@dimen/sp_14" />
     </LinearLayout>
 
 </LinearLayout>

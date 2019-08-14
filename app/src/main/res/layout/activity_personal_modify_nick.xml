@@ -4,45 +4,47 @@
     android:layout_height="match_parent"
     android:background="#EEEEEE"
     android:orientation="vertical">
-    <include
-        layout="@layout/title_bar_view_layout"/>
+
+    <include layout="@layout/title_bar_view_layout" />
 
     <RelativeLayout
         android:layout_width="match_parent"
+        android:layout_height="60dp"
         android:layout_marginTop="20dp"
         android:gravity="center_vertical"
         android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:layout_height="60dp">
+        android:paddingRight="10dp">
+
         <EditText
             android:id="@+id/et_personal_modify_nick_input_new_name"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:padding="8dp"
-            android:layout_toLeftOf="@+id/iv_personal_modify_nick_clean_content"
             android:layout_centerInParent="true"
+            android:layout_toLeftOf="@+id/iv_personal_modify_nick_clean_content"
+            android:background="@null"
+            android:gravity="center_vertical"
             android:hint="请输入要修改的昵称"
-            android:background="@null"/>
+            android:padding="8dp" />
+
         <ImageView
             android:id="@+id/iv_personal_modify_nick_clean_content"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:src="@drawable/umeng_update_close_bg_normal"/>
+            android:layout_centerVertical="true"
+            android:src="@drawable/umeng_update_close_bg_normal" />
     </RelativeLayout>
 
     <Button
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="50dp"
         android:id="@+id/btn_personal_modify_nick_save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/bg_rectangle_green_color"
         android:text="保存"
-        android:textSize="18sp"
-        android:textColor="@color/colorWhite"/>
+        android:textColor="@color/colorWhite"
+        android:textSize="18sp" />
 
 </LinearLayout>

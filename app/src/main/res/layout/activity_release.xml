@@ -7,20 +7,20 @@
     <RelativeLayout
         android:id="@+id/rl_head_layout"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="@dimen/dp_48"
         android:background="#FF4401">
 
         <Button
             android:id="@+id/btn_back"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="@dimen/dp_30"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="@dimen/dp_8"
             android:background="@null"
             android:gravity="center_vertical"
             android:text="取消"
             android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textSize="@dimen/sp_18" />
 
         <TextView
             android:id="@+id/tv_title"
@@ -30,14 +30,14 @@
             android:gravity="center_vertical"
             android:text="写说说"
             android:textColor="@color/white"
-            android:textSize="24sp" />
+            android:textSize="@dimen/sp_24" />
 
         <Button
             android:id="@+id/btn_release_dynamic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="5dp"
+            android:layout_marginRight="@dimen/dp_5"
             android:background="@null"
             android:text="发表"
             android:textColor="@color/white"

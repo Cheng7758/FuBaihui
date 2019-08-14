@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#EEEEEE"
+    android:orientation="vertical"
     tools:context=".activity.PersonalCouponActivity">
 
     <include layout="@layout/title_bar_view_layout" />
@@ -12,8 +13,8 @@
         android:id="@+id/recyclerView_personal_coupon_show_data"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="30dp"
-        android:paddingBottom="50dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"></android.support.v7.widget.RecyclerView>
+        android:layout_marginTop="@dimen/dp_30"
+        android:paddingBottom="@dimen/dp_50"
+        android:paddingLeft="@dimen/dp_10"
+        android:paddingRight="@dimen/dp_10"></android.support.v7.widget.RecyclerView>
 </LinearLayout>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="@dimen/dp_100"
     android:id="@+id/ll_my_answer_adopt_status"
     android:orientation="vertical">
 
@@ -9,15 +9,15 @@
         android:id="@+id/tv_my_answer_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="12dp"
+        android:padding="@dimen/dp_12"
         android:ellipsize="end"
         android:maxLines="2"
         android:text="谁有睡在我上铺的兄弟啊（白白）"
         android:textColor="#323232"
-        android:textSize="18dp" />
+        android:textSize="@dimen/sp_18" />
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="26dp"
+        android:layout_height="@dimen/dp_26"
         android:gravity="center_vertical"
         android:orientation="horizontal">
         <TextView
@@ -25,25 +25,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:paddingLeft="12dp"
+            android:paddingLeft="@dimen/dp_12"
             android:text="待采纳"
             android:textColor="#F67800"
-            android:textSize="16dp" />
+            android:textSize="@dimen/sp_16" />
 
         <TextView
             android:id="@+id/tv_my_answer_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="回答：3"
-            android:textSize="16dp" />
+            android:textSize="@dimen/sp_16" />
 
         <View
             android:id="@+id/view"
             android:layout_width="2dp"
-            android:layout_height="22dp"
+            android:layout_height="@dimen/dp_22"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
             android:background="#D7D7D7"
             />
 
@@ -51,9 +51,9 @@
             android:id="@+id/tv_my_answer_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingRight="12dp"
+            android:paddingRight="@dimen/dp_12"
             android:text="1小时前"
-            android:textSize="16dp" />
+            android:textSize="@dimen/sp_16" />
     </LinearLayout>
 
 

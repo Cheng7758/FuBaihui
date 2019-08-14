@@ -182,7 +182,7 @@ public class ImagePagerActivity extends Activity {
                         .load(imgurl)
                         .diskCacheStrategy(DiskCacheStrategy.ALL)//缓存多个尺寸
                         .thumbnail(0.1f)//先显示缩略图  缩略图为原图的1/10
-                        .error(R.drawable.ic_launcher)
+                        .error(R.drawable.ic_fubaihui)
                         .into(new GlideDrawableImageViewTarget(imageView){
                             @Override
                             public void onLoadStarted(Drawable placeholder) {

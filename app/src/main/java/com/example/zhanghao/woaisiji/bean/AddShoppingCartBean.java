@@ -10,7 +10,6 @@ public class AddShoppingCartBean {
      * code : 200
      * msg : 添加购物车成功！
      */
-
     private int code;
     private String msg;
 

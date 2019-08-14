@@ -18,6 +18,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -40,14 +41,24 @@ import com.hyphenate.easeui.domain.EaseUser;
 import com.hyphenate.easeui.utils.EaseCommonUtils;
 import com.hyphenate.easeui.widget.EaseContactList;
 import com.hyphenate.exceptions.HyphenateException;
+import com.jcodecraeer.xrecyclerview.gold.GoldManager;
+import com.jcodecraeer.xrecyclerview.gold.UserManager;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import io.reactivex.Flowable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Predicate;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * contact list
@@ -55,7 +66,7 @@ import java.util.Map.Entry;
  */
 public class EaseContactListFragment extends EaseBaseFragment {
     private static final String TAG = "EaseContactListFragment";
-    protected List<EaseUser> contactList;//好友列表
+    protected List<EaseUser> contactList = new ArrayList<>();//好友列表
     protected ListView listView;
     protected boolean hidden;
     protected ImageButton clearSearch;
@@ -67,7 +78,7 @@ public class EaseContactListFragment extends EaseBaseFragment {
     protected boolean isConflict;
     protected FrameLayout contentContainer;
     
-    private Map<String, EaseUser> contactsMap;
+    private Map<String, EaseUser> contactsMap = new HashMap<>();
 
     
     @Override
@@ -104,13 +115,17 @@ public class EaseContactListFragment extends EaseBaseFragment {
         contactListLayout.init(contactList);
         getContactList();
 
-        
         if(listItemClickListener != null){
             listView.setOnItemClickListener(new OnItemClickListener() {
     
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     EaseUser user = (EaseUser)listView.getItemAtPosition(position);
+                    if (user != null){
+                        UserManager.toId = GoldManager.toUserId = user.getUsername();
+                        UserManager.toName = GoldManager.toUserName = user.getNickname();
+                        UserManager.toPic = GoldManager.toUserPic =  user.getAvatar();
+                    }
                     listItemClickListener.onListItemClicked(user);
                 }
             });
@@ -152,7 +167,6 @@ public class EaseContactListFragment extends EaseBaseFragment {
         
     }
 
-
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
@@ -165,11 +179,27 @@ public class EaseContactListFragment extends EaseBaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        if (!hidden) {
-            refresh();
-        }
+        Log.d(TAG, "onResume: " + hidden);
+        Disposable subscribe = Flowable.just(1)
+                .filter(new Predicate<Integer>() {
+                    @Override
+                    public boolean test(Integer integer) throws Exception {
+                        if (!hidden)
+                        getContactList();
+                        return true;
+                    }
+                }).subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<Integer>() {
+                    @Override
+                    public void accept(Integer integer) throws Exception {
+                        contactListLayout.refresh();
+                    }
+                });
+//        if (!hidden) {
+//            refresh();
+//        }
     }
-
 
     /**
      * move user to blacklist
@@ -210,14 +240,26 @@ public class EaseContactListFragment extends EaseBaseFragment {
     
     // refresh ui
     public void refresh() {
-        getContactList();
-        contactListLayout.refresh();
+        Log.d(TAG, "refresh: ");
+        Disposable subscribe = Flowable.just(1).filter(new Predicate<Integer>() {
+            @Override
+            public boolean test(Integer integer) throws Exception {
+                if (!hidden)
+                    getContactList();
+                return true;
+            }
+        }).subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<Integer>() {
+                    @Override
+                    public void accept(Integer integer) throws Exception {
+                        contactListLayout.refresh();
+                    }
+                });
     }
-    
 
     @Override
     public void onDestroy() {
-        
         EMClient.getInstance().removeConnectionListener(connectionListener);
         
         super.onDestroy();
@@ -228,6 +270,7 @@ public class EaseContactListFragment extends EaseBaseFragment {
      * get contact list and sort, will filter out users in blacklist
      */
     protected void getContactList() {
+        Log.d(TAG, "getContactList: ");
         contactList.clear();
         if(contactsMap == null){
             return;
@@ -258,7 +301,12 @@ public class EaseContactListFragment extends EaseBaseFragment {
             @Override
             public int compare(EaseUser lhs, EaseUser rhs) {
                 if(lhs.getInitialLetter().equals(rhs.getInitialLetter())){
-                    return lhs.getNick().compareTo(rhs.getNick());
+                    String nick = lhs.getNick();
+                    nick = nick == null || nick.length() == 0 || nick.trim().length() == 0 ?
+                            "" : nick;
+                    String nick1 = rhs.getNick();
+                    nick1 = nick1 == null || nick1.trim().length() == 0 ? "" : nick1;
+                    return nick.compareTo(nick1);
                 }else{
                     if("#".equals(lhs.getInitialLetter())){
                         return 1;
@@ -267,14 +315,10 @@ public class EaseContactListFragment extends EaseBaseFragment {
                     }
                     return lhs.getInitialLetter().compareTo(rhs.getInitialLetter());
                 }
-
             }
         });
-
     }
-    
-    
-    
+
     protected EMConnectionListener connectionListener = new EMConnectionListener() {
         
         @Override
